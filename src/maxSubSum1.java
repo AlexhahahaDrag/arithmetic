@@ -2,7 +2,7 @@
 public class maxSubSum1 {
     public static void main(String[] args) {
         int[] arr={2,11,-4,13,-2,-5,2,7};
-        System.out.println(getMinSubNum(arr));
+        System.out.println(getMaxSubSum4(arr));
     }
     public static int getMinSubNum(int arr[]){
         int minSum=arr[0];
