@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,10 +40,10 @@ import java.util.Map;
 */
 public class MostCommonWord {
     public static void main(String[] args) {
-        String[] banned = {"hit"};
-        System.out.println(mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.",banned));
+        String[] banned = {"bob","hit"};
+        System.out.println(mostCommonWord("Bob. hIt, baLl",banned));
     }
-    public static String mostCommonWord(String paragraph, String[] banned) {
+    public static String mostCommonWord1(String paragraph, String[] banned) {
         Map<String,Integer> map=new HashMap<>();
         Map<String,Integer> map1=new HashMap<>();
         String lowerPragraph=paragraph.toLowerCase().replaceAll("[^a-z]"," ");
@@ -60,5 +62,29 @@ public class MostCommonWord {
             }
         }
         return mostCommon;
+    }
+    public static String mostCommonWord(String paragraph, String[] banned) {
+        String paragraphNew=paragraph.toLowerCase().replaceAll("[^a-z]"," ");
+        String[] strs=paragraphNew.split(" ");
+        Map<String,Integer> map=new HashMap<>();
+        int max=0;
+        String result="";
+        for(int i=0;i<strs.length;i++){
+            if(!"".equals(strs[i])&&!contains(banned,strs[i])){
+                map.put(strs[i],map.getOrDefault(strs[i],0)+1);
+                if(map.get(strs[i])>max){
+                    max++;
+                    result=strs[i];
+                }
+
+            }
+        }
+        return result;
+    }
+    private static boolean contains(String[] banned,String s){
+        for(int i=0;i<banned.length;i++)
+            if(banned[i].equals(s))
+                return true;
+        return false;
     }
 }
