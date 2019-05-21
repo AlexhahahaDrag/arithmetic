@@ -1,4 +1,9 @@
 package tree.binartTree;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Description: Invert a binary tree.
  *
@@ -29,7 +34,11 @@ package tree.binartTree;
 */
 public class InvertBinaryTree {
     public static void main(String[] args) {
-        System.out.println();
+        TreeNode treeNode=new TreeNode(4);
+        treeNode.add(2,treeNode);treeNode.add(7,treeNode);treeNode.add(9,treeNode);
+        treeNode.add(6,treeNode);
+        treeNode.add(3,treeNode);treeNode.add(1,treeNode);
+        System.out.println(treeNode);
     }
     public TreeNode invertTree(TreeNode root) {
         if(root!=null){
