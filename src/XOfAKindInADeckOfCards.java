@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Description: In a deck of cards, each card has an integer written on it.
@@ -46,30 +43,37 @@ import java.util.Set;
  * @CreateDate:  2019/2/22 15:40
  * @param
  * @return
-*/
+ */
 public class XOfAKindInADeckOfCards {
     public static void main(String[] args) {
-        int deck[]={1,1,2,2,2,2};
-        System.out.println(hasGroupsSizeX(deck));
+        XOfAKindInADeckOfCards x=new XOfAKindInADeckOfCards();
+        int deck[]={0,0,0,1,1,1,2,2,2,2,2,2};
+        System.out.println(x.hasGroupsSizeX(deck));
     }
-    public static boolean hasGroupsSizeX(int[] deck) {
-        if(deck.length<=1)
-            return false;
-        Map<Integer,Integer>map =new HashMap<>();
-        for(int i=0;i<deck.length;i++)
-            map.put(deck[i],map.getOrDefault(deck[i],0)+1);
-        Iterator<Map.Entry<Integer,Integer>> it=map.entrySet().iterator();
-        map.values();
-        Integer value=it.next().getValue();
-        while(it.hasNext()){
-            int num=it.next().getValue();
-            int x=gcd(num,value);
-            if(x!=num&&(x&1)==1)
-                return false;
-        }
-        return true;
+    public boolean hasGroupsSizeX(int[] deck) {
+        int[] count= new int[10001];
+        for (int i : deck)
+            count[i]++;
+        List<Integer> list =new ArrayList<>();
+        for (int j: count)
+            if (j>0)
+                list.add(j);
+            int gDen=count[deck[0]];
+        for (int k: list)
+            gDen=gcd(gDen,k);
+        return gDen>1;
     }
-    public static int gcd(int x,int y){
+    public boolean hasGroupsSizeX1(int[] deck) {
+        int[] count=new int[10001];
+        for (int i:deck)
+            count[i]++;
+        int gDen = count[deck[0]];
+        for (int j : count )
+            if (j>0)
+                gDen=gcd(j,gDen);
+        return gDen>1;
+    }
+    private int gcd(int x,int y){
         return x==0?y:gcd(y%x,x);
     }
 }
