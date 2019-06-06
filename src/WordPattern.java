@@ -25,7 +25,8 @@ import java.util.Map;
  */
 public class WordPattern {
     public static void main(String[] args) {
-        System.out.println(getWordPattern("abba","dog dog dog dog"));
+        WordPattern wordPattern =new WordPattern();
+        System.out.println(wordPattern.wordPattern("abba","dog dog dog dog"));
     }
     public static boolean getWordPattern(String pattern,String str){
         String[] strs=str.split(" ");
@@ -41,6 +42,20 @@ public class WordPattern {
                 return false;
             }else {
                 map.put(pattern.charAt(i),strs[i]);
+            }
+        }
+        return true;
+    }
+    public boolean wordPattern(String pattern, String str) {
+
+        char[] pArr = pattern.toCharArray();
+        String[] sArr = str.split(" ");
+        if(pArr.length != sArr.length)
+            return false;
+        for(int i=0; i < pArr.length; i++) {
+            for (int j= i+1; j<pArr.length; j++) {
+                if (pArr[i] == pArr[j] && !sArr[i].equals(sArr[j]))
+                    return false;
             }
         }
         return true;
