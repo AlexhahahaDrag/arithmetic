@@ -3,8 +3,8 @@ package string;
 public class KMP {
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        String resource = "abcdabceababcgabcsc";
-        String target = "abcgabc";
+        String resource = "abcgabeeababcgabcsc";
+        String target =   "abcgabc";
         System.out.println(kmp.getKmp(resource, target));
     }
     public int getKmp(String resource, String target) {
@@ -27,11 +27,10 @@ public class KMP {
 
     public int[] getNext(char[] str) {
         int[] next = new int[str.length];
-        next[0] = -1;
-        int k = 0;
-        int j = 1;
+        int k = -1;
+        int j = 0;
         while(j < str.length ) {
-            if (k == 0 || str[j] == str[k]) {
+            if (k == -1 || str[j] == str[k]) {
                 next[j] = k;
                 j++;
                 k++;
