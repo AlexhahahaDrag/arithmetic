@@ -3,16 +3,16 @@ package string;
 public class KMP {
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        String resource = "abcdabceababcgsc";
-        String target = "abcg";
+        String resource = "abcdabceababcgabcsc";
+        String target = "abcgabc";
         System.out.println(kmp.getKmp(resource, target));
     }
     public int getKmp(String resource, String target) {
         char[] res = resource.toCharArray();
         char[] tar = target.toCharArray();
-        int[] k = getNext(res);
+        int[] k = getNext(tar);
         int j = 0;
-        int i =0 ;
+        int i = 0;
        while(i < res.length && j < tar.length) {
             if (j == -1 || res[i] == tar[j]) {
                 j++;
@@ -28,13 +28,13 @@ public class KMP {
     public int[] getNext(char[] str) {
         int[] next = new int[str.length];
         next[0] = -1;
-        int k = -1;
-        int j = 0;
-        while(j < str.length - 1) {
-            if (k == -1 || str[j] == str[k]) {
+        int k = 0;
+        int j = 1;
+        while(j < str.length ) {
+            if (k == 0 || str[j] == str[k]) {
+                next[j] = k;
                 j++;
                 k++;
-                next[j] = k;
             } else
                 k = next[k];
         }
