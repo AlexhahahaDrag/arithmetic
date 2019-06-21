@@ -1,7 +1,9 @@
+/*
 package string;
 
 import java.util.Arrays;
 
+*/
 /**
  * @Description: 已知一个字符串s= "findinahedleaysnaedletackneedleina";
  *                         求t="needle"在他中的位置
@@ -9,7 +11,8 @@ import java.util.Arrays;
  * @CreateDate: 2019/6/20 17:40
  * @Version:    1.0
  *
-*/
+*//*
+
 public class BMArgorithm {
     public static void main(String[] args) {
         BMArgorithm bmArgorithm = new BMArgorithm();
@@ -37,13 +40,15 @@ public class BMArgorithm {
         return -1;
     }
 
-    /**
+    */
+/**
      * @Description: 创建坏的字符串数组
      * @Author:      alex
      * @CreateDate:  2019/6/21 13:47
      * @param
      * @return
-    */
+    *//*
+
     public int[] bad_char_table(String str) {
         int len = str.length();
         int[] bad_table = new int[65536];
@@ -53,14 +58,17 @@ public class BMArgorithm {
         return bad_table;
     }
 
-    /**
+    */
+/**
      * @Description: 创建好的字符串数组
      * @Author:      alex
      * @CreateDate:  2019/6/21 13:47
      * @param
      * @return
-    */
-    public int[] good_char_table(String str) {
+    *//*
+
+*/
+/*    public int[] good_char_table(String str) {
         int[] good_table = new int[65536];
         Arrays.fill(g);
         int lastPrefixPosition = plen;
@@ -74,14 +82,17 @@ public class BMArgorithm {
             good_table[slen] = plen - 1 - i + slen;
         }
         return good_table;
-    }
-    /**
+    }*//*
+
+    */
+/**
      * @Description: 前缀匹配
      * @Author:      alex
      * @CreateDate:  2019/6/21 13:21
      * @param
      * @return
-    */
+    *//*
+
     public boolean isPrefix(String pattern, int p) {
         int len = pattern.length();
         for (int i = p, j = 0; i < len; i++, j++) {
@@ -91,13 +102,15 @@ public class BMArgorithm {
         return true;
     }
 
-    /**
+    */
+/**
      * @Description: 后缀匹配
      * @Author:      alex
      * @CreateDate:  2019/6/21 13:25
      * @param
      * @return
-    */
+    *//*
+
     public int suffixLen(String pattern, int p) {
         int plen = pattern.length();
         int len = 0;
@@ -106,3 +119,4 @@ public class BMArgorithm {
         return len;
     }
 }
+*/
