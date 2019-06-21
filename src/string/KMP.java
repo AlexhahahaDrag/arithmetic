@@ -27,10 +27,11 @@ public class KMP {
 
     public int[] getNext(char[] str) {
         int[] next = new int[str.length];
-        int k = -1;
-        int j = 0;
+        next[0] = -1;
+        int k = 0;
+        int j = 1;
         while(j < str.length ) {
-            if (k == -1 || str[j] == str[k]) {
+            if (k == 0 || str[j] == str[k]) {
                 next[j] = k;
                 j++;
                 k++;
