@@ -18,35 +18,44 @@ import java.util.List;
  */
 public class HappyNumber {
     public static void main(String[] args) {
-        System.out.println(isHappy(18));
+        HappyNumber happyNumber = new HappyNumber();
+        System.out.println(HappyNumber.isHappy(18));
     }
-    public static boolean isHappy(int n){
+    public static boolean isHappy2(int n){
         List<Integer> list=new ArrayList<>();
         return isHappyList(n,list);
     }
     public static boolean isHappyList(int n, List list){
-        int numCount=n;
-        int count=0;
-        while(numCount>0){
-            count++;
-            numCount/=10;
+        int result = 0;
+        while(n > 0) {
+            result += Math.pow(n%10, 2);
+            n /= 10;
         }
-        int[] nums=new int[count];
-        int i=0;
-        while (n>0){
-            nums[i++]=n%10;
-            n/=10;
-        }
-        int sum=0;
-        for (int j = 0; j < nums.length; j++)
-            sum+=nums[j]*nums[j];
-        if (sum==1)
+        if (result == 1)
             return true;
-        else if (list.contains(sum))
+        else if (list.contains(result))
             return false;
-        else{
-            list.add(sum);
-            return isHappyList(sum,list);
+        else {
+            list.add(result);
+            return isHappyList(result, list);
+        }
+    }
+    public static boolean isHappy(int n) {
+        return isHappy(n);
+    }
+    public static boolean isHappy(long n) {
+        long result;
+        while(true) {
+            result = 0;
+            while(n > 0) {
+                result += Math.pow(n%10, 2);
+                n /= 10;
+            }
+            if (result == 1)
+                return true;
+            if (result == 4)
+                return false;
+            n = result;
         }
     }
 }
