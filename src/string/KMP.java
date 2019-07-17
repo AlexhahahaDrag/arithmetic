@@ -3,8 +3,8 @@ package string;
 public class KMP {
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        String resource = "abcdabceababcgabcsc";
-        String target = "abcgabc";
+        String resource = "abcgabeeababcgabcsc";
+        String target =   "abcgabc";
         System.out.println(kmp.getKmp(resource, target));
     }
     public int getKmp(String resource, String target) {
