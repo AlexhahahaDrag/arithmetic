@@ -2,7 +2,8 @@ import java.io.File;
 
 public class DocumentTraverse {
     public static void main(String[] args) {
-        File file=new File("d:\\java");
+        File file=new File("f:\\project-upload\\bas_files\\nontempnontemp\\1562223218879_3.jpg");
+        System.out.println(file.getName() +" 111111111111" + file.getPath());
        traverse(file);
     }
     public static void traverse(File file){
