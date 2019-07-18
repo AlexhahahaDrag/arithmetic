@@ -30,10 +30,20 @@ package math;
 public class ConvertToBaseNegetive2 {
     public static void main(String[] args) {
         ConvertToBaseNegetive2 convertToBaseNegetive2 = new ConvertToBaseNegetive2();
-        System.out.println(convertToBaseNegetive2.baseNeg2(47));
+        System.out.println(convertToBaseNegetive2.baseNeg21(0));
     }
     public String baseNeg2(int N) {
         //1431655765  (2^2+1)(2^4+1)(2^8+1)(2^16+1)的化简结果
         return Integer.toBinaryString(1431655765 ^ (1431655765 - N));
+    }
+    public String baseNeg21(int N) {
+        String res = "";
+        while (N != 0) {
+            //res = Integer.toString(N & 1) + res;
+            res = (N & 1) + res;
+            N = - (N >> 1);
+        }
+
+        return res == "" ? "0" : res;
     }
 }
