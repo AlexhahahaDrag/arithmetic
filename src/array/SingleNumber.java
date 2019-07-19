@@ -1,3 +1,5 @@
+package array;
+
 import java.util.HashSet;
 import java.util.Iterator;
 /**Given a non-empty array of integers, every element appears twice except for one. Find that single one.
