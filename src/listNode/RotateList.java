@@ -29,10 +29,10 @@ public class RotateList {
         int[] arr = {1, 2, 3, 4, 5};
         ListNode listNode = ListNode.getListNodeByArr(arr);
         RotateList rotateList = new RotateList();
-        rotateList.rotateRight(listNode, 1);
+        rotateList.rotateRight1(listNode, 2);
         System.out.println(1);
     }
-    public ListNode rotateRight(ListNode head, int k) {
+    public ListNode rotateRight1(ListNode head, int k) {
         int size = 0;
         ListNode l = head;
         while(l != null) {
@@ -40,22 +40,69 @@ public class RotateList {
             size++;
         }
         k %= size;
-        ListNode l1 = head;
+        ListNode end = head;
         int x = size - k;
-        while(x > 0){
-            l1 = l1.next;
+        while(x > 1){
+            end = end.next;
             x--;
         }
-
-        ListNode l2 = l1;
+        ListNode result = end.next;
+        ListNode start = result;
         while(k-- > 1)
-            l2 = l2.next;
-        ListNode l3 = head;
-        l2.next = l3;
-        while(size - k > 0)
-            l3 = l3.next;
-        l3.next = null;
+            result = result.next;
+        result.next = head;
+        end.next = null;
+        return start;
+    }
+    public ListNode findendposition(ListNode l,int n) {
+        int i;
+        for(i=0;i<n-1;i++)
+            l=l.next;
+        return l;
+    }
 
-        return l1;
+    public int findlength(ListNode l) {
+        int count=0;
+        while(l.next!=null)
+        {
+            l=l.next;
+            count++;
+        }
+        return ++count;
+    }
+
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head==null)
+            return head;
+        RotateList s=new RotateList();
+        ListNode start;
+        start=head;
+        int len;
+        len=s.findlength(start);
+
+        k=k%len;
+        if(k==0)
+        {
+            return head;
+        }
+
+        ListNode result;
+        ListNode end;
+
+        start=head;
+        end=s.findendposition(start,len-k);
+        result=end.next;
+        start=result;
+
+        while(result.next!=null)
+        {
+            result=result.next;
+        }
+
+        result.next=head;
+        end.next=null;
+
+        return start;
+
     }
 }

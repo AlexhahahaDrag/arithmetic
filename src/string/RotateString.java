@@ -1,3 +1,5 @@
+package string;
+
 /**
  * @Description: We are given two strings, A and B.
  *
@@ -29,7 +31,7 @@ public class RotateString {
     public static void main(String[] args) {
         System.out.println(rotateString("fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf","fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf"));
     }
-    public static boolean rotateString(String A, String B) {
+    public static boolean rotateString1(String A, String B) {
        if (A.length()!=B.length())
            return false;
        else if (A.length()==0)
@@ -46,5 +48,8 @@ public class RotateString {
             index++;
         }
         return false;
+    }
+    public static boolean rotateString(String A, String B) {
+        return A.length() == B.length() && (A + A).indexOf(B) > -1;
     }
 }
