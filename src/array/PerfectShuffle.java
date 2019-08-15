@@ -10,7 +10,7 @@ package array;
 public class PerfectShuffle {
 
     public static void main(String[] args) {
-        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         PerfectShuffle perfectShuffle = new PerfectShuffle();
         int[] result = perfectShuffle.getPerfectShuffle(arr);
         for(int i : result)
@@ -22,7 +22,7 @@ public class PerfectShuffle {
         int n2, k, m;
         int start = 0;
         while(n > 1) {
-            n2 = 2 * n;
+            n2 = 2 * n + 1;
             for(k = 0, m = 1; n2 / m >= 3;k++, m *= 3);
             m >>= 1;
             reverse(arr, start + m + 1, start + n);
@@ -33,10 +33,11 @@ public class PerfectShuffle {
             start = start + 2 * m;
             n = n - m;
         }
-        int temp = arr[arr.length - 1];
-        arr[arr.length - 1] = arr[arr.length - 2];
-        arr[arr.length -  2] = temp;
-
+        if (n == 1) {
+            int temp = arr[arr.length - 1];
+            arr[arr.length - 1] = arr[arr.length - 2];
+            arr[arr.length -  2] = temp;
+        }
         return arr;
     }
 
