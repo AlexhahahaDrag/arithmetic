@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class LongestPalindromicSubstring {
     private static int max;
     private static int startIndex;
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("aa"));
+        System.out.println(longestPalindrome("babad"));
     }
     public static String longestPalindrome1(String s){
         char[] strs=s.toCharArray();
@@ -45,7 +46,7 @@ public class LongestPalindromicSubstring {
         return end-start-1;
     }
 
-    public static String longestPalindrome(String s) {
+    public static String longestPalindrome2(String s) {
         // corner case
         if (s == null || s.length() == 0) return s;
         char[] array = s.toCharArray();
@@ -72,5 +73,55 @@ public class LongestPalindromicSubstring {
             startIndex = start + 1;
         }
         return newTail;
+    }
+    public static String longestPalindrome(String s){
+        if (s == null || s.length() == 0)
+            return "";
+        char[] ch = s.toCharArray();
+        char[] sNew = new char[(ch.length << 1) + 2];
+        int[] map = new int[sNew.length];
+        Arrays.fill(sNew, '#');
+        sNew[0] = '$';
+        for (int i = 0; i < ch.length; i++)
+            sNew[i + 1 << 1] = ch[i];
+        int symmetry = 0;
+        int radius = 0;
+        int index = 0;
+        while(index < sNew.length) {
+            if (symmetry + radius - 1 > index) {
+                if (map[(symmetry << 1) - index] + index < symmetry + radius)
+                    map[index] = map[(symmetry << 1) - index];
+                else {
+                    int num = map[index - symmetry - 1];
+                    while(index - num >= 0 && index + num < sNew.length && sNew[index - num] == sNew[index + num])
+                        num++;
+                    radius = num;
+                    symmetry = index;
+                    map[index] = num;
+                }
+            } else {
+                int num = 1;
+                while(index - num >= 0 && index + num < sNew.length && sNew[index - num] == sNew[index + num])
+                    num++;
+                radius = num;
+                symmetry = index;
+                map[index] = num;
+            }
+            index++;
+        }
+        int sym = 0;
+        int start = 0;
+        while(start < map.length) {
+            if (map[start] > map[sym])
+                sym = start;
+            start++;
+        }
+
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = sym - map[sym] + 1; i < sym + map[sym]; i++)
+            if (sNew[i] != '#' && sNew[i] != '$')
+                stringBuilder.append(sNew[i]);
+        return stringBuilder.toString();
     }
 }
