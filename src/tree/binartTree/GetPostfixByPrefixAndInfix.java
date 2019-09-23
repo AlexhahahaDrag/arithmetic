@@ -12,10 +12,10 @@ import java.util.Arrays;
  * @create: 2019-09-21 08:53:31
  * @version: 1.0
  **/
-public class CalculateSequence {
+public class GetPostfixByPrefixAndInfix {
 
     public static void main(String[] args) {
-        CalculateSequence calculateSequence = new CalculateSequence();
+        GetPostfixByPrefixAndInfix calculateSequence = new GetPostfixByPrefixAndInfix();
         char[] prefix = {'G', 'D', 'A', 'F', 'E', 'M', 'H', 'Z'};
         char[] infix = {'A', 'D', 'E', 'F', 'G', 'H', 'M', 'Z'};
         calculateSequence.getPostfixByPrefixAndInfix(prefix, infix);
