@@ -25,10 +25,60 @@ package string;
  * @return
 */
 public class LongestSubstringWithoutRepeatingCharacters {
+
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcdefghiabcfgdfgfhgjhgij"));
+        LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abcdfe"));
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring1("abcdfe"));
     }
-    public static int lengthOfLongestSubstring(String s) {
-       return 0;
+    private int lengthOfLongestSubstring(String s) {
+        int[] seen = new int[128];
+        for(int i = 0; i < 128; i++){
+            seen[i] = -1;
+        }
+        int i, j, max;
+        i = j = max = 0;
+
+        while(j < s.length()){
+            char c = s.charAt(j);
+            if(seen[c] >=i){
+                i = seen[c] + 1;
+            }
+            seen[c] = j;
+            j++;
+            max = Math.max(max, j-i);
+        }
+
+        return max;
+    }
+    private int lengthOfLongestSubstring2(String s) {
+        char[] chars = s.toCharArray();
+        int maxLength = 0, leftIndex = 0;
+        for (int j = 0; j < chars.length; j++) {
+            for (int innerIndex = leftIndex; innerIndex < j; innerIndex++) {
+                if (chars[innerIndex] == chars[j]) {
+                    maxLength = Math.max(maxLength, j - leftIndex);
+                    leftIndex = innerIndex + 1;
+                    break;
+                }
+            }
+        }
+        return Math.max(chars.length - leftIndex, maxLength);
+    }
+    private int lengthOfLongestSubstring1(String s) {
+        int start = 0;
+        int[] map = new int[256];
+        int i = 0;
+        int len = s.length();
+        int maxlen = 0;
+        while (i < len) {
+            if (map[s.charAt(i)] == 1) {
+                maxlen = i - start > maxlen ? i - start: maxlen;
+                while(map[s.charAt(i)] == 1)
+                    map[s.charAt(start++)]--;
+            }
+            map[s.charAt(i++)]++;
+        }
+        return i - start > maxlen ? i - start: maxlen;
     }
 }
