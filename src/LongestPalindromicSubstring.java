@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
@@ -19,8 +17,47 @@ public class LongestPalindromicSubstring {
     private static int max;
     private static int startIndex;
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("babad"));
+        System.out.println(longestPalindrome11("aba"));
     }
+
+    private static String longestPalindrome11(String s) {
+        int len = s.length();
+        char[] ch = new char[(len << 1) + 2];
+        int[] map = new int[ch.length];
+        Arrays.fill(ch, '#');
+        ch[0] = '*';
+        int add;
+        for ( int i = 0; i < len; i++)
+            ch[i + 1 << 1] = s.charAt(i);
+        int index = 0;
+        for(int j = index + 1; j < ch.length; j++) {
+            if (j > index + map[index]) {
+                add = 0;
+                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add])
+                    add++;
+                map[j] = add;
+                index = j;
+            } else if (j + map[(index << 1) - j] < index + map[index])
+                map[j] = map[(index << 1) - j];
+            else {
+                add = index - j + map[index];
+                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add])
+                    add++;
+                map[j] = add;
+                index = j;
+            }
+        }
+        int max = 0;
+        for(int k = 0; k < ch.length; k++)
+            if(map[max] < map[k])
+                max = k;
+        StringBuilder sb = new StringBuilder();
+        for (int l = max - map[max] + 1; l <= max + map[max] - 1; l ++)
+            if (ch[l] != '#')
+                sb.append(ch[l]);
+        return sb.toString();
+    }
+
     public static String longestPalindrome1(String s){
         char[] strs=s.toCharArray();
         int start=0;
@@ -73,55 +110,5 @@ public class LongestPalindromicSubstring {
             startIndex = start + 1;
         }
         return newTail;
-    }
-    public static String longestPalindrome(String s){
-        if (s == null || s.length() == 0)
-            return "";
-        char[] ch = s.toCharArray();
-        char[] sNew = new char[(ch.length << 1) + 2];
-        int[] map = new int[sNew.length];
-        Arrays.fill(sNew, '#');
-        sNew[0] = '$';
-        for (int i = 0; i < ch.length; i++)
-            sNew[i + 1 << 1] = ch[i];
-        int symmetry = 0;
-        int radius = 0;
-        int index = 0;
-        while(index < sNew.length) {
-            if (symmetry + radius - 1 > index) {
-                if (map[(symmetry << 1) - index] + index < symmetry + radius)
-                    map[index] = map[(symmetry << 1) - index];
-                else {
-                    int num = map[index - symmetry - 1];
-                    while(index - num >= 0 && index + num < sNew.length && sNew[index - num] == sNew[index + num])
-                        num++;
-                    radius = num;
-                    symmetry = index;
-                    map[index] = num;
-                }
-            } else {
-                int num = 1;
-                while(index - num >= 0 && index + num < sNew.length && sNew[index - num] == sNew[index + num])
-                    num++;
-                radius = num;
-                symmetry = index;
-                map[index] = num;
-            }
-            index++;
-        }
-        int sym = 0;
-        int start = 0;
-        while(start < map.length) {
-            if (map[start] > map[sym])
-                sym = start;
-            start++;
-        }
-
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = sym - map[sym] + 1; i < sym + map[sym]; i++)
-            if (sNew[i] != '#' && sNew[i] != '$')
-                stringBuilder.append(sNew[i]);
-        return stringBuilder.toString();
     }
 }
