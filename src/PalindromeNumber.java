@@ -22,19 +22,19 @@
 */
 public class PalindromeNumber {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(1221));
+        System.out.println(isPalindrome(0));
     }
-    public static boolean isPalindrome(int x) {
-        if (x<0)
+    private static boolean isPalindrome(int x) {
+        if(x < 0 || (x != 0 && x % 10 == 0))
             return false;
-        int reverseX=0;
-        while(reverseX<x){
-            reverseX=reverseX*10+x%10;
-            x/=10;
+        int reverseX = 0;
+        while (x > reverseX) {
+            reverseX = reverseX * 10 + x % 10;
+            x /= 10;
         }
-        return x==reverseX||x==reverseX/10;
+        return x == reverseX || x == reverseX / 10;
     }
-    public static boolean isPalindrome1(int x) {
+    private static boolean isPalindrome1(int x) {
         if (x<0)
             return false;
         String s=x+"";
