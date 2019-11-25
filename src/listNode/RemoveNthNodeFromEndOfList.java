@@ -23,10 +23,6 @@ package listNode;
 public class RemoveNthNodeFromEndOfList {
     public static void main(String[] args) {
         RemoveNthNodeFromEndOfList removeNthNodeFromEndOfList = new RemoveNthNodeFromEndOfList();
-        boolean change = true;
-        change = !change;
-        System.out.println(change);
-        System.out.println(false ^ false);
         int[] arr = {1, 2, 3, 4, 5};
         ListNode listNode = ListNode.getListNodeByArr(arr);
         removeNthNodeFromEndOfList.removeNthFromEnd(listNode, 2);

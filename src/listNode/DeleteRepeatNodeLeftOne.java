@@ -1,7 +1,7 @@
 package listNode;
 
 /**
- * @description: 
+ * @description:
  * @author: alex
  * @create: 2019-09-21 08:37:04
  * @version: 1.0
@@ -16,6 +16,12 @@ public class DeleteRepeatNodeLeftOne {
         while(listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;
+        }
+        ListNode listNode2 = ListNode.getListNodeByArr(arr);
+        listNode2 = deleteRepeatNodeLeftOne.deleteRepeatNodeLeftOne(listNode2);
+        while(listNode2 != null) {
+            System.out.println(listNode2.val);
+            listNode2 = listNode2.next;
         }
     }
 
