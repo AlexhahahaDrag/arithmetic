@@ -22,4 +22,11 @@ public class ListNode {
         }
         return first.next;
     }
+
+    public static void print(ListNode listNode) {
+        while(listNode != null){
+            System.out.print(listNode.val + " ");
+            listNode = listNode.next;
+        }
+    }
 }
