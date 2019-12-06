@@ -1,7 +1,5 @@
 package array;
 
-import java.util.HashMap;
-
 /**
  * @Description:
  * 给定两个数组，编写一个函数来计算它们的交集。
@@ -23,7 +21,7 @@ import java.util.HashMap;
  * @Version:    1.0
  *
 */
-public class InterSection {
+public class Intersection {
 
     int min;
     int max;
@@ -61,7 +59,7 @@ public class InterSection {
     }
 
     public static void main(String[] args) {
-        InterSection interSection = new InterSection();
+        Intersection interSection = new Intersection();
         int[] nums1 = {1,2,2,1};
         int[] nums2 = {2,2};
         int[] arr = interSection.intersection(nums1, nums2);
