@@ -34,7 +34,7 @@ package array;
  * @Version:    1.0
  *
 */
-class MyHashTable {
+class MyHashMapI {
 
     class Node{
         public int value;
@@ -45,7 +45,7 @@ class MyHashTable {
 
     private static int size = 10000;
 
-    public MyHashTable() {
+    public MyHashMapI() {
         this.arr = new Node[size];
     }
 
