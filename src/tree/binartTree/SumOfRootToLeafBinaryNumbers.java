@@ -25,6 +25,7 @@ package tree.binartTree;
 */
 public class SumOfRootToLeafBinaryNumbers {
     public static void main(String[] args) {
+        TreeNode treeNode = TreeNode.getTreeNodeByArr(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
         System.out.println();
     }
     static int sum=0;

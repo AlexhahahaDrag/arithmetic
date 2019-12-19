@@ -1,13 +1,19 @@
 package tree.binartTree;
 
+import listNode.ListNode;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
     TreeNode(int x) { val = x; }
+    int deep;
 
     @Override
     public String toString() {
@@ -32,15 +38,55 @@ public class TreeNode {
         stringBuilder.append("]");
         return stringBuilder.toString();
     }
-    public TreeNode add(Integer it,TreeNode treeNode){
-        if (treeNode==null)
-            return new TreeNode(it);
-        if (treeNode.left==null)
+    public static TreeNode add(Integer it,TreeNode treeNode){
+        if (treeNode==null) {
+            TreeNode treeNode1 = new TreeNode(it);
+            treeNode1.deep = 1;
+            return treeNode1;
+        }
+
+        if (treeNode.left==null) {
             treeNode.left=add(it,treeNode.left);
-        else if (treeNode.right==null)
+            treeNode.deep = Math.max(treeNode.left == null ? 0 : treeNode.left.deep, treeNode.right == null ? 0 : treeNode.right.deep) + 1;
+        } else if (treeNode.right==null) {
             treeNode.right=add(it,treeNode.right);
-        else
-            add(it,treeNode.left);
+            treeNode.deep = Math.max(treeNode.left == null ? 0 : treeNode.left.deep, treeNode.right == null ? 0 : treeNode.right.deep) + 1;
+        } else {
+            if ((treeNode.left == null ? 0 : treeNode.left.deep) <= (treeNode.right == null ? 0 : treeNode.right.deep)) {
+                add(it,treeNode.left);
+            } else {
+                add(it, treeNode.right);
+            }
+            treeNode.deep = Math.max(treeNode.left == null ? 0 : treeNode.left.deep, treeNode.right == null ? 0 : treeNode.right.deep) + 1;
+
+        }
+
+        return treeNode;
+    }
+
+    public static TreeNode getTreeNodeByArr(int[] arr) {
+        TreeNode treeNode = null;
+        Queue<TreeNode> queue = new LinkedBlockingQueue<>();
+        treeNode = get(treeNode, arr, 0, queue);
+        return treeNode;
+    }
+
+    private static TreeNode get(TreeNode treeNode, int[] arr, int index, Queue<TreeNode> queue) {
+        if(index < arr.length) {
+            if(treeNode == null) {
+                treeNode = new TreeNode(arr[index++]);
+                get(treeNode, arr, index, queue);
+            }else if (treeNode.left == null) {
+                treeNode.left = new TreeNode(arr[index++]);
+                queue.add(treeNode.left);
+                get(treeNode, arr, index, queue);
+            } else if (treeNode.right == null) {
+                treeNode.right = new TreeNode(arr[index++]);
+                queue.add(treeNode.right);
+                get(treeNode, arr, index, queue);
+            } else
+                get(queue.poll(), arr, index, queue);
+        }
         return treeNode;
     }
 }
