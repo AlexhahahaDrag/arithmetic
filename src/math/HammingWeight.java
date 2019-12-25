@@ -48,13 +48,23 @@ public class HammingWeight {
         return count;
     }
 
-    public int hammingWeight1(int n) {
-        return Integer.bitCount(n);
+
+
+    public int hammingWeight1(int i) {
+        Integer.bitCount(i);
+        i = (i & 0x55555555) + ((i >> 1) & 0x55555555);
+        System.out.println(i);
+        i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+        System.out.println(i);
+        i = (i & 0x0F0F0F0F) + ((i >> 4) & 0x0F0F0F0F);
+        System.out.println(i);
+        i = (i * (0x01010101) >> 24);
+        System.out.println(i);
+        return i;
     }
 
     public static void main(String[] args) {
         HammingWeight hammingWeight = new HammingWeight();
-        System.out.println(0b11);
-        System.out.println(hammingWeight.hammingWeight(0b11));
+        System.out.println(hammingWeight.hammingWeight1(11111111));
     }
 }
