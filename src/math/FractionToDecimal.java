@@ -34,35 +34,41 @@ import java.util.Map;
 public class FractionToDecimal {
 
     public String fractionToDecimal(int numerator, int denominator) {
+        if (numerator == 0)
+            return "0";
         StringBuilder stringBuilder = new StringBuilder();
         if (numerator < 0 ^ denominator < 0)
             stringBuilder.append("-");
-        long numerator1 = Math.abs(numerator);
-        long denominator1 = Math.abs(denominator);
-        if (numerator1 % denominator1 == 0)
-            return numerator1 / denominator1 + "";
-        stringBuilder.append(numerator1 / denominator1 + ".");
-        numerator1 %= denominator1;
+        long num = numerator;
+        long den = denominator;
+        num = Math.abs(num);
+        den = Math.abs(den);
+        if (num % den == 0) {
+            stringBuilder.append(num / den);
+            return stringBuilder.toString();
+        }
+        stringBuilder.append(num / den + ".");
+        num %= den;
         Map<Long, Integer> map = new HashMap<>();
-        while(numerator1 != 0) {
-            if (map.containsKey(numerator1)) {
-                stringBuilder.insert(map.get(numerator1), "(");
+        while(num != 0) {
+            if (map.containsKey(num)) {
+                stringBuilder.insert(map.get(num), "(");
                 stringBuilder.append(")");
                 break;
             }
-            map.put(numerator1, stringBuilder.length());
-            numerator1 *= 10;
-            long s = numerator1 / denominator1;
+            map.put(num, stringBuilder.length());
+            num *= 10;
+            long s = num / den;
             stringBuilder.append(s);
-            numerator1 = numerator1 % denominator1;
+            num = num % den;
         }
         return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
         FractionToDecimal fractionToDecimal = new FractionToDecimal();
-        int numerator = 7;
-        int denominator = -12;
+        int numerator = -2147483648;
+        int denominator = -1;
         System.out.println(fractionToDecimal.fractionToDecimal(numerator, denominator));
     }
 }
