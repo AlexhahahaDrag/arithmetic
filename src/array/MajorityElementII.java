@@ -40,19 +40,19 @@ public class MajorityElementII {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> list = new ArrayList<>();
         int firstNum =  0;
-        int secondeNum = 1;
+        int secondNum = 1;
         int firstCount = 0;
         int secondCount = 0;
         for (int num : nums) {
             if (firstNum == num)
                 firstCount++;
-            else if (secondeNum == num)
+            else if (secondNum == num)
                 secondCount++;
             else if (firstCount == 0) {
                 firstNum = num;
                 firstCount++;
             } else if (secondCount == 0) {
-                secondeNum = num;
+                secondNum = num;
                 secondCount++;
             } else {
                 firstCount--;
@@ -64,13 +64,13 @@ public class MajorityElementII {
         for (int num1 : nums) {
             if (firstNum == num1)
                 firstCount++;
-            if (secondeNum == num1)
+            if (secondNum == num1)
                 secondCount++;
         }
         if (firstCount > nums.length/3)
             list.add(firstNum);
         if (secondCount > nums.length/3)
-            list.add(secondeNum);
+            list.add(secondNum);
         return list;
     }
 }

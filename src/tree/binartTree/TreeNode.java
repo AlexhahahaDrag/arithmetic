@@ -9,11 +9,11 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TreeNode {
-    int val;
+    Integer val;
     TreeNode left;
     TreeNode right;
-    TreeNode(int x) { val = x; }
-    int deep;
+    TreeNode(Integer x) { val = x; }
+    Integer deep;
 
     @Override
     public String toString() {
@@ -72,6 +72,32 @@ public class TreeNode {
     }
 
     private static TreeNode get(TreeNode treeNode, int[] arr, int index, Queue<TreeNode> queue) {
+        if(index < arr.length) {
+            if(treeNode == null) {
+                treeNode = new TreeNode(arr[index++]);
+                get(treeNode, arr, index, queue);
+            }else if (treeNode.left == null) {
+                treeNode.left = new TreeNode(arr[index++]);
+                queue.add(treeNode.left);
+                get(treeNode, arr, index, queue);
+            } else if (treeNode.right == null) {
+                treeNode.right = new TreeNode(arr[index++]);
+                queue.add(treeNode.right);
+                get(treeNode, arr, index, queue);
+            } else
+                get(queue.poll(), arr, index, queue);
+        }
+        return treeNode;
+    }
+
+    public static TreeNode getTreeNodeByArr(Integer[] arr) {
+        TreeNode treeNode = null;
+        Queue<TreeNode> queue = new LinkedBlockingQueue<>();
+        treeNode = get(treeNode, arr, 0, queue);
+        return treeNode;
+    }
+
+    private static TreeNode get(TreeNode treeNode, Integer[] arr, Integer index, Queue<TreeNode> queue) {
         if(index < arr.length) {
             if(treeNode == null) {
                 treeNode = new TreeNode(arr[index++]);
