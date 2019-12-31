@@ -55,7 +55,41 @@ package string_array;
 */
 public class IsSolvable {
 
-    public boolean isSolvable(String[] words, String result) {
+    int[] noZeroChar;
 
+    int[] charToNum;
+
+    int[] numToChar;
+
+    public boolean isSolvable(String[] words, String result) {
+        noZeroChar = new int[10];
+        int maxLen = 0;
+        for(String word : words) {
+            if (word.length() > maxLen)
+                maxLen = word.length();
+            noZeroChar[word.charAt(0) - 'A'] = 1;
+        }
+        if (maxLen > result.length())
+            return false;
+        charToNum = new int[26];
+        for(int i = 0; i < charToNum.length; i++)
+            charToNum[i] = -1;
+        for(int j= 0; j < numToChar.length; j++)
+            numToChar[j] = -1;
+        return dfs(words, result, 0, 0);
+    }
+
+    private boolean dfs(String[] words, String result, int index, int postInd) {
+        if (postInd >= words[index].length())
+            dfs(words, result, ++index, postInd);
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        IsSolvable isSolvable = new IsSolvable();
+        String[] str = {"SEND","MORE"};
+        String result = "MONEY";
+        System.out.println(isSolvable.isSolvable(str, result));
     }
 }
