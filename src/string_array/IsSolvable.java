@@ -74,15 +74,20 @@ public class IsSolvable {
         charToNum = new int[26];
         for(int i = 0; i < charToNum.length; i++)
             charToNum[i] = -1;
-        for(int j= 0; j < numToChar.length; j++)
-            numToChar[j] = -1;
-        return dfs(words, result, 0, 0);
+        numToChar = new int[result.length()];
+        return dfs(words, result, 0, 0, 0);
     }
 
-    private boolean dfs(String[] words, String result, int index, int postInd) {
+    private boolean dfs(String[] words, String result, int index, int postInd, int digit) {
         if (postInd >= words[index].length())
-            dfs(words, result, ++index, postInd);
+            dfs(words, result, ++index, postInd, digit);
+        char ch = words[index].charAt(postInd);
+        if (charToNum[ch - 'A'] != -1) {
+            int sum = digit + numToChar[postInd] + charToNum[ch - 'A'];
+            dfs(words, result, index, ++postInd, sum / 10);
+        }else {
 
+        }
         return false;
     }
 
