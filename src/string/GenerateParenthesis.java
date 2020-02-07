@@ -7,36 +7,56 @@ public class GenerateParenthesis {
 
     public static void main(String[] args) {
         GenerateParenthesis generateParenthesis = new GenerateParenthesis();
-        String[] s = new String[]{null};
-        System.out.println(s.length);
         System.out.println(generateParenthesis.generateParenthesis(3));
     }
 
     public List<String> generateParenthesis(int n) {
         char[] ch = new char[n << 1];
-        for(int i = 0; i < n; i++)
-            ch[i] = '(';
-        for(int j = n; j < ch.length; j++)
-            ch[j] = ')';
         List<String> list = new ArrayList<>();
-        boolean flag = true;
-        while(flag) {
-            list.add(new String(ch));
-            for(int i = 2; i < ch.length - 1; i++) {
-                if(ch[i - 2] == '(' && ch[i] == ')'){
-                    flag = true;
-                    swap(ch, i - 1, i);
-                    break;
-                }
-                flag = false;
-            }
-        }
+        dfs(list, ch,0, 0, 0, n);
         return list;
     }
 
-    private void swap (char[] ch, int i, int j) {
-        char temp = ch[i];
-        ch[i] = ch[j];
-        ch[j] = temp;
+    private void dfs(List<String> list, char[] ch, int index, int left, int right, int n) {
+        if (left + right == (n << 1)) {
+            list.add(new String(ch));
+            return;
+        }
+        if (left < n) {
+            ch[index] = '(';
+            dfs(list, ch, index + 1, left + 1, right, n);
+        }
+        if (left > right) {
+            ch[index] = ')';
+            dfs(list, ch, index + 1, left, right + 1, n);
+        }
+    }
+
+    public List<String> generateParenthesis2(int n) {
+        char[] ch = new char[n << 1];
+        List<String> list = new ArrayList<>();
+        getList(list, 0, ch, 0, 0);
+        return list;
+    }
+
+    private void getList(List<String> list, int index, char[] ch, int left, int right) {
+        if (left > (ch.length >> 1) || right > left)
+            return;
+        if (index == ch.length) {
+            list.add(new String(ch));
+            return;
+        }
+        for (int i = '('; i <= ')'; i++) {
+            ch[index] = (char)i;
+            if (i == '(')
+                left++;
+            else
+                right++;
+            getList(list, index + 1, ch, left, right);
+            if (i == '(')
+                left--;
+            else
+                right--;
+        }
     }
 }
