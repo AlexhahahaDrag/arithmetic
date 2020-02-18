@@ -59,7 +59,7 @@ public class RotateImage {
         System.out.println(1);
     }
 
-    public void rotate(int[][] matrix) {
+    public void rotate1(int[][] matrix) {
         int len = matrix.length;
         boolean[][] map = new boolean[len][len];
         for(int i = 0; i < len; i++) {
@@ -70,6 +70,23 @@ public class RotateImage {
                     matrix[j][len - 1 - i] = temp;
                     map[j][len - 1 - i] = true;
                 }
+            }
+        }
+    }
+
+    public void rotate(int[][] matrix) {
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = i + 1; j < matrix[i].length; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < (matrix[i].length >> 1); j++) {
+                int te = matrix[i][j];
+                matrix[i][j] = matrix[i][matrix[i].length - 1 - j];
+                matrix[i][matrix[i].length - 1 - j] = te;
             }
         }
     }
