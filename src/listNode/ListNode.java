@@ -8,8 +8,8 @@ package listNode;
  *
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
     ListNode(int x) { val = x; }
     public static ListNode getListNodeByArr(int[] arr) {
         ListNode first = new ListNode(0);

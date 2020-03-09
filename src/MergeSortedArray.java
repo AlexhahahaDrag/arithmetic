@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @Description: Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
  *
@@ -23,7 +25,7 @@ public class MergeSortedArray {
         int[] num2={};
         merge1(num1,3,num2,0);
     }
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge11(int[] nums1, int m, int[] nums2, int n) {
         int sum=m+n-1;
         while(m>0&&n>0)
             if(nums1[m-1]>nums2[n-1])
@@ -49,5 +51,17 @@ public class MergeSortedArray {
         for (int i = 0; i <nums1.length ; i++) {
             System.out.println(nums1[i]);
         }
+    }
+
+    public void merge(int[] A, int m, int[] B, int n) {
+        int index = A.length - 1;
+        while(m > 0 || n > 0) {
+            if(A[m - 1] >B[n - 1]) {
+                A[index--] = A[m-- - 1];
+                n--;
+            } else
+                A[index--] = B[n-- - 1];
+        }
+        Arrays.copyOfRange(A, index, A.length - 1);
     }
 }
