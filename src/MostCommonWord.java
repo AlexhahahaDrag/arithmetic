@@ -32,7 +32,7 @@ import java.util.Map;
  * The answer is unique, and written in lowercase (even if its occurrences in paragraph may have uppercase symbols, and even if it is a proper noun.)
  * paragraph only consists of letters, spaces, or the punctuation symbols !?',;.
  * There are no hyphens or hyphenated words.
- * Words only consist of letters, never apostrophes or other punctuation symbols.
+ * Words only consist of letters, never aisSymmetricrophes or other punctuation symbols.
  * @Author:      alex
  * @CreateDate:  2019/2/13 15:06
  * @param
