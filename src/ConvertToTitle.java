@@ -25,7 +25,7 @@
  * Output: "ZY"
  */
 public class ConvertToTitle {
-    public static String convertToTile(int n){
+    public String convertToTile2(int n){
         if (n<=0)
             return "";
         char[] arr=new char[26];
@@ -44,7 +44,7 @@ public class ConvertToTitle {
         }
         return title;
     }
-    public static String convertToTile1(int n){
+    public String convertToTile1(int n){
         String res = "";
         while (n > 0)
         {
@@ -53,7 +53,23 @@ public class ConvertToTitle {
         }
         return res;
     }
+    public String convertToTitle(int n) {
+        StringBuilder sb = new StringBuilder();
+        while(n > 0) {
+            int res = n % 26;
+            if(res == 0) {
+                res = 26;
+                n --;
+            }
+            n /= 26;
+            sb.insert(0, (char)(res - 1 + 'A'));
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println(convertToTile(703 ));
+        ConvertToTitle convertToTitle = new ConvertToTitle();
+        System.out.println(convertToTitle.convertToTitle(99 ));
+        System.out.println(convertToTitle.convertToTile1(99 ));
     }
 }
