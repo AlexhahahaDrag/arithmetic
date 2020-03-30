@@ -26,7 +26,7 @@ import java.util.Arrays;
 */
 public class SearchRange {
 
-    public int[] searchRange(int[] nums, int target) {
+    public int[] searchRange1(int[] nums, int target) {
         int[] result = new int[2];
         Arrays.fill(result, -1);
         int start = 0;
@@ -46,7 +46,7 @@ public class SearchRange {
         return result;
     }
 
-    private int find(int[] nums, int start, int end, int target) {
+    private int find1(int[] nums, int start, int end, int target) {
         while(start <= end) {
             int mid = start + (end - start >> 1);
             if(target < nums[mid])
@@ -61,6 +61,39 @@ public class SearchRange {
             }
         }
         return start;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        if (nums == null || nums.length < 1)
+            return new int[2];
+        int num = 0;
+        int index = find(nums, target, 0, nums.length - 1);
+        if (index == -1)
+            return new int[2];
+        return findMore(nums, target, index, num);
+    }
+
+    private int[] findMore(int[] nums, int target, int now, int num) {
+        int start = now;
+        while (start >= 0 && nums[start] == target)
+            start--;
+        int end = now + 1;
+        while (end < nums.length && nums[end] == target)
+            end++;
+        return new int[]{start + 1, end - 1};
+    }
+
+    private int find(int[] nums, int target, int start, int end) {
+        while (start <= end) {
+            int mid = start + (end - start >> 1);
+            if (nums[mid] == target)
+                return mid;
+            else if (nums[mid] > target)
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
