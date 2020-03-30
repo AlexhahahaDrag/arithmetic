@@ -17,7 +17,7 @@ package listNode;
 */
 public class ReverseListNode {
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList1(ListNode head) {
         ListNode re = new ListNode(-1);
         ListNode pre = re;
         while(head != null) {
@@ -27,6 +27,17 @@ public class ReverseListNode {
             head = nextCur;
         }
         return re.next;
+    }
+
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        while(head != null) {
+            ListNode temp = head;
+            head = head.next;
+            temp.next = pre;
+            pre = temp;
+        }
+        return pre;
     }
 
     public static void main(String[] args) {
