@@ -14,7 +14,7 @@ public class QuickSort {
         }
     }
     public static int[] getQuickSort(int[] arr,int start,int end){
-        if (start<=end){
+        if (start<end){
             int a=divideArr(arr,start,end);
             if(start!=a-1){
                 getQuickSort(arr,start,a-1);
@@ -26,37 +26,19 @@ public class QuickSort {
         return arr;
     }
     public static int divideArr(int[] arr,int start,int end){
-        int mid = start + ((end - start) >> 1);
-        if (arr[start] > arr[end]) {
-            int c=arr[start];
-            arr[start]=arr[end];
-            arr[end]=c;
-        }
-        if (arr[mid] > arr[end]){
-            int c=arr[mid];
-            arr[mid]=arr[end];
-            arr[end]=c;
-        }
-        if (arr[mid] < arr[start]){
-            int c=arr[start];
-            arr[start]=arr[mid];
-            arr[mid]=c;
-        }
-        int i=mid;
+        int mid = start;
         while(start<end){
-            while(arr[start]<arr[i]&&start<end){
+            while(start<end && arr[start]<= arr[mid])
                 start++;
-            }
-            while(arr[end]>=arr[i]&&start<end){
+            while(start<end && arr[end]>arr[mid])
                 end--;
-            }
             int c=arr[start];
             arr[start]=arr[end];
             arr[end]=c;
         }
-        int d=arr[start];
-        arr[start]=arr[i];
-        arr[i]=d;
-        return start;
+        int d=arr[start - 1];
+        arr[start - 1]=arr[mid];
+        arr[mid]=d;
+        return start - 1;
     }
 }
