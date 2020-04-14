@@ -56,6 +56,8 @@ public class FirstCharUtil {
      */
     private static char Char2Initial(char ch) {
         // 对英文字母的处理：小写字母转换为大写，大写的直接返回
+        if (ch >= '1' && ch <= '9')
+            return ch;
         if (ch >= 'a' && ch <= 'z') {
             return (char) (ch - 'a' + 'A');
         }
@@ -102,7 +104,7 @@ public class FirstCharUtil {
 
 
     public static void main(String[] args) {
-        System.out.println(FirstCharUtil.first("禾尼乡hjjhjh"));
+        System.out.println(FirstCharUtil.first("年"));
     }
 
 }
