@@ -48,4 +48,10 @@ public class MaxProduct {
         }
         return (fi - 1) * (se - 1);
     }
+
+    public static void main(String[] args) {
+        int[] nums = {3,4,5,2};
+        MaxProduct maxProduct = new MaxProduct();
+        System.out.println(maxProduct.maxProduct(nums));
+    }
 }
