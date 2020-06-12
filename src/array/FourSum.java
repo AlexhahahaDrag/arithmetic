@@ -1,5 +1,7 @@
 package array;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,40 +30,47 @@ public class FourSum {
 
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        List<Integer> list;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                list = new ArrayList<>();
-                list.add(i);
-                list.add(j);
-                map.put(target - nums[i] - nums[j], list);
-            }
+        int zero = 0;
+        int positive = 0;
+        int negative = 0;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int i : nums) {
+            if (i > max)
+                max = i;
+            if (i < min)
+                min = i;
+            if (i < 0)
+                negative++;
+            else if (i == 0)
+                zero++;
+            else
+                positive++;
         }
 
-        for (int k = 0; k < nums.length; k++) {
-            for (int l = k + 1; l < nums.length; l++) {
-                if (map.containsValue(nums[k] + nums[l])) {
-                    list = map.get(nums[k] + nums[l]);
-                    if (!list.contains(k) && !list.contains(l)) {
-                        List<Integer> res = new ArrayList<>();
-                        int index = 0;
-                        int len = list.size();
-                        res.add(nums[k]);
-                        res.add(nums[l]);
-                        while(index < len) {
-                            res.add(nums[list.get(index++)]);
-                        }
-                        result.add(res);
-                    }
-                }
-            }
+        if (zero > 3) {
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < 4; i++)
+                list.add(0);
+            result.add(list);
         }
+        if (negative == 0 || positive == 0)
+            return result;
+        int[] pos = new int[positive];
+        int[] neg = new int[negative];
+        positive = 0;
+        negative = 0;
+        for(int i : nums)
+            if (i < 0)
+                neg[negative++] = i;
+            else if (i > 0)
+                pos[positive++] = i;
+
         return result;
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 0, -1, 0, -2, 2};
+        int[] arr = {1, 0, -1, 0, -2, 2, 0, 0};
         FourSum fourSum = new FourSum();
         System.out.println(fourSum.fourSum(arr, 0));
     }
