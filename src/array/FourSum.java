@@ -1,11 +1,6 @@
 package array;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  *description:
@@ -65,7 +60,8 @@ public class FourSum {
                 neg[negative++] = i;
             else if (i > 0)
                 pos[positive++] = i;
-
+        Arrays.sort(pos);
+        Arrays.sort(neg);
         return result;
     }
 
