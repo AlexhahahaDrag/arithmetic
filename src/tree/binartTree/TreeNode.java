@@ -14,6 +14,8 @@ public class TreeNode {
 
     @Override
     public String toString() {
+        if (val == null)
+            return "[]";
         StringBuilder stringBuilder=new StringBuilder();
         LinkedList<TreeNode> list=new LinkedList<>();
         stringBuilder.append("[");

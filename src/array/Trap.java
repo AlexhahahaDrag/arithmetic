@@ -58,18 +58,25 @@ public class Trap {
     }
 
     public int trap(int[] height) {
+        if (height == null || height.length == 0)
+            return 0;
         int i = 0;
         int j = height.length - 1;
         int leftMax = height[i];
         int rightMax = height[j];
         int res = 0;
         while(i < j) {
-            leftMax = Math.max(leftMax, height[i]);
-            rightMax = Math.max(rightMax, height[j]);
-            if (height[i] < height[j])
-                res += leftMax - height[i++];
-            else
-                res += rightMax - height[j--];
+            if (height[i] < height[j]) {
+                if (height[i] > leftMax)
+                    leftMax = height[i++];
+                else
+                    res += leftMax - height[i++];
+            } else {
+                if (height[j] > rightMax)
+                    rightMax = height[j--];
+                else
+                    res += rightMax - height[j--];
+            }
         }
         return res;
     }
