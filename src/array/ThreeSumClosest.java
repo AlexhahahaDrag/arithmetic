@@ -50,7 +50,7 @@ public class ThreeSumClosest {
         return closeSum;
     }
 
-    public int threeSumClosest(int[] nums, int target) {
+    public int threeSumClosest2(int[] nums, int target) {
         if (nums == null || nums.length < 3)
             return 0;
         Arrays.sort(nums);
@@ -87,13 +87,51 @@ public class ThreeSumClosest {
         return closeSum;
     }
 
+    public int threeSumClosest(int[] nums, int target) {
+        if(nums == null || nums.length < 3)
+            return -1;
+        int len = nums.length;
+        Arrays.sort(nums);
+        int closeNum = nums[0] + nums[1] + nums[2];
+        int cur;
+        for(int i = 0; i < len - 2; i++) {
+            int t = target - nums[i];
+            if(nums[i + 1] + nums[i + 2] > t) {
+                cur = nums[i + 1] + nums[i + 2] + nums[i];
+                if (Math.abs(target - cur) < Math.abs(target - closeNum))
+                    closeNum = cur;
+                continue;
+            }
+            if(nums[len - 2] + nums[len - 1] > t) {
+                cur = nums[len - 2] + nums[len - 1] + nums[i];
+                if (Math.abs(t - cur) < Math.abs(target - closeNum))
+                    closeNum = cur;
+                continue;
+            }
+            int left = i + 1;
+            int right = len - 1;
+            while(left < right) {
+                cur = nums[left] + nums[right];
+                if (Math.abs(t - cur) < Math.abs(target - closeNum))
+                    closeNum = cur + nums[i];
+                if(cur < t)
+                    left++;
+                else if (cur > t)
+                    right--;
+                else
+                    return closeNum;
+            }
+        }
+        return closeNum;
+    }
+
     private boolean abs(int a, int b) {
         return Math.abs(a) > Math.abs(b);
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,4,8,16,32,64,128};
-        int target = 82;
+        int[] nums = {1,1,-1,-1,3};
+        int target = 1;
         ThreeSumClosest threeSumClosest = new ThreeSumClosest();
         System.out.println(threeSumClosest.threeSumClosest(nums, target));
     }
