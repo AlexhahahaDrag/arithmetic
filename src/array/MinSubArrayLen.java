@@ -34,10 +34,12 @@ public class MinSubArrayLen {
                 res = Math.min(res, i + 1);
         }
         int len = 0;
-        while(len++ < nums.length) {
+        outloop: while(len++ < nums.length) {
             for (int i = 0; i < nums.length - len; i++) {
-                if (map[i + len] - map[i] >= s)
+                if (map[i + len] - map[i] >= s) {
                     res = Math.min(res, len);
+                    break outloop;
+                }
             }
         }
         return res == Integer.MAX_VALUE ? 0 : res;
