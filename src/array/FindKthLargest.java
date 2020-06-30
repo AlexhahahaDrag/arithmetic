@@ -23,7 +23,7 @@ package array;
  */
 public class FindKthLargest {
 
-    public int findKthLargest(int[] nums, int k) {
+/*    public int findKthLargest(int[] nums, int k) {
 
     }
 
@@ -36,7 +36,7 @@ public class FindKthLargest {
         while(start < end) {
 
         }
-    }
+    }*/
 
     private void swap(int[] nums, int i, int j) {
         int temp = nums[i];
@@ -48,6 +48,6 @@ public class FindKthLargest {
         int[] nums = {3,2,1,5,6,4};
         int k = 2;
         FindKthLargest findKthLargest = new FindKthLargest();
-        System.out.println(findKthLargest.findKthLargest(nums, k));
+       /* System.out.println(findKthLargest.findKthLargest(nums, k));*/
     }
 }
