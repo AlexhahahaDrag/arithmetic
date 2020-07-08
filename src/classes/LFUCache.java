@@ -74,23 +74,21 @@ public class LFUCache {
         }
     }
 
-    private Node addNode(Node node) {
+    private void addNode(Node node) {
         Node next = head;
         while (next.next != null && node.count >= next.count)
             next = next.next;
         node.next = next.next;
         next.next = node;
-        return node;
     }
 
-    private Node moveNode(Node node) {
+    private void moveNode(Node node) {
         Node next = node;
         while (next.next != null && node.count >= next.count) {
             next = next.next;
         }
         node.next = next.next;
         next.next = node;
-        return node;
     }
 
     private void removeHead() {
