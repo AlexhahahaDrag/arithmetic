@@ -42,7 +42,7 @@ public class Combine {
             res.add(Arrays.asList(list));
             return;
         }
-        for (int i = start + 1; i <= n - k + 1; i++) {
+        for (int i = start + 1; i <= n - k + index + 1; i++) {
             Integer[] cur = Arrays.copyOfRange(list, 0, k);
             cur[index] = i;
             com(n, i, cur, index + 1, k);
