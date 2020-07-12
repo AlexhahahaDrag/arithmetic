@@ -35,9 +35,9 @@ public class SortedArrayToBST {
         if (start > end)
             return null;
         //右子树多
-        int mid = start + (end - start + 1 >> 1);
-        //左子树多
         //int mid = start + (end - start + 1 >> 1);
+        //左子树多
+        int mid = start + (end - start + 1 >> 1);
         TreeNode root = new TreeNode(nums[mid]);
         root.left = toBst(nums, start, mid - 1);
         root.right = toBst(nums, mid + 1, end);
