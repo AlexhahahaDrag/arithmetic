@@ -31,7 +31,7 @@ import java.util.Arrays;
 public class Intersect {
 
     public int[] intersect(int[] nums1, int[] nums2) {
-        int[] res = new int[Math.max(nums1.length, nums2.length)];
+        int[] res = new int[Math.min(nums1.length, nums2.length)];
         int size = 0;
         Arrays.sort(nums1);
         Arrays.sort(nums2);
@@ -50,6 +50,32 @@ public class Intersect {
         }
         return Arrays.copyOfRange(res, 0, size);
     }
+
+    /*public int[] intersect(int[] nums1, int[] nums2) {
+        if (nums2.length > nums1.length) {
+            int[] temp = nums1;
+            nums1 = nums2;
+            nums2 = temp;
+        }
+        int[] res = new int[nums2.length];
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i : nums1) {
+            min = Math.min(i, min);
+            max = Math.max(i, max);
+        }
+        int[] map = new int[max - min + 1];
+        for (int j : nums1)
+            map[j - min]++;
+        int size = 0;
+        for (int k : nums2) {
+            if (k >= min && k <= max && map[k - min] > 0) {
+                map[k - min]--;
+                res[size++] = k;
+            }
+        }
+        return Arrays.copyOfRange(res, 0, size);
+    }*/
 
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 2, 1};
