@@ -31,12 +31,23 @@ public class MinArray {
     }
 
     public int minArray(int[] numbers) {
-        if (numbers == null || numbers.length == 0)
-            return  -1;
-        int cur = numbers[0];
-        for(int i : numbers)
-            if (i < cur)
-                return i;
-        return cur;
+        int start = 0;
+        int end = numbers.length -1;
+        while (start < end) {
+            int mid = start + (end - start >> 1);
+            if (numbers[mid] < numbers[end])
+                end = mid;
+            else if (numbers[mid] > numbers[end])
+                start = mid + 1;
+            else
+                end -= 1;
+        }
+        return numbers[start];
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {1, 3, 5};
+        MinArray minArray = new MinArray();
+        System.out.println(minArray.minArray(numbers));
     }
 }
