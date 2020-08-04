@@ -32,7 +32,7 @@ public class Calculate {
         int len = s.length();
         int index = -1;
         stack = new Stack<>();
-
+        return 0;
     }
 
     private Integer find(String s, int index, boolean isNagative) {

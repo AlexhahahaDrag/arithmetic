@@ -45,4 +45,39 @@ package math;
  *
 */
 public class SuperEggDrop {
+
+    public int superEggDrop1(int K, int N) {
+        if (N == 1)
+            return 1;
+        int[][] f = new int[N + 1][K + 1];
+        for (int i = 1; i <= K; i++)
+            f[1][i] = 1;
+        int ans = -1;
+        for (int i = 2; i <= N; i++) {
+            for (int j = 1; j <= K; j++) {
+                f[i][j] = 1 +  f[i - 1][j] + f[i - 1][j - 1];
+            }
+            if (f[i][K] >= N) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    public int superEggDrop(int K, int N) {
+        int m = 0;
+        int[] dp = new int[K + 1];
+        while(dp[K] < N) {
+            m++;
+            for (int i = K; i >= 1; i--)
+                dp[i] += 1 + dp[i - 1];
+        }
+        return m;
+    }
+
+    public static void main(String[] args) {
+        SuperEggDrop superEggDrop = new SuperEggDrop();
+        System.out.println(superEggDrop.superEggDrop(3, 14));
+    }
 }
