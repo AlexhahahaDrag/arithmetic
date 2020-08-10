@@ -31,18 +31,18 @@ import java.util.concurrent.LinkedBlockingQueue;
 */
 public class LevelOrder {
 
-    public List<List<Integer>> levelOrder1(Node root) {
+    public List<List<Integer>> levelOrder1(Node<Integer> root) {
         List<List<Integer>> res = new ArrayList<>();
-        Queue<Node> queue = new LinkedBlockingQueue<>();
+        Queue<Node<Integer>> queue = new LinkedBlockingQueue<>();
         queue.add(root);
         while(!queue.isEmpty()) {
-            Queue<Node> cur = new LinkedBlockingQueue<>();
+            Queue<Node<Integer>> cur = new LinkedBlockingQueue<>();
             List<Integer> list = new ArrayList<>();
             while(!queue.isEmpty()) {
-                Node node = queue.poll();
+                Node<Integer> node = queue.poll();
                 if (node != null) {
                     list.add(node.val);
-                    List<Node> children = node.children;
+                    List<Node<Integer>> children = node.children;
                     cur.addAll(children);
                 }
             }
@@ -58,13 +58,13 @@ public class LevelOrder {
         return res;
     }
 
-    private void dfs(Node node, int level, List<List<Integer>> res) {
+    private void dfs(Node<Integer> node, int level, List<List<Integer>> res) {
         if (node == null)
             return;
         if (res.size() == level)
             res.add(new ArrayList<>());
         res.get(level).add(node.val);
-        for(Node child : node.children)
+        for(Node<Integer> child : node.children)
             dfs(child, level + 1, res);
     }
 }

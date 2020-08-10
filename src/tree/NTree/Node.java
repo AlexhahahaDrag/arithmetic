@@ -8,18 +8,18 @@ import java.util.List;
  *createDate:  2020/2/28 22:25
  *version:      1.0.0
 */
-public class Node {
+public class Node<T> {
 
-    public int val;
-    public List<Node> children;
+    public T val;
+    public List<Node<T>> children;
 
     public Node() {}
 
-    public Node(int _val) {
+    public Node(T _val) {
         val = _val;
     }
 
-    public Node(int _val, List<Node> _children) {
+    public Node(T _val, List<Node<T>> _children) {
         val = _val;
         children = _children;
     }

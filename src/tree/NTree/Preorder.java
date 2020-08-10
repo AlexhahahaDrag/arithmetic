@@ -28,12 +28,12 @@ import java.util.List;
 public class Preorder {
 
     List<Integer> res = new ArrayList<>();
-    public List<Integer> preorder(Node root) {
+    public List<Integer> preorder(Node<Integer> root) {
         pre(root);
         return res;
     }
 
-    private void pre(Node root) {
+    private void pre(Node<Integer> root) {
         if(root == null)
             return;
         int index = root.children.size();

@@ -12,4 +12,12 @@ public class FieldTree {
     int value;
     int count;
     int dup;
+
+    public FieldTree(int val) {
+        this.value = val;
+        this.left = null;
+        this.right = null;
+        this.count = 0;
+        this.dup = 0;
+    }
 }

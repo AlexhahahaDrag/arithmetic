@@ -59,14 +59,14 @@ public class ReversePairs {
             nums[start + i] = temp[i];
     }
 
-   /* //字段树
+    //字段树
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
         int count1 = 1;
         int count2 = 1;
         for (int i = 1; i < nums.length; i++) {
-            if (count1 != 0 && count2 != 0)
+            if (count1 != 1 && count2 != 1)
                 break;
             if (nums[i - 1] > nums[i])
                 count1++;
@@ -75,106 +75,39 @@ public class ReversePairs {
         }
         if (count1 == nums.length)
             return (int)((double)nums.length * (nums.length - 1) / 2);
-        if (count1 == 0)
+        if (count1 == 1)
             return 0;
-        FieldTree fieldTree = new FieldTree();
-        fieldTree.value = nums[nums.length - 1];
-        for (int i : nums)
-            build(fieldTree, i);
+        FieldTree fieldTree = new FieldTree(nums[nums.length - 1]);
+        fieldTree.dup = 1;
+        int ret = 0;
+        for (int i = nums.length - 2; i >= 0; i--)
+            ret += build(fieldTree, nums[i]);
+        return ret;
     }
 
-    private FieldTree build(FieldTree fieldTree, int value) {
+    private int build(FieldTree fieldTree, int value) {
         int ret = 0;
         while(fieldTree.value != value) {
             if (fieldTree.value >= value) {
                 fieldTree.count++;
-                if (fieldTree.left == null) {
-                    fieldTree.left = new FieldTree();
-                    fieldTree.left.value = value;
-                }
+                if (fieldTree.left == null)
+                    fieldTree.left = new FieldTree(value);
                 fieldTree = fieldTree.left;
             } else {
-                ret += fieldTree.count + fieldTree.value;
-              *//*  if ()*//*
+                ret += fieldTree.count + fieldTree.dup;
+                if(fieldTree.right == null)
+                    fieldTree.right = new FieldTree(value);
+                fieldTree = fieldTree.right;
             }
-
-
         }
-    }*/
+        ret += fieldTree.count;
+        fieldTree.dup++;
+        return ret;
+    }
 
     public static void main(String[] args) {
-        int[] nums = {1,3,2,3,1};
+        int[] nums = {3, 1 , 1, 1};
         ReversePairs reversePairs = new ReversePairs();
-        System.out.println(reversePairs.reversePairs1(nums));
-    }
-}
-class TreeNode {
-    TreeNode leftNode;
-    TreeNode rightNode;
-    int value;
-    int count;
-    int dup;
-
-    public TreeNode(int val) {
-        this.value = val;
-        this.leftNode = null;
-        this.rightNode = null;
-        this.count = 0;
-        this.dup = 0;
-    }
-}
-class Solution {
-    public int buildTree(TreeNode root, int value) {
-        int ret = 0;
-        while (root.value != value) {
-            if (root.value > value) {
-                root.count++;
-                if (root.leftNode == null) {
-                    root.leftNode = new TreeNode(value);
-                }
-                root = root.leftNode;
-            } else {
-                ret += root.dup + root.count;
-                if (root.rightNode == null) {
-                    root.rightNode = new TreeNode(value);
-                }
-                root = root.rightNode;
-            }
-        }
-        ret += root.count;
-        root.dup++;
-
-        return ret;
-    }
-
-    public int reversePairs(int[] nums) {
-        if (nums.length < 2) {
-            return 0;
-        }
-        int count1 = 1;
-        int count2 = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (count1 != i && count2 != i) {
-                break;
-            }
-            if (nums[i - 1] <= nums[i]) {
-                count1++;
-            } else {
-                count2++;
-            }
-        }
-        if (count1 == nums.length) {
-            return 0;
-        }
-        if (count2 == nums.length) {
-            return (int)((double)nums.length  * (nums.length - 1) / 2);
-        }
-        int ret = 0;
-        TreeNode root = new TreeNode(nums[nums.length - 1]);
-        root.dup = 1;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            ret += buildTree(root, nums[i]);
-        }
-        return ret;
+        System.out.println(reversePairs.reversePairs(nums));
     }
 }
