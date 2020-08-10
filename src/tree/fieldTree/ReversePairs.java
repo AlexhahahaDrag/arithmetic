@@ -59,7 +59,7 @@ public class ReversePairs {
             nums[start + i] = temp[i];
     }
 
-    //字段树
+   /* //字段树
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
@@ -95,17 +95,17 @@ public class ReversePairs {
                 fieldTree = fieldTree.left;
             } else {
                 ret += fieldTree.count + fieldTree.value;
-                if ()
+              *//*  if ()*//*
             }
 
 
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         int[] nums = {1,3,2,3,1};
         ReversePairs reversePairs = new ReversePairs();
-        System.out.println(reversePairs.reversePairs(nums));
+        System.out.println(reversePairs.reversePairs1(nums));
     }
 }
 class TreeNode {
