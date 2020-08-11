@@ -1,8 +1,6 @@
 package string;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @description:
@@ -37,73 +35,77 @@ import java.util.List;
  * @createTime:  2020/8/10 17:27
  * @version:     1.0
  */
+class DicTree<T> {
+    public T val;
+    public boolean isEnd;
+    public DicTree<T>[] children;
+
+    public DicTree(T val) {
+        this.val = val;
+        children = new DicTree[256];
+    }
+}
 public class WordBreak {
 
     DicTree<Character> root;
     public boolean wordBreak(String s, List<String> wordDict) {
         root = new DicTree(0);
         for(String word : wordDict)
-            build(root, word.toCharArray());
-        return dfs(root, 0, s.toCharArray());
+            build(word.toCharArray());
+        return bfs(0, s.toCharArray());
     }
 
-    private boolean dfs(DicTree<Character> dicTree, int i, char[] ch) {
-        if (i == ch.length)
-            return true;
-        if (dicTree == null || dicTree.children == null || dicTree.children.size() == 0)
-            return false;
-        List<DicTree<Character>> dicTreeList = dicTree.children;
-        for (DicTree<Character> dicTree1 : dicTreeList) {
-            if (ch[i] == dicTree1.val) {
-                if (dicTree1.isEnd)
-                    return dfs(dicTree1, i + 1, ch) || dfs(root, i + 1, ch);
-                else
-                    return dfs(dicTree1, i + 1, ch);
-            }
-        }
-        return false;
+    private boolean bfs(int i, char[] ch) {
+       Queue<Integer> queue = new LinkedList<>();
+       queue.add(0);
+       boolean[] visited = new boolean[ch.length + 1];
+       while(!queue.isEmpty()) {
+           int index = queue.poll();
+           Set<Integer> set = searchPrefixes(ch, index);
+           for(int se : set) {
+               if (se == ch.length - 1)
+                   return true;
+               if (visited[se])
+                   continue;
+               visited[se] = true;
+               queue.add(se + 1);
+           }
+       }
+       return false;
     }
 
-    private void build(DicTree<Character> node, char[] ch) {
-        DicTree<Character> cu = null;
+    private void build(char[] ch) {
+        DicTree<Character> cur = root;
         for(char c : ch) {
-            if (node.children == null) {
-                List<DicTree<Character>> list = new ArrayList<>();
-                cu = new DicTree(c);
-                list.add(cu);
-                node.children = list;
-            } else {
-                boolean flag = false;
-                for(DicTree<Character> cn : node.children) {
-                    if (cn.val == c) {
-                        flag = true;
-                        cu = cn;
-                        break;
-                    }
-                }
-                if (!flag) {
-                    cu = new DicTree<>(c);
-                    node.children.add(cu);
-                }
+            if (cur.children[c] == null) {
+                cur.children[c] = new DicTree<>(c);
             }
-            node = cu;
+            cur = cur.children[c];
         }
-        cu.isEnd = true;
+        cur.isEnd = true;
+    }
+
+    private Set<Integer> searchPrefixes(char[] ch, int from) {
+        DicTree<Character> cur = root;
+        Set<Integer> res = new HashSet<>();
+        for (int i = from; i < ch.length; i++) {
+            cur = cur.children[ch[i]];
+            if (cur == null)
+                break;
+            else if (cur.isEnd)
+                res.add(i);
+        }
+        return res;
     }
 
     public static void main(String[] args) {
-        String s = "catsandog";
-        String[] words = {"cats", "dog", "sand", "and", "cat"};
+       /* String s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaba";
+        String[] words = {"aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa","ba"};*/
+        String s = "aaaaaaa";
+        String[] words = {"aa", "aaaa"};
         List<String> wordDict = Arrays.asList(words);
         WordBreak wordBreak = new WordBreak();
         System.out.println(wordBreak.wordBreak(s, wordDict));
     }
 }
-class DicTree<T> {
-    public T val;
-    public boolean isEnd;
-    public List<DicTree<T>> children;
-    public DicTree(T _val) {
-        val = _val;
-    }
-}
+
