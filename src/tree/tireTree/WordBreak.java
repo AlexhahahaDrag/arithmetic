@@ -1,4 +1,4 @@
-package string;
+package tree.tireTree;
 
 import java.util.*;
 
@@ -35,21 +35,11 @@ import java.util.*;
  * @createTime:  2020/8/10 17:27
  * @version:     1.0
  */
-class DicTree<T> {
-    public T val;
-    public boolean isEnd;
-    public DicTree<T>[] children;
-
-    public DicTree(T val) {
-        this.val = val;
-        children = new DicTree[256];
-    }
-}
 public class WordBreak {
 
-    DicTree<Character> root;
+    TrieTree<Character> root;
     public boolean wordBreak(String s, List<String> wordDict) {
-        root = new DicTree(0);
+        root = new TrieTree(0);
         for(String word : wordDict)
             build(word.toCharArray());
         return bfs(0, s.toCharArray());
@@ -75,10 +65,10 @@ public class WordBreak {
     }
 
     private void build(char[] ch) {
-        DicTree<Character> cur = root;
+        TrieTree<Character> cur = root;
         for(char c : ch) {
             if (cur.children[c] == null) {
-                cur.children[c] = new DicTree<>(c);
+                cur.children[c] = new TrieTree<>(c);
             }
             cur = cur.children[c];
         }
@@ -86,7 +76,7 @@ public class WordBreak {
     }
 
     private Set<Integer> searchPrefixes(char[] ch, int from) {
-        DicTree<Character> cur = root;
+        TrieTree<Character> cur = root;
         Set<Integer> res = new HashSet<>();
         for (int i = from; i < ch.length; i++) {
             cur = cur.children[ch[i]];

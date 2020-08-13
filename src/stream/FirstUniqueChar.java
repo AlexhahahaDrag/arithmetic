@@ -34,7 +34,7 @@ public class FirstUniqueChar {
                     index = in;
             }
         }
-        return index;
+        return index == Integer.MAX_VALUE ? -1 : index;
     }
 
     public int firstUniqChar(String s) {
