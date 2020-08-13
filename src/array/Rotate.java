@@ -29,7 +29,7 @@ package array;
 */
 public class Rotate {
 
-    public void rotate(int[] nums, int k) {
+    public void rotate1(int[] nums, int k) {
         int len = nums.length;
         k %= nums.length;
         swap(nums, len - k - 1, len);
@@ -45,10 +45,38 @@ public class Rotate {
         }
     }
 
+    public void rotate(int[] nums, int k) {
+        k %= nums.length;
+        if (k == 0)
+            return;
+        rotateNums(nums, nums.length - k, k, 0, nums.length);
+    }
+
+    private void rotateNums(int[] nums, int left, int right, int start, int end) {
+        if(left == right) {
+            cSwap(nums, start, end, left);
+        } else if (left > right) {
+            cSwap(nums, start, end, right);
+            rotateNums(nums, left - right, right, start + right, end);
+        } else {
+            cSwap(nums, start, end, left);
+            rotateNums(nums, left, right - left, start, end - left);
+        }
+    }
+
+    private void cSwap(int[] nums, int start, int end, int len) {
+        int newEnd = end - len;
+        while(--len >= 0) {
+            int temp = nums[start + len];
+            nums[start + len] = nums[newEnd + len];
+            nums[newEnd + len] = temp;
+        }
+    }
+
     public static void main(String[] args) {
-        int[] nums = {-1,-100,3,99};
-        Rotate rotate = new Rotate();
-        rotate.rotate(nums, 2);
+        int[] nums = {1, 2};
+            Rotate rotate = new Rotate();
+        rotate.rotate(nums, 3);
         for (int i : nums)
             System.out.print(i + "  ");
     }
