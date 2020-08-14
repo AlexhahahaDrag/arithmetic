@@ -99,4 +99,16 @@ public class ValidParentheses {
         }
         return len == 0;
     }
+
+    public boolean isValid3(String s) {
+        char[] map = new char[s.length()];
+        int size = -1;
+        for(char ch : s.toCharArray()) {
+            if(ch == '(' || ch == '[' || ch == '{')
+                map[++size] = ch;
+            else if(size < 0 || (ch == ')' && map[size--] != '(') || (ch == ']' && map[size--] != '[') || (ch == '}' && map[size--] != '{'))
+                return false;
+        }
+        return size == -1;
+    }
 }
