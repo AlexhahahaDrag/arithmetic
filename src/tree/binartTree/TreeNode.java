@@ -6,10 +6,10 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TreeNode {
-    Integer val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(Integer x) { val = x; }
+    public Integer val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(Integer x) { val = x; }
     Integer deep;
 
     @Override
