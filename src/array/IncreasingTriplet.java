@@ -45,7 +45,7 @@ public class IncreasingTriplet {
         return false;
     }
 
-    public boolean increasingTriplet(int[] nums) {
+    public boolean increasingTriplet3(int[] nums) {
         int min = Integer.MAX_VALUE;
         int max = Integer.MAX_VALUE;
         for(int num : nums) {
@@ -59,8 +59,24 @@ public class IncreasingTriplet {
         return false;
     }
 
+    public boolean increasingTriplet(int[] nums) {
+        if (nums == null || nums.length < 3)
+            return false;
+        int min = nums[0];
+        int max = Integer.MAX_VALUE;
+        for(int num : nums) {
+            if (min >= num)
+                min = num;
+            else if (num > max)
+                return true;
+            else
+                max = num;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
+        int[] arr = {2, 4, -2, -3};
         IncreasingTriplet increasingTriplet = new IncreasingTriplet();
         System.out.println(increasingTriplet.increasingTriplet(arr));
     }

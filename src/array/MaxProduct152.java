@@ -38,9 +38,28 @@ public class MaxProduct152 {
         return res;
     }
 
+    public int maxProduct1(int[] nums) {
+        int res = Integer.MIN_VALUE;
+        int sum = 1;
+        for(int i = 0; i < nums.length; i++) {
+            sum *= nums[i];
+            res = Math.max(res, sum);
+            if (sum == 0)
+                sum = 1;
+        }
+        sum = 1;
+        for(int i = nums.length - 1; i >= 0; i--) {
+            sum *= nums[i];
+            res = Math.max(res, sum);
+            if (sum == 0)
+                sum = 1;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] nums = {2,3,-2,4};
         MaxProduct152 maxProduct152 = new MaxProduct152();
-        System.out.println(maxProduct152.maxProduct(nums));
+        System.out.println(maxProduct152.maxProduct1(nums));
     }
 }

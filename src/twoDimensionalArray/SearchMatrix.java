@@ -30,9 +30,9 @@ public class SearchMatrix {
     public static void main(String[] args) {
         int[][] matrix = {{1, 4, 7, 11, 15}, {2, 5,  8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
         SearchMatrix searchMatrix = new SearchMatrix();
-        System.out.println(searchMatrix.searchMatrix1(matrix, 20));
+        System.out.println(searchMatrix.searchMatrix(matrix, 5));
     }
-    public boolean searchMatrix(int[][] matrix, int target) {
+    public boolean searchMatrix3(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return false;
         int row = 0;
@@ -52,7 +52,6 @@ public class SearchMatrix {
             return false;
         return find(matrix, 0, 0, matrix.length - 1, matrix[0].length - 1, target);
     }
-
     private boolean find(int[][] matrix, int x, int y, int xx, int yy, int target) {
         if (x <= xx && y <= yy) {
             int midx = x + xx >> 1;
@@ -65,5 +64,23 @@ public class SearchMatrix {
                 return find(matrix, x, y, midx - 1, yy, target) || find(matrix, x, y, xx, midy - 1, target);
         }
         return false;
+    }
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        return search(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1, target);
+    }
+
+    private boolean search(int[][] matrix, int xs, int xe, int ys, int ye, int target) {
+        if(xs > xe || ys > ye)
+            return false;
+        int xmid = xs + (xe - xs >> 1);
+        int ymid = ys + (ye - ys >> 1);
+        if(matrix[xmid][ymid] == target)
+            return true;
+        else if (target < matrix[xmid][ymid])
+            return search(matrix, xs, xmid - 1, ys, ye, target) || search(matrix, xs, xe, ys, ymid - 1, target);
+        else
+            return search(matrix, xmid + 1, xe, ys, ye, target) || search(matrix, xs, xe, ymid + 1, ye, target);
     }
 }
