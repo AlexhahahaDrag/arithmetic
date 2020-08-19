@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Arrays;
+
 /**
  * @description:
  * 35. 搜索插入位置
@@ -63,10 +65,16 @@ public class SearchInsert {
         return mid;
     }
 
+    public int searchInsert2(int[] nums, int target) {
+        int i = Arrays.binarySearch(nums, target);
+        return i < 0 ? -i -1 : i;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 3};
         int target = 2;
         SearchInsert searchInsert = new SearchInsert();
         System.out.println(searchInsert.searchInsert(nums, target));
+        System.out.println(Arrays.binarySearch(nums, target));
     }
 }

@@ -36,11 +36,11 @@ public class PivotIndex {
 
     public static void main(String[] args) {
         PivotIndex pivotIndex = new PivotIndex();
-        int[] nums = {-1,-1,-1,-1,-1,0};
+        int[] nums = {1, 7, 3, 6, 5, 6};
         System.out.println(pivotIndex.pivotIndex(nums));
     }
 
-    private int pivotIndex(int[] nums) {
+    private int pivotIndex1(int[] nums) {
         if (nums.length < 1)
             return -1;
         int rSum = 0;
@@ -55,6 +55,20 @@ public class PivotIndex {
             rSum -= nums[i];
             if (lSum == rSum)
                 return i;
+        }
+        return -1;
+    }
+
+    public int pivotIndex(int[] nums) {
+        int sum = 0;
+        int[] res = new int[nums.length];
+        for(int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            res[i] = sum;
+        }
+        for(int j = 0; j < nums.length; j++) {
+            if(sum - res[j] == res[j] - nums[j])
+                return j;
         }
         return -1;
     }
