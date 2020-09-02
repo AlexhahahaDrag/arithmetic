@@ -4,12 +4,11 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(get(-0.005));
-        System.out.println(get(0.005));
-        System.out.println(get(-0.006));
-        System.out.println(get(0.006));
-        System.out.println(get(-0.004));
-        System.out.println(get(0.004));
+        System.out.println("\n其他\n\n");
+        System.out.println("-====================");
+        System.out.println("\n其他\n\n".replace("\n", ""));
+        System.out.println("===================--");
+        System.out.println((int)'\n');
     }
 
 
