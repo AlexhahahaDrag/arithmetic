@@ -1,5 +1,9 @@
 package twoDimensionalArray;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *description:
  *
@@ -38,8 +42,47 @@ package twoDimensionalArray;
  *version:      1.0.0      
 */
 public class SolveNQueens {
+    private List<List<String>> res;
+    public List<List<String>> solveNQueens(int n) {
+        res = new ArrayList<>();
+        char[][] map = new char[n][n];
+        for (int i = 0; i < n; i++)
+            Arrays.fill(map[i], '.');
+        queen(map, 0);
+        return res;
+    }
+
+    private void queen(char[][] map, int row) {
+        if (row < 0)
+            return;
+        if (row == map.length) {
+            List<String> list = new ArrayList<>();
+            for (char[] i : map)
+                list.add(new String(i));
+            res.add(list);
+            return;
+        }
+        for (int i = 0; i < map[row].length; i++) {
+            if (judge(map, row, i)) {
+                map[row][i] = 'Q';
+                queen(map, row + 1);
+                map[row][i] = '.';
+            }
+        }
+    }
+
+    private boolean judge(char[][] map, int i, int j) {
+        int incre = 0;
+        while(i - incre >= 0) {
+            if ((j - incre >= 0 && 'Q' == (map[i -incre][j - incre])) || 'Q' == (map[i - incre][j]) || (j + incre < map[i].length && 'Q' == (map[i - incre][j + incre])))
+                return false;
+            incre++;
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
-        System.out.println(('a' + 2));
+        SolveNQueens solveNQueens = new SolveNQueens();
+        System.out.println((solveNQueens.solveNQueens(4)));
     }
 }
