@@ -60,7 +60,7 @@ public class BinaryTreePaths {
         return Math.max(depth(root.left), depth(root.right)) + 1;
     }
 
-    public List<String> binaryTreePaths(TreeNode root) {
+    public List<String> binaryTreePaths2(TreeNode root) {
         path(root, "");
         return res;
     }
@@ -76,6 +76,27 @@ public class BinaryTreePaths {
             path(root.left, sb);;
             path(root.right, sb);
         }
+    }
+
+    public List<String> binaryTreePaths(TreeNode root) {
+        res = new ArrayList<>();
+        if(root == null)
+            return res;
+        path(root, new StringBuilder());
+        return res;
+    }
+
+    private void path(TreeNode root, StringBuilder str) {
+        if(root == null)
+            return;
+        if(root.left == null && root.right == null) {
+            res.add(str.append(root.val).toString());
+            return;
+        }
+        str.append(root.val);
+        str.append("->");
+        path(root.left, new StringBuilder(str));
+        path(root.right, new StringBuilder(str));
     }
 
     public static void main(String[] args) {
