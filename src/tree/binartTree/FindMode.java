@@ -54,7 +54,7 @@ public class FindMode {
     }
 
     private List<Integer> list = new ArrayList<>();
-    public int[] findMode(TreeNode root) {
+    public int[] findMode3(TreeNode root) {
         find1(root);
         int len = list.size();
         int[] arr = new int[len];
@@ -83,11 +83,44 @@ public class FindMode {
         pre = root;
         find1(root.right);
     }
+    List<Integer> res;
+    private int maxCount;
+    TreeNode preTree = null;
+    public int[] findMode(TreeNode root) {
+        res = new ArrayList<>();
+        maxCount = 1;
+        findCount(root);
+        int len = res.size();
+        int[] arr = new int[len];
+        for(int i = 0; i < len; i++)
+            arr[i] = res.get(i);
+        return arr;
+    }
+
+    private int count = 0;
+    private void findCount(TreeNode root) {
+        if(root == null)
+            return;
+        findCount(root.left);
+        if (preTree == null || root.val == preTree.val)
+            count++;
+        else
+            count = 1;
+        if (count == maxCount)
+            res.add(root.val);
+        else if (count > maxCount) {
+            res.clear();
+            maxCount = count;
+            res.add(root.val);
+        }
+        preTree = root;
+        findCount(root.right);
+    }
 
     public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(2);
-        treeNode.left = new TreeNode(1);
-        treeNode.right = new TreeNode(3);
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.right = new TreeNode(2);
+        treeNode.right.left = new TreeNode(2);
         FindMode findMode = new FindMode();
         int res[] = findMode.findMode(treeNode);
         for (int i : res)
