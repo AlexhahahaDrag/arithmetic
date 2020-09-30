@@ -1,3 +1,5 @@
+package string;
+
 /**
  * @Description:
  *Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.
@@ -20,10 +22,11 @@
 */
 public class ReverseStringTwo {
     public static void main(String[] args) {
+        ReverseStringTwo reverseStringTwo = new ReverseStringTwo();
         String s = "hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl";
-        System.out.println(reverseStr(s,39));
+        System.out.println(reverseStringTwo.reverseStr(s,39));
     }
-    public static String reverseStr(String s,int k){
+    public static String reverseStr1(String s,int k){
         char[] strs=s.toCharArray();
         int index=0;
         while(index<=strs.length){
@@ -39,5 +42,24 @@ public class ReverseStringTwo {
             index+=k<<1;
         }
         return new String(strs);
+    }
+
+    public String reverseStr(String s, int k) {
+        int index = 0;
+        char[] ch = s.toCharArray();
+        int len = ch.length;
+        while(index < len) {
+            swap(ch, index, index + k > len ? len - 1 : index + k - 1);
+            index += 2 * k;
+        }
+        return new String(ch);
+    }
+
+    private void swap(char[] ch, int start, int end) {
+        while(start < end) {
+            char temp = ch[start];
+            ch[start++] = ch[end];
+            ch[end--] = temp;
+        }
     }
 }
