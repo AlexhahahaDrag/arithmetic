@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Stack;
+
 /**
  * @description:
  * 最小栈
@@ -45,64 +47,102 @@ package classes;
  */
 public class MinStack {
 
-    int[] res = null;
-
-    int size = 0;
-
-    int min = -1;
+//    int[] res = null;
+//
+//    int size = 0;
+//
+//    int min = -1;
+//    /** initialize your data structure here. */
+//    public MinStack() {
+//        res = new int[10];
+//    }
+//
+//    public void push(int x) {
+//        if(size == res.length)
+//            changeMore();
+//        if(min == -1 || x < res[min])
+//            min = size;
+//        res[size++] = x;
+//    }
+//
+//    public void pop() {
+//        size--;
+//        if(size == min)
+//            findMin();
+//    }
+//
+//    private void findMin() {
+//        min = 0;
+//        for(int i = 1; i < size; i++)
+//            if(res[min] > res[i])
+//                min = i;
+//    }
+//
+//    public int top() {
+//        if(size < 0)
+//            return -1;
+//        return res[size - 1];
+//    }
+//
+//    public int getMin() {
+//        if(min == -1)
+//            return -1;
+//        return res[min];
+//    }
+//
+//    private void changeMore() {
+//        int[] more = new int[res.length << 1];
+//        for(int i = 0; i < size; i++)
+//            more[i] = res[i];
+//        res = more;
+//    }
     /** initialize your data structure here. */
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
     public MinStack() {
-        res = new int[10];
+        stack = new Stack();
+        minStack = new Stack();
     }
 
     public void push(int x) {
-        if(size == res.length)
-            changeMore();
-        if(min == -1 || x < res[min])
-            min = size;
-        res[size++] = x;
+        stack.add(x);
+        if(minStack.isEmpty() || minStack.peek() >= x)
+            minStack.add(x);
     }
 
     public void pop() {
-        size--;
-        if(size == min)
-            findMin();
-    }
-
-    private void findMin() {
-        min = 0;
-        for(int i = 1; i < size; i++)
-            if(res[min] > res[i])
-                min = i;
+        if(stack.pop().equals(minStack.peek()))
+            minStack.pop();
     }
 
     public int top() {
-        if(size < 0)
-            return -1;
-        return res[size - 1];
+        return stack.peek();
     }
 
-    public int getMin() {
-        if(min == -1)
-            return -1;
-        return res[min];
-    }
-
-    private void changeMore() {
-        int[] more = new int[res.length << 1];
-        for(int i = 0; i < size; i++)
-            more[i] = res[i];
-        res = more;
+    public int min() {
+        return minStack.peek();
     }
 
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
-        minStack.push(-2);
+        minStack.push(7);
+        minStack.push(1);
+        minStack.push(5);
+        minStack.push(7);
+        minStack.push(6);
+        minStack.push(2);
         minStack.push(0);
-        minStack.push(-3);
-        System.out.println(minStack.getMin());   //返回 -3.
+        minStack.push(1);
+//        minStack.push(512);
+//        minStack.push(-1024);
+//        minStack.push(-1024);
+        System.out.println(minStack.min());   //返回 -3.
         minStack.pop();
-        System.out.println(minStack.top());      //返回 0.
-        System.out.println(minStack.getMin());   //返回 -2.
+        System.out.println(minStack.min());   //返回 -3.
+        minStack.pop();
+        System.out.println(minStack.min());   //返回 -3.
+        minStack.pop();
+        System.out.println(minStack.min());   //返回 -3.
+        minStack.pop();
     }
 }

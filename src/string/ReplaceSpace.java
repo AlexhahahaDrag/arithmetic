@@ -21,7 +21,27 @@ package string;
  *version:      1.0.0      
 */
 public class ReplaceSpace {
-    public String replaceSpace(String s) {
+    public String replaceSpace1(String s) {
         return s.replace(" ", "%20");
+    }
+
+    public String replaceSpace2(String s) {
+        if(s == null || s.length() == 0)
+            return s;
+        char[] ch = s.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c : ch) {
+            if (c == ' ')
+                sb.append("%20");
+            else
+                sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "We are happy.";
+        ReplaceSpace replaceSpace = new ReplaceSpace();
+        System.out.println(replaceSpace.replaceSpace1(s));
     }
 }

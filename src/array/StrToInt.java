@@ -54,7 +54,7 @@ package array;
  */
 public class StrToInt {
 
-    public int strToInt(String str) {
+    public int strToInt2(String str) {
         long res = 0;
         int index = 0;
         char[] ch = str.toCharArray();
@@ -84,8 +84,40 @@ public class StrToInt {
         return (int) res;
     }
 
+    public int strToInt(String str) {
+        if(str == null || str.length() == 0)
+            return 0;
+        long res = 0;
+        boolean negative = false;
+        char[] chars = str.toCharArray();
+        int i = 0;
+        for (; i < chars.length && chars[i] == ' '; i++) {
+        }
+        if (i < chars.length) {
+            if (chars[i] == '+')
+                i++;
+            else if (chars[i] == '-') {
+                i++;
+                negative = true;
+            }
+        }
+        for (; i < chars.length; i++) {
+            if (chars[i] >= '0' && chars[i] <= '9') {
+                res = res * 10 +  chars[i] - '0';
+                if (negative && res >= (long)Math.pow(2, 31))
+                    return Integer.MIN_VALUE;
+                else if (!negative && res >= (long)Math.pow(2, 31) - 1)
+                    return Integer.MAX_VALUE;
+            } else
+                break;
+        }
+        return negative ? (int)-res : (int)res;
+    }
+
     public static void main(String[] args) {
+        //String str = "2147483648";
+        String str = " ";
         StrToInt strToInt = new StrToInt();
-        System.out.println(strToInt.strToInt(" +21312- 23"));
+        System.out.println(strToInt.strToInt(str));
     }
 }

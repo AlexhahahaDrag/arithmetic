@@ -49,7 +49,7 @@ import java.util.LinkedList;
  */
 public class MaxSlidingWindow {
 
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow1(int[] nums, int k) {
         LinkedList<Integer> queue = new LinkedList<>();
         int[] map = new int[nums.length - k + 1];
         for(int i = 0; i < k && i < nums.length; i++) {
@@ -70,11 +70,34 @@ public class MaxSlidingWindow {
         return map;
     }
 
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || k == 0)
+            return new int[0];
+        int[] res = new int[nums.length - k + 1];
+        int[] path = new int[nums.length];
+        int index = -1;
+        int start = -1;
+        for(int i = 0; i < k; i++) {
+            while(index > start && nums[i] >= nums[path[index]])
+                index--;
+            path[++index] = i;
+        }
+        for(int i = k - 1; i < nums.length; i++) {
+            while(index > start && nums[i] >= nums[path[index]])
+                index--;
+            path[++index] = i;
+            if (i - k >= path[start + 1])
+                start++;
+            res[i - k + 1] = nums[path[start + 1]];
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
-       int[] nums = {7, 2, 4};
-        int k = 2;
-       /* int[] nums = {1,3,1,2,0,5};
-        int k = 3;*/
+//       int[] nums = {7, 2, 4};
+//        int k = 2;
+        int[] nums = {1,3,1,2,0,5};
+        int k = 3;
        /* int[] nums = {1,3,-1,-3,5,3,6,7};
         int k = 3;*/
         MaxSlidingWindow maxSlidingWindow = new MaxSlidingWindow();
