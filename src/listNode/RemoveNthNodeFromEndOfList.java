@@ -45,4 +45,27 @@ public class RemoveNthNodeFromEndOfList {
         li.next = li.next.next;
         return head;
     }
+
+    public ListNode removeNthFromEnd1(ListNode head, int n) {
+        if(n == 0)
+            return head;
+        int count = 0;
+        ListNode cur = head;
+        while(cur != null) {
+            cur = cur.next;
+            count++;
+        }
+        if(count > n) {
+            cur = head;
+            while(count - n > 1) {
+                cur = cur.next;
+                count--;
+            }
+            cur.next = cur.next.next;
+            return head;
+        } else if (count == n){
+            return head.next;
+        }
+        return head;
+    }
 }

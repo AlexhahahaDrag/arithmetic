@@ -24,8 +24,31 @@ package tree.binartTree;
  *version:      1.0.0      
  */
 public class BuildTree {
-    int index = 0;
+
+    private int in, po;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
+        in = inorder.length - 1;
+        po = postorder.length - 1;
+        return build(inorder, postorder, Integer.MAX_VALUE);
+    }
+
+    private TreeNode build(int[] inorder, int[] postorder, int curVal) {
+        if (po < 0)
+            return null;
+        if(curVal == inorder[in]) {
+            in--;
+            return null;
+        }
+        int val = postorder[po--];
+        TreeNode root = new TreeNode(val);
+        root.right = build(inorder, postorder, val);
+        root.left = build(inorder, postorder, curVal);
+        return root;
+    }
+
+
+    int index = 0;
+    public TreeNode buildTree2(int[] inorder, int[] postorder) {
         index = inorder.length - 1;
         return buildTree(inorder, postorder, 0, inorder.length);
     }
@@ -42,6 +65,27 @@ public class BuildTree {
         treeNode.right = buildTree(inorder, postorder, cur + 1, to);
         treeNode.left = buildTree(inorder, postorder, from, cur);
         return treeNode;
+    }
+
+    public TreeNode buildTree1(int[] inorder, int[] postorder) {
+        index = postorder.length - 1;
+        return build(inorder, 0, inorder.length - 1, postorder);
+    }
+
+    private TreeNode build(int[] inorder, int from, int end, int[] postorder) {
+        if (index == -1 || from > end)
+            return null;
+        TreeNode root = new TreeNode(postorder[index]);
+        int in = from;
+        for(; in <= end; in++) {
+            if(inorder[in] == postorder[index]) {
+                index--;
+                break;
+            }
+        }
+        root.right = build(inorder, in + 1, end, postorder);
+        root.left = build(inorder, from, in - 1, postorder);
+        return root;
     }
 
     public static void main(String[] args) {
