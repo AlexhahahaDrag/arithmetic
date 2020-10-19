@@ -39,7 +39,7 @@ package string;
 */
 public class BackspaceCompare {
 
-    public boolean backspaceCompare(String S, String T) {
+    public boolean backspaceCompare1(String S, String T) {
         return getStr(S).equals(getStr(T));
     }
 
@@ -61,10 +61,52 @@ public class BackspaceCompare {
         return sb.toString();
     }
 
+    public boolean backspaceCompare(String S, String T) {
+        int sl = S.length() - 1;
+        int tl = T.length() - 1;
+        int ss = 0;
+        while(sl >= 0 && tl >= 0) {
+            while(sl >= 0 && (S.charAt(sl) == '#' || ss > 0)) {
+                if (S.charAt(sl) == '#')
+                    ss++;
+                else
+                    ss--;
+                sl--;
+            }
+            while(tl >= 0 && (T.charAt(tl) == '#' || ss > 0)) {
+                if (T.charAt(tl) == '#')
+                    ss++;
+                else
+                    ss--;
+                tl--;
+            }
+           if (sl >= 0 && tl >= 0) {
+                if (S.charAt(sl) != T.charAt(tl))
+                    return false;
+                sl--;
+                tl--;
+            }
+        }
+        while(sl >= 0 && (S.charAt(sl) == '#'))
+            sl -= 2;
+        while(tl >= 0 && T.charAt(tl) == '#')
+            tl -= 2;
+        return sl < 0 && tl < 0;
+    }
+
     public static void main(String[] args) {
         BackspaceCompare backspaceCompare = new BackspaceCompare();
-        String S = "a#ac#";
-        String T = "#ac#";
+//        String S = "ab#c";
+//        String T = "ad#c";
+//        String S = "ab##";
+//        String T = "c#d#";
+//        String S = "bxj##tw";
+//        String T = "bxo#j##tw";
+//        String S = "bxj##tw";
+//        String T = "bxj###tw";
+
+        String S = "nzp#o#g";
+        String T = "b#nzp#o#g";
         System.out.println(backspaceCompare.backspaceCompare(S, T));
     }
 }
