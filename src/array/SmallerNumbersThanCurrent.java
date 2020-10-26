@@ -44,6 +44,23 @@ import java.util.Arrays;
 public class SmallerNumbersThanCurrent {
 
     public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] map = new int[101];
+        for (int i = 0; i < nums.length; i++)
+            map[nums[i]]++;
+        int pre = 0;
+        int cur;
+        for (int i = 1; i < map.length; i++) {
+            cur = map[i];
+            map[i] = map[i - 1] + pre;
+            pre = cur;
+        }
+        map[0] = 0;
+        for (int i = 0; i < nums.length; i++)
+            nums[i] = map[nums[i]];
+        return nums;
+    }
+
+    public int[] smallerNumbersThanCurrent1(int[] nums) {
         int[] map = Arrays.copyOf(nums, nums.length);
         Arrays.sort(map);
         int[] res = new int[nums.length];
