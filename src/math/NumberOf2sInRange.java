@@ -24,27 +24,21 @@ package math;
  * @version:     1.0
  */
 public class NumberOf2sInRange {
-    private int count = 0;
     public int numberOf2sInRange(int n) {
-        return find(n, getDigit(n));
+        return find(n);
     }
 
-    private int find(int n, int digit) {
+    private int find(int n) {
         if (n < 2)
             return 0;
-        else if (n < 10)
-            return 2;
+        int digit = getDigit(n);
         int ten = (int) Math.pow(10, digit - 1);
-        int cur = n / ten;
-        int add = (int)Math.pow(ten, digit);
-        if (cur < 2) {
-            count += add;
-        } else if (cur == 2) {
-            count += n % ten + cur * add;
-        } else {
-            count += Math.pow(10, digit - 1) + add;
-        }
-        return count;
+        int count = 0;
+        if (n / ten == 2)
+            count =  n % ten + 1;
+         else if (n / ten > 2)
+            count = (int)Math.pow(10, digit - 1) ;
+        return count + find(n % ten) + n / ten * (digit - 1) * (int)Math.pow(10, digit - 2);
     }
 
     private int getDigit(int n) {
@@ -58,6 +52,13 @@ public class NumberOf2sInRange {
 
     public static void main(String[] args) {
         NumberOf2sInRange numberOf2sInRange = new NumberOf2sInRange();
-        System.out.println(numberOf2sInRange.numberOf2sInRange(25));
+//        int n = 25; //9
+//        int n = 2; //1
+//        int n = 123;
+//        int n = 100; //20
+        int n = 9; //160
+//        int n = 1000; //300
+//        int n = 10000; //4000
+        System.out.println(numberOf2sInRange.numberOf2sInRange(n));
     }
 }

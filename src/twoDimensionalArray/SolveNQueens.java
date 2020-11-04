@@ -40,49 +40,89 @@ import java.util.List;
  *author:       alex
  *createDate:  2020/2/4 18:29
  *version:      1.0.0      
-*/
+ */
 public class SolveNQueens {
+    //    private List<List<String>> res;
+//    public List<List<String>> solveNQueens(int n) {
+//        res = new ArrayList<>();
+//        char[][] map = new char[n][n];
+//        for (int i = 0; i < n; i++)
+//            Arrays.fill(map[i], '.');
+//        queen(map, 0);
+//        return res;
+//    }
+//
+//    private void queen(char[][] map, int row) {
+//        if (row < 0)
+//            return;
+//        if (row == map.length) {
+//            List<String> list = new ArrayList<>();
+//            for (char[] i : map)
+//                list.add(new String(i));
+//            res.add(list);
+//            return;
+//        }
+//        for (int i = 0; i < map[row].length; i++) {
+//            if (judge(map, row, i)) {
+//                map[row][i] = 'Q';
+//                queen(map, row + 1);
+//                map[row][i] = '.';
+//            }
+//        }
+//    }
+//
+//    private boolean judge(char[][] map, int i, int j) {
+//        int incre = 0;
+//        while(i - incre >= 0) {
+//            if ((j - incre >= 0 && 'Q' == (map[i -incre][j - incre])) || 'Q' == (map[i - incre][j]) || (j + incre < map[i].length && 'Q' == (map[i - incre][j + incre])))
+//                return false;
+//            incre++;
+//        }
+//        return true;
+//    }
+    private boolean[] column;
+    private boolean[] left;
+    private boolean[] right;
     private List<List<String>> res;
     public List<List<String>> solveNQueens(int n) {
         res = new ArrayList<>();
+        if (n <= 0)
+            return res;
         char[][] map = new char[n][n];
-        for (int i = 0; i < n; i++)
-            Arrays.fill(map[i], '.');
-        queen(map, 0);
+        for(char[] m : map)
+            Arrays.fill(m, '.');
+        column = new boolean[n];
+        left = new boolean[n << 1];
+        right = new boolean[n << 1];
+        dfs(map, 0, n);
         return res;
     }
 
-    private void queen(char[][] map, int row) {
-        if (row < 0)
-            return;
-        if (row == map.length) {
+    private void dfs(char[][] map, int i, int n) {
+        if(i == n) {
             List<String> list = new ArrayList<>();
-            for (char[] i : map)
-                list.add(new String(i));
+            for(char[] m : map)
+                list.add(new String(m));
             res.add(list);
             return;
         }
-        for (int i = 0; i < map[row].length; i++) {
-            if (judge(map, row, i)) {
-                map[row][i] = 'Q';
-                queen(map, row + 1);
-                map[row][i] = '.';
+        for(int j = 0; j < n; j++) {
+            if (!column[j] && !left[i + j] && !right[n + i - j]) {
+                column[j] = true;
+                left[i + j] = true;
+                right[n + i - j] = true;
+                map[i][j] = 'Q';
+                dfs(map, i + 1, n);
+                map[i][j] = '.';
+                column[j] = false;
+                left[i + j] = false;
+                right[n + i - j] = false;
             }
         }
     }
 
-    private boolean judge(char[][] map, int i, int j) {
-        int incre = 0;
-        while(i - incre >= 0) {
-            if ((j - incre >= 0 && 'Q' == (map[i -incre][j - incre])) || 'Q' == (map[i - incre][j]) || (j + incre < map[i].length && 'Q' == (map[i - incre][j + incre])))
-                return false;
-            incre++;
-        }
-        return true;
-    }
-
     public static void main(String[] args) {
         SolveNQueens solveNQueens = new SolveNQueens();
-        System.out.println((solveNQueens.solveNQueens(4)));
+        System.out.println((solveNQueens.solveNQueens(8)));
     }
 }
