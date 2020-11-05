@@ -1,5 +1,9 @@
 package classes;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * @description:
  * 数据流的中位数
@@ -37,60 +41,82 @@ package classes;
  */
 public class MedianFinder {
 
-    private int[] res;
+//    private int[] res;
+//
+//    private int size = 0;
+//    public MedianFinder() {
+//        res = new int[10];
+//    }
+//
+//    public void addNum(int num) {
+//        if(size == res.length)
+//            changeMore();
+//        int i = size++;
+//        for(; i > 0; i--)
+//            if (res[i - 1] < num)
+//                res[i] = res[i - 1];
+//            else
+//                break;
+//         res[i] = num;
+//    }
+//
+//    public double findMedian() {
+//        if ((size & 1) == 1)
+//            return res[size >> 1];
+//        else
+//            return (double)(res[size >> 1] + res[(size >> 1) - 1]) / 2;
+//    }
+//
+//    private void changeMore() {
+//        int[] more = new int[res.length << 1];
+//        for (int i = 0; i < size; i++)
+//            more[i] = res[i];
+//        res = more;
+//    }
 
-    private int size = 0;
+    Queue<Integer> lo;
+    Queue<Integer> hi;
+    /** initialize your data structure here. */
     public MedianFinder() {
-        res = new int[10];
+        lo = new PriorityQueue<>();
+        hi = new PriorityQueue<>((o1, o2) -> o2 - o1);
     }
 
     public void addNum(int num) {
-        if(size == res.length)
-            changeMore();
-        int i = size++;
-        for(; i > 0; i--)
-            if (res[i - 1] < num)
-                res[i] = res[i - 1];
-            else
-                break;
-         res[i] = num;
+        lo.offer(num);
+        hi.offer(lo.poll());
+        if (hi.size() - lo.size() > 1)
+            lo.offer(hi.poll());
     }
 
     public double findMedian() {
-        if ((size & 1) == 1)
-            return res[size >> 1];
+        if (hi.size() > lo.size())
+            return hi.peek();
         else
-            return (double)(res[size >> 1] + res[(size >> 1) - 1]) / 2;
-    }
-
-    private void changeMore() {
-        int[] more = new int[res.length << 1];
-        for (int i = 0; i < size; i++)
-            more[i] = res[i];
-        res = more;
+            return (double)(hi.peek() + lo.peek()) / 2;
     }
 
     public static void main(String[] args) {
-//        MedianFinder medianFinder = new MedianFinder();
-//        medianFinder.addNum(1);
-//        medianFinder.addNum(2);
-//        System.out.println(medianFinder.findMedian());
-//        medianFinder.addNum(3);
-//        System.out.println(medianFinder.findMedian()); // -> 1.5
-//        medianFinder.addNum(-4);
-//        System.out.println(medianFinder.findMedian()); // -> 2
-//        medianFinder.addNum(-5);
-//        System.out.println(medianFinder.findMedian()); // -> 2*/
         MedianFinder medianFinder = new MedianFinder();
-        medianFinder.addNum(-1);
+        medianFinder.addNum(1);
+        medianFinder.addNum(2);
         System.out.println(medianFinder.findMedian());
-        medianFinder.addNum(-2);
-        System.out.println(medianFinder.findMedian());
-        medianFinder.addNum(-3);
+        medianFinder.addNum(3);
         System.out.println(medianFinder.findMedian()); // -> 1.5
         medianFinder.addNum(-4);
         System.out.println(medianFinder.findMedian()); // -> 2
         medianFinder.addNum(-5);
-        System.out.println(medianFinder.findMedian()); // -> 2
+        System.out.println(medianFinder.findMedian()); // -> 2*/
+//        MedianFinder medianFinder = new MedianFinder();
+//        medianFinder.addNum(-1);
+//        System.out.println(medianFinder.findMedian());
+//        medianFinder.addNum(-2);
+//        System.out.println(medianFinder.findMedian());
+//        medianFinder.addNum(-3);
+//        System.out.println(medianFinder.findMedian()); // -> 1.5
+//        medianFinder.addNum(-4);
+//        System.out.println(medianFinder.findMedian()); // -> 2
+//        medianFinder.addNum(-5);
+//        System.out.println(medianFinder.findMedian()); // -> 2
     }
 }
