@@ -77,25 +77,22 @@ public class NumsGame {
     private PriorityQueue<Integer> hi = new PriorityQueue<>();
     private PriorityQueue<Integer> lo = new PriorityQueue<>((o1, o2) -> o2 - o1);
     private void addNum(int i) {
-        lo.offer(i);
-        minValue += i;
-        i = lo.poll();
-        minValue -= i;
-        maxValue += i;
         hi.offer(i);
-        if (hi.size() > lo.size() + 1) {
-            i = hi.poll();
-            maxValue -= i;
-            lo.offer(i);
-            minValue += i;
+        maxValue += i;
+        i = hi.poll();
+        maxValue -= i;
+        minValue += i;
+        lo.offer(i);
+        if (lo.size() > hi.size() + 1) {
+            i = lo.poll();
+            minValue -= i;
+            hi.offer(i);
+            maxValue += i;
         }
     }
 
     private int getMid() {
-        if (lo.size() == hi.size())
-            return lo.peek();
-        else
-            return hi.peek();
+        return lo.peek();
     }
 
     public static void main(String[] args) {
