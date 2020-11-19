@@ -32,4 +32,13 @@ public class MoveZeroes {
             }
         }
     }
+
+    public void moveZeroes1(int[] nums) {
+        int in = 0;
+        for(int i = 0; i < nums.length; i++)
+            if (nums[i] != 0)
+                nums[in++] = nums[i];
+        while(in < nums.length)
+            nums[in++] = 0;
+    }
 }
