@@ -55,4 +55,13 @@ public class UniquePaths {
                 map[i][j] = map[i-1][j]+map[i][j-1];
         return map[m-1][n-1];
     }
+
+    public int uniquePaths1(int m, int n) {
+        int[] dp = new int[n];
+        dp[0] = 1;
+        while(m-- > 0)
+            for(int i = 1; i < n; i++)
+                dp[i] +=  dp[i - 1];
+        return dp[n - 1];
+    }
 }
