@@ -65,15 +65,14 @@ public class SplitIntoFibonacci {
     }
 
     private boolean find(int[] res, int index, char[] chs, int in) {
-        if (!check(res, index)) {
-            res[index - 1] = 0;
+        if (!check(res, index - 1)) {
             return false;
         }
 
         if (in == chs.length)
             return true;
         if (in > chs.length || chs[in] == '0') {
-            res[index - 1] = 0;
+            res[index] = 0;
             return false;
         }
         for (int i = in; i < chs.length; i++) {
