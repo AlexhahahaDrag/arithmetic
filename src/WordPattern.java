@@ -24,10 +24,7 @@ import java.util.Map;
  * Output: false
  */
 public class WordPattern {
-    public static void main(String[] args) {
-        WordPattern wordPattern =new WordPattern();
-        System.out.println(wordPattern.wordPattern("abba","dog dog dog dog"));
-    }
+
     public static boolean getWordPattern(String pattern,String str){
         String[] strs=str.split(" ");
         if (pattern.length()!=strs.length){
@@ -46,18 +43,38 @@ public class WordPattern {
         }
         return true;
     }
-    public boolean wordPattern(String pattern, String str) {
 
-        char[] pArr = pattern.toCharArray();
-        String[] sArr = str.split(" ");
-        if(pArr.length != sArr.length)
+    public boolean wordPattern(String pattern, String s) {
+        if ((pattern == null || pattern.length() == 0) && (s == null || s.length() == 0))
+            return true;
+        if (pattern == null || pattern.length() == 0 || s == null || s.length() == 0)
             return false;
-        for(int i=0; i < pArr.length; i++) {
-            for (int j= i+1; j<pArr.length; j++) {
-                if (pArr[i] == pArr[j] && !sArr[i].equals(sArr[j]))
-                    return false;
+        String[] st = s.split(" ");
+        int len = pattern.length();
+        if(st.length != len)
+            return false;
+        String[] map = new String[26];
+        int index = -1;
+        while(++index < len) {
+            char ch = pattern.charAt(index);
+            if (map[ch - 'a'] == null) {
+                for (int i = 0; i < 26; i++) {
+                    if (st[index].equals(map[i]))
+                        return false;
+                }
+                map[ch - 'a'] = st[index];
             }
+
+            else if (!map[ch - 'a'].equals(st[index]))
+                return false;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        String pattern = "abba";
+        String s = "dog dog dog dog";
+        WordPattern wordPattern = new WordPattern();
+        System.out.println(wordPattern.wordPattern(pattern, s));
     }
 }
