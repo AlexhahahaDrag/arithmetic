@@ -51,9 +51,9 @@ import java.util.*;
  *createDate:  2020/3/30 21:59
  *version:      1.0.0      
 */
-public class UndergroundSystem {
+public class UnderGroundSystem {
     Map<Integer, List<Customer>> res = new HashMap();
-    public UndergroundSystem() {
+    public UnderGroundSystem() {
 
     }
 
@@ -127,7 +127,7 @@ public class UndergroundSystem {
 /*    UndergroundSystem undergroundSystem = new UndergroundSystem();
 */
     public static void main(String[] args) {
-        UndergroundSystem undergroundSystem = new UndergroundSystem();
+        UnderGroundSystem undergroundSystem = new UnderGroundSystem();
         undergroundSystem.checkIn(45, "Leyton", 3);
         undergroundSystem.checkIn(32, "Paradise", 8);
         undergroundSystem.checkIn(27, "Leyton", 10);
