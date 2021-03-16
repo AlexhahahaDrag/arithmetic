@@ -1,5 +1,8 @@
 package twoDimensionalArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Description:
  * 面试题29. 顺时针打印矩阵
@@ -29,7 +32,7 @@ package twoDimensionalArray;
 */
 public class SpiralOrder {
 
-    public int[] spiralOrder(int[][] matrix) {
+    public int[] spiralOrder1(int[][] matrix) {
         if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return new int[]{};
         }
@@ -58,12 +61,36 @@ public class SpiralOrder {
         return res;
     }
 
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> res = new ArrayList<>();
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean[][] map = new boolean[m][n];
+        int count = m * n;
+        int[][] diction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        int index = 0;
+        int row = 0;
+        int column = -1;
+        while(count > 0) {
+            while(row + diction[index][0] >= 0 && row + diction[index][0] < m &&
+                    column + diction[index][1] >= 0 && column + diction[index][1] < n &&
+                    !map[row + diction[index][0]][column + diction[index][1]]) {
+                row += diction[index][0];
+                column += diction[index][1];
+                res.add(matrix[row][column]);
+                count--;
+                map[row][column] = true;
+            }
+            index++;
+            index %= 4;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[][] matrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
         SpiralOrder spiralOrder = new SpiralOrder();
-        int[] res = spiralOrder.spiralOrder(matrix);
-        for (int i : res) {
-            System.out.print(i + "   ");
-        }
+        List<Integer> res = spiralOrder.spiralOrder(matrix);
+        System.out.println(res);
     }
 }
