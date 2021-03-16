@@ -35,11 +35,12 @@ public class AllPropertyString {
         int index = strs.length - 1;
         int st = index;
         while(st >= 0) {
-            while(index > 0 && strs[st] <= strs[index - 1])
+            while(index > 0 && strs[st] <= strs[index - 1]) {
                 index--;
-            if (index < 0)
+            }
+            if (index < 0) {
                 st--;
-            else {
+            } else {
                 swap(strs, index, st);
                 sort(strs, index + 1, len);
                 list.add(new String(strs));

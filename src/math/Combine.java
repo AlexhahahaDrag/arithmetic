@@ -31,8 +31,9 @@ public class Combine {
     List<List<Integer>> res = new LinkedList<>();
     List<Integer> list = new LinkedList<>();
     public List<List<Integer>> combine1(int n, int k) {
-        if (n < k)
+        if (n < k) {
             return res;
+        }
         com(n, 0, new Integer[k], 0, k);
         return res;
     }
@@ -50,8 +51,9 @@ public class Combine {
     }
 
     public List<List<Integer>> combine(int n, int k) {
-        if (n < k)
+        if (n < k) {
             return res;
+        }
         comb(n, 0, k);
         return res;
     }

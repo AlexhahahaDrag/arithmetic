@@ -29,30 +29,37 @@ public class FindKthLargest {
 
     private int quickSort(int[] nums, int k, int start, int end) {
         int index = sort(nums, start, end);
-        if (index + 1 == k)
+        if (index + 1 == k) {
             return nums[index];
-        else if (index + 1 > k)
+        } else if (index + 1 > k) {
             return quickSort(nums, k, start, index - 1);
-        else
+        } else {
             return quickSort(nums, k, index + 1, end);
+        }
     }
 
     private int sort(int[] nums, int start, int end) {
         int mid = start + (end - start >> 1);
-        if (nums[end] > nums[mid])
+        if (nums[end] > nums[mid]) {
             swap(nums, mid, end);
-        if (nums[end] > nums[start])
+        }
+        if (nums[end] > nums[start]) {
             swap(nums, start, end);
-        if (nums[start] > nums[mid])
+        }
+        if (nums[start] > nums[mid]) {
             swap(nums, start, mid);
+        }
         int in = start;
         while(in <= end) {
-            while(in <= end && nums[in] >= nums[start])
+            while(in <= end && nums[in] >= nums[start]) {
                 in++;
-            while(in <= end && nums[end] < nums[start])
+            }
+            while(in <= end && nums[end] < nums[start]) {
                 end--;
-            if(in <= end)
+            }
+            if(in <= end) {
                 swap(nums, in, end);
+            }
         }
         swap(nums, in - 1, start);
         return in - 1;

@@ -24,14 +24,16 @@ public class ValidPalindrome {
     }
     public static boolean isPalindrome(String s) {
         int len=s.length();
-        if(len==0||len==1)
+        if(len==0||len==1) {
             return true;
+        }
         int i=0;
         StringBuilder sb=new StringBuilder();
         while(i<len){
             char c=s.charAt(i);
-            if(Character.isDigit(c)||Character.isLetter(c))
+            if(Character.isDigit(c)||Character.isLetter(c)) {
                 sb.append(Character.toLowerCase(c));
+            }
             i++;
         }
         return sb.toString().equals(sb.reverse().toString());
@@ -44,17 +46,19 @@ public class ValidPalindrome {
             char cEnd;
             while(start<end){
                 c= s.charAt(start);
-                if(Character.isDigit(c)||Character.isLetter(c))
+                if(Character.isDigit(c)||Character.isLetter(c)) {
                     break;
+                }
                 start++;
             }
             while(start<end){
                 cEnd=s.charAt(end);
                 if(Character.isDigit(cEnd)||Character.isLetter(cEnd)){
-                    if(Character.toLowerCase(cEnd)==Character.toLowerCase(c))
+                    if(Character.toLowerCase(cEnd)==Character.toLowerCase(c)) {
                         break;
-                    else
+                    } else {
                         return false;
+                    }
                 }
                 end--;
             }
@@ -91,13 +95,16 @@ public class ValidPalindrome {
         char[]pChars = s.toCharArray();
         int start = 0,end=pChars.length-1;
         while(start<end){
-            while (start<end&&!Character.isDigit(pChars[start])&&!Character.isLetter(pChars[start]))
+            while (start<end&&!Character.isDigit(pChars[start])&&!Character.isLetter(pChars[start])) {
                 start++;
-            while (start<end&&!Character.isDigit(pChars[end])&&!Character.isLetter(pChars[end]))
+            }
+            while (start<end&&!Character.isDigit(pChars[end])&&!Character.isLetter(pChars[end])) {
                 end--;
+            }
             if (start<end){
-                if (Character.toLowerCase(pChars[start])!=Character.toLowerCase(pChars[end]))
+                if (Character.toLowerCase(pChars[start])!=Character.toLowerCase(pChars[end])) {
                     return false;
+                }
             }
             start++;
             end--;
@@ -107,8 +114,9 @@ public class ValidPalindrome {
     public static boolean isPalindrome4(String s) {
         char[] charMap1=new char[256];
         for(int i=0;i<26;i++){
-            if(i<10)
+            if(i<10) {
                 charMap1[i+'0']=(char)(i+1);
+            }
             charMap1[i+'a']=charMap1[i+'A']=(char)(11+i);
         }
         char[] sToArray=s.toCharArray();
@@ -117,11 +125,13 @@ public class ValidPalindrome {
         while(start<end){
             char cS=charMap1[sToArray[start]];
             char cE=charMap1[sToArray[end]];
-            if(cS==0) start++;
-            else if(cE==0) end--;
-            else if(cS!=cE)
+            if(cS==0) {
+                start++;
+            } else if(cE==0) {
+                end--;
+            } else if(cS!=cE) {
                 return false;
-            else{
+            } else{
                 start++;
                 end--;
             }

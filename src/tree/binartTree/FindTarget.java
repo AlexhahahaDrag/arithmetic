@@ -38,28 +38,32 @@ package tree.binartTree;
 public class FindTarget {
 
     public boolean findTarget(TreeNode root, int k) {
-        if (root == null)
+        if (root == null) {
             return false;
+        }
         TreeNode res = root;
         return findInfo(res, root, k);
     }
 
     private boolean findInfo(TreeNode res, TreeNode root, int k) {
-        if (root == null)
+        if (root == null) {
             return false;
+        }
         return find(res.left, k - root.val) || find(res.right, k - root.val)
                 || findInfo(res, root.left, k) || findInfo(res, root.right, k);
     }
 
     private boolean find(TreeNode root, int target) {
-        if (root == null)
+        if (root == null) {
             return false;
-        if (root.val == target)
+        }
+        if (root.val == target) {
             return true;
-        else if (root.val > target)
+        } else if (root.val > target) {
             return find(root.left, target);
-        else
+        } else {
             return find(root.right, target);
+        }
     }
 
     public static void main(String[] args) {

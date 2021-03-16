@@ -40,8 +40,9 @@ public class RotateFunction {
         //f(n + 1) = 0 * b(n -1) + 1 * b(0) + ... + (n - 1) * b(n - 2);
         //f(n + 1) - f(n) = b(0) + b(1) + ... + b(n - 2) - (n - 1) b(n - 1);
         //f(n + 1)  = sum(b) - n * b(n-1) + f(n);
-        if (A == null || A.length == 0)
+        if (A == null || A.length == 0) {
             return 0;
+        }
         long pre = 0;
         long sum = 0;
         for (int i = 0; i < A.length; i++) {
@@ -55,10 +56,12 @@ public class RotateFunction {
             max = max >= cur ? max : cur;
             pre = cur;
         }
-        if (max > Integer.MAX_VALUE)
+        if (max > Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;
-        if (max < Integer.MIN_VALUE)
+        }
+        if (max < Integer.MIN_VALUE) {
             return Integer.MIN_VALUE;
+        }
         return (int)max;
     }
 }

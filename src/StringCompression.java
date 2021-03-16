@@ -77,12 +77,13 @@ public class StringCompression {
                 countIndex++;
             }
             chars[countChar++]=t;
-            if (count>1&&count<10)
+            if (count>1&&count<10) {
                 chars[countChar++]=(char)(count+'0');
-            else if (count>=10){
+            } else if (count>=10){
                 char[] chars1=(count+"").toCharArray();
-                for (int i = 0; i < chars1.length; i++)
+                for (int i = 0; i < chars1.length; i++) {
                     chars[countChar++]=chars1[i];
+                }
             }
             count=0;
         }

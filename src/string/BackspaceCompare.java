@@ -55,9 +55,11 @@ public class BackspaceCompare {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for (char ch : str)
-            if (ch != '#')
-            sb.append(ch);
+        for (char ch : str) {
+            if (ch != '#') {
+                sb.append(ch);
+            }
+        }
         return sb.toString();
     }
 
@@ -67,30 +69,35 @@ public class BackspaceCompare {
         int ss = 0;
         while(sl >= 0 && tl >= 0) {
             while(sl >= 0 && (S.charAt(sl) == '#' || ss > 0)) {
-                if (S.charAt(sl) == '#')
+                if (S.charAt(sl) == '#') {
                     ss++;
-                else
+                } else {
                     ss--;
+                }
                 sl--;
             }
             while(tl >= 0 && (T.charAt(tl) == '#' || ss > 0)) {
-                if (T.charAt(tl) == '#')
+                if (T.charAt(tl) == '#') {
                     ss++;
-                else
+                } else {
                     ss--;
+                }
                 tl--;
             }
            if (sl >= 0 && tl >= 0) {
-                if (S.charAt(sl) != T.charAt(tl))
+                if (S.charAt(sl) != T.charAt(tl)) {
                     return false;
+                }
                 sl--;
                 tl--;
             }
         }
-        while(sl >= 0 && (S.charAt(sl) == '#'))
+        while(sl >= 0 && (S.charAt(sl) == '#')) {
             sl -= 2;
-        while(tl >= 0 && T.charAt(tl) == '#')
+        }
+        while(tl >= 0 && T.charAt(tl) == '#') {
             tl -= 2;
+        }
         return sl < 0 && tl < 0;
     }
 

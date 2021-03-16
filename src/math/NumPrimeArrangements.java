@@ -32,15 +32,18 @@ package math;
 public class NumPrimeArrangements {
 
     public int numPrimeArrangements(int n) {
-        if (n < 1)
+        if (n < 1) {
             return 0;
+        }
         int num = 0;
         boolean[] map = new boolean[n + 1];
         for (int i = 2; i <= n ; i++) {
-            if (map[i])
+            if (map[i]) {
                 continue;
-            if (prime(i))
+            }
+            if (prime(i)) {
                 num++;
+            }
             int cur = 1;
             while(cur * i <= n) {
                 map[cur++ * i] = true;
@@ -53,19 +56,23 @@ public class NumPrimeArrangements {
         int mod = (int) Math.pow(10, 9) + 7;
         int start = 0;
         long res = 1;
-        while(++start <= n - m)
+        while(++start <= n - m) {
             res = (res * start) % mod;
+        }
         start = 1;
-        while(start <= m)
+        while(start <= m) {
             res = (res * start++) % mod;
+        }
         return (int)res;
     }
 
     private boolean prime(int n) {
         int sq = (int) Math.sqrt(n);
-        for(int i = 2; i <= sq; i++)
-            if (n % i == 0)
+        for(int i = 2; i <= sq; i++) {
+            if (n % i == 0) {
                 return false;
+            }
+        }
             return true;
     }
 

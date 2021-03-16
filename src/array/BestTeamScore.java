@@ -19,8 +19,9 @@ public class BestTeamScore {
             } else {
                 dp[i] = map[i][1];
                 for (int j = i - 1; j >= 0; j--) {
-                    if (map[j][1] <= map[i][1])
+                    if (map[j][1] <= map[i][1]) {
                         dp[i] = Math.max(dp[i], dp[j] + map[i][1]);
+                    }
                 }
             }
             max = Math.max(max, dp[i]);

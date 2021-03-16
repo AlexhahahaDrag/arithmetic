@@ -24,9 +24,11 @@ public class MaxNumOfSubstrings {
 
     private boolean find(String s, int start, int end) {
         char ch = s.charAt(start);
-        while(start < end)
-            if (s.charAt(start) != ch)
+        while(start < end) {
+            if (s.charAt(start) != ch) {
                 return false;
+            }
+        }
         return true;
     }
 

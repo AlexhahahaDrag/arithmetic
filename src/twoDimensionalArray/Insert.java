@@ -37,27 +37,31 @@ public class Insert {
         res = new int[intervals.length + 1][2];
         boolean flag = false;
         for(int i = 0; i < intervals.length; i++) {
-            if (intervals[i][1] < left)
+            if (intervals[i][1] < left) {
                 res[size++] = intervals[i];
-            else if (intervals[i][0] > right) {
+            } else if (intervals[i][0] > right) {
                 flag = true;
                 res[size++] = new int[]{left, right};
                 copy(res, intervals, i);
                 break;
             } else {
-                if (intervals[i][0] < left)
+                if (intervals[i][0] < left) {
                     left = intervals[i][0];
-                if (intervals[i][1] > right)
+                }
+                if (intervals[i][1] > right) {
                     right = intervals[i][1];
+                }
             }
         }
-        if (!flag)
+        if (!flag) {
             res[size++] = new int[] {left, right};
+        }
         return Arrays.copyOfRange(res, 0, size);
     }
     private void copy(int[][] res, int[][] source, int i) {
-        while (i < source.length)
+        while (i < source.length) {
             res[size++] = source[i++];
+        }
     }
 
     public static void main(String[] args) {
@@ -69,7 +73,8 @@ public class Insert {
         int[] newInterval = {4,8};
         Insert insert = new Insert();
         int[][] res = insert.insert(intervals, newInterval);
-        for (int[] i : res)
+        for (int[] i : res) {
             System.out.print("[" + i[0] + "," + i[1] + "]" + ",");
+        }
     }
 }

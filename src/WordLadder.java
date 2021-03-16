@@ -43,8 +43,9 @@ public class WordLadder {
         int count=0;
         if (wordList.contains(endWord)){
 
-            if (beginWord==endWord)
+            if (beginWord==endWord) {
                 return count;
+            }
         }
         return count;
     }

@@ -39,8 +39,9 @@ public class ExcelSheetColumnNumber {
         int result = 0;
         int start = 0;
         int len = s.length();
-        while(start < len)
+        while(start < len) {
             result = result * 26 + (s.charAt(start++) - 'A' + 1);
+        }
         return result;
     }
 }

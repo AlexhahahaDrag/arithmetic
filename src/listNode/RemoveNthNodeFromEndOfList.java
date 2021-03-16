@@ -31,12 +31,14 @@ public class RemoveNthNodeFromEndOfList {
         int a = n;
         ListNode cur = head;
         while(a-- > 0) {
-            if(cur == null)
+            if(cur == null) {
                 return head;
+            }
             cur = cur.next;
         }
-        if (cur == null)
+        if (cur == null) {
             return head.next;
+        }
         ListNode li = head;
         while(cur.next != null) {
             cur = cur.next;
@@ -47,8 +49,9 @@ public class RemoveNthNodeFromEndOfList {
     }
 
     public ListNode removeNthFromEnd1(ListNode head, int n) {
-        if(n == 0)
+        if(n == 0) {
             return head;
+        }
         int count = 0;
         ListNode cur = head;
         while(cur != null) {

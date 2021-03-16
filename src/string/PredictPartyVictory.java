@@ -17,18 +17,20 @@ public class PredictPartyVictory {
         Queue<Integer> r = new LinkedList<>();
         Queue<Integer> d = new LinkedList<>();
         for (int i = 0; i < len; i++) {
-            if (senate.charAt(i) == 'D')
+            if (senate.charAt(i) == 'D') {
                 d.offer(i);
-            else
+            } else {
                 r.offer(i);
+            }
         }
         while(!r.isEmpty() && !d.isEmpty()) {
             int rl = r.poll();
             int dl = d.poll();
-            if (rl < dl)
+            if (rl < dl) {
                 r.offer(rl + len);
-            else
+            } else {
                 d.offer(dl + len);
+            }
         }
         return r.isEmpty() ? "Dire" : "Radiant";
     }

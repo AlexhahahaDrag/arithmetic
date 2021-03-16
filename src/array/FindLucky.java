@@ -42,11 +42,14 @@ public class FindLucky {
 
     public int findLucky(int[] arr) {
         int[] map = new int[501];
-        for(int i : arr)
+        for(int i : arr) {
             map[i]++;
-        for(int j = map.length - 1; j > 0; j--)
-            if(map[j] == j)
+        }
+        for(int j = map.length - 1; j > 0; j--) {
+            if(map[j] == j) {
                 return j;
+            }
+        }
         return -1;
     }
 }

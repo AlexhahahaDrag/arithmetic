@@ -47,8 +47,9 @@ public class CheckIfWorldIsVaildAfterSubstitutions {
         System.out.println(isValid("abcabcababcc"));
     }
     public static boolean isValid(String S) {
-        while (S.contains("abc"))
+        while (S.contains("abc")) {
             S=S.replace("abc","");
+        }
         return S.length()==0;
     }
 }

@@ -21,8 +21,9 @@ public class MissingNumber {
             container[nums[i]]++;
         }
         for (int i = 0; i < container.length; i++) {
-            if (container[i]==0)
+            if (container[i]==0) {
                 return i;
+            }
         }
         return -1;
     }

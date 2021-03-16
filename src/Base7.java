@@ -24,14 +24,16 @@ public class Base7 {
             negetive=true;
         }
         StringBuilder sb=new StringBuilder();
-        if(num==0)
+        if(num==0) {
             sb.append(0);
+        }
         while(num>0){
             sb.insert(0,num%7);
             num/=7;
         }
-        if(negetive)
+        if(negetive) {
             sb.insert(0,"-");
+        }
         return sb.toString();
     }
 }

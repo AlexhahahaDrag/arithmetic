@@ -12,16 +12,19 @@ public class FindLadders {
 
     public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<String> res = new ArrayList<>();
-        if (wordList == null || wordList.size() == 0)
+        if (wordList == null || wordList.size() == 0) {
             return res;
+        }
         boolean isTrue = false;
-        for (String str : wordList)
+        for (String str : wordList) {
             if (endWord.equals(str)) {
                 isTrue = true;
                 break;
             }
-        if (!isTrue)
+        }
+        if (!isTrue) {
             return res;
+        }
         boolean[] visited = new boolean[wordList.size()];
         Map<String, String> map = new HashMap<>();
         Queue<String> quene = new LinkedList<>();
@@ -34,8 +37,9 @@ public class FindLadders {
                     map.put(cur, s);
                     quene.add(cur);
                     visited[i] = true;
-                    if (endWord.equals(cur))
+                    if (endWord.equals(cur)) {
                         break;
+                    }
                 }
             }
         }
@@ -56,8 +60,9 @@ public class FindLadders {
         for(int i = 0; i < str1.length; i++) {
             if (str1[i] != str2[i]) {
                 diff++;
-                if (diff > 1)
+                if (diff > 1) {
                     return false;
+                }
             }
         }
         return diff == 1;

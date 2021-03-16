@@ -27,8 +27,9 @@ public class KeyBoardRow {
     public static void main(String[] args) {
         String[] strings={"asdfghjkl","qwertyuiop","zxcvbnm"};
         String[] strings1=findWords(strings);
-        for (String s:strings1)
+        for (String s:strings1) {
             System.out.println(s);
+        }
     }
     public static String[] findWords(String[] words) {
         int[] letters=new int[26];
@@ -61,15 +62,17 @@ public class KeyBoardRow {
         int count=0;
         String[] strs=new String[words.length];
         for(String str:words){
-            if(str.length()<2)
+            if(str.length()<2) {
                 strs[count++]=str;
-            else{
+            } else{
                 int index=0;
                 String str1=str.toLowerCase();
-                while(index<str.length()-1&&letters[str1.charAt(index)-'a']==letters[str1.charAt(index+1)-'a'])
+                while(index<str.length()-1&&letters[str1.charAt(index)-'a']==letters[str1.charAt(index+1)-'a']) {
                     index++;
-                if(index==str.length()-1)
+                }
+                if(index==str.length()-1) {
                     strs[count++]=str;
+                }
             }
         }
         return Arrays.copyOf(strs,count);

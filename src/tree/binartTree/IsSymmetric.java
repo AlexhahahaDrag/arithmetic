@@ -29,19 +29,22 @@ package tree.binartTree;
 public class IsSymmetric {
 
     public boolean isSymmetric(TreeNode root) {
-        if(root == null)
+        if(root == null) {
             return true;
+        }
         return is(root.left, root.right);
     }
 
     private boolean is(TreeNode root1, TreeNode root2) {
         if(root1 != null && root2 != null) {
-            if(root1.val != root2.val)
+            if(root1.val != root2.val) {
                 return false;
+            }
             return is(root1.left, root2.right) && is(root1.right, root2.left);
-        } else if(root1 == null && root2 == null)
+        } else if(root1 == null && root2 == null) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 }

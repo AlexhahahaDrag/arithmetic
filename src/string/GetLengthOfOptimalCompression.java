@@ -37,8 +37,9 @@ public class GetLengthOfOptimalCompression {
     private Map<Character, Integer> map;
     public int getLengthOfOptimalCompression(String s, int k) {
         int len = s.length();
-        if (k == s.length())
+        if (k == s.length()) {
             return 0;
+        }
         return 0;
     }
 

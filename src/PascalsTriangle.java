@@ -32,19 +32,20 @@ public class PascalsTriangle {
         for (int i = 0; i < numRows; i++) {
             List<Integer> list=new ArrayList<>();
             for (int j = 0; j < i+1; j++) {
-                if (j==0||j==i)
+                if (j==0||j==i) {
                     list.add(1);
-                else
+                } else {
                     list.add(lists.get(i-1).get(j)+lists.get(i-1).get(j-1));
+                }
             }
             lists.add(list);
         }
         return lists;
     }public static List<List<Integer>> generate1(int numRows) {
         List<List<Integer>> lists=new ArrayList<>();
-        if (numRows<=0)
+        if (numRows<=0) {
             return lists;
-        else if (numRows==1){
+        } else if (numRows==1){
             List<Integer> list=new ArrayList<>();
             list.add(1);
             lists.add(list);

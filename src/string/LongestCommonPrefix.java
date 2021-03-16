@@ -33,39 +33,45 @@ public class LongestCommonPrefix {
     }
 
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0)
+        if (strs == null || strs.length == 0) {
             return "";
+        }
         String prefix = strs[0];
         for (int i = 1; i < strs.length; i++) {
             while (strs[i].indexOf(prefix) != 0) {
                 prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty())
+                if (prefix.isEmpty()) {
                     return "";
+                }
             }
         }
         return prefix;
     }
 
     public String longestCommonPrefix1(String[] strs) {
-        if(strs == null || strs.length == 0)
+        if(strs == null || strs.length == 0) {
             return "";
+        }
         String s = strs[0];
         for(int i = 1; i < strs.length; i++) {
             s = getCommonSubstring(s, strs[i]);
-            if("".equals(s))
+            if("".equals(s)) {
                 return "";
+            }
         }
         return s;
     }
 
     private String getCommonSubstring(String s, String t) {
-        if(s == null || t == null || "".equals(s) || "".equals(t))
+        if(s == null || t == null || "".equals(s) || "".equals(t)) {
             return "";
+        }
         int index = 0;
         int sLen = s.length();
         int tLen = t.length();
-        while(index < sLen && index < tLen && s.charAt(index) == t.charAt(index))
+        while(index < sLen && index < tLen && s.charAt(index) == t.charAt(index)) {
             index++;
+        }
         return s.substring(0,index);
     }
 }

@@ -32,10 +32,12 @@ public class SumFourDivisors {
 
     int res = 0;
     public int sumFourDivisors(int[] nums) {
-        if(nums == null || nums.length == 0)
+        if(nums == null || nums.length == 0) {
             return res;
-        for(int i : nums)
+        }
+        for(int i : nums) {
             getD(i);
+        }
         return res;
     }
 
@@ -51,12 +53,14 @@ public class SumFourDivisors {
                     count++;
                 }
                 count++;
-                if(count > 4)
+                if(count > 4) {
                     break;
+                }
             }
         }
-        if(count == 4)
+        if(count == 4) {
             res += sum;
+        }
     }
 
     public static void main(String[] args) {

@@ -25,8 +25,9 @@ public class PalindromeNumber {
         System.out.println(isPalindrome(0));
     }
     private static boolean isPalindrome(int x) {
-        if(x < 0 || (x != 0 && x % 10 == 0))
+        if(x < 0 || (x != 0 && x % 10 == 0)) {
             return false;
+        }
         int reverseX = 0;
         while (x > reverseX) {
             reverseX = reverseX * 10 + x % 10;
@@ -35,14 +36,16 @@ public class PalindromeNumber {
         return x == reverseX || x == reverseX / 10;
     }
     private static boolean isPalindrome1(int x) {
-        if (x<0)
+        if (x<0) {
             return false;
+        }
         String s=x+"";
         int start=0;
         int end=s.length()-1;
         while(start<end){
-            if (s.charAt(start++)!=s.charAt(end--))
+            if (s.charAt(start++)!=s.charAt(end--)) {
                 return false;
+            }
         }
         return true;
     }

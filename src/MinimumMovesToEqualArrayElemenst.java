@@ -30,9 +30,11 @@ public class MinimumMovesToEqualArrayElemenst {
     public static int minMoves(int[] nums) {
         int minMoves=0;
         int min=nums[0];
-        for(int x:nums)
-            if(min>x)
-                min=x;
+        for(int x:nums) {
+            if(min>x) {
+                min = x;
+            }
+        }
         for (int y:
              nums) {
             minMoves+=y-min;

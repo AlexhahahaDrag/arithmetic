@@ -38,16 +38,18 @@ import java.util.Arrays;
 public class MaxProfitVI {
 
     public int maxProfit(int k, int[] prices) {
-        if (k <= 0)
+        if (k <= 0) {
             return 0;
+        }
         int len = k << 1;
         int[] dp = new int[len];
         Arrays.fill(dp, Integer.MIN_VALUE);
         for(int i = 0; i < prices.length; i++) {
 
             for(int j = len - 1; j > 0; j--) {
-                if (i < j)
+                if (i < j) {
                     continue;
+                }
                 dp[j] = Math.max(dp[j], dp[j - 1] + (j % 2 == 0 ? -prices[i] : prices[i]));
             }
             dp[0] = Math.max(dp[0], -prices[i]);

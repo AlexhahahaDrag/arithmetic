@@ -69,8 +69,9 @@ package string_array;
 public class RankTeams {
     int size = 0;
     public String rankTeams(String[] votes) {
-        if (votes == null || votes.length < 1)
+        if (votes == null || votes.length < 1) {
             return null;
+        }
         int[][] map = new int[votes[0].length()][votes[0].length()];
         char[] index = new char[votes[0].length()];
         for (String vote : votes) {
@@ -85,11 +86,13 @@ public class RankTeams {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < index.length; i++) {
             int max = 0;
-            while(index[max] == ' ')
+            while(index[max] == ' ') {
                 max++;
+            }
             for (int j = max + 1; j < index.length; j++) {
-                if (index[j] == ' ')
+                if (index[j] == ' ') {
                     continue;
+                }
                 if (findRes(map, index, j, max, 0)) {
                     max = j;
                 }
@@ -101,19 +104,22 @@ public class RankTeams {
     }
 
     private boolean findRes(int[][] map, char[] res, int in1, int in2, int index) {
-        if (index == map[0].length)
+        if (index == map[0].length) {
             return res[in1] < res[in2];
-        if (map[index][in1] > map[index][in2])
+        }
+        if (map[index][in1] > map[index][in2]) {
             return true;
-        else if (map[index][in1] < map[index][in2])
+        } else if (map[index][in1] < map[index][in2]) {
             return false;
+        }
         return findRes(map, res, in1, in2, ++index);
     }
 
     private int findChar(char[] ch, char c) {
         for (int i = 0; i < size; i++) {
-            if (ch[i] == c)
+            if (ch[i] == c) {
                 return i;
+            }
         }
         ch[size] = c;
         return size++;

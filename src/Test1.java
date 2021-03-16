@@ -11,8 +11,9 @@ public class Test1 {
         System.out.println(getDigits(20190324));*/
     }
     public static int getDigits(int num){
-        if (num<=3)
+        if (num<=3) {
             return 1;
+        }
         int a=1;
         int b=1;
         int c=1;
@@ -31,16 +32,19 @@ public class Test1 {
         int index=0;
         int end=nums.length-1;
         while(true){
-            while(index<=end&&nums[index]!=val)
+            while(index<=end&&nums[index]!=val) {
                 index++;
-            while(index<end&&nums[end]==val)
+            }
+            while(index<end&&nums[end]==val) {
                 end--;
+            }
             if (index<end){
                 nums[index]=nums[index]^nums[end];
                 nums[end]=nums[index]^nums[end];
                 nums[index]=nums[index]^nums[end];
-            }else
+            }else {
                 break;
+            }
         }
         return index;
     }
@@ -50,17 +54,20 @@ public class Test1 {
         return list;
     }
     public void get(List<List<Integer>> list,int[] candidates,LinkedList<Integer> list1,int target,int start) {
-        if (target<0)
+        if (target<0) {
             return;
+        }
         if (target==0){
             list.add(new ArrayList<>(list1));
             return;
         }
         for (int i = start; i < candidates.length; i++) {
-            if (target<candidates[i])
+            if (target<candidates[i]) {
                 break;
-            if (i>start&&candidates[i]==candidates[start])
+            }
+            if (i>start&&candidates[i]==candidates[start]) {
                 continue;
+            }
             list1.add(candidates[i]);
             get(list,candidates,list1,target-candidates[i],i);
             list1.remove(list1.size()-1);

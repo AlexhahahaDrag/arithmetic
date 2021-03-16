@@ -21,20 +21,23 @@ public class AddBinary {
         byte[] bytebNew=b.getBytes();
         byte[] bytea=new byte[byteaNew.length];
         byte[] byteb=new byte[bytebNew.length];
-        for (int i = 0; i < byteaNew.length; i++)
+        for (int i = 0; i < byteaNew.length; i++) {
             bytea[i]=byteaNew[byteaNew.length-1-i];
-        for (int i = 0; i < bytebNew.length; i++)
+        }
+        for (int i = 0; i < bytebNew.length; i++) {
             byteb[i]=bytebNew[bytebNew.length-1-i];
+        }
         int i=0;
         StringBuilder newString=new StringBuilder();
         int count=0;
         while(i<bytea.length&&i<byteb.length){
             if (bytea[i]==byteb[i]){
                 newString.append(count);
-                if (bytea[i]==49)
+                if (bytea[i]==49) {
                     count=1;
-                else
+                } else {
                     count=0;
+                }
             }else if (count==1){
                 newString.append(0);
             }else {
@@ -44,25 +47,26 @@ public class AddBinary {
             i++;
         }
         while(i<bytea.length){
-            if (count+48==bytea[i])
+            if (count+48==bytea[i]) {
                 newString.append(0);
-            else {
+            } else {
                 count=0;
                 newString.append(1);
             }
             i++;
         }
         while(i<byteb.length){
-            if (count+48==(int)byteb[i])
+            if (count+48==(int)byteb[i]) {
                 newString.append(0);
-            else {
+            } else {
                 count=0;
                 newString.append(1);
             }
             i++;
         }
-        if (count==1)
+        if (count==1) {
             newString.append(1);
+        }
         return newString.reverse().toString();
     }
     public static String addBinary1(String a,String b){
@@ -126,8 +130,9 @@ public class AddBinary {
             }
             startb--;
         }
-        if (count==1)
+        if (count==1) {
             newString.append(1);
+        }
         return newString.reverse().toString();
     }
 }

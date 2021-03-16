@@ -36,30 +36,36 @@ import java.util.Map;
 public class TopKFrequent {
 
     public int[] topKFrequent1(int[] nums, int k) {
-        if (k <= 0 || nums == null || nums.length == 0)
+        if (k <= 0 || nums == null || nums.length == 0) {
             return null;
+        }
         int[] res = new int[k];
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i : nums)
+        for (int i : nums) {
             map.put(i, map.getOrDefault(i, 0) + 1);
+        }
         List<Integer>[] list = new List[nums.length + 1];
         for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int count = entry.getValue();
-            if (list[count] == null)
+            if (list[count] == null) {
                 list[count] = new ArrayList<>();
+            }
             list[count].add(entry.getKey());
         }
         int index = 0;
         for(int i = list.length - 1; i >= 0; i--) {
-            if (list[i] != null)
+            if (list[i] != null) {
                 for(int nu : list[i]) {
-                    if (index < k)
+                    if (index < k) {
                         res[index++] = nu;
-                    else
+                    } else {
                         break;
+                    }
                 }
-            if (index >= k)
+            }
+            if (index >= k) {
                 break;
+            }
 
         }
         return res;
@@ -67,19 +73,23 @@ public class TopKFrequent {
 
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i : nums)
+        for(int i : nums) {
             map.put(i, map.getOrDefault(i, 0) + 1);
+        }
         List<Integer>[] list = new List[nums.length + 1];
         for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (list[entry.getValue()] == null)
+            if (list[entry.getValue()] == null) {
                 list[entry.getValue()] = new ArrayList<>();
+            }
             list[entry.getValue()].add(entry.getKey());
          }
         int[] res = new int[k];
         int index = 0;
-        for(int l = list.length - 1; l >= 0 && index < k; l--)
-            for(int i = 0; list[l] != null && i < list[l].size() && index < k; i++)
+        for(int l = list.length - 1; l >= 0 && index < k; l--) {
+            for(int i = 0; list[l] != null && i < list[l].size() && index < k; i++) {
                 res[index++] = list[l].get(i);
+            }
+        }
         return res;
     }
 
@@ -88,11 +98,13 @@ public class TopKFrequent {
         int k = 2;
         TopKFrequent topKFrequent = new TopKFrequent();
         int[] res = topKFrequent.topKFrequent(nums, k);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "  ");
+        }
         System.out.println("==============================================");
         int[] res1 = topKFrequent.topKFrequent(nums, k);
-        for(int i : res1)
+        for(int i : res1) {
             System.out.print(i + "  ");
+        }
     }
 }

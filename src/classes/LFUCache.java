@@ -49,8 +49,9 @@ public class LFUCache {
 
     public int get(int key) {
         Node node = map.get(key);
-        if (node == null)
+        if (node == null) {
             return -1;
+        }
         node.count++;
         moveNode(node);
         return node.val;
@@ -76,8 +77,9 @@ public class LFUCache {
 
     private void addNode(Node node) {
         Node next = head;
-        while (next.next != null && node.count >= next.count)
+        while (next.next != null && node.count >= next.count) {
             next = next.next;
+        }
         node.next = next.next;
         next.next = node;
     }

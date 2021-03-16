@@ -45,8 +45,9 @@ public class PositionOfLargeGroups {
         int end=0;
         char[] ch=S.toCharArray();
         while(start<ch.length){
-            while(end<ch.length&&ch[start]==ch[end])
+            while(end<ch.length&&ch[start]==ch[end]) {
                 end++;
+            }
             if (end-start>=3){
                 list.add(Arrays.asList(new Integer[]{start,end-1}));
             }

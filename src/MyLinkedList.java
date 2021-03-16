@@ -62,14 +62,18 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
     public boolean contains(AnyType x) {
         Node<AnyType> p = beginMarker;
         if (x == null) {
-            for (int i = 0; i < size(); i++)
-                if (p.next.data == null)
+            for (int i = 0; i < size(); i++) {
+                if (p.next.data == null) {
                     return true;
+                }
+            }
             return false;
         } else {
-            for (int i = 0; i < size(); i++)
-                if (x.equals(p.next.data))
+            for (int i = 0; i < size(); i++) {
+                if (x.equals(p.next.data)) {
                     return true;
+                }
+            }
             return false;
         }
     }
@@ -80,17 +84,20 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
     private Node<AnyType> getNode(int idx, int lower, int upper) {
         Node<AnyType> p;
-        if (idx < lower || idx > upper)
+        if (idx < lower || idx > upper) {
             throw new IndexOutOfBoundsException();
+        }
         int j = size();
         if (idx < size() / 2) {
             p = beginMarker.next;
-            for (int i = 0; i < idx; i++)
+            for (int i = 0; i < idx; i++) {
                 p = p.next;
+            }
         } else {
             p = endMarker;
-            for (int i = size(); i > idx; i--)
+            for (int i = size(); i > idx; i--) {
                 p = p.prev;
+            }
         }
         return p;
     }
@@ -118,10 +125,12 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
         @Override
         public void remove() {
-            if (expectedModCount != modCount)
+            if (expectedModCount != modCount) {
                 throw new ConcurrentModificationException();
-            if (!okToRemove)
+            }
+            if (!okToRemove) {
                 throw new IllegalStateException();
+            }
             MyLinkedList.this.remove(current.next);
             expectedModCount++;
             okToRemove = false;
@@ -134,10 +143,12 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
         @Override
         public AnyType next() {
-            if (expectedModCount != modCount)
+            if (expectedModCount != modCount) {
                 throw new ConcurrentModificationException();
-            if (!hasNext())
+            }
+            if (!hasNext()) {
                 throw new NoSuchElementException();
+            }
             AnyType newItem = current.data;
             current = current.next;
             okToRemove = true;

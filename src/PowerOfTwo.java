@@ -21,8 +21,9 @@ public class PowerOfTwo {
         System.out.println(isPowerOfTwo(1073741824));
     }
     public static boolean isPowerOfTwo(int n){
-        while(n>1&&n%2==0)
+        while(n>1&&n%2==0) {
             n/=2;
+        }
         return n==1;
     }
 }

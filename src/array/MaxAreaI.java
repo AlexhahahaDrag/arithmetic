@@ -37,14 +37,16 @@ public class MaxAreaI {
             if (height[left] < height[right]) {
                 cur = height[left] * (right - left);
                 max = Math.max(max, cur);
-                while(left < right && height[left] <= left_max)
+                while(left < right && height[left] <= left_max) {
                     left++;
+                }
                 left_max = height[left];
             } else {
                 cur = height[right] * (right - left);
                 max = Math.max(max, cur);
-                while(left < right && height[right] <= right_max)
+                while(left < right && height[right] <= right_max) {
                     right--;
+                }
                 right_max = height[right];
             }
         }

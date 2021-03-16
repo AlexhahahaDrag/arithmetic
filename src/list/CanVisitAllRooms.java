@@ -51,8 +51,9 @@ import java.util.Stack;
 public class CanVisitAllRooms {
 
     public boolean canVisitAllRooms1(List<List<Integer>> rooms) {
-        if (rooms == null || rooms.size() == 0)
+        if (rooms == null || rooms.size() == 0) {
             return true;
+        }
         int roomNum = rooms.size();
         boolean[] map = new boolean[roomNum];
         Stack<Integer> stack = new Stack<>();
@@ -60,8 +61,9 @@ public class CanVisitAllRooms {
         map[0] = true;
         while(!stack.isEmpty() && roomNum != 0) {
             int room = stack.pop();
-            if (map[room])
+            if (map[room]) {
                 continue;
+            }
             map[room] = true;
             stack.addAll(rooms.get(room));
             roomNum--;
@@ -78,9 +80,11 @@ public class CanVisitAllRooms {
     private int dfs(List<List<Integer>> rooms, boolean[] map, int index) {
         int result = 1;
         map[index] = true;
-        for (Integer in : rooms.get(index))
-            if (!map[in])
+        for (Integer in : rooms.get(index)) {
+            if (!map[in]) {
                 result += dfs(rooms, map, in);
+            }
+        }
         return result;
     }
 

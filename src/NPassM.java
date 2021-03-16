@@ -10,8 +10,9 @@ public class NPassM {
     public static void getReturn(int M,int N,int start){
         System.out.println(new Date().getTime());
         List<Integer> list=new LinkedList<>();
-        for( int i = 1; i <= N; i++)
+        for( int i = 1; i <= N; i++) {
             list.add(i);
+        }
         start-=1;
         while(list.size()>0){
             int index=(start+M)%list.size();

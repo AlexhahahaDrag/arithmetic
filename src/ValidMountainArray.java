@@ -39,22 +39,27 @@ public class ValidMountainArray {
     }
     public static boolean validMountainArray(int[] A) {
         int len=A.length;
-        if(len<3) return false;
+        if(len<3) {
+            return false;
+        }
         int positive=0;
         int negetive=0;
         for(int i=0;i<len-1;i++){
             if(A[i]<A[i+1]){
-                if(negetive!=0)
+                if(negetive!=0) {
                     return false;
-                else
+                } else {
                     positive++;
+                }
             }else if(A[i]>A[i+1]){
-                if(positive==0)
+                if(positive==0) {
                     return false;
-                else
+                } else {
                     negetive++;
-            }else
+                }
+            }else {
                 return false;
+            }
         }
         return positive>0&&negetive>0;
     }

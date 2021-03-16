@@ -28,16 +28,21 @@ public class MissingNumber {
 
     public int missingNumber(int[] nums) {
         int[] map = new int[nums.length + 1];
-        for(int i = 0; i < nums.length; i++)
+        for(int i = 0; i < nums.length; i++) {
             map[nums[i]]++;
-        for(int j = 0; j < map.length; j++)
-            if(map[j] == 0)
+        }
+        for(int j = 0; j < map.length; j++) {
+            if(map[j] == 0) {
                 return j;
+            }
+        }
         return nums.length;
     }
 
     public int missingNumber1(int[] nums) {
-        if(nums == null)return 0;
+        if(nums == null) {
+            return 0;
+        }
         int sum=(1+nums.length)*nums.length/2;
         for(int i:nums){
             sum = sum-i;

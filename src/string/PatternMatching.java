@@ -36,16 +36,19 @@ package string;
 public class PatternMatching {
 
     public boolean patternMatching(String pattern, String value) {
-        if (pattern == null || value == null || pattern.length() == 0 || value.length() == 0)
+        if (pattern == null || value == null || pattern.length() == 0 || value.length() == 0) {
             return true;
+        }
         int lp = pattern.length();
         int lv = value.length();
-        if (lp % lv != 0 && lv % lp != 0)
+        if (lp % lv != 0 && lv % lp != 0) {
             return false;
-        if (lp > lv)
+        }
+        if (lp > lv) {
             return match(value, pattern);
-        else
+        } else {
             return match(pattern, value);
+        }
     }
 
     private boolean match(String s1, String s2) {
@@ -62,15 +65,17 @@ public class PatternMatching {
             ch = s1.charAt(index);
             cur = s2.substring(index * pat, (index + 1) * pat);
             if (ch == ch1) {
-               if (!st1.equals(cur))
+               if (!st1.equals(cur)) {
                    return false;
+               }
             } else {
                 if (ch2 == '0') {
                     ch2 = ch;
                     st2 = cur;
                 } else {
-                    if (ch2 == ch && !st2.equals(cur))
+                    if (ch2 == ch && !st2.equals(cur)) {
                         return false;
+                    }
                 }
             }
             index++;

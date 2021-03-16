@@ -69,10 +69,12 @@ public class MaxEvents {
         int min = 0;
         int max = 0;
         for(int i = 0; i < events.length; i++) {
-            if(min > events[i][0])
+            if(min > events[i][0]) {
                 min = events[i][0];
-            if(max < events[i][1])
+            }
+            if(max < events[i][1]) {
                 max = events[i][1];
+            }
         }
         boolean[] map = new boolean[max - min + 1];
         for (int i = 0; i < events.length; i++) {
@@ -84,9 +86,11 @@ public class MaxEvents {
             }
         }
         int sum = 0;
-        for(boolean bo : map)
-            if(bo)
+        for(boolean bo : map) {
+            if(bo) {
                 sum++;
+            }
+        }
         return sum;
     }
 

@@ -42,12 +42,15 @@ public class DuplicateZeros {
     public void duplicateZeros(int[] arr) {
         int[] newArr = new int[arr.length];
         int j = 0;
-        for(int i = 0; i < arr.length; i++,j++)
-            if(arr[j] == 0)
+        for(int i = 0; i < arr.length; i++,j++) {
+            if(arr[j] == 0) {
                 i++;
-            else
+            } else {
                 newArr[i] = arr[j];
-        for (int i = 0; i < newArr.length; i++)
+            }
+        }
+        for (int i = 0; i < newArr.length; i++) {
             arr[i] = newArr[i];
+        }
     }
 }

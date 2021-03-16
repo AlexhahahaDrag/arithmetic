@@ -30,12 +30,15 @@ package array;
 public class FindSpecialInteger {
 
     public int findSpecialInteger(int[] arr) {
-        if(arr.length < 4)
+        if(arr.length < 4) {
             return arr[0];
+        }
         int len = arr.length >> 2;
-        for(int i = 0; i < arr.length; i++)
-            if(arr[i] == arr[i + len])
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == arr[i + len]) {
                 return arr[i];
+            }
+        }
         return -1;
     }
 

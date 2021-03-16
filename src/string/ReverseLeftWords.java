@@ -28,38 +28,45 @@ package string;
 public class ReverseLeftWords {
 
     public String reverseLeftWords1(String s, int n) {
-        if (s == null || s.length() < 1)
+        if (s == null || s.length() < 1) {
             return s;
+        }
         int len = s.length();
         n %= len;
         StringBuilder res = new StringBuilder();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             res.append(s.charAt(i));
+        }
         res.reverse();
-        for (int i = n; i < len; i++)
+        for (int i = n; i < len; i++) {
             sb.append(s.charAt(i));
+        }
         sb.reverse();
         res.append(sb);
         return res.reverse().toString();
     }
 
     public String reverseLeftWords2(String s, int n) {
-        if (s == null || s.length() < 1)
+        if (s == null || s.length() < 1) {
             return s;
+        }
         int len = s.length();
         n %= len;
         StringBuilder res = new StringBuilder();
-        for (int i = n; i < len; i++)
+        for (int i = n; i < len; i++) {
             res.append(s.charAt(i));
-        for (int i = 0; i < n; i++)
+        }
+        for (int i = 0; i < n; i++) {
             res.append(s.charAt(i));
+        }
         return res.toString();
     }
 
     public String reverseLeftWords(String s, int n) {
-        if (s == null || s.length() < 1)
+        if (s == null || s.length() < 1) {
             return s;
+        }
         return s.substring(n) + s.substring(0, n);
     }
 

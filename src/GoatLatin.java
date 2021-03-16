@@ -44,8 +44,9 @@ public class GoatLatin {
         String[] strings=S.split(" ");
         char[] chars={'a','e','i','o','u','A','E','I','O','U'};
         boolean[] charBoolean=new boolean[123];
-        for (int i = 0; i < chars.length; i++)
+        for (int i = 0; i < chars.length; i++) {
             charBoolean[chars[i]-'A']=true;
+        }
         StringBuilder stringBuilder=new StringBuilder();
         StringBuilder stringBuilder1=new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
@@ -53,12 +54,14 @@ public class GoatLatin {
             if (!charBoolean[strings[i].charAt(0)-'A']){
                 stringBuilder.append(strings[i].substring(1));
                 stringBuilder.append(strings[i].charAt(0));
-            }else
+            }else {
                 stringBuilder.append(strings[i]);
+            }
             stringBuilder.append("ma");
             stringBuilder.append(stringBuilder1);
-            if (strings.length-1==i)
+            if (strings.length-1==i) {
                 break;
+            }
             stringBuilder.append(" ");
         }
         return stringBuilder.toString();

@@ -26,14 +26,16 @@ public class FirstUniqChar {
     public char firstUniqChar1(String s) {
         int[] map = new int[256];
         char[] ch = s.toCharArray();
-        for (int i : ch)
+        for (int i : ch) {
             map[i]++;
+        }
         int index = Integer.MAX_VALUE;
         for (int i = 0; i < map.length; i++) {
             if (map[i] == 1) {
                 int in = s.indexOf((char)i);
-                if (in < index)
+                if (in < index) {
                     index = in;
+                }
             }
         }
         return index == Integer.MAX_VALUE ? ' ' : ch[index];
@@ -42,8 +44,9 @@ public class FirstUniqChar {
     public char firstUniqChar(String s) {
         int[] map = new int[256];
         char[] ch = s.toCharArray();
-        for (int i : ch)
+        for (int i : ch) {
             map[i]++;
+        }
         for(int i = 0; i < ch.length; i++){
             if(map[(int)ch[i]] == 1){
                 return ch[i];

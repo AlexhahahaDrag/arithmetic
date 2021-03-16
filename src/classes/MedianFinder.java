@@ -85,15 +85,17 @@ public class MedianFinder {
     public void addNum(int num) {
         lo.offer(num);
         hi.offer(lo.poll());
-        if (hi.size() - lo.size() > 1)
+        if (hi.size() - lo.size() > 1) {
             lo.offer(hi.poll());
+        }
     }
 
     public double findMedian() {
-        if (hi.size() > lo.size())
+        if (hi.size() > lo.size()) {
             return hi.peek();
-        else
+        } else {
             return (double)(hi.peek() + lo.peek()) / 2;
+        }
     }
 
     public static void main(String[] args) {

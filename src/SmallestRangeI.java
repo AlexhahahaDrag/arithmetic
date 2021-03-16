@@ -42,10 +42,11 @@ public class SmallestRangeI {
     public static int smallestRangeI(int[] A, int K) {
         int min = A[0], max = A[0];
         for (int x: A) {
-            if(x<min)
+            if(x<min) {
                 min = x;
-            else if(x>max)
+            } else if(x>max) {
                 max = x;
+            }
         }
         return max-min-2*K < 0 ? 0 : max-min-2*K;
     }

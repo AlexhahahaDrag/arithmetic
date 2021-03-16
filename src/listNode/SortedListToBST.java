@@ -27,8 +27,9 @@ import tree.binartTree.TreeNode;
 public class SortedListToBST {
 
     public TreeNode sortedListToBST(ListNode head) {
-        if (head == null)
+        if (head == null) {
             return null;
+        }
         ListNode slow = head;
         ListNode fast = head;
         ListNode pre = null;
@@ -37,8 +38,9 @@ public class SortedListToBST {
             slow = slow.next;
             fast = fast.next.next;
         }
-        if (slow == null)
+        if (slow == null) {
             return null;
+        }
         TreeNode treeNode = new TreeNode(slow.val);
         if (pre != null) {
             pre.next = null;

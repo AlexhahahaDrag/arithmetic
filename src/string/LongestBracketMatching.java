@@ -23,17 +23,18 @@ public class LongestBracketMatching {
         int start = -1;
         int maxLen = 0;
         while (index < len) {
-            if ('(' == bracketes.charAt(index))
+            if ('(' == bracketes.charAt(index)) {
                 stack.add(index);
-            else {
-                if (stack.empty())
+            } else {
+                if (stack.empty()) {
                     start = index;
-                else {
+                } else {
                     stack.pop();
-                    if (stack.empty())
+                    if (stack.empty()) {
                         maxLen = maxLen > index - start ? maxLen : index - start;
-                    else
+                    } else {
                         maxLen = maxLen > index - stack.peek() ? maxLen : index - stack.peek();
+                    }
                 }
             }
             index++;
@@ -48,13 +49,13 @@ public class LongestBracketMatching {
         int maxLen = 0;
         int deep = 0;
         while (index < len) {
-            if ('(' == bracketes.charAt(index))
+            if ('(' == bracketes.charAt(index)) {
                 deep++;
-            else {
+            } else {
                 deep--;
-                if (deep == 0)
+                if (deep == 0) {
                     maxLen = maxLen > index - start ? maxLen : index - start;
-                else if (deep < 0){
+                } else if (deep < 0){
                     start = index;
                     deep = 0;
                 }
@@ -63,13 +64,13 @@ public class LongestBracketMatching {
         }
         start = len - 1;
         while (start >= 0) {
-            if (')' == bracketes.charAt(start))
+            if (')' == bracketes.charAt(start)) {
                 deep++;
-            else {
+            } else {
                 deep--;
-                if (deep == 0)
+                if (deep == 0) {
                     maxLen = maxLen > len - start ? maxLen : len - 1 - start;
-                else if (deep < 0) {
+                } else if (deep < 0) {
                     deep = 0;
                     len = start;
                 }

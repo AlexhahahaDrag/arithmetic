@@ -25,17 +25,20 @@ package tree.binartTree;
 public class HasPathSum {
 
     public boolean hasPathSum(TreeNode root, int sum) {
-        if(root == null)
+        if(root == null) {
             return false;
+        }
         return dfs(root, sum, 0);
     }
 
     private boolean dfs(TreeNode root, int sum, int cur) {
-        if(root == null)
+        if(root == null) {
             return false;
+        }
         cur += root.val;
-        if (root.left == null && root.right == null)
+        if (root.left == null && root.right == null) {
             return sum == cur;
+        }
         return dfs(root.left, sum, cur) || dfs(root.right, sum, cur);
     }
 

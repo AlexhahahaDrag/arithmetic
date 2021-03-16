@@ -43,13 +43,15 @@ public class SequentialDigits {
         List<Integer> list = new ArrayList<>();
         while(lowDi <= highDi && num <= high) {
             num = getNum(lowSt, lowDi);
-            if (num <= high && num >= low)
+            if (num <= high && num >= low) {
                 list.add(num);
+            }
             if (lowSt + lowDi >= 10) {
                 lowSt = 1;
                 lowDi++;
-            } else
+            } else {
                 lowSt++;
+            }
         }
         return list;
     }
@@ -65,8 +67,9 @@ public class SequentialDigits {
 
     private int getNum(int start, int digit) {
         int num = start;
-        while(digit-- > 1)
+        while(digit-- > 1) {
             num = (num * 10) + ++start;
+        }
         return num;
     }
 

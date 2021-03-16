@@ -37,8 +37,9 @@ public class FindCommonCharacters {
     public static List<String> commonChars(String[] A) {
         List<Character> list=null;
         int[] index=new int[26];
-        for(char a:A[0].toCharArray())
+        for(char a:A[0].toCharArray()) {
             index[a-'a']++;
+        }
         for(int i=1;i<A.length;i++){
             list=new LinkedList<>();
             for(char a:A[i].toCharArray()){
@@ -53,8 +54,9 @@ public class FindCommonCharacters {
             }
         }
         List<String> list2=new ArrayList<>();
-        for (char c:list)
+        for (char c:list) {
             list2.add(new String(new char[]{c}));
+        }
         return list2;
     }
 }

@@ -25,15 +25,17 @@ public class FirstBadVersion {
         while(start<end){
             int mid=(int)(start+end>>1);
             if (isBadVersion(mid)){
-                if (isBadVersion(mid-1))
+                if (isBadVersion(mid-1)) {
                     end=mid-1;
-                else
+                } else {
                     return mid;
+                }
             }else{
-                if (isBadVersion(mid+1))
+                if (isBadVersion(mid+1)) {
                     return mid+1;
-                else
+                } else {
                     start=mid+1;
+                }
             }
         }
         return -1;

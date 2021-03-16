@@ -37,14 +37,16 @@ public class ConstructMaximumBinaryTree {
 
     public TreeNode constructMaximumBinaryTree1(int[] nums) {
         TreeNode root = null;
-        for(int i : nums)
+        for(int i : nums) {
             root = maxTree1(root, i);
+        }
         return root;
     }
 
     private TreeNode maxTree1(TreeNode root, int val) {
-        if (root == null)
+        if (root == null) {
             return new TreeNode(val);
+        }
         if (root.val < val) {
             TreeNode ro = new TreeNode(val);
             ro.left = root;
@@ -60,8 +62,9 @@ public class ConstructMaximumBinaryTree {
     }
 
     private TreeNode maxTree(int nums[], int l, int r) {
-        if (l > r)
+        if (l > r) {
             return null;
+        }
         int bounds = getMax(nums, l, r);
         TreeNode root = new TreeNode(nums[bounds]);
         root.left = maxTree(nums,l, bounds - 1);
@@ -71,9 +74,11 @@ public class ConstructMaximumBinaryTree {
 
     private int getMax(int[] nums, int l, int r) {
         int max = l;
-        for (int i = l; i <= r; i++)
-            if (nums[max] < nums[i])
+        for (int i = l; i <= r; i++) {
+            if (nums[max] < nums[i]) {
                 max = i;
+            }
+        }
         return max;
     }
 

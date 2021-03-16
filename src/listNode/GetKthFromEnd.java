@@ -21,11 +21,13 @@ import java.util.List;
 public class GetKthFromEnd {
 
     public ListNode getKthFromEnd(ListNode head, int k) {
-        if (head == null)
+        if (head == null) {
             return null;
+        }
         ListNode kl = head;
-        while(k-- > 0)
+        while(k-- > 0) {
             kl = kl.next;
+        }
         while(kl != null) {
             head = head.next;
             kl = kl.next;

@@ -50,18 +50,21 @@ package array;
 public class HasGroupsSizeX {
 
     public boolean hasGroupsSizeX(int[] deck) {
-        if(deck == null || deck.length < 2)
+        if(deck == null || deck.length < 2) {
             return false;
+        }
         int[] map = new int[10001];
-        for(int i : deck)
+        for(int i : deck) {
             map[i]++;
+        }
         int cur = 0;
         for(int j : map) {
-            if(j == 0)
+            if(j == 0) {
                 continue;
-            if (cur == 0)
+            }
+            if (cur == 0) {
                 cur = j;
-            else {
+            } else {
                 cur = gcd(cur, j);
             }
         }

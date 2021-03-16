@@ -35,8 +35,9 @@ public class CorpFlightBookings {
     public int[] corpFlightBookings1(int[][] bookings, int n) {
         int[] map = new int[n];
         for(int[] booking : bookings) {
-            for(int i = booking[0] - 1; i < booking[1]; i++)
+            for(int i = booking[0] - 1; i < booking[1]; i++) {
                 map[i] += booking[2];
+            }
         }
         return map;
     }
@@ -45,11 +46,13 @@ public class CorpFlightBookings {
         int[] map = new int[n];
         for(int[] booking : bookings) {
             map[booking[0] - 1] += booking[2];
-            if (booking[1] < n)
+            if (booking[1] < n) {
                 map[booking[1]] -= booking[2];
+            }
         }
-        for(int i = 1; i < map.length; i++)
+        for(int i = 1; i < map.length; i++) {
             map[i] = map[i - 1] + map[i];
+        }
         return map;
     }
 
@@ -57,7 +60,8 @@ public class CorpFlightBookings {
         CorpFlightBookings corpFlightBookings = new CorpFlightBookings();
         int[][] bookings = {{1, 2, 10}, {2, 3, 20}, {2, 5, 25}};
         int[] result = corpFlightBookings.corpFlightBookings(bookings, 5);
-        for (int num : result)
+        for (int num : result) {
             System.out.print(num + "  ");
+        }
     }
 }

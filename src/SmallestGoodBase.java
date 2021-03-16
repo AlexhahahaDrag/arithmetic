@@ -46,7 +46,9 @@ public class SmallestGoodBase {
         for (int p = (int)(Math.log(num + 1) / Math.log(2)); p >= 1; p--) { //p为最大长度，因为最小进制为2，最长就是/log（2）
             if ((1 << p) < num) { //num如果小就不可能是这个长度，跳过；因为二进制这是最小的了
                 long k = helper(num, p);
-                if (k != -1) return String.valueOf(k);
+                if (k != -1) {
+                    return String.valueOf(k);
+                }
             }
         }
         return String.valueOf(num - 1); //如果都没有就是直接-1的
@@ -60,9 +62,13 @@ public class SmallestGoodBase {
                 sum += cur;
                 cur *= mid;
             }
-            if (sum == num) return mid;
-            else if (sum > num) r = mid;
-            else l = mid + 1;
+            if (sum == num) {
+                return mid;
+            } else if (sum > num) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
         }
         return -1;
     }

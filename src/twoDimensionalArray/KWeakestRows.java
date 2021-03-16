@@ -11,15 +11,17 @@ public class KWeakestRows {
                 if(!map[j] && mat[j][i] == 0) {
                     map[j] = true;
                     result[num++] = j;
-                    if(num == k)
+                    if(num == k) {
                         return result;
+                    }
                 }
             }
         }
         int start = 0;
         while(num <= k){
-            if(!map[start])
+            if(!map[start]) {
                 result[num++] = start;
+            }
             start++;
         }
         return result;
@@ -29,7 +31,8 @@ public class KWeakestRows {
         int[][] mat = {{1,1,1,1,1}, {1,1,1,1,1}, {1,1,1,1,1}};
         KWeakestRows kWeakestRows = new KWeakestRows();
         int[] result = kWeakestRows.kWeakestRows(mat, 1);
-        for (int i : result)
+        for (int i : result) {
             System.out.print(i +" ");
+        }
     }
 }

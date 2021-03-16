@@ -26,9 +26,11 @@ package math;
 public class TotalHammingDistance {
     public int totalHammingDistance1(int[] nums) {
         int sum = 0;
-        for(int i = 0; i <nums.length - 1; i++)
-            for(int j = i + 1; j < nums.length; j++)
+        for(int i = 0; i <nums.length - 1; i++) {
+            for(int j = i + 1; j < nums.length; j++) {
                 sum += hamming(nums[i], nums[j]);
+            }
+        }
         return sum;
     }
 
@@ -36,8 +38,9 @@ public class TotalHammingDistance {
         int num = x ^ y;
         int count = 0;
         while(num > 0) {
-            if((num & 1) == 1)
+            if((num & 1) == 1) {
                 count++;
+            }
             num >>= 1;
         }
         return count;
@@ -55,8 +58,9 @@ public class TotalHammingDistance {
             }
         }
         int sum = 0;
-        for(int i : map)
+        for(int i : map) {
             sum += i * (len - i);
+        }
         return sum;
     }
 

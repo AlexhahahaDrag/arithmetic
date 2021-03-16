@@ -31,9 +31,11 @@ public class CountPreArr {
             isChange = false;
             for (int i = 0; i < pre.length; i++) {
                 num = 0;
-                for (int j = 0; j < pre.length; j++)
-                    if (results[j] == pre[i])
+                for (int j = 0; j < pre.length; j++) {
+                    if (results[j] == pre[i]) {
                         num++;
+                    }
+                }
                 if (num != results[i]) {
                     isChange = true;
                     results[i] = num;

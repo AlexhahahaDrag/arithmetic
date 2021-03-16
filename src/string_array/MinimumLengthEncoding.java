@@ -42,8 +42,9 @@ public class MinimumLengthEncoding {
             }
         }
         int num = 0;
-        for (String s : set)
+        for (String s : set) {
             num += s.length();
+        }
         return num;
     }
 

@@ -48,16 +48,18 @@ public class RotateList {
         }
         ListNode result = end.next;
         ListNode start = result;
-        while(k-- > 1)
+        while(k-- > 1) {
             result = result.next;
+        }
         result.next = head;
         end.next = null;
         return start;
     }
     public ListNode findendposition(ListNode l,int n) {
         int i;
-        for(i=0;i<n-1;i++)
+        for(i=0;i<n-1;i++) {
             l=l.next;
+        }
         return l;
     }
 
@@ -72,8 +74,9 @@ public class RotateList {
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if(head==null)
+        if(head==null) {
             return head;
+        }
         RotateList s=new RotateList();
         ListNode start;
         start=head;

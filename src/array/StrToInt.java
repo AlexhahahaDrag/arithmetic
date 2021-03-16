@@ -59,25 +59,30 @@ public class StrToInt {
         int index = 0;
         char[] ch = str.toCharArray();
         int len = ch.length;
-        while(index < len && ch[index] == ' ')
+        while(index < len && ch[index] == ' ') {
             index++;
-        if (index == len)
+        }
+        if (index == len) {
             return 0;
+        }
         boolean negative = false;
         if (ch[index] == '-') {
             index++;
             negative = true;
-        }else if (ch[index] == '+')
+        }else if (ch[index] == '+') {
             index++;
+        }
         while(index < len && ch[index] >= '0' && ch[index] <= '9') {
             if (negative) {
                 res = res * 10 - (ch[index] - '0');
-                if (res < Integer.MIN_VALUE)
+                if (res < Integer.MIN_VALUE) {
                     return Integer.MIN_VALUE;
+                }
             }else {
                 res = res * 10 + ch[index] - '0';
-                if (res > Integer.MAX_VALUE)
+                if (res > Integer.MAX_VALUE) {
                     return Integer.MAX_VALUE;
+                }
             }
             index++;
         }
@@ -85,8 +90,9 @@ public class StrToInt {
     }
 
     public int strToInt(String str) {
-        if(str == null || str.length() == 0)
+        if(str == null || str.length() == 0) {
             return 0;
+        }
         long res = 0;
         boolean negative = false;
         char[] chars = str.toCharArray();
@@ -94,9 +100,9 @@ public class StrToInt {
         for (; i < chars.length && chars[i] == ' '; i++) {
         }
         if (i < chars.length) {
-            if (chars[i] == '+')
+            if (chars[i] == '+') {
                 i++;
-            else if (chars[i] == '-') {
+            } else if (chars[i] == '-') {
                 i++;
                 negative = true;
             }
@@ -104,12 +110,14 @@ public class StrToInt {
         for (; i < chars.length; i++) {
             if (chars[i] >= '0' && chars[i] <= '9') {
                 res = res * 10 +  chars[i] - '0';
-                if (negative && res >= (long)Math.pow(2, 31))
+                if (negative && res >= (long)Math.pow(2, 31)) {
                     return Integer.MIN_VALUE;
-                else if (!negative && res >= (long)Math.pow(2, 31) - 1)
+                } else if (!negative && res >= (long)Math.pow(2, 31) - 1) {
                     return Integer.MAX_VALUE;
-            } else
+                }
+            } else {
                 break;
+            }
         }
         return negative ? (int)-res : (int)res;
     }

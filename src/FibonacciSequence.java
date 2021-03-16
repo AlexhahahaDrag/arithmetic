@@ -15,8 +15,9 @@ public class FibonacciSequence {
         System.out.println(getFouth(20190324));
     }
     public static int getFouth(int num){
-        if(num<=3)
+        if(num<=3) {
             return 1;
+        }
         num%=62000;
         int a=1;
         int b=1;

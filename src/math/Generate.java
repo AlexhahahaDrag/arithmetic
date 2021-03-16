@@ -32,15 +32,16 @@ public class Generate {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
         int start = 1;
-        while(start <= numRows)
+        while(start <= numRows) {
             getGenerate(list, start++);
+        }
         return list;
     }
     private void getGenerate(List<List<Integer>> result, int n) {
         List<Integer> list = new ArrayList<>();
-        if(n == 1)
+        if(n == 1) {
             list.add(1);
-        else if (n == 2) {
+        } else if (n == 2) {
             list.add(1);
             list.add(1);
         }else {
@@ -61,7 +62,8 @@ public class Generate {
         Generate generate = new Generate();
         List<List<Integer>> list = generate.generate(10);
         int index = 1;
-        for (List<Integer> l : list)
+        for (List<Integer> l : list) {
             System.out.println(index++ + ":" + l);
+        }
     }
 }

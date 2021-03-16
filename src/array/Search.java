@@ -27,12 +27,14 @@ package array;
 public class Search {
 
     public int search(int[] nums, int target) {
-        if (nums == null || nums.length < 1)
+        if (nums == null || nums.length < 1) {
             return 0;
+        }
         int num = 0;
         int index = find(nums, target, 0, nums.length - 1);
-        if (index == -1)
+        if (index == -1) {
             return num;
+        }
         return findMore(nums, target, index, num);
     }
 
@@ -53,12 +55,13 @@ public class Search {
     private int find(int[] nums, int target, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start >> 1);
-            if (nums[mid] == target)
+            if (nums[mid] == target) {
                 return mid;
-            else if (nums[mid] > target)
+            } else if (nums[mid] > target) {
                 end = mid - 1;
-            else
+            } else {
                 start = mid + 1;
+            }
         }
         return -1;
     }

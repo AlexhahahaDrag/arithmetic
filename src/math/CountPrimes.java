@@ -38,8 +38,9 @@ public class CountPrimes {
             if (map[i] == 0) {
                 ans++;
                 if ((long)i * i < n) {
-                    for (int j = i * i; j < n; j += i)
+                    for (int j = i * i; j < n; j += i) {
                         map[j] = 1;
+                    }
                 }
             }
         }

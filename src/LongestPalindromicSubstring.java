@@ -27,34 +27,41 @@ public class LongestPalindromicSubstring {
         Arrays.fill(ch, '#');
         ch[0] = '*';
         int add;
-        for ( int i = 0; i < len; i++)
+        for ( int i = 0; i < len; i++) {
             ch[i + 1 << 1] = s.charAt(i);
+        }
         int index = 0;
         for(int j = index + 1; j < ch.length; j++) {
             if (j > index + map[index]) {
                 add = 0;
-                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add])
+                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add]) {
                     add++;
+                }
                 map[j] = add;
                 index = j;
-            } else if (j + map[(index << 1) - j] < index + map[index])
+            } else if (j + map[(index << 1) - j] < index + map[index]) {
                 map[j] = map[(index << 1) - j];
-            else {
+            } else {
                 add = index - j + map[index];
-                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add])
+                while(j - add >=0 && j + add < ch.length && ch[j - add] == ch[j + add]) {
                     add++;
+                }
                 map[j] = add;
                 index = j;
             }
         }
         int max = 0;
-        for(int k = 0; k < ch.length; k++)
-            if(map[max] < map[k])
+        for(int k = 0; k < ch.length; k++) {
+            if(map[max] < map[k]) {
                 max = k;
+            }
+        }
         StringBuilder sb = new StringBuilder();
-        for (int l = max - map[max] + 1; l <= max + map[max] - 1; l ++)
-            if (ch[l] != '#')
+        for (int l = max - map[max] + 1; l <= max + map[max] - 1; l ++) {
+            if (ch[l] != '#') {
                 sb.append(ch[l]);
+            }
+        }
         return sb.toString();
     }
 
@@ -85,7 +92,9 @@ public class LongestPalindromicSubstring {
 
     public static String longestPalindrome2(String s) {
         // corner case
-        if (s == null || s.length() == 0) return s;
+        if (s == null || s.length() == 0) {
+            return s;
+        }
         char[] array = s.toCharArray();
         int i = 0;
         while(i < array.length) {

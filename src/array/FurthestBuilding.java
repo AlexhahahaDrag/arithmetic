@@ -67,10 +67,12 @@ public class FurthestBuilding {
             maxl = Math.max(maxl, i);
             return;
         }
-        if (!flag && b >= h[i + 1] - h[i])
+        if (!flag && b >= h[i + 1] - h[i]) {
             dfs(h, b - (h[i + 1] - h[i]), l, i + 1);
-        if (!flag && l > 0)
+        }
+        if (!flag && l > 0) {
             dfs(h, b, l - 1, i + 1);
+        }
     }
 
     public static void main(String[] args) {

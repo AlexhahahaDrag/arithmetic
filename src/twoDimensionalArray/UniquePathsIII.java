@@ -49,8 +49,9 @@ public class UniquePathsIII {
 
     int num = 0;
     public int uniquePathsIII(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0)
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
+        }
         int is = 0;
         int js = 0;
         int row = grid.length;
@@ -62,8 +63,9 @@ public class UniquePathsIII {
                 if (grid[k][l] == 1) {
                     is = k;
                     js = l;
-                }else if (grid[k][l] == -1)
+                }else if (grid[k][l] == -1) {
                     obs++;
+                }
             }
         }
         dfs(is, js, grid, row * column - obs - 1, map);
@@ -72,11 +74,13 @@ public class UniquePathsIII {
 
 
     private void dfs(int i, int j, int[][] grid, int obs, boolean[][] map) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == -1 || map[i][j])
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == -1 || map[i][j]) {
             return;
+        }
         if (grid[i][j] == 2) {
-            if (obs == 0)
+            if (obs == 0) {
                 num++;
+            }
             return;
         }
         map[i][j] = true;

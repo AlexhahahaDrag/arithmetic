@@ -47,18 +47,20 @@ public class CountSubstrings {
             mid = find(map, mid, i);
         }
         int count = 0;
-        for(int i = 0; i < map.length; i ++)
+        for(int i = 0; i < map.length; i ++) {
             count += res[i] >> 1;
+        }
         return count;
     }
 
     private int find(char[] map, int mid, int i) {
-        if (res[mid] != 1 && res[mid] + mid > res[mid * 2 - i] + i)
+        if (res[mid] != 1 && res[mid] + mid > res[mid * 2 - i] + i) {
             res[i] = res[mid * 2 - i];
-        else {
+        } else {
             int l = 1;
-            while(i - l >= 0 && i + l < map.length && map[i - l] == map[i + l])
+            while(i - l >= 0 && i + l < map.length && map[i - l] == map[i + l]) {
                 l++;
+            }
             res[i] = l;
             mid = i;
         }

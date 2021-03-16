@@ -54,11 +54,13 @@ public class NumSub {
         int len = s.length();
         int one = 0;
         int res = 0;
-        while(++index < len)
-            if (s.charAt(index) == '1')
-               res  = (res + ++one) % ((int)Math.pow(10, 9) + 7);
-            else
+        while(++index < len) {
+            if (s.charAt(index) == '1') {
+                res = (res + ++one) % ((int) Math.pow(10, 9) + 7);
+            } else {
                 one = 0;
+            }
+        }
         return res;
     }
 

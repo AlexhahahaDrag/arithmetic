@@ -27,16 +27,19 @@ public class CountSmaller {
 
     public List<Integer> countSmaller(int[] nums) {
         List<Integer> res = new ArrayList<>();
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return res;
+        }
         FieldTree fieldTree = new FieldTree(nums[nums.length - 1]);
         fieldTree.dup = 1;
         List<Integer> list = new ArrayList<>();
         nums[nums.length - 1] = 0;
-        for(int i = nums.length - 2; i >= 0; i--)
+        for(int i = nums.length - 2; i >= 0; i--) {
             nums[i] = build(fieldTree, nums[i]);
-        for(int i : nums)
+        }
+        for(int i : nums) {
             list.add(i);
+        }
         return list;
     }
 
@@ -45,13 +48,15 @@ public class CountSmaller {
         while(value != root.value) {
             if (root.value > value) {
                 root.count++;
-                if (root.left == null)
+                if (root.left == null) {
                     root.left = new FieldTree(value);
+                }
                 root = root.left;
             } else {
                 ret += root.count + root.dup;
-                if (root.right == null)
+                if (root.right == null) {
                     root.right = new FieldTree(value);
+                }
                 root = root.right;
             }
         }

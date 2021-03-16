@@ -44,15 +44,17 @@ public class MaxProduct152 {
         for(int i = 0; i < nums.length; i++) {
             sum *= nums[i];
             res = Math.max(res, sum);
-            if (sum == 0)
+            if (sum == 0) {
                 sum = 1;
+            }
         }
         sum = 1;
         for(int i = nums.length - 1; i >= 0; i--) {
             sum *= nums[i];
             res = Math.max(res, sum);
-            if (sum == 0)
+            if (sum == 0) {
                 sum = 1;
+            }
         }
         return res;
     }

@@ -45,18 +45,22 @@ import listNode.ListNode;
 public class IsSubPath {
 
     public boolean isSubPath(ListNode head, TreeNode root) {
-        if(head == null)
+        if(head == null) {
             return true;
-        if(root == null)
+        }
+        if(root == null) {
             return false;
+        }
         return find(head, root) || isSubPath(head, root.left) || isSubPath(head, root.right);
     }
 
     private boolean find(ListNode head, TreeNode root) {
-        if(head == null)
+        if(head == null) {
             return true;
-        if(root == null)
+        }
+        if(root == null) {
             return false;
+        }
         return head.val == root.val && (find(head.next, root.left) || find(head.next, root.right));
     }
 }

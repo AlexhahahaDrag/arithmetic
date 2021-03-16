@@ -24,8 +24,9 @@ package math;
 public class IntegerBreak {
 
     public int integerBreak(int n) {
-        if (n <= 3)
+        if (n <= 3) {
             return n - 1;
+        }
         int mod = n % 3;
         int num = n / 3;
         switch (mod) {

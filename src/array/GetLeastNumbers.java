@@ -30,8 +30,9 @@ import java.util.Arrays;
 public class GetLeastNumbers {
 
     public int[] getLeastNumbers(int[] arr, int k) {
-        if (arr.length <= k)
+        if (arr.length <= k) {
             return arr;
+        }
         Arrays.sort(arr);
         return Arrays.copyOfRange(arr, 0, k);
     }
@@ -40,7 +41,8 @@ public class GetLeastNumbers {
         int[] arr = {0,0,0,2,0,5};
         GetLeastNumbers getLeastNumbers = new GetLeastNumbers();
         int[] res = getLeastNumbers.getLeastNumbers(arr, 0);
-        for (int i : res)
+        for (int i : res) {
             System.out.print(i + "  ");
+        }
     }
 }

@@ -43,12 +43,14 @@ public class CountVowelStrings {
         map[0] = 1;
         int index = 0;
         while(++index <= n) {
-            for (int i = 1; i < 5; i++)
+            for (int i = 1; i < 5; i++) {
                 map[i] += map[i - 1];
+            }
         }
         int res  = 0;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) {
             res += map[i];
+        }
         return res;
     }
 

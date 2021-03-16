@@ -24,8 +24,9 @@ public class SingleNumberIII {
         SingleNumberIII singleNumberII = new SingleNumberIII();
         int[] arr = {1,2,1,3,2,5};
         int[] result = singleNumberII.singleNumber(arr);
-        for (int i : result)
+        for (int i : result) {
             System.out.println(i);
+        }
     }
     public int[] singleNumber(int[] nums) {
         int ones = 0;//出现一次
@@ -36,8 +37,9 @@ public class SingleNumberIII {
         }
         for (int num : nums) {
             int a = ones ^ num;
-            if ( a * a == (twos ^ (num * num)))
+            if ( a * a == (twos ^ (num * num))) {
                 return new int[]{a, num};
+            }
         }
         return null;
     }

@@ -40,8 +40,9 @@ public class ExpressiveWords {
         char[] s = S.toCharArray();
         int num = 0;
         for (String word : words) {
-            if (judge(s, word.toCharArray()))
+            if (judge(s, word.toCharArray())) {
                 num++;
+            }
         }
         return num;
     }
@@ -65,10 +66,12 @@ public class ExpressiveWords {
                     stnum++;
                     ist++;
                 }
-                if (snum < 3 && snum != stnum)
+                if (snum < 3 && snum != stnum) {
                     return false;
-            } else
+                }
+            } else {
                 return false;
+            }
         }
         return is == ls && ist == lst;
     }

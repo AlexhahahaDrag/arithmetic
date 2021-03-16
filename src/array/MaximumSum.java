@@ -40,17 +40,20 @@ package array;
 public class MaximumSum {
 
     public int maximumSum(int[] arr) {
-        if (arr.length == 1)
+        if (arr.length == 1) {
             return arr[0];
+        }
         int len = arr.length;
         int[] f = new int[len];
         int[] g = new int[len];
         f[0] = arr[0];
         g[0] = arr[0];
-        for(int i = 1; i < len; i++)
+        for(int i = 1; i < len; i++) {
             f[i] = Math.max(f[i - 1] + arr[i], arr[i]);
-        for(int i = 1; i < len; i++)
+        }
+        for(int i = 1; i < len; i++) {
             g[i] = Math.max(g[i - 1] + arr[i], f[i - 1]);
+        }
         int res = arr[0];
         for (int i = 0; i < len; i++) {
             res = Math.max(res, f[i]);

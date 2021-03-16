@@ -30,8 +30,9 @@ public class IsUnique {
     public boolean isUnique(String astr) {
         int len = astr.length();
         for(int i = 0; i < len; i++) {
-            if(astr.indexOf(astr.charAt(i), i + 1) != -1)
+            if(astr.indexOf(astr.charAt(i), i + 1) != -1) {
                 return false;
+            }
         }
         return true;
     }

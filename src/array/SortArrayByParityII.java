@@ -33,9 +33,9 @@ public class SortArrayByParityII {
         int odd = 1;
         int even = 0;
         while(even < A.length) {
-            if ((A[even] & 1) == 0)
+            if ((A[even] & 1) == 0) {
                 even += 2;
-            else {
+            } else {
                 swap(A, even, odd);
                 odd += 2;
             }

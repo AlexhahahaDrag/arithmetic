@@ -26,8 +26,9 @@
  */
 public class ConvertToTitle {
     public String convertToTile2(int n){
-        if (n<=0)
+        if (n<=0) {
             return "";
+        }
         char[] arr=new char[26];
         char a='A';
         for (int i = 0; i < 26; i++) {
@@ -38,8 +39,9 @@ public class ConvertToTitle {
             if (n%26==0) {
                 title = 'Z' + title;
                 n -= 1;
-            }else
+            }else {
                 title=arr[n%26-1]+title;
+            }
             n/=26;
         }
         return title;

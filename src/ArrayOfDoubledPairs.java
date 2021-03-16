@@ -41,16 +41,21 @@ public class ArrayOfDoubledPairs {
     }
     public static boolean canReorderDoubled(int[] A) {
         Map<Integer,Integer> map=new HashMap<>();
-        for (int i = 0; i < A.length; i++)
+        for (int i = 0; i < A.length; i++) {
             map.put(A[i],map.getOrDefault(A[i],0)+1);
+        }
         Integer[] B=new Integer[A.length];
-        for (int i = 0; i < A.length; i++)
+        for (int i = 0; i < A.length; i++) {
             B[i]=A[i];
+        }
         Arrays.sort(B,Comparator.comparingInt(Math::abs));
         for (int x: B) {
-            if (map.get(x)==0)continue;
-            if (map.getOrDefault(x*2,0)<=0)
+            if (map.get(x)==0) {
+                continue;
+            }
+            if (map.getOrDefault(x*2,0)<=0) {
                 return false;
+            }
             map.put(x,map.get(x)-1);
             map.put(x*2,map.get(x*2)-1);
         }

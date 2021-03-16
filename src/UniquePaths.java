@@ -33,35 +33,42 @@ public class UniquePaths {
         System.out.println(uniquePaths(7,3));
     }
     public static int uniquePaths(int m, int n) {
-        if(m==1&&n==1)
+        if(m==1&&n==1) {
             return 1;
-        else if((m==1&&n==2)||(m==2&&n==1))
+        } else if((m==1&&n==2)||(m==2&&n==1)) {
             return 1;
-        else if(n==1)
+        } else if(n==1) {
             return uniquePaths(m-1,n);
-        else if(m==1)
+        } else if(m==1) {
             return uniquePaths(m,n-1);
-        else
+        } else {
             return uniquePaths(m-1,n)+uniquePaths(m,n-1);
+        }
     }
     public static int uniquePaths2(int m, int n) {
         Integer[][] map = new Integer[m][n];
-        for(int i = 0; i<m;i++)
+        for(int i = 0; i<m;i++) {
             map[i][0] = 1;
-        for(int j= 1;j<n;j++)
+        }
+        for(int j= 1;j<n;j++) {
             map[0][j]=1;
-        for(int i = 1;i<m;i++)
-            for(int j = 1;j<n;j++)
-                map[i][j] = map[i-1][j]+map[i][j-1];
+        }
+        for(int i = 1;i<m;i++) {
+            for(int j = 1;j<n;j++) {
+                map[i][j] = map[i - 1][j] + map[i][j - 1];
+            }
+        }
         return map[m-1][n-1];
     }
 
     public int uniquePaths1(int m, int n) {
         int[] dp = new int[n];
         dp[0] = 1;
-        while(m-- > 0)
-            for(int i = 1; i < n; i++)
-                dp[i] +=  dp[i - 1];
+        while(m-- > 0) {
+            for(int i = 1; i < n; i++) {
+                dp[i] += dp[i - 1];
+            }
+        }
         return dp[n - 1];
     }
 }

@@ -57,9 +57,9 @@ public class MaxDepth {
         int index = -1;
         int len = s.length();
         while(++index < len) {
-            if (s.charAt(index) == '(')
+            if (s.charAt(index) == '(') {
                 left++;
-            else if (s.charAt(index) == ')') {
+            } else if (s.charAt(index) == ')') {
                 max = max < left ? left : max;
                 left--;
             }

@@ -50,15 +50,17 @@ public class CheckIfExist {
     public boolean checkIfExist(int[] arr) {
         Arrays.sort(arr);
         int[] arrBig = new int[arr.length];
-        for(int i = 0; i < arr.length; i++)
+        for(int i = 0; i < arr.length; i++) {
             arrBig[i] = arr[i] << 1;
+        }
         for(int j = 0; j < arrBig.length; j++) {
             for (int k = 0; k < arr.length; k++) {
                 if (k != j) {
-                    if (arrBig[j] == arr[k])
+                    if (arrBig[j] == arr[k]) {
                         return true;
-                    else if (arrBig[j] < arr[k])
+                    } else if (arrBig[j] < arr[k]) {
                         break;
+                    }
                 }
             }
         }

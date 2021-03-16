@@ -26,14 +26,16 @@ package tree.binartTree;
 public class SortedArrayToBST {
 
     public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return null;
+        }
         return toBst(nums, 0, nums.length - 1);
     }
 
     private TreeNode toBst(int[] nums, int start, int end) {
-        if (start > end)
+        if (start > end) {
             return null;
+        }
         //右子树多
         //int mid = start + (end - start + 1 >> 1);
         //左子树多

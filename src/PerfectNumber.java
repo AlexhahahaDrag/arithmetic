@@ -17,20 +17,26 @@ public class PerfectNumber {
         System.out.println(checkPerfectNumber(28));
     }
     public static boolean checkPerfectNumber1(int num) {
-        if (num==1)
+        if (num==1) {
             return false;
+        }
         int sum=1;
-        for(int i=2;i<=(int)Math.sqrt(num);i++)
-            for(int j=2;j*i<=num;j++)
-                if(i*j==num)
-                    sum+=i+j;
+        for(int i=2;i<=(int)Math.sqrt(num);i++) {
+            for(int j=2;j*i<=num;j++) {
+                if (i * j == num) {
+                    sum += i + j;
+                }
+            }
+        }
         return sum==num;
     }
     public static boolean checkPerfectNumber2(int num) {
         int sum=1;
-        for (int i = 2; i * i <= num; i++)
-            if (num % i == 0)
-                sum += i+(num/i==i?0:num/i);
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                sum += i + (num / i == i ? 0 : num / i);
+            }
+        }
         return sum!=1&& sum == num;
     }
     public static int pn(int p) {
@@ -38,9 +44,11 @@ public class PerfectNumber {
     }
     public static boolean checkPerfectNumber(int num) {
         int[] primes=new int[]{2,3,5,7,13,17,19,31};
-        for (int prime: primes)
-            if (pn(prime) == num)
+        for (int prime: primes) {
+            if (pn(prime) == num) {
                 return true;
+            }
+        }
         return false;
     }
 }

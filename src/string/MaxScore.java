@@ -43,27 +43,32 @@ package string;
 public class MaxScore {
 
     public int maxScore(String s) {
-        if (s == null || s.length() <= 1)
+        if (s == null || s.length() <= 1) {
             return 0;
+        }
         int index = 0;
         int su = 0;
         int len = s.length();
-        while(index < len)
-            if (s.charAt(index++) == '1')
+        while(index < len) {
+            if (s.charAt(index++) == '1') {
                 su++;
+            }
+        }
         index = 1;
         int max;
-        if (s.charAt(0) == '0')
+        if (s.charAt(0) == '0') {
             max = su + 1;
-        else
+        } else {
             max = su - 1;
+        }
         int cur = max;
         while(index < len - 1) {
             if (s.charAt(index++) == '0') {
                 cur++;
                 max = Math.max(max, cur);
-            }else
+            }else {
                 cur--;
+            }
         }
         return max;
     }

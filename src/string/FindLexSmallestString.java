@@ -19,20 +19,24 @@ public class FindLexSmallestString {
     }
 
     private void findMin(char[] s, int a, int b) {
-        if (map.contains(new String(s)))
+        if (map.contains(new String(s))) {
             return;
+        }
         char[] as = Arrays.copyOf(s, s.length);
-        for (int i = 1; i < s.length; i += 2)
+        for (int i = 1; i < s.length; i += 2) {
             as[i] = (char)((as[i] - '0' + a) % 10 + '0');
+        }
         char[] bs = Arrays.copyOf(s, s.length);
         swap(bs, 0, s.length - b - 1);
         swap(bs, s.length - b, s.length - 1);
         swap(bs, 0, s.length - 1);
         map.add(new String(s));
-        if (min(min, as))
+        if (min(min, as)) {
             min = Arrays.copyOf(as, as.length);
-        if (min(min, bs))
+        }
+        if (min(min, bs)) {
             min = Arrays.copyOf(bs, bs.length);
+        }
         findMin(as, a, b);
         findMin(bs, a, b);
     }
@@ -47,10 +51,11 @@ public class FindLexSmallestString {
 
     private boolean min (char[] a, char[] b) {
         for (int i = 0; i < a.length; i++) {
-            if (a[i] > b[i])
+            if (a[i] > b[i]) {
                 return true;
-            else if (a[i] < b[i])
+            } else if (a[i] < b[i]) {
                 return false;
+            }
         }
         return false;
     }

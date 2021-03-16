@@ -48,13 +48,15 @@ public class SumOddLengthSubarrays {
 
     public int sumOddLengthSubarrays(int[] arr) {
         int map[] = new int[arr.length + 1];
-        for(int i = 0; i < arr.length; i++)
+        for(int i = 0; i < arr.length; i++) {
             map[i + 1] += map[i] + arr[i];
+        }
         int sum = map[map.length - 1];
         int len = 3;
         while(len < map.length) {
-            for(int i = len; i < map.length; i++)
+            for(int i = len; i < map.length; i++) {
                 sum += map[i] - map[i -len];
+            }
             len += 2;
         }
         return sum;

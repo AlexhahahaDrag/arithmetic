@@ -25,8 +25,9 @@ package array;
 public class FindLength {
 
     public int findLength(int[] A, int[] B) {
-        if (A == null || A.length == 0 || B == null || B.length == 0)
+        if (A == null || A.length == 0 || B == null || B.length == 0) {
             return 0;
+        }
         int[][] map = new int[A.length + 1][B.length + 1];
         int max = 0;
         for (int i = A.length - 1; i >= 0; i--) {

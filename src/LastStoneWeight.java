@@ -36,8 +36,9 @@ public class LastStoneWeight {
         System.out.println(lastStoneWeight.lastStoneWeight(stones));
     }
     public int lastStoneWeight(int[] stones) {
-            if (stones.length==1)
+            if (stones.length==1) {
                 return stones[0];
+            }
             int big = 0;
             int second = 1;
             if (stones[big] < stones[second]) {
@@ -51,8 +52,9 @@ public class LastStoneWeight {
                         if (stones[big] < stones[i]) {
                             second = big;
                             big = i;
-                        } else if (i!=big&&stones[second] < stones[i])
+                        } else if (i!=big&&stones[second] < stones[i]) {
                             second = i;
+                        }
                     }
                 }
                 stones[big] = stones[big] - stones[second];

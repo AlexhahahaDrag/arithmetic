@@ -42,12 +42,14 @@ public class KClosest {
 
     public int[][] kClosest(int[][] points, int K) {
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((o1, o2) -> o1[0] * o1[0] + o1[1] * o1[1] - o2[0] * o2[0] - o2[1] * o2[1]);
-        for(int[] i : points)
+        for(int[] i : points) {
             priorityQueue.offer(i);
+        }
         int[][] res = new int[K][2];
         int index = -1;
-        while(++index < K)
+        while(++index < K) {
             res[index] = priorityQueue.poll();
+        }
         return res;
     }
 
@@ -58,7 +60,8 @@ public class KClosest {
         int K = 2;
         KClosest kClosest = new KClosest();
         int[][] res = kClosest.kClosest(points, K);
-        for (int[] i : res)
+        for (int[] i : res) {
             System.out.println("[" + i[0] + "," + i[1] + "]");
+        }
     }
 }

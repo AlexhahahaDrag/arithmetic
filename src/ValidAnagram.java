@@ -25,12 +25,14 @@ public class ValidAnagram {
         }
         for (int i = 0; i < tbyte.length; i++) {
             container[tbyte[i]-'a']--;
-            if (container[tbyte[i]-'a']<0)
+            if (container[tbyte[i]-'a']<0) {
                 return false;
+            }
         }
         for (int i = 0; i < container.length; i++) {
-            if (container[i]!=0)
+            if (container[i]!=0) {
                 return false;
+            }
         }
         return true;
     }

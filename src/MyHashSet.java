@@ -10,8 +10,9 @@ public class MyHashSet {
             if(size>=arr.length) {
                 int[] newArr = arr;
                 arr = new int[arr.length * 2];
-                for (int i = 0; i < newArr.length; i++)
+                for (int i = 0; i < newArr.length; i++) {
                     arr[i] = newArr[i];
+                }
             }
             arr[size++]=key;
         }
@@ -19,9 +20,11 @@ public class MyHashSet {
     public void remove(int key) {
         if(contains(key)){
             int index=0;
-            for(int i=0;i<size;i++)
-                if(arr[i]==key)
-                    index=i;
+            for(int i=0;i<size;i++) {
+                if(arr[i]==key) {
+                    index = i;
+                }
+            }
             for(int i=index;i<size;i++){
                 arr[i]=arr[i+1];
             }
@@ -31,9 +34,11 @@ public class MyHashSet {
 
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        for(int i=0;i<size;i++)
-            if(arr[i]==key)
+        for(int i=0;i<size;i++) {
+            if(arr[i]==key) {
                 return true;
+            }
+        }
         return false;
     }
 }

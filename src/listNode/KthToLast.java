@@ -23,10 +23,12 @@ public class KthToLast {
     public int kthToLast(ListNode head, int k) {
         int index = 0;
         ListNode cur = head;
-        while(index++ < k && cur != null)
+        while(index++ < k && cur != null) {
             cur = cur.next;
-        if(index != k + 1)
+        }
+        if(index != k + 1) {
             return -1;
+        }
         ListNode kln = head;
         while(cur != null) {
             kln = kln.next;

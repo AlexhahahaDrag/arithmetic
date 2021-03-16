@@ -27,8 +27,9 @@ public class DifferenceString {
         int end ;
         while (start < len) {
             end = start + 1;
-            while (end <= len)
+            while (end <= len) {
                 set.add(str.substring(start,end++));
+            }
             start++;
         }
         return set.size();

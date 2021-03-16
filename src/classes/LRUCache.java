@@ -41,8 +41,9 @@ public class LRUCache {
 
     public int get(int key) {
         DLinkNode node = map.get(key);
-        if (node == null)
+        if (node == null) {
             return -1;
+        }
         moveToHead(node);
         return node.val;
     }

@@ -38,8 +38,9 @@ import java.util.Arrays;
 public class MaxProfitIII {
 
     public int maxProfit1(int[] prices) {
-        if (prices == null || prices.length < 2)
+        if (prices == null || prices.length < 2) {
             return 0;
+        }
         int len = prices.length;
         int[] db0 = new int[len];
         db0[0] -= prices[0];
@@ -53,18 +54,21 @@ public class MaxProfitIII {
             //1卖出最大值
             dp1[i] = Math.max(dp1[i - 1], db0[i - 1] + prices[i]);
             //1买入最大值
-            if (i > 1)
+            if (i > 1) {
                 db1[i] = Math.max(db1[i - 1], dp1[i - 1] - prices[i]);
+            }
             //2卖出最大值
-            if (i > 2)
+            if (i > 2) {
                 dp2[i] = Math.max(dp2[i - 1], db1[i - 1] + prices[i]);
+            }
         }
         return Math.max(dp1[len - 1], dp2[len - 1]);
     }
 
     public int maxProfit2(int[] prices) {
-        if (prices == null || prices.length < 2)
+        if (prices == null || prices.length < 2) {
             return 0;
+        }
         int db0 = -prices[0];
         int dp1 = Integer.MIN_VALUE;
         int db1 = Integer.MIN_VALUE;
@@ -75,11 +79,13 @@ public class MaxProfitIII {
             //1卖出最大值
             dp1 = Math.max(dp1, db0 + prices[i]);
             //1买入最大值
-            if (i > 1)
+            if (i > 1) {
                 db1 = Math.max(db1, dp1 - prices[i]);
+            }
             //2卖出最大值
-            if (i > 2)
+            if (i > 2) {
                 dp2 = Math.max(dp2, db1 + prices[i]);
+            }
         }
         return Math.max(dp1, dp2);
     }

@@ -65,8 +65,9 @@ public class FruiltIntoBaskets {
         System.out.println(fruiltIntoBaskets.totalFruit(arr));
     }
     public int totalFruit(int[] tree) {
-        if(tree.length<=2)
+        if(tree.length<=2) {
             return tree.length;
+        }
         int maxStep=0;
         int index=0;
         int type=1;

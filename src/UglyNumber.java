@@ -28,12 +28,14 @@ public class UglyNumber {
         System.out.println(isUglyNumber(0));
     }
     public static boolean isUglyNumber(int num){
-        if (num<=0)
+        if (num<=0) {
             return false;
+        }
         int[] primes={2,3,5};
         for (int i = 0; i < primes.length; i++) {
-            if (num%primes[i]==0)
+            if (num%primes[i]==0) {
                 num/=primes[i--];
+            }
         }
         return num==1;
     }

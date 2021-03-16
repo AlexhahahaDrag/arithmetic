@@ -17,9 +17,11 @@ public class MinSteps {
             map[t.charAt(index++) - 'a']--;
         }
         int sum = 0;
-        for(int i : map)
-            if(i > 0)
+        for(int i : map) {
+            if(i > 0) {
                 sum += i;
+            }
+        }
         return sum;
     }
 }

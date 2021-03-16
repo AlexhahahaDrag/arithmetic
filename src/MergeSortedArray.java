@@ -27,13 +27,16 @@ public class MergeSortedArray {
     }
     public static void merge11(int[] nums1, int m, int[] nums2, int n) {
         int sum=m+n-1;
-        while(m>0&&n>0)
-            if(nums1[m-1]>nums2[n-1])
+        while(m>0&&n>0) {
+            if(nums1[m-1]>nums2[n-1]) {
                 nums1[sum--] = nums1[m-- - 1];
-            else
+            } else {
                 nums1[sum--] = nums2[n-- - 1];
-        while(n>0)
+            }
+        }
+        while(n>0) {
             nums1[sum--] = nums2[n-- - 1];
+        }
         for (int i = 0; i <nums1.length ; i++) {
             System.out.println(nums1[i]);
         }
@@ -43,10 +46,11 @@ public class MergeSortedArray {
         while (m > 0 || n > 0) {
             int x = m > 0 ? nums1[m-1] : Integer.MIN_VALUE;
             int y = n > 0 ? nums2[n-1] : Integer.MIN_VALUE;
-            if (x >= y)
+            if (x >= y) {
                 nums1[mergedIdx--] = nums1[m-- -1];
-            else
+            } else {
                 nums1[mergedIdx--] = nums2[n---1];
+            }
         }
         for (int i = 0; i <nums1.length ; i++) {
             System.out.println(nums1[i]);
@@ -59,8 +63,9 @@ public class MergeSortedArray {
             if(A[m - 1] >B[n - 1]) {
                 A[index--] = A[m-- - 1];
                 n--;
-            } else
+            } else {
                 A[index--] = B[n-- - 1];
+            }
         }
         Arrays.copyOfRange(A, index, A.length - 1);
     }

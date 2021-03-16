@@ -30,8 +30,9 @@ package twoDimensionalArray;
 public class SpiralOrder {
 
     public int[] spiralOrder(int[][] matrix) {
-        if(matrix == null || matrix.length == 0 || matrix[0].length == 0)
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return new int[]{};
+        }
         boolean[][] visited = new boolean[matrix.length][matrix[0].length];
         int[][] direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         int index = 0;
@@ -61,7 +62,8 @@ public class SpiralOrder {
         int[][] matrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
         SpiralOrder spiralOrder = new SpiralOrder();
         int[] res = spiralOrder.spiralOrder(matrix);
-        for (int i : res)
+        for (int i : res) {
             System.out.print(i + "   ");
+        }
     }
 }

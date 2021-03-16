@@ -34,33 +34,41 @@ public class FindAllConcatenatedWordsInADict {
     public List<String> findAllConcatenatedWordsInADict(String[] words) {
         List<String> res = new ArrayList<>();
         trieTree = new TrieTree<>();
-        for (String word : words)
+        for (String word : words) {
             build(word);
-        for (String word : words)
-            if (find(word.toCharArray(), trieTree, 0, 0))
+        }
+        for (String word : words) {
+            if (find(word.toCharArray(), trieTree, 0, 0)) {
                 res.add(word);
+            }
+        }
         return res;
     }
 
     private boolean find(char[] chars, TrieTree<Character> cur, int index, int count) {
-        if (index == chars.length && cur.isEnd && count > 0)
+        if (index == chars.length && cur.isEnd && count > 0) {
             return true;
-        if (index >= chars.length || cur.children == null || cur.children[chars[index] - 'a'] == null)
+        }
+        if (index >= chars.length || cur.children == null || cur.children[chars[index] - 'a'] == null) {
             return false;
-        if (cur.children[chars[index] - 'a'].isEnd)
+        }
+        if (cur.children[chars[index] - 'a'].isEnd) {
             return find(chars, cur.children[chars[index] - 'a'], index + 1, count) || find(chars, trieTree, index + 1, count + 1);
-        else
+        } else {
             return find(chars, cur.children[chars[index] - 'a'], index + 1, count);
+        }
     }
 
     private void build(String str) {
-        if (str == null || str.length() == 0)
+        if (str == null || str.length() == 0) {
             return;
+        }
         TrieTree<Character> cur = trieTree;
         char[] ch = str.toCharArray();
         for (char c : ch) {
-            if (cur.children[c - 'a'] == null)
+            if (cur.children[c - 'a'] == null) {
                 cur.children[c - 'a'] = new TrieTree<>(c);
+            }
             cur = cur.children[c - 'a'];
         }
         cur.isEnd = true;

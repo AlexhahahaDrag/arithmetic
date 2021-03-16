@@ -65,9 +65,9 @@ public class UnderGroundSystem {
             list.add(customer);
             res.put(id, list);
         }else {
-            if (list.get(list.size() - 1).status == 0)
+            if (list.get(list.size() - 1).status == 0) {
                 return;
-            else {
+            } else {
                 list.add(customer);
             }
         }
@@ -75,13 +75,13 @@ public class UnderGroundSystem {
 
     public void checkOut(int id, String stationName, int t) {
         Customer customer = new Customer(id, stationName, t, 1);
-        if(res == null)
+        if(res == null) {
             return;
-        else {
+        } else {
             List<Customer> list = res.get(id);
-            if (list.get(list.size() - 1).status == 1)
+            if (list.get(list.size() - 1).status == 1) {
                 return;
-            else {
+            } else {
                 list.add(customer);
             }
         }
@@ -91,8 +91,9 @@ public class UnderGroundSystem {
         double avg = 0.0;
         int num = 0;
         for(List<Customer> list : res.values()) {
-            if(list.size() < 2)
+            if(list.size() < 2) {
                 continue;
+            }
             int start = -1;
             int end = -1;
             int len = list.size();

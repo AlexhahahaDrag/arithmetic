@@ -51,19 +51,22 @@ public class ModifyString {
     }
 
     private boolean modify(char[] str, int i) {
-        if (i == str.length)
+        if (i == str.length) {
             return true;
+        }
         if (str[i] != '?') {
             modify(str, i + 1);
             return true;
         } else {
             for (char j = 'a'; j <= 'z'; j++) {
-                if ((i - 1 >= 0 && str[i - 1] == j) || (i + 1 <= str.length - 1 && str[i + 1] == j))
+                if ((i - 1 >= 0 && str[i - 1] == j) || (i + 1 <= str.length - 1 && str[i + 1] == j)) {
                     continue;
+                }
                 str[i] = j;
                 boolean flag = modify(str, i + 1);
-                if (flag)
+                if (flag) {
                     return true;
+                }
             }
             return false;
         }

@@ -49,12 +49,13 @@ public class SumNumbers {
     }
 
     private void dfs(TreeNode root, int sum) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         sum = sum * 10 + root.val;
-        if (root.left == null && root.right == null)
+        if (root.left == null && root.right == null) {
             res += sum;
-        else {
+        } else {
             dfs(root.left, sum);
             dfs(root.right, sum);
         }

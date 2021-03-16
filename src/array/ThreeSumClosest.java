@@ -29,8 +29,9 @@ import java.util.Arrays;
 public class ThreeSumClosest {
 
     public int threeSumClosest1(int[] nums, int target) {
-        if (nums == null || nums.length < 3)
+        if (nums == null || nums.length < 3) {
             return 0;
+        }
         Arrays.sort(nums);
         int closeSum = nums[0] + nums[1] + nums[2];
         for(int i = 0; i < nums.length - 2; i++) {
@@ -51,36 +52,41 @@ public class ThreeSumClosest {
     }
 
     public int threeSumClosest2(int[] nums, int target) {
-        if (nums == null || nums.length < 3)
+        if (nums == null || nums.length < 3) {
             return 0;
+        }
         Arrays.sort(nums);
         int closeSum = nums[0] + nums[1] + nums[2];
         for(int i = 0; i < nums.length - 2; i++) {
             int t = target - nums[i];
             if (nums[i + 1] + nums[i + 2] > t) {
                 int temp = nums[i] + nums[i + 1] + nums[i + 2];
-                if (abs(target - closeSum, target - temp))
+                if (abs(target - closeSum, target - temp)) {
                     closeSum = temp;
+                }
                 continue;
             }
             if (nums[nums.length - 2] + nums[nums.length - 1] < t) {
                 int temp = nums[i] + nums[nums.length - 2] + nums[nums.length - 1];
-                if (abs(target - closeSum, target - temp))
+                if (abs(target - closeSum, target - temp)) {
                     closeSum = temp;
+                }
                 continue;
             }
             int l = i + 1;
             int r = nums.length - 1;
             while(l < r) {
                 int sum = nums[i] + nums[l] + nums[r];
-                if (abs(target - closeSum, target - sum))
+                if (abs(target - closeSum, target - sum)) {
                     closeSum = sum;
-                if (target > sum)
+                }
+                if (target > sum) {
                     l++;
-                else if (target < sum)
+                } else if (target < sum) {
                     r--;
-                else
+                } else {
                     return target;
+                }
             }
 
         }
@@ -88,8 +94,9 @@ public class ThreeSumClosest {
     }
 
     public int threeSumClosest(int[] nums, int target) {
-        if(nums == null || nums.length < 3)
+        if(nums == null || nums.length < 3) {
             return -1;
+        }
         int len = nums.length;
         Arrays.sort(nums);
         int closeNum = nums[0] + nums[1] + nums[2];
@@ -98,28 +105,32 @@ public class ThreeSumClosest {
             int t = target - nums[i];
             if(nums[i + 1] + nums[i + 2] > t) {
                 cur = nums[i + 1] + nums[i + 2] + nums[i];
-                if (Math.abs(target - cur) < Math.abs(target - closeNum))
+                if (Math.abs(target - cur) < Math.abs(target - closeNum)) {
                     closeNum = cur;
+                }
                 continue;
             }
             if(nums[len - 2] + nums[len - 1] > t) {
                 cur = nums[len - 2] + nums[len - 1] + nums[i];
-                if (Math.abs(t - cur) < Math.abs(target - closeNum))
+                if (Math.abs(t - cur) < Math.abs(target - closeNum)) {
                     closeNum = cur;
+                }
                 continue;
             }
             int left = i + 1;
             int right = len - 1;
             while(left < right) {
                 cur = nums[left] + nums[right];
-                if (Math.abs(t - cur) < Math.abs(target - closeNum))
+                if (Math.abs(t - cur) < Math.abs(target - closeNum)) {
                     closeNum = cur + nums[i];
-                if(cur < t)
+                }
+                if(cur < t) {
                     left++;
-                else if (cur > t)
+                } else if (cur > t) {
                     right--;
-                else
+                } else {
                     return closeNum;
+                }
             }
         }
         return closeNum;

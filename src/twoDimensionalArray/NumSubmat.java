@@ -69,10 +69,11 @@ public class NumSubmat {
         for (int i = 0; i < row; i++) {
             int num = 0;
             for (int j = 0; j < column; j++) {
-                if (mat[i][j] == 1)
+                if (mat[i][j] == 1) {
                     num++;
-                else
+                } else {
                     num = 0;
+                }
                 map[i][j] = num;
             }
         }

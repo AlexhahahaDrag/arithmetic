@@ -41,8 +41,9 @@ public class DecodeString {
 
     private String getString(Integer count, String str) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++) {
             sb.append(str);
+        }
         return sb.toString();
     }
 

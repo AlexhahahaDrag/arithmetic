@@ -52,25 +52,32 @@ public class XOfAKindInADeckOfCards {
     }
     public boolean hasGroupsSizeX(int[] deck) {
         int[] count= new int[10001];
-        for (int i : deck)
+        for (int i : deck) {
             count[i]++;
+        }
         List<Integer> list =new ArrayList<>();
-        for (int j: count)
-            if (j>0)
+        for (int j: count) {
+            if (j>0) {
                 list.add(j);
+            }
+        }
             int gDen=count[deck[0]];
-        for (int k: list)
+        for (int k: list) {
             gDen=gcd(gDen,k);
+        }
         return gDen>1;
     }
     public boolean hasGroupsSizeX1(int[] deck) {
         int[] count=new int[10001];
-        for (int i:deck)
+        for (int i:deck) {
             count[i]++;
+        }
         int gDen = count[deck[0]];
-        for (int j : count )
-            if (j>0)
-                gDen=gcd(j,gDen);
+        for (int j : count ) {
+            if (j>0) {
+                gDen = gcd(j, gDen);
+            }
+        }
         return gDen>1;
     }
     private int gcd(int x,int y){

@@ -27,8 +27,9 @@ public class NextPermutation {
         out: for (; i >= 0; i--) {
             len = nums.length;
             while(i < len--) {
-                if (nums[i] < nums[len])
+                if (nums[i] < nums[len]) {
                     break out;
+                }
             }
         }
         if (len >= 0) {
@@ -44,7 +45,8 @@ public class NextPermutation {
         int[] arr = {4,2,0,2,3,2,0}; // 4,2,0,3,0,2,2
         NextPermutation nextPermutation = new NextPermutation();
         nextPermutation.nextPermutation(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.print(i + "   ");
+        }
     }
 }

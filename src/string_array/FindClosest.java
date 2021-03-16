@@ -38,8 +38,9 @@ public class FindClosest {
                 map.put(words[i], cur);
             }
         }
-        if (!map.containsKey(word1) || !map.containsKey(word2))
+        if (!map.containsKey(word1) || !map.containsKey(word2)) {
             return -1;
+        }
         List<Integer> re1 = map.get(word1);
         List<Integer> re2 = map.get(word2);
         int min = Integer.MAX_VALUE;
@@ -68,15 +69,18 @@ public class FindClosest {
         for (int i = 0; i < len; i++) {
             if (words[i].equals(word1)) {
                 in1 = i;
-                if (in2 != -1)
-                   res = Math.min(res, in1 - in2);
+                if (in2 != -1) {
+                    res = Math.min(res, in1 - in2);
+                }
             } else if (words[i].equals(word2)) {
                 in2 = i;
-                if (in1 != -1)
+                if (in1 != -1) {
                     res = Math.min(res, in2 - in1);
+                }
             }
-            if (res == 1)
+            if (res == 1) {
                 return 1;
+            }
         }
         return res;
     }

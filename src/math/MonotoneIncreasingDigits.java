@@ -38,18 +38,21 @@ public class MonotoneIncreasingDigits {
         }
         int i = 0;
         for (; i < digit - 1; i++) {
-            if (map[i] > map[i + 1])
+            if (map[i] > map[i + 1]) {
                 break;
+            }
         }
         if (i < digit - 1) {
-            while(i > 0 && map[i] > map[i + 1] && map[i] - 1 < map[i - 1])
+            while(i > 0 && map[i] > map[i + 1] && map[i] - 1 < map[i - 1]) {
                 map[i--]--;
+            }
             map[i]--;
         }
 
         Arrays.fill(map, i + 1, digit, 9);
-        for (int j = 0; j < digit; j++)
+        for (int j = 0; j < digit; j++) {
             N = N * 10 + map[j];
+        }
         return N;
     }
 

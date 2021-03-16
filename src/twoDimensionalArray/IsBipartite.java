@@ -57,9 +57,11 @@ public class IsBipartite {
         int n = graph.length;
         map = new int[n];
         valid = true;
-        for (int i = 0; i < n && valid; i++)
-            if (map[i] == 0)
+        for (int i = 0; i < n && valid; i++) {
+            if (map[i] == 0) {
                 dfs(graph, i, 1);
+            }
+        }
         return valid;
     }
 
@@ -69,8 +71,9 @@ public class IsBipartite {
         for (int i : graph[index]) {
             if (map[i] == 0) {
                 dfs(graph, i, cur);
-                if (!valid)
+                if (!valid) {
                     return;
+                }
             } else if (map[i] != cur) {
                 valid = false;
                 return;

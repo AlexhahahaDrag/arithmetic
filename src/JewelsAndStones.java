@@ -30,22 +30,31 @@ public class JewelsAndStones {
     }
     public static int numJewelsInStones(String J, String S) {
         Map<Character,Integer> map=new HashMap<>();
-        for (int i = 0; i < J.length(); i++)
+        for (int i = 0; i < J.length(); i++) {
             map.put(J.charAt(i),0);
+        }
         int count=0;
-        for (int i = 0; i < S.length(); i++)
-            if (map.containsKey(S.charAt(i)))
+        for (int i = 0; i < S.length(); i++) {
+            if (map.containsKey(S.charAt(i))) {
                 count++;
+            }
+        }
         return count;
     }
     public static int numJewelsInStones1(String J, String S) {
-        if(J == null || S == null || J.length() == 0 || S.length() == 0) return 0;
+        if(J == null || S == null || J.length() == 0 || S.length() == 0) {
+            return 0;
+        }
         boolean[] jewel = new boolean[128];
-        for(char c : J.toCharArray())
+        for(char c : J.toCharArray()) {
             jewel[c] = true;
+        }
         int res = 0;
-        for(char c : S.toCharArray())
-            if(jewel[c]) ++res;
+        for(char c : S.toCharArray()) {
+            if(jewel[c]) {
+                ++res;
+            }
+        }
         return res;
     }
 }

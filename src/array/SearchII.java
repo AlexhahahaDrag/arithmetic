@@ -35,27 +35,29 @@ public class SearchII {
     private int search(int[] nums, int start, int end, int target) {
         while(start <= end) {
             int mid = (end - start >> 1) + start;
-            if (nums[mid] == target)
+            if (nums[mid] == target) {
                 return mid;
-            else if(nums[start] == target)
+            } else if(nums[start] == target) {
                 return start;
-            else if (nums[end] == target)
+            } else if (nums[end] == target) {
                 return end;
-            else if(nums[mid] > target) {
-                if (target > nums[start])
+            } else if(nums[mid] > target) {
+                if (target > nums[start]) {
                     end = mid - 1;
-                else if (nums[mid] < nums[start])
+                } else if (nums[mid] < nums[start]) {
                     end = mid - 1;
-                else
+                } else {
                     start = mid + 1;
+                }
             } else {
-                if (nums[start] < nums[mid])
+                if (nums[start] < nums[mid]) {
                     start = mid + 1;
-                else {
-                    if (target > nums[start])
+                } else {
+                    if (target > nums[start]) {
                         end = mid - 1;
-                    else
+                    } else {
                         start = mid + 1;
+                    }
                 }
             }
         }

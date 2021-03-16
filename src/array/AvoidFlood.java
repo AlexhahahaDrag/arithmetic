@@ -83,9 +83,9 @@ public class AvoidFlood {
                 continue;
             }
             if(lakes.containsKey(rains[i])) {
-                if(zero.size() == 0)
+                if(zero.size() == 0) {
                     return new int[0];
-                else {
+                } else {
                     Integer lake = lakes.get(rains[i]);
                     boolean flag = true;
                     for(Integer in : zero) {
@@ -96,16 +96,18 @@ public class AvoidFlood {
                             break;
                         }
                     }
-                    if (flag)
+                    if (flag) {
                         return new int[0];
+                    }
                     lakes.put(rains[i], i);
                 }
             } else {
                 lakes.put(rains[i], i);
             }
         }
-        for(int in : zero)
+        for(int in : zero) {
             res[in] = 1;
+        }
         return res;
     }
 
@@ -113,7 +115,8 @@ public class AvoidFlood {
         int[] rains = {1,0,2,0,2,1};
         AvoidFlood avoidFlood = new AvoidFlood();
         int res[] = avoidFlood.avoidFlood(rains);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "  ");
+        }
     }
 }

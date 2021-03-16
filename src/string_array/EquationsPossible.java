@@ -52,17 +52,20 @@ public class EquationsPossible {
 
     public boolean equationsPossible(String[] equations) {
         int[] parent = new int[26];
-        for(int i = 0; i < 26; i++)
+        for(int i = 0; i < 26; i++) {
             parent[i] = i;
+        }
         for (String equation : equations) {
             if (equation.charAt(1) == '=') {
                 union(parent, equation.charAt(0) - 'a', equation.charAt(3) - 'a');
             }
         }
         for (String equation : equations) {
-            if (equation.charAt(1) == '!')
-                if (parent[find(parent, equation.charAt(0) - 'a')] == parent[find(parent, equation.charAt(3) - 'a')])
+            if (equation.charAt(1) == '!') {
+                if (parent[find(parent, equation.charAt(0) - 'a')] == parent[find(parent, equation.charAt(3) - 'a')]) {
                     return false;
+                }
+            }
         }
         return true;
     }

@@ -47,8 +47,9 @@ public class CalculateMinimumHP {
 
     private int min = Integer.MIN_VALUE;
     public int calculateMinimumHP1(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) {
             return -1;
+        }
         int row = dungeon.length;
         int column = dungeon[0].length;
         find(dungeon, row - 1, column - 1, 0);
@@ -62,15 +63,18 @@ public class CalculateMinimumHP {
             min = Math.max(hp, min);
             return;
         }
-        if (i - 1 >= 0)
+        if (i - 1 >= 0) {
             find(dungeon, i - 1, j, hp);
-        if (j - 1 >= 0)
+        }
+        if (j - 1 >= 0) {
             find(dungeon, i, j - 1, hp);
+        }
     }
 
     public int calculateMinimumHP2(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) {
             return -1;
+        }
         int row = dungeon.length;
         int column = dungeon[0].length;
         int[][] map = new int[row][column];
@@ -93,13 +97,15 @@ public class CalculateMinimumHP {
     }
 
     public int calculateMinimumHP(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) {
             return -1;
+        }
         int row = dungeon.length;
         int column = dungeon[0].length;
         int[][] dp = new int[row + 1][column + 1];
-        for (int i = 0; i <= row; i++)
+        for (int i = 0; i <= row; i++) {
             Arrays.fill(dp[i], Integer.MAX_VALUE);
+        }
         dp[row][column - 1] = dp[row - 1][column] = 1;
         for (int i = row - 1; i >= 0; i--) {
             for (int j = column - 1; j >= 0; j--) {

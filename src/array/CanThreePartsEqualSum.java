@@ -36,13 +36,16 @@ package array;
 public class CanThreePartsEqualSum {
 
     public boolean canThreePartsEqualSum(int[] A) {
-        if (A == null || A.length < 3)
+        if (A == null || A.length < 3) {
             return false;
+        }
         int sum = 0;
-        for(int i : A)
+        for(int i : A) {
             sum += i;
-        if (sum % 3 != 0)
+        }
+        if (sum % 3 != 0) {
             return false;
+        }
         int add = sum / 3;
         int num = 0;
         for(int j : A) {

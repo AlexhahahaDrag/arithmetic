@@ -52,12 +52,14 @@ public class MaxProbability {
     }
 
     private void find(int[][] edges, boolean[] map, double[] succProb, int start, int end, double rate) {
-        if (map[start])
+        if (map[start]) {
             return;
+        }
         for (int i = 0; i < edges.length; i++) {
             double cur = rate;
-            if (map[edges[i][0]] || map[edges[i][1]])
+            if (map[edges[i][0]] || map[edges[i][1]]) {
                 continue;
+            }
             cur *= succProb[i];
             if (edges[i][0] == start) {
                 if (edges[i][1] == end) {

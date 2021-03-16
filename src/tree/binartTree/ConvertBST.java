@@ -40,8 +40,9 @@ public class ConvertBST {
     }
 
     private int convert(TreeNode root, int right) {
-        if (root == null)
+        if (root == null) {
             return right;
+        }
         root.val += convert(root.right, right);
         return convert(root.left, root.val);
     }

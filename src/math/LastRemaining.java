@@ -41,8 +41,9 @@ public class LastRemaining {
 
     public int lastRemaining1(int n, int m) {
         List<Integer> list = new LinkedList<>();
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             list.add(i);
+        }
         int index = 0;
         while(list.size() > 1) {
             index = (index + m - 1) % list.size();
@@ -68,25 +69,29 @@ public class LastRemaining {
             }
             index = ++index == len ? 0 : index;
         }
-        for (int i = 0; i < len; i++)
-            if (map[i] == false)
+        for (int i = 0; i < len; i++) {
+            if (map[i] == false) {
                 return i;
+            }
+        }
         return -1;
     }
 
     public int lastRemaining(int n, int m) {
         int last = 0;
-        for (int i = 2; i <= n; i++)
+        for (int i = 2; i <= n; i++) {
             last = (last + m) % i;
+        }
 
         return last;
     }
 
     public int lastRemaining2(int n, int m) {
-        if(n == 1)
+        if(n == 1) {
             return 0;
-        else
+        } else {
             return (lastRemaining2(n -1, m) + m) % n;
+        }
     }
 
     public static void main(String[] args) {

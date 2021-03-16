@@ -26,20 +26,24 @@ package array;
 */
 public class ContainDuplicate {
     public boolean containsDuplicate(int[] nums) {
-        if(nums == null || nums.length == 0)
+        if(nums == null || nums.length == 0) {
             return false;
+        }
         int min = nums[0];
         int max = nums[0];
         for(int i : nums) {
-            if (min > i)
+            if (min > i) {
                 min = i;
-            if(max < i)
+            }
+            if(max < i) {
                 max = i;
+            }
         }
         int[] map = new int[max - min + 1];
         for(int i : nums) {
-            if (map[i - min] != 0)
+            if (map[i - min] != 0) {
                 return true;
+            }
             map[i - min]++;
         }
         return false;

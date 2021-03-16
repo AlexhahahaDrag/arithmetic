@@ -23,16 +23,18 @@ package string_array;
 public class LongestCommonPrefix {
 
     public String longestCommonPrefix1(String[] strs) {
-        if (strs == null || strs.length == 0)
+        if (strs == null || strs.length == 0) {
             return "";
-        else if (strs.length == 1)
+        } else if (strs.length == 1) {
             return strs[0];
+        }
         int len = strs[0].length();
         String common = strs[0];
         for (String str : strs) {
             len = check(str, common, len);
-            if (len == 0)
+            if (len == 0) {
                 break;
+            }
         }
         return common.substring(0, len);
     }
@@ -41,21 +43,24 @@ public class LongestCommonPrefix {
         int index = 0;
         len = Math.min(Math.min(str1.length(), str2.length()), len);
         while(index < len) {
-            if (str1.charAt(index) == str2.charAt(index))
+            if (str1.charAt(index) == str2.charAt(index)) {
                 index++;
-            else
+            } else {
                 break;
+            }
         }
         return index;
     }
 
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0)
+        if (strs == null || strs.length == 0) {
             return "";
+        }
         String common = strs[0];
         for (String str : strs) {
-            while(str.indexOf(common) != 0)
+            while(str.indexOf(common) != 0) {
                 common = common.substring(0, common.length() - 1);
+            }
         }
         return common;
     }

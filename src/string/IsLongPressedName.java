@@ -9,8 +9,9 @@ package string;
 public class IsLongPressedName {
 
     public boolean isLongPressedName1(String name, String typed) {
-        if(name.length() > typed.length())
+        if(name.length() > typed.length()) {
             return false;
+        }
         int ni = 0;
         int ti = 0;
         int len = name.length();
@@ -20,20 +21,24 @@ public class IsLongPressedName {
                 ni++;
                 ti++;
             } else {
-                while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1))
+                while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1)) {
                     ti++;
-                if (ni < len && ti < let && name.charAt(ni) != typed.charAt(ti))
+                }
+                if (ni < len && ti < let && name.charAt(ni) != typed.charAt(ti)) {
                     break;
+                }
             }
         }
-        while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1))
+        while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1)) {
             ti++;
+        }
         return ni == len && ti == let;
     }
 
     public boolean isLongPressedName(String name, String typed) {
-        if(name.length() > typed.length())
+        if(name.length() > typed.length()) {
             return false;
+        }
         int ni = 0;
         int ti = 0;
         int len = name.length();
@@ -42,13 +47,15 @@ public class IsLongPressedName {
             if (typed.charAt(ti) == name.charAt(ni)) {
                 ni++;
                 ti++;
-            } else if (ti > 0 && typed.charAt(ti) == typed.charAt(ti - 1))
+            } else if (ti > 0 && typed.charAt(ti) == typed.charAt(ti - 1)) {
                 ti++;
-            else
+            } else {
                 return false;
+            }
         }
-        while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1))
+        while(ti > 0 && ti < let && typed.charAt(ti) == typed.charAt(ti - 1)) {
             ti++;
+        }
         return ni == len && ti == let;
     }
 

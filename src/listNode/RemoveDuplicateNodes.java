@@ -30,15 +30,17 @@ import java.util.List;
 public class RemoveDuplicateNodes {
 
     public ListNode removeDuplicateNodes(ListNode head) {
-        if(head == null)
+        if(head == null) {
             return head;
+        }
         boolean[] map = new boolean[20001];
         map[head.val] = true;
         ListNode cur = head.next;
         ListNode pre = head;
         while (cur != null) {
-            while(cur != null && map[cur.val])
+            while(cur != null && map[cur.val]) {
                 cur = cur.next;
+            }
             pre.next = cur;
             if (cur != null) {
                 pre = cur;
@@ -50,15 +52,17 @@ public class RemoveDuplicateNodes {
     }
 
     public ListNode removeDuplicateNodes1(ListNode head) {
-        if(head == null)
+        if(head == null) {
             return head;
+        }
         List<Integer> list = new ArrayList<>();
         list.add(head.val);
         ListNode pre = head;
         ListNode cur = head.next;
         while(cur != null) {
-            while (list.contains(cur.val))
+            while (list.contains(cur.val)) {
                 cur = cur.next;
+            }
              pre.next = cur;
              if (cur != null) {
                  pre = cur;

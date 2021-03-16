@@ -38,15 +38,17 @@ public class PathSumII {
     }
 
     private void path(TreeNode root, int sum, int cur, List<Integer> list) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         List<Integer> curList = new ArrayList<>();
         curList.addAll(list);
         cur += root.val;
         curList.add(root.val);
         if (root.left == null && root.right == null) {
-            if (cur == sum)
+            if (cur == sum) {
                 res.add(curList);
+            }
         }
         path(root.left, sum, cur, curList);
         path(root.right, sum, cur, curList);

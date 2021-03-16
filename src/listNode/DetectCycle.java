@@ -56,8 +56,9 @@ public class DetectCycle {
         Map<ListNode, Integer> map = new HashMap<>();
         int index = 0;
         while(head != null) {
-            if(map.containsKey(head))
+            if(map.containsKey(head)) {
                 return head;
+            }
             map.put(head, index++);
             head = head.next;
         }
@@ -65,12 +66,13 @@ public class DetectCycle {
     }
 
     public ListNode detectCycle2(ListNode head) {
-        if(head==null)
+        if(head==null) {
             return null;
+        }
         while (head.next != null){
-            if(head.next.val == -1999999)
+            if(head.next.val == -1999999) {
                 return head.next;
-            else {
+            } else {
                 head.val = -1999999;
                 head=head.next;
             }
@@ -82,13 +84,15 @@ public class DetectCycle {
         ListNode fast = head;
         ListNode slow = head;
         while(true) {
-            if(fast == null || fast.next == null)
+            if(fast == null || fast.next == null) {
                 return null;
+            }
             fast = fast.next.next;
             slow = slow.next;
             //获取快慢指针的差值
-            if (fast == slow)
+            if (fast == slow) {
                 break;
+            }
         }
         fast = head;
         while(fast != slow) {

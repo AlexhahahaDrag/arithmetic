@@ -49,20 +49,24 @@ public class FinalPrices {
     public int[] finalPrices(int[] prices) {
         int len = prices.length;
         int[] map = new int[len];
-        for (int i = 0; i < len; i++)
-            map[i] = findMin(prices, i);
         for (int i = 0; i < len; i++) {
-            if (map[i] == -1)
+            map[i] = findMin(prices, i);
+        }
+        for (int i = 0; i < len; i++) {
+            if (map[i] == -1) {
                 continue;
+            }
             prices[i] = prices[i] - prices[map[i]];
         }
         return prices;
     }
 
     private int findMin(int[] prices, int i) {
-        for (int j = i + 1; j < prices.length; j++)
-            if (prices[j] <= prices[i])
+        for (int j = i + 1; j < prices.length; j++) {
+            if (prices[j] <= prices[i]) {
                 return j;
+            }
+        }
         return -1;
     }
 
@@ -70,7 +74,8 @@ public class FinalPrices {
         int[] prices = {8,7,4,2,8,1,7,7,10,1};
         FinalPrices finalPrices = new FinalPrices();
         int[] res = finalPrices.finalPrices(prices);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "    ");
+        }
     }
 }

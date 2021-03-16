@@ -9,9 +9,11 @@ public class DocumentTraverse {
     public static void traverse(File file){
         if (file.isDirectory()){
             File[] file1=file.listFiles();
-            for (File filei: file1)
+            for (File filei: file1) {
                 traverse(filei);
-        }else
+            }
+        }else {
             System.out.println(file.getParent()+"/"+file.getName()+"("+file.getUsableSpace()/1024/1024/1024+"G)");
+        }
     }
 }

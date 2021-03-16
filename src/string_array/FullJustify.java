@@ -96,8 +96,9 @@ public class FullJustify {
     private void add(StringBuilder sb, int index, int maxWidth,int num, int sum, String[] words) {
         if (index == words.length - 1) {
             addSpace(sb, sum, maxWidth - sum - num);
-            while(num-- > 0)
+            while(num-- > 0) {
                 addSpace(sb, sum = sum - words[index--].length(), 1);
+            }
         } else {
             int sub = maxWidth - sum;
             if (num == 0){
@@ -107,17 +108,19 @@ public class FullJustify {
             int a = sub / num;
             int b = sub % num;
             while(num > 0) {
-                if (num-- > b)
+                if (num-- > b) {
                     addSpace(sb, sum = sum - words[index--].length(), a);
-                else
+                } else {
                     addSpace(sb, sum = sum - words[index--].length(), a + 1);
+                }
             }
         }
     }
 
     private void addSpace(StringBuilder sb, int index, int len) {
-        while(len-- > 0)
+        while(len-- > 0) {
             sb.insert(index, " ");
+        }
     }
     public static void main(String[] args) {
         FullJustify fullJustify = new FullJustify();

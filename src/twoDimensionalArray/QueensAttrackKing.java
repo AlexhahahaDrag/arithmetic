@@ -70,12 +70,14 @@ public class QueensAttrackKing {
     int[] index = new int[8];
     public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
         int[][] map = new int[8][8];
-        for(int[] quee : queens)
+        for(int[] quee : queens) {
             map[quee[0]][quee[1]] = 1;
+        }
         int[][] direction = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1,1}};
         int max = 0;
-        while(max < 8)
+        while(max < 8) {
             find(king, map, direction, max++);
+        }
         return list;
     }
     private void find(int[] king, int[][] map, int[][] direction, int max) {

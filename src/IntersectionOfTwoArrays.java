@@ -39,17 +39,21 @@ public class IntersectionOfTwoArrays {
     }
     public static int[] intersection1(int[] nums1, int[] nums2) {
         Set<Integer> set=new HashSet<>();
-        for(int i:nums1)
+        for(int i:nums1) {
             set.add(i);
+        }
         Set<Integer> setResult=new HashSet<>();
         int index=0;
-        for(int j:nums2)
-            if(set.contains(j))
+        for(int j:nums2) {
+            if(set.contains(j)) {
                 setResult.add(j);
+            }
+        }
         int[] results=new int[setResult.size()];
         Iterator<Integer> it=setResult.iterator();
-        while(it.hasNext())
+        while(it.hasNext()) {
             results[index++]=it.next().intValue();
+        }
         return results;
     }
     public static int[] intersection(int[] nums1, int[] nums2) {
@@ -60,8 +64,9 @@ public class IntersectionOfTwoArrays {
             max = Math.max(max, num);
         }
         boolean[] exist = new boolean[max - min + 1];
-        for (int num : nums1)
+        for (int num : nums1) {
             exist[num - min] = true;
+        }
         int[] res = new int[nums2.length];
         int idx = 0;
         for (int num : nums2) {

@@ -50,22 +50,27 @@ package string;
 public class MaxVowels {
 
     public int maxVowels1(String s, int k) {
-        if (s.isEmpty() || k == 0)
+        if (s.isEmpty() || k == 0) {
             return 0;
+        }
         int max = 0;
         int len = s.length();
         char[] chars = s.toCharArray();
-        for (int i = 0; i < len && i < k; i++)
-            if (judge(chars[i]))
+        for (int i = 0; i < len && i < k; i++) {
+            if (judge(chars[i])) {
                 max++;
-        if (max == k)
+            }
+        }
+        if (max == k) {
             return max;
+        }
         int cur = max;
         for(int i = k; i < len; i++) {
             cur += (judge(chars[i]) ? 1 : 0) - (judge(chars[i - k]) ? 1 : 0);
             max = Math.max(max, cur);
-            if (max == k)
+            if (max == k) {
                 return max;
+            }
         }
         return max;
     }
@@ -84,24 +89,29 @@ public class MaxVowels {
     }
 
     public int maxVowels(String s, int k) {
-        if (s.isEmpty() || k == 0 || k > s.length())
+        if (s.isEmpty() || k == 0 || k > s.length()) {
             return 0;
+        }
         int max = 0;
         int len = s.length();
         int[] map = new int[26];
         char[] chars = {'a', 'e', 'i', 'o', 'u'};
-        for (char ch : chars)
+        for (char ch : chars) {
             map[ch - 'a']++;
-        for (int i = 0; i < len && i < k; i++)
+        }
+        for (int i = 0; i < len && i < k; i++) {
             max += map[s.charAt(i) - 'a'];
-        if (max == k)
+        }
+        if (max == k) {
             return max;
+        }
         int cur = max;
         for(int i = k; i < len; i++) {
             cur += map[s.charAt(i) - 'a'] - map[s.charAt(i - k) - 'a'];
             max = Math.max(max, cur);
-            if (max == k)
+            if (max == k) {
                 return max;
+            }
         }
         return max;
     }

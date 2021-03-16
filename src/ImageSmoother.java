@@ -35,25 +35,30 @@ public class ImageSmoother {
     }
     public static int[][] imageSmoother2(int[][] M) {
         int[][] results=new int[M.length][M[0].length];
-        for(int i=0;i<M.length;i++)
+        for(int i=0;i<M.length;i++) {
             for(int j=0;j<M[0].length;j++){
                 int count=0;
                 int sum=0;
-                for (int k = i-1; k <= i+1; k++)
-                    for (int l = j-1; l <= j+1; l++)
-                        if (k>=0&&k<M.length&&l>=0&&l<M[0].length){
+                for (int k = i-1; k <= i+1; k++) {
+                    for (int l = j - 1; l <= j + 1; l++) {
+                        if (k >= 0 && k < M.length && l >= 0 && l < M[0].length) {
                             count++;
-                            sum+=M[k][l];
+                            sum += M[k][l];
                         }
+                    }
+                }
                 results[i][j]=sum/count;
             }
+        }
         return results;
     }
     public static int[][] imageSmoother1(int[][] M) {
         int[][] MMore=new int[M.length+2][M[0].length+2];
-        for(int i=1;i<MMore.length-1;i++)
-            for(int j=1;j<MMore[0].length-1;j++)
-                MMore[i][j]=M[i-1][j-1];
+        for(int i=1;i<MMore.length-1;i++) {
+            for(int j=1;j<MMore[0].length-1;j++) {
+                MMore[i][j] = M[i - 1][j - 1];
+            }
+        }
         for (int i = 0; i < MMore.length; i++) {
             MMore[i][0]=-1;
             MMore[i][MMore[0].length-1]=-1;
@@ -63,18 +68,21 @@ public class ImageSmoother {
             MMore[MMore.length-1][j]=-1;
         }
         int[][] results=new int[M.length][M[0].length];
-        for(int i=1;i<MMore.length-1;i++)
+        for(int i=1;i<MMore.length-1;i++) {
             for(int j=1;j<MMore[0].length-1;j++){
                 int count=0;
                 int sum=0;
-                for (int k = i-1; k <= i+1; k++)
-                    for (int l = j-1; l <= j+1; l++)
-                        if (MMore[k][l]!=-1){
+                for (int k = i-1; k <= i+1; k++) {
+                    for (int l = j - 1; l <= j + 1; l++) {
+                        if (MMore[k][l] != -1) {
                             count++;
-                            sum+=MMore[k][l];
+                            sum += MMore[k][l];
                         }
+                    }
+                }
                 results[i-1][j-1]=sum/count;
             }
+        }
         return results;
     }
     public static int[][] imageSmoother(int[][] M) {

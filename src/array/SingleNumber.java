@@ -31,8 +31,9 @@ public class SingleNumber {
                     sameFlag[j]=true;
                 }
             }
-            if(!sameFlag[i])
+            if(!sameFlag[i]) {
                 sameNum=nums[i];
+            }
         }
         return sameNum;
     }

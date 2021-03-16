@@ -49,9 +49,11 @@ public class CombinationSum {
     List<List<Integer>> res;
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         int min = Integer.MAX_VALUE;
-        for(int i : candidates)
-            if (min > i)
+        for(int i : candidates) {
+            if (min > i) {
                 min = i;
+            }
+        }
         res = new ArrayList<>();
         int[] map = new int[target % min == 0 ? target / min : target / min + 1];
         combination(candidates, target, 0, map, 0);
@@ -61,14 +63,16 @@ public class CombinationSum {
     private void combination(int[] candidates, int target, int start, int[] map, int size) {
         if (0 == target) {
             List<Integer> list = new ArrayList<>(size);
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++) {
                 list.add(map[i]);
+            }
             res.add(list);
             return;
         }
         for (int i = start; i < candidates.length; i++) {
-            if (target < candidates[i])
+            if (target < candidates[i]) {
                 continue;
+            }
             map[size++] = candidates[i];
             combination(candidates, target - candidates[i], i, map, size);
             size--;

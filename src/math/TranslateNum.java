@@ -25,8 +25,9 @@ public class TranslateNum {
 
     private int count = 0;
     public int translateNum(int num) {
-        if(num == 0)
+        if(num == 0) {
             return 1;
+        }
         getCount(num);
         return count;
     }
@@ -36,8 +37,9 @@ public class TranslateNum {
             count++;
             return;
         }
-        if(num % 100 > 9 && num % 100 <= 25)
+        if(num % 100 > 9 && num % 100 <= 25) {
             getCount(num / 100);
+        }
         getCount(num / 10);
     }
 

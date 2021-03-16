@@ -51,10 +51,12 @@ public class RemoveElement {
         int start=0;
         int end=nums.length-1;
         while (start<=end){
-            while(start<=end&&nums[start]!=val)
+            while(start<=end&&nums[start]!=val) {
                 start++;
-            while (start<=end&&nums[end]==val)
+            }
+            while (start<=end&&nums[end]==val) {
                 end--;
+            }
             if (start<end){
                 int temp=nums[start];
                 nums[start]=nums[end];
@@ -67,10 +69,11 @@ public class RemoveElement {
         int n=nums.length;
         int i = 0;
         while(i < n) {
-            if (nums[i]==val)
+            if (nums[i]==val) {
                 nums[i]=nums[--n];
-            else
+            } else {
                 i++;
+            }
         }
         return n;
     }
@@ -79,10 +82,11 @@ public class RemoveElement {
         int i =0;
 
         while(i < n) {
-            if (nums[i] == val)
+            if (nums[i] == val) {
                 nums[i] = nums[--n];
-            else
+            } else {
                 i++;
+            }
         }
         return n;
     }

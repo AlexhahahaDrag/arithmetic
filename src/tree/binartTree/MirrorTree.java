@@ -45,8 +45,9 @@ public class MirrorTree {
     }
 
     private void mirror(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         TreeNode cur = root.left;
         root.left = root.right;
         root.right = cur;

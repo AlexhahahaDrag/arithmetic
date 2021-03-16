@@ -33,13 +33,15 @@ public class IncreasingTriplet {
         int len = 0;
         for(int num : nums) {
             int i = Arrays.binarySearch(dp, 0, len, num);
-            if (i < 0)
+            if (i < 0) {
                 i = -(i + 1);
+            }
             dp[i] = num;
             if (i == len) {
                 len++;
-                if (len >= 3)
+                if (len >= 3) {
                     return true;
+                }
             }
         }
         return false;
@@ -49,28 +51,31 @@ public class IncreasingTriplet {
         int min = Integer.MAX_VALUE;
         int max = Integer.MAX_VALUE;
         for(int num : nums) {
-            if (min >= num)
+            if (min >= num) {
                 min = num;
-            else if (num > min && num <= max)
+            } else if (num > min && num <= max) {
                 max = num;
-            else
+            } else {
                 return true;
+            }
         }
         return false;
     }
 
     public boolean increasingTriplet(int[] nums) {
-        if (nums == null || nums.length < 3)
+        if (nums == null || nums.length < 3) {
             return false;
+        }
         int min = nums[0];
         int max = Integer.MAX_VALUE;
         for(int num : nums) {
-            if (min >= num)
+            if (min >= num) {
                 min = num;
-            else if (num > max)
+            } else if (num > max) {
                 return true;
-            else
+            } else {
                 max = num;
+            }
         }
         return false;
     }

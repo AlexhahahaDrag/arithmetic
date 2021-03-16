@@ -46,7 +46,9 @@ public class ConvertANumberToHexadecimal {
             num = num >>> 4;
             res.insert(0, map(number));
         }
-        while (res.charAt(0)=='0' && res.length()>1) res.deleteCharAt(0);
+        while (res.charAt(0)=='0' && res.length()>1) {
+            res.deleteCharAt(0);
+        }
         return res.toString();
     }
     public String toHex1(int num) {
@@ -56,11 +58,15 @@ public class ConvertANumberToHexadecimal {
             num = num >>> 4;
             res.insert(0, map(number));
         }
-        while (res.charAt(0)=='0' && res.length()>1) res.deleteCharAt(0);
+        while (res.charAt(0)=='0' && res.length()>1) {
+            res.deleteCharAt(0);
+        }
         return res.toString();
     }
     public String toHex(int num) {
-        if (num == 0) return "0";
+        if (num == 0) {
+            return "0";
+        }
 
         final int MASK_LAST_FOUR_BITS = 0x00_00_00_0f; // = 0b1111
         final StringBuilder sb = new StringBuilder();

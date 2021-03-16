@@ -32,8 +32,9 @@ package string;
 public class CountBinarySubstrings {
 
     public int countBinarySubstrings(String s) {
-        if (s == null || s.length() == 0)
+        if (s == null || s.length() == 0) {
             return 0;
+        }
         char pre = s.charAt(0);
         int len = s.length();
         int[] map = new int[len];
@@ -42,16 +43,17 @@ public class CountBinarySubstrings {
         int start = 0;
         while(start < len - 1) {
             char cur = s.charAt(++start);
-            if (cur == pre)
+            if (cur == pre) {
                 map[size]++;
-            else {
+            } else {
                 map[++size]++;
                 pre = cur;
             }
         }
         int res = 0;
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < size; i++) {
             res += Math.min(map[i], map[i + 1]);
+        }
         return res;
     }
 

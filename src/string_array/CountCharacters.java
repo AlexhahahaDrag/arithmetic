@@ -43,12 +43,14 @@ public class CountCharacters {
     public int countCharacters(String[] words, String chars) {
         int[] map = new int[26];
         char[] ch = chars.toCharArray();
-        for (char c : ch)
+        for (char c : ch) {
             map[c - 'a']++;
+        }
         int sum = 0;
         for (String word : words) {
-            if (judge(word.toCharArray(), map))
+            if (judge(word.toCharArray(), map)) {
                 sum += word.length();
+            }
         }
         return sum;
     }
@@ -56,8 +58,9 @@ public class CountCharacters {
     private boolean judge(char[] ch, int[] map) {
         int[] cur = Arrays.copyOf(map, map.length);
         for(char c : ch) {
-            if (cur[c - 'a'] < 1)
+            if (cur[c - 'a'] < 1) {
                 return false;
+            }
             cur[c - 'a']--;
         }
         return true;

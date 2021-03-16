@@ -33,9 +33,11 @@ public class FindPeakElement {
 
     public int findPeakElement1(int[] nums) {
         boolean up = true;
-        for(int i = 1; i < nums.length; i++)
-            if (up && nums[i] < nums[i - 1])
+        for(int i = 1; i < nums.length; i++) {
+            if (up && nums[i] < nums[i - 1]) {
                 return i - 1;
+            }
+        }
         return nums.length - 1;
     }
 
@@ -44,10 +46,11 @@ public class FindPeakElement {
         int end = nums.length - 1;
         while (start < end) {
             int mid = start + (end - start >> 1);
-            if (nums[mid] > nums[mid + 1])
+            if (nums[mid] > nums[mid + 1]) {
                 end = mid;
-            else
+            } else {
                 start = mid + 1;
+            }
         }
         return start;
     }

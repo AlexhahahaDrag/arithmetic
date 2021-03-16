@@ -49,8 +49,9 @@ public class StringMatching {
     public List<String> stringMatching(String[] words) {
         List<String> res = new ArrayList<>();
         for(String str : words) {
-            if(judge(str, words))
+            if(judge(str, words)) {
                 res.add(str);
+            }
         }
         return res;
     }
@@ -58,10 +59,12 @@ public class StringMatching {
     private boolean judge(String str1, String[] words) {
         int len = str1.length();
         for(String str : words) {
-            if(str.length() <= len)
+            if(str.length() <= len) {
                 continue;
-            if(str.indexOf(str1) != -1)
+            }
+            if(str.indexOf(str1) != -1) {
                 return true;
+            }
         }
         return false;
     }

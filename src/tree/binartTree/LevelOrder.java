@@ -36,10 +36,12 @@ public class LevelOrder {
     }
 
     private void dfs(TreeNode root, int level, List<List<Integer>> res) {
-        if (root == null)
+        if (root == null) {
             return;
-        if (level == res.size())
+        }
+        if (level == res.size()) {
             res.add(new ArrayList<>());
+        }
         dfs(root.left, level + 1, res);
         dfs(root.right, level + 1, res);
     }

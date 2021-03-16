@@ -30,8 +30,9 @@ public class LetterCombinations {
 
     public List<String> letterCombinations(String digits) {
         List<String> list = new ArrayList<>();
-        if (digits == null || "".equals(digits))
+        if (digits == null || "".equals(digits)) {
             return list;
+        }
         char[] str = new char[digits.length()];
         getList(digits, 0, list, str);
         return list;

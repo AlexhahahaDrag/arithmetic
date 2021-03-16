@@ -33,20 +33,28 @@ public class MultiplyStrings {
 
     public String multiply1(String num1, String num2) {
         int len1 = num1.length(), len2 = num2.length();
-        if ((len1 == 1 && num1.charAt(0) == '0') || (len2 == 1 && num2.charAt(0) == '0')) return "0";
+        if ((len1 == 1 && num1.charAt(0) == '0') || (len2 == 1 && num2.charAt(0) == '0')) {
+            return "0";
+        }
         int[] nums = new int[len1+len2];
         char[] char_num1 = num1.toCharArray();
         char[] char_num2 = num2.toCharArray();
-        for (int i = len1-1; i >= 0; i--)
-            for (int j = len2-1; j>=0; j--)
-                nums[i+j+1] += (char_num1[i] - '0') * (char_num2[j] - '0');
+        for (int i = len1-1; i >= 0; i--) {
+            for (int j = len2-1; j>=0; j--) {
+                nums[i + j + 1] += (char_num1[i] - '0') * (char_num2[j] - '0');
+            }
+        }
         for (int i = len1+len2-1; i >= 1; i--){
             nums[i-1] += nums[i]/10;
             nums[i] %= 10;
         }
         StringBuilder sb = new StringBuilder();
-        if (nums[0] != 0) sb.append(nums[0]);
-        for (int i = 1; i < nums.length; i++) sb.append(nums[i]);
+        if (nums[0] != 0) {
+            sb.append(nums[0]);
+        }
+        for (int i = 1; i < nums.length; i++) {
+            sb.append(nums[i]);
+        }
         return sb.toString();
     }
 
@@ -81,8 +89,9 @@ public class MultiplyStrings {
 
     private String addDigit(String s, int digit) {
         StringBuilder sb = new StringBuilder(s);
-        while(--digit >= 0)
+        while(--digit >= 0) {
             sb.append("0");
+        }
         return sb.toString();
     }
 
@@ -98,8 +107,9 @@ public class MultiplyStrings {
             sb.append(sum % 10);
             digit = sum / 10;
         }
-        while(sb.length() > 1 && sb.charAt(sb.length() - 1) == '0')
+        while(sb.length() > 1 && sb.charAt(sb.length() - 1) == '0') {
             sb.replace(sb.length() - 1, sb.length(), "");
+        }
         return sb.reverse().toString();
     }
 }

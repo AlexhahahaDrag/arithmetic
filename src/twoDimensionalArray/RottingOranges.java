@@ -43,9 +43,11 @@ public class RottingOranges {
         boolean becomeRotOrange;
         int rot=2;
         int[][] gridMore=new int[grid.length+2][grid[0].length+2];
-        for(int i=1;i<gridMore.length-1;i++)
-            for(int j=1;j<gridMore[i].length-1;j++)
-                gridMore[i][j]=grid[i-1][j-1];
+        for(int i=1;i<gridMore.length-1;i++) {
+            for(int j=1;j<gridMore[i].length-1;j++) {
+                gridMore[i][j] = grid[i - 1][j - 1];
+            }
+        }
         int minute=0;
         do{
             hasFreshOrange=false;
@@ -69,16 +71,19 @@ public class RottingOranges {
                             gridMore[i][j + 1] = rot+1;
                             becomeRotOrange=true;
                         }
-                    }else if (gridMore[i][j]==1)
+                    }else if (gridMore[i][j]==1) {
                         hasFreshOrange=true;
+                    }
                 }
             }
             rot++;
-            if (becomeRotOrange)
+            if (becomeRotOrange) {
                 minute++;
+            }
         }while (hasFreshOrange&&becomeRotOrange);
-        if (hasFreshOrange)
+        if (hasFreshOrange) {
             return -1;
+        }
         return minute;
     }
 }

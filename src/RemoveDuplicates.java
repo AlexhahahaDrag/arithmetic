@@ -9,8 +9,9 @@ public class RemoveDuplicates {
     public static int removeDuplicatesArr(int[] nums){
         Set set=new HashSet();
         for(int i=0;i<nums.length;i++){
-            if (!set.contains(nums[i]))
+            if (!set.contains(nums[i])) {
                 set.add(nums[i]);
+            }
         }
         System.out.println(set);
         return set.size();

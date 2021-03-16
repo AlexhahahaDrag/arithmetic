@@ -58,10 +58,11 @@ public class NthMagicalNumber {
                 inA++;
                 inB++;
                 N++;
-            } else if (sa > sb)
+            } else if (sa > sb) {
                 inB++;
-            else
+            } else {
                 inA++;
+            }
         }
         return A * inA > B * inB ? A * inA : B * inB;
     }

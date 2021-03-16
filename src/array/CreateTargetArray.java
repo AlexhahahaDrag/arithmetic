@@ -68,9 +68,11 @@ public class CreateTargetArray {
     }
 
     private void copy(int[] res, int start) {
-        if(start > res.length - 1)
+        if(start > res.length - 1) {
             return;
-        for(int i = res.length - 1; i > start; i--)
+        }
+        for(int i = res.length - 1; i > start; i--) {
             res[i] = res[i - 1];
+        }
     }
 }

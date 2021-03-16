@@ -55,8 +55,9 @@ public class VideoStitching {
 
     public int videoStitching(int[][] clips, int T) {
         Arrays.sort(clips, (a, b) ->  a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
-        if (clips[0][0] > 0 || clips[clips.length - 1][1] < T)
+        if (clips[0][0] > 0 || clips[clips.length - 1][1] < T) {
             return -1;
+        }
         int start = 0;
         int end = 0;
         int count = 0;
@@ -64,15 +65,17 @@ public class VideoStitching {
             if (clip[0] <= start) {
                 end = Math.max(end, clip[1]);
             } else {
-                if (T <= end || clip[0] > end)
+                if (T <= end || clip[0] > end) {
                     break;
+                }
                 count++;
                 start = end;
                 end = clip[1];
             }
         }
-        if (end >= T)
+        if (end >= T) {
             return ++count;
+        }
         return -1;
     }
 

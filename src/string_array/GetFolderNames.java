@@ -67,8 +67,9 @@ public class GetFolderNames {
         for(int i = 0; i < names.length; i++) {
             if(map.containsKey(names[i])) {
                 int num = map.get(names[i]) + 1;
-                while(map.containsKey(names[i] + "(" + num + ")"))
+                while(map.containsKey(names[i] + "(" + num + ")")) {
                     num++;
+                }
                 map.put(names[i], num);
                 names[i] = names[i] + "(" + num + ")";
                 map.put(names[i], 0);

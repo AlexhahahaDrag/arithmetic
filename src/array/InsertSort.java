@@ -11,8 +11,9 @@ public class InsertSort {
         InsertSort insertSort = new InsertSort();
         int[] arr = {45,676,234,17,87,9,8,90,8,2,423,1,23};
         insertSort.insertSort(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.println(i);
+        }
     }
     private void insertSort(int[] arr) {
         int j;

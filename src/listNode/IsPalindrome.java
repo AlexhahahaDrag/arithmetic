@@ -33,11 +33,13 @@ public class IsPalindrome {
             pre = slow;
             slow = nextS;
         }
-        if (fast != null)
+        if (fast != null) {
             slow = slow.next;
+        }
         while(slow != null) {
-            if (slow.val != pre.val)
+            if (slow.val != pre.val) {
                 return false;
+            }
             slow = slow.next;
             pre = pre.next;
         }

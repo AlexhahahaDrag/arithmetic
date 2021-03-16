@@ -28,8 +28,9 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
     public BinaryHeap(AnyType[] items) {
         currentSize = items.length;
         res = (AnyType[]) new Comparable[(items.length + 2) * 11 / 10];
-        for (int i = 0; i < items.length; i++)
+        for (int i = 0; i < items.length; i++) {
             res[i + 1] = items[i];
+        }
         buildHeap();
     }
 
@@ -41,12 +42,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
      *@return:
     */
     public void insert(AnyType x) {
-        if (currentSize == res.length - 1)
+        if (currentSize == res.length - 1) {
             enlargeArray((res.length << 1) + 1);
+        }
         int hole = ++currentSize;
         //避免空指针异常
-        for (res[0] = x; x.compareTo(res[hole >> 1]) < 0; hole >>= 1)
+        for (res[0] = x; x.compareTo(res[hole >> 1]) < 0; hole >>= 1) {
             res[hole] = res[hole >> 1];
+        }
         res[hole] = x;
     }
 
@@ -58,8 +61,9 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
      *@return:
     */
     public AnyType findMin() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new BufferUnderflowException();
+        }
         return res[1];
     }
 
@@ -79,8 +83,9 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
      *@return:
     */
     public void deleteMin() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new BufferUnderflowException();
+        }
         res[1] = res[currentSize--];
         percolateDown(1);;
     }
@@ -98,12 +103,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
         AnyType cur = res[hole];
         for (; hole * 2 < currentSize; hole = child) {
             child = hole * 2;
-            if (child != currentSize && res[child + 1].compareTo(res[child]) < 0)
+            if (child != currentSize && res[child + 1].compareTo(res[child]) < 0) {
                 child++;
-            if (cur.compareTo(res[child]) >= 0)
+            }
+            if (cur.compareTo(res[child]) >= 0) {
                 res[hole] = res[child];
-            else
+            } else {
                 break;
+            }
         }
         res[hole] = cur;
     }
@@ -117,13 +124,15 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>>{
     */
     private void enlargeArray(int newSize) {
         AnyType[] resNew = (AnyType[]) new Comparable[newSize];
-        for (int i = 1; i < res.length; i++)
+        for (int i = 1; i < res.length; i++) {
             resNew[i] = res[i];
+        }
         res = resNew;
     }
 
     private void buildHeap() {
-        for (int i = currentSize >> 1; i > 0; i--)
+        for (int i = currentSize >> 1; i > 0; i--) {
             percolateDown(i);
+        }
     }
 }

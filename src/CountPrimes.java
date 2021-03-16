@@ -34,8 +34,9 @@ public class CountPrimes {
                     break;
                 }
             }
-            if (flag)
+            if (flag) {
                 count++;
+            }
         }
         return count;
     }

@@ -30,16 +30,20 @@ public class MinimunPathSum {
     }
 
     public static int minPathSumHelper(int[][] grid, int row, int col, int[][] memo) {
-        if (row==grid.length-1&&col==grid[0].length-1)
+        if (row==grid.length-1&&col==grid[0].length-1) {
             return grid[row][col];
-        if (memo[row][col]!=0)
+        }
+        if (memo[row][col]!=0) {
             return memo[row][col];
+        }
         int rowNum=Integer.MAX_VALUE;
         int colNum=Integer.MAX_VALUE;
-        if (row<grid.length-1)
+        if (row<grid.length-1) {
             rowNum=minPathSumHelper(grid,row+1,col,memo);
-        if (col<grid[0].length-1)
+        }
+        if (col<grid[0].length-1) {
             colNum=minPathSumHelper(grid,row,col+1,memo);
+        }
         memo[row][col]=Math.min(rowNum,colNum)+grid[row][col];
         return memo[row][col];
     }

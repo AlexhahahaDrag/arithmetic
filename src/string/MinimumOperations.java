@@ -42,10 +42,11 @@ public class MinimumOperations {
         char[] ch = leaves.toCharArray();
         int[][] dp = new int[3][ch.length];
         for (int i = 0; i < ch.length; i++) {
-            if (i < 1)
+            if (i < 1) {
                 dp[0][i] = ch[i] == 'r' ? 0 : 1;
-            else
+            } else {
                 dp[0][i] = dp[0][i - 1] + (ch[i] == 'r' ? 0 : 1);
+            }
             if (i < 1) {
                 dp[1][i] = ch[i] == 'r' ? 0 : 1;
             } else {

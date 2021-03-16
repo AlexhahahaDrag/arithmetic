@@ -45,9 +45,9 @@ public class LongestMountain {
         boolean lower = false;
         for (int i = 0; i < A.length - 1; i++) {
             if (A[i] < A[i + 1]) {
-                if (upper)
+                if (upper) {
                     num++;
-                else {
+                } else {
                     upper = true;
                     lower = false;
                     num = 2;
@@ -57,8 +57,9 @@ public class LongestMountain {
                     lower = true;
                     upper = false;
                 }
-                if (lower)
+                if (lower) {
                     num++;
+                }
                 max = Math.max(num, max);
             } else {
                 upper = false;

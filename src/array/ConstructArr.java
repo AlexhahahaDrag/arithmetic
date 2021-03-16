@@ -27,8 +27,9 @@ public class ConstructArr {
 
     public int[] constructArr(int[] a) {
         int ms = 1;
-        for(int j : a)
+        for(int j : a) {
             ms *= j;
+        }
         int[] res = new int[a.length];
         Arrays.fill(res, 1);
         int index = 0;
@@ -41,8 +42,9 @@ public class ConstructArr {
             }
 
             res[index] *= pre;
-            for (int i = index + 1; i < len; i++)
+            for (int i = index + 1; i < len; i++) {
                 res[index] = a[i] * res[index];
+            }
             pre *= a[index++];
         }
         return res;
@@ -52,7 +54,8 @@ public class ConstructArr {
         int[] arr = {1,2,3,4,5};
         ConstructArr constructArr = new ConstructArr();
         int[] res = constructArr.constructArr(arr);
-        for (int i : res)
+        for (int i : res) {
             System.out.print(i + "   ");
+        }
     }
 }

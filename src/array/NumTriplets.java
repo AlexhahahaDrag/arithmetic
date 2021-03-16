@@ -55,16 +55,21 @@ public class NumTriplets {
     }
 
     public int map(int[] nums1, int[] nums2) {
-        if (nums2.length < 2)
+        if (nums2.length < 2) {
             return 0;
+        }
         Map<Long, Integer> map = new HashMap<>();
-        for(int i = 0; i < nums2.length - 1; i++)
-            for (int j = i + 1; j < nums2.length; j++)
-                map.put((long)nums2[i] * (long)nums2[j], map.getOrDefault((long)nums2[i] * (long)nums2[j], 0) + 1);
+        for(int i = 0; i < nums2.length - 1; i++) {
+            for (int j = i + 1; j < nums2.length; j++) {
+                map.put((long) nums2[i] * (long) nums2[j], map.getOrDefault((long) nums2[i] * (long) nums2[j], 0) + 1);
+            }
+        }
         int res = 0;
-        for(long i : nums1)
-            if (map.containsKey(i * i))
+        for(long i : nums1) {
+            if (map.containsKey(i * i)) {
                 res += map.get(i * i);
+            }
+        }
         return res;
     }
 

@@ -42,8 +42,9 @@ public class IsSubsequence {
         while(si < sl && ti < tl && sl - si <= tl - ti) {
             char s1 = s.charAt(si);
             char t1 = t.charAt(ti);
-            if (s1 == t1)
+            if (s1 == t1) {
                 si++;
+            }
             ti++;
         }
         return si == sl;
@@ -53,8 +54,9 @@ public class IsSubsequence {
         int index = -1;
         for (char si : s.toCharArray()) {
             index = t.indexOf(si, index + 1);
-            if (index == -1)
+            if (index == -1) {
                 return false;
+            }
         }
         return true;
     }

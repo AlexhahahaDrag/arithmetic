@@ -37,8 +37,9 @@ public class ClimbingStairs {
         }
     }
     public static int climbStairs1(int n){
-        if (n==1)
+        if (n==1) {
             return 1;
+        }
         int start=1;
         int second=2;
         while(n>2){

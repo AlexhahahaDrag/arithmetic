@@ -66,15 +66,18 @@ public class BusRapidTransit {
     Map<Long, Long> map;
     private int mod = 1000000007;
     private long fun(long target, int inc, int dec, int[] jump, int[] cost) {
-        if (target == 0)
+        if (target == 0) {
             return 0;
-        if (map.containsKey(target))
+        }
+        if (map.containsKey(target)) {
             return map.get(target);
+        }
         long min = (long) target * (long)inc;
         for (int i = 0; i < jump.length; i++) {
             min = Math.min(min, fun(target / jump[i], inc, dec, jump, cost) + cost[i] + (target % jump[i]) * inc);
-            if (target > 1 && target % jump[i] > 0)
+            if (target > 1 && target % jump[i] > 0) {
                 min = Math.min(min, fun(target / jump[i] + 1, inc, dec, jump, cost) + cost[i] + (jump[i] - target % jump[i]) * dec);
+            }
         }
         map.put(target, min);
         return min;

@@ -55,19 +55,23 @@ public class MinSubarray {
 
     public int minSubarray1(int[] nums, int p) {
         long[] map = new long[nums.length + 1];
-        for (int i = 0; i < nums.length; i++)
+        for (int i = 0; i < nums.length; i++) {
             map[i + 1] = (nums[i] + map[i]) % p;
-        if (map[map.length - 1] < p)
+        }
+        if (map[map.length - 1] < p) {
             return -1;
-        if (map[map.length - 1] % p == 0)
+        }
+        if (map[map.length - 1] % p == 0) {
             return 0;
+        }
         int len = 1;
         long mod = map[map.length - 1] % p;
         while(len < map.length - 1) {
             for (int i = len; i < map.length; i++) {
                 long num = map[i] - map[i - len];
-                if((num - mod) % p == 0)
+                if((num - mod) % p == 0) {
                     return len;
+                }
             }
             len++;
         }
@@ -79,18 +83,21 @@ public class MinSubarray {
         int[] map = new int[nums.length + 1];
         for(int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            if (sum > Integer.MAX_VALUE)
+            if (sum > Integer.MAX_VALUE) {
                 return -1;
+            }
             map[i] = nums[i] % p;
         }
-        if (sum == 0)
+        if (sum == 0) {
             return 0;
+        }
         int len = 1;
         long mode = sum % p;
         while(len < nums.length - 1) {
             for (int i = 0; i < map.length - len; i++) {
-                if (map[i] == mode)
+                if (map[i] == mode) {
                     return len;
+                }
                 nums[i] = (nums[i + 1] + nums[i]) % p;
             }
             len++;

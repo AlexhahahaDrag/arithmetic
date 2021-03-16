@@ -67,10 +67,12 @@ public class MinRemoveToMakeValid {
                 if (left == 0) {
                     str[i] = '#';
                     remove++;
-                } else
+                } else {
                     left--;
-            } else if (str[i] == '(')
+                }
+            } else if (str[i] == '(') {
                 left++;
+            }
         }
         int right = 0;
         for (int j = str.length - 1; j >= 0; j--) {
@@ -78,16 +80,20 @@ public class MinRemoveToMakeValid {
                 if (right == 0) {
                     str[j] = '#';
                     remove++;
-                } else
+                } else {
                     right--;
-            } else if (str[j] == ')')
+                }
+            } else if (str[j] == ')') {
                 right++;
+            }
         }
         char[] result = new char[str.length - remove];
         int index = 0;
-        for(char ch : str)
-            if (ch != '#')
+        for(char ch : str) {
+            if (ch != '#') {
                 result[index++] = ch;
+            }
+        }
         return new String(result);
     }
 
@@ -96,19 +102,24 @@ public class MinRemoveToMakeValid {
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i < str.length; i++) {
             if(str[i] == ')') {
-                if (stack.size() == 0)
+                if (stack.size() == 0) {
                     str[i] = '#';
-                else
+                } else {
                     stack.pop();
-            } else if (str[i] == '(')
+                }
+            } else if (str[i] == '(') {
                 stack.add(i);
+            }
         }
-        while(stack.size() > 0)
+        while(stack.size() > 0) {
             str[stack.pop()] = '#';
+        }
         StringBuilder sb = new StringBuilder();
-        for(char ch : str)
-            if (ch != '#')
+        for(char ch : str) {
+            if (ch != '#') {
                 sb.append(ch);
+            }
+        }
         return sb.toString();
     }
 }

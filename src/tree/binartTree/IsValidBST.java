@@ -36,27 +36,31 @@ package tree.binartTree;
 public class IsValidBST {
 
     public boolean isValidBST1(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return true;
+        }
         return findLeft(root.left, root.val) && findRight(root.right, root.val) && isValidBST(root.left) && isValidBST(root.right);
     }
 
     private boolean findRight(TreeNode treeNode, int val) {
-        if (treeNode == null)
+        if (treeNode == null) {
             return true;
+        }
         return treeNode.val > val && findRight(treeNode.left, val) && findRight(treeNode.right, val);
     }
 
     private boolean findLeft(TreeNode treeNode, int val) {
-        if (treeNode == null)
+        if (treeNode == null) {
             return true;
+        }
         return treeNode.val < val && findLeft(treeNode.left, val) && findLeft(treeNode.right, val);
     }
 
     Long cur = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return true;
+        }
         return isValidBST(root.left) && cur < (cur = (long)root.val)  && isValidBST(root.right);
     }
 

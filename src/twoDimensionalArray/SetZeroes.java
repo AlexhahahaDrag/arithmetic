@@ -55,15 +55,17 @@ public class SetZeroes {
 
         for(int k = 0; k < row.length; k++) {
             if(row[k] == 1) {
-                for(int l = 0; l < matrix[0].length; l++)
+                for(int l = 0; l < matrix[0].length; l++) {
                     matrix[k][l] = 0;
+                }
             }
         }
 
         for(int m = 0; m < column.length; m++) {
             if(column[m] == 1) {
-                for(int n = 0; n < matrix.length; n++)
+                for(int n = 0; n < matrix.length; n++) {
                     matrix[n][m] = 0;
+                }
             }
         }
     }

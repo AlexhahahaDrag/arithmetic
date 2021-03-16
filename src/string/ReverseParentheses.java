@@ -54,29 +54,34 @@ public class ReverseParentheses {
         int len = chars.length;
         Stack<Integer> stack = new Stack<>();
         while(index < len) {
-            if (chars[index] == '(')
+            if (chars[index] == '(') {
                 stack.add(index);
-            else if (chars[index] == ')') {
+            } else if (chars[index] == ')') {
                 int start = stack.pop();
                 reverse(chars, start, index);
             }
             index++;
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < chars.length; i++)
-            if (chars[i] != '(' && chars[i] != ')')
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != '(' && chars[i] != ')') {
                 stringBuilder.append(chars[i]);
+            }
+        }
         return stringBuilder.toString();
     }
 
     private void reverse(char[] chars, int start, int end) {
         while(start < end) {
-            if (chars[start] == '(' || chars[start] == ')')
-               start++;
-            if (chars[end] == '(' || chars[end] == ')')
+            if (chars[start] == '(' || chars[start] == ')') {
+                start++;
+            }
+            if (chars[end] == '(' || chars[end] == ')') {
                 end--;
-            if (start >= end)
+            }
+            if (start >= end) {
                 return;
+            }
             char ch = chars[start];
             chars[start] = chars[end];
             chars[end] = ch;

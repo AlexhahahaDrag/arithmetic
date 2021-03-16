@@ -22,10 +22,12 @@ public class ValidPalindromeII {
     static char[] charsMap=new char[256];
     static boolean flag=true;
     public static boolean validPalindrome(String s) {
-        if(s.length()<3)
+        if(s.length()<3) {
             return true;
-        for(int i=0;i<26;i++)
+        }
+        for(int i=0;i<26;i++) {
             charsMap[i+'a']=(char)i;
+        }
         return isPalindrome(s,0,s.length()-1);
     }
     public static boolean isPalindrome(String s,int i, int j){
@@ -42,8 +44,9 @@ public class ValidPalindromeII {
                 }else if(flag){
                     flag=false;
                     return isPalindrome(s,i+1,j)||isPalindrome(s,i,j-1);
-                }else
+                }else {
                     return false;
+                }
             }
         }
         return true;

@@ -59,12 +59,15 @@ public class LevelOrder {
     }
 
     private void dfs(Node<Integer> node, int level, List<List<Integer>> res) {
-        if (node == null)
+        if (node == null) {
             return;
-        if (res.size() == level)
+        }
+        if (res.size() == level) {
             res.add(new ArrayList<>());
+        }
         res.get(level).add(node.val);
-        for(Node<Integer> child : node.children)
+        for(Node<Integer> child : node.children) {
             dfs(child, level + 1, res);
+        }
     }
 }

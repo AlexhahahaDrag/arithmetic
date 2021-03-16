@@ -32,14 +32,17 @@ public class CountBinarySubstrings {
         int[] indexs=new int[s.length()];
         int t=0;
         indexs[0]=1;
-        for(int i=0;i<s.length()-1;i++)
-            if(s.charAt(i)==s.charAt(i+1))
+        for(int i=0;i<s.length()-1;i++) {
+            if(s.charAt(i)==s.charAt(i+1)) {
                 indexs[t]++;
-            else
-                indexs[++t]=1;
+            } else {
+                indexs[++t] = 1;
+            }
+        }
         int count=0;
-        for (int i = 0; i < indexs.length-1; i++)
+        for (int i = 0; i < indexs.length-1; i++) {
             count+=Math.min(indexs[i],indexs[i+1]);
+        }
         return count;
     }
 }

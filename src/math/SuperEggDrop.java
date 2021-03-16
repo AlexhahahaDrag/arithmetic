@@ -47,11 +47,13 @@ package math;
 public class SuperEggDrop {
 
     public int superEggDrop1(int K, int N) {
-        if (N == 1)
+        if (N == 1) {
             return 1;
+        }
         int[][] f = new int[N + 1][K + 1];
-        for (int i = 1; i <= K; i++)
+        for (int i = 1; i <= K; i++) {
             f[1][i] = 1;
+        }
         int ans = -1;
         for (int i = 2; i <= N; i++) {
             for (int j = 1; j <= K; j++) {
@@ -70,8 +72,9 @@ public class SuperEggDrop {
         int[] dp = new int[K + 1];
         while(dp[K] < N) {
             m++;
-            for (int i = K; i >= 1; i--)
+            for (int i = K; i >= 1; i--) {
                 dp[i] += 1 + dp[i - 1];
+            }
         }
         return m;
     }

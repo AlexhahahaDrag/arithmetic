@@ -17,11 +17,13 @@ public class KMP {
             if (j == -1 || res[i] == tar[j]) {
                 j++;
                 i++;
-            } else
+            } else {
                 j = k[j];
+            }
         }
-        if (j == tar.length)
+        if (j == tar.length) {
             return i - j + 1;
+        }
         return -1;
     }
 
@@ -35,8 +37,9 @@ public class KMP {
                 next[j] = k;
                 j++;
                 k++;
-            } else
+            } else {
                 k = next[k];
+            }
         }
         return next;
     }

@@ -27,12 +27,13 @@ public class TwoSumII {
         int end = numbers.length - 1;
         while(start < end) {
             int sum = numbers[start] + numbers[end];
-            if (sum > target)
+            if (sum > target) {
                 end--;
-            else if (sum == target)
+            } else if (sum == target) {
                 return new int[] {start + 1, end + 1};
-            else
+            } else {
                 start++;
+            }
         }
         return new int[]{-1, -1};
     }

@@ -41,19 +41,23 @@ public class MinStack {
     }
 
     public void push(int x) {
-        if(current + 1 >= size)
+        if(current + 1 >= size) {
             reset();
+        }
         store[++current] = x;
-        if (x < store[min])
+        if (x < store[min]) {
             min = current;
+        }
     }
 
     public void pop() {
         if(min == current) {
             min = 0;
-            for(int i = 1; i < current - 1; i++)
-                if (store[i] < min)
+            for(int i = 1; i < current - 1; i++) {
+                if (store[i] < min) {
                     min = i;
+                }
+            }
         }
         current--;
     }

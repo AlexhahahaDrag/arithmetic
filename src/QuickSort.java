@@ -28,10 +28,12 @@ public class QuickSort {
     public static int divideArr(int[] arr,int start,int end){
         int mid = start;
         while(start<end){
-            while(start<end && arr[start]<= arr[mid])
+            while(start<end && arr[start]<= arr[mid]) {
                 start++;
-            while(start<end && arr[end]>arr[mid])
+            }
+            while(start<end && arr[end]>arr[mid]) {
                 end--;
+            }
             int c=arr[start];
             arr[start]=arr[end];
             arr[end]=c;

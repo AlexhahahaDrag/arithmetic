@@ -14,10 +14,11 @@ public class MaximumCommenSubsequence {
         int[][] lcs = new int[ch1.length + 1][ch2.length + 1];
         for (int i = 1; i <= ch1.length; i++) {
             for (int j = 1; j <= ch2.length; j++) {
-                if (ch1[i-1] == ch2[j-1])
+                if (ch1[i-1] == ch2[j-1]) {
                     lcs[i][j] = lcs[i-1][j-1] + 1;
-                else
+                } else {
                     lcs[i][j] = Math.max(lcs[i-1][j],lcs[i][j-1]);
+                }
             }
         }
         StringBuilder stringBuilder = new StringBuilder();
@@ -25,9 +26,11 @@ public class MaximumCommenSubsequence {
         int i = ch1.length;
         int j = ch2.length;
         while (k > 0) {
-            if (lcs[i][j] == lcs[i - 1][j]) i--;
-            else if (lcs[i][j] == lcs[i][j - 1]) j--;
-            else {
+            if (lcs[i][j] == lcs[i - 1][j]) {
+                i--;
+            } else if (lcs[i][j] == lcs[i][j - 1]) {
+                j--;
+            } else {
                 stringBuilder.insert(0,ch1[i-1]);
                 k--;i--;j--;
             }

@@ -45,16 +45,22 @@ public class MonotonicArray {
     }
     public static boolean isMonotonic(int[] A) {
         int x = 0;
-        if (A[0] > A[A.length -1])
+        if (A[0] > A[A.length -1]) {
             x=1;
+        }
         if (x == 0) {
-            for (int i = 0; i < A.length - 1; i++)
-                if (A[i] > A[i + 1])
+            for (int i = 0; i < A.length - 1; i++) {
+                if (A[i] > A[i + 1]) {
                     return false;
-        }else if (x==1)
-            for (int j = 0; j<A.length-1; j++)
-                if (A[j] < A[j+1])
+                }
+            }
+        }else if (x==1) {
+            for (int j = 0; j<A.length-1; j++) {
+                if (A[j] < A[j + 1]) {
                     return false;
+                }
+            }
+        }
         return true;
     }
     public static boolean isMonotonic1(int[] A) {
@@ -62,14 +68,16 @@ public class MonotonicArray {
         boolean flagDaYu=true;
         boolean flagXiaoYu=true;
         while(index<A.length-1){
-            if(flagXiaoYu&&A[index]<A[index+1])
+            if(flagXiaoYu&&A[index]<A[index+1]) {
                 flagDaYu=false;
-            else if(flagXiaoYu&&A[index]>A[index+1])
+            } else if(flagXiaoYu&&A[index]>A[index+1]) {
                 flagXiaoYu=false;
-            if(flagDaYu&&A[index]>A[index+1])
+            }
+            if(flagDaYu&&A[index]>A[index+1]) {
                 flagXiaoYu=false;
-            else if(flagDaYu&&A[index]<A[index+1])
+            } else if(flagDaYu&&A[index]<A[index+1]) {
                 flagDaYu=false;
+            }
             index++;
         }
         return flagDaYu||flagXiaoYu;

@@ -37,17 +37,21 @@ import java.util.List;
 public class MinimumTotal {
 
     public int minimumTotal(List<List<Integer>> triangle) {
-        if (triangle == null || triangle.size() == 0)
+        if (triangle == null || triangle.size() == 0) {
             return 0;
+        }
         int[] cur = new int[triangle.size() + 1];
         Arrays.fill(cur, Integer.MAX_VALUE);
         cur[1] = 0;
-        for (List<Integer> integers : triangle)
-            for (int j = integers.size() - 1; j >= 0; j--)
+        for (List<Integer> integers : triangle) {
+            for (int j = integers.size() - 1; j >= 0; j--) {
                 cur[j + 1] = integers.get(j) + Math.min(cur[j + 1], cur[j]);
+            }
+        }
         int min = cur[0];
-        for (int i : cur)
+        for (int i : cur) {
             min = Math.min(min, i);
+        }
         return min;
     }
 

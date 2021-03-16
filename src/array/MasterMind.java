@@ -33,25 +33,41 @@ public class MasterMind {
                 continue;
             }
             switch(solution.charAt(i)) {
-                case 'R' : if(map[0] < 0)
-                    gu++; map[0]++; break;
-                case 'G' : if(map[1] < 0)
-                    gu++;map[1]++; break;
-                case 'B' : if(map[2] < 0)
-                    gu++;map[2]++; break;
-                case 'Y' : if(map[3] < 0)
-                    gu++;map[3]++; break;
+                case 'R' : if(map[0] < 0) {
+                    gu++;
+                }
+                    map[0]++; break;
+                case 'G' : if(map[1] < 0) {
+                    gu++;
+                }
+                    map[1]++; break;
+                case 'B' : if(map[2] < 0) {
+                    gu++;
+                }
+                    map[2]++; break;
+                case 'Y' : if(map[3] < 0) {
+                    gu++;
+                }
+                    map[3]++; break;
                 default: break;
             }
             switch(guess.charAt(i)) {
-                case 'R' : if(map[0] > 0)
-                    gu++; map[0]--; break;
-                case 'G' : if(map[1] > 0)
-                    gu++;map[1]--; break;
-                case 'B' : if(map[2] > 0)
-                    gu++;map[2]--; break;
-                case 'Y' : if(map[3] > 0)
-                    gu++;map[3]--; break;
+                case 'R' : if(map[0] > 0) {
+                    gu++;
+                }
+                    map[0]--; break;
+                case 'G' : if(map[1] > 0) {
+                    gu++;
+                }
+                    map[1]--; break;
+                case 'B' : if(map[2] > 0) {
+                    gu++;
+                }
+                    map[2]--; break;
+                case 'Y' : if(map[3] > 0) {
+                    gu++;
+                }
+                    map[3]--; break;
                 default: break;
             }
         }

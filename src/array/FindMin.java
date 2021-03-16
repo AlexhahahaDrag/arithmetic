@@ -27,11 +27,12 @@ package array;
 public class FindMin {
 
     public int findMin(int[] nums) {
-        if (nums == null || nums.length < 1)
+        if (nums == null || nums.length < 1) {
             return -1;
+        }
         int start = 0;
         int end = nums.length - 1;
-        if (nums[start] > nums[end])
+        if (nums[start] > nums[end]) {
             while(start < end) {
                 int mid = start + (end - start >> 1);
                 if (nums[mid] >= nums[0]) {
@@ -40,6 +41,7 @@ public class FindMin {
                     end = mid;
                 }
             }
+        }
         return nums[start];
     }
 

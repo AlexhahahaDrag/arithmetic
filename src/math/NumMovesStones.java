@@ -51,7 +51,8 @@ public class NumMovesStones {
     public static void main(String[] args) {
         NumMovesStones numMovesStones = new NumMovesStones();
         int[] arr = numMovesStones.numMovesStones(4, 3, 2);
-        for (int i :arr)
+        for (int i :arr) {
             System.out.println(i);
+        }
     }
 }

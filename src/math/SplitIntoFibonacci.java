@@ -59,8 +59,9 @@ public class SplitIntoFibonacci {
         int[] res = new int[S.length()];
         find(res, 0, S.toCharArray(), 0);
         List<Integer> list = new ArrayList<>();
-        for(int i : res)
+        for(int i : res) {
             list.add(i);
+        }
         return list;
     }
 
@@ -69,8 +70,9 @@ public class SplitIntoFibonacci {
             return false;
         }
 
-        if (in == chs.length)
+        if (in == chs.length) {
             return true;
+        }
         if (in > chs.length || chs[in] == '0') {
             res[index] = 0;
             return false;
@@ -85,8 +87,9 @@ public class SplitIntoFibonacci {
     }
 
     private boolean check(int[] res, int index) {
-        if (index < 3)
+        if (index < 3) {
             return true;
+        }
         return res[index] - res[index - 1] - res[index - 2] == 0;
     }
 

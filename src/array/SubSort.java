@@ -42,32 +42,40 @@ public class SubSort {
         while(start < end && ne[end] == array[end]) {
             end--;
         }
-        if (start >= end)
+        if (start >= end) {
             return new int[]{-1, -1};
+        }
         return new int[] {start, end};
     }
 
     public int[] subSort(int[] array) {
         int start = 0;
         int end = array.length - 1;
-        while(start < array.length - 1 && array[start] <= array[start + 1])
+        while(start < array.length - 1 && array[start] <= array[start + 1]) {
             start++;
-        while(start < end && array[end] >= array[end - 1])
+        }
+        while(start < end && array[end] >= array[end - 1]) {
             end--;
-        if (start >= end)
+        }
+        if (start >= end) {
             return new int[]{-1, -1};
+        }
         int min = array[start];
         int max = array[end];
         for (int i = start + 1; i <= end; i++) {
-            if (min > array[i])
+            if (min > array[i]) {
                 min = array[i];
-            if (max < array[i])
+            }
+            if (max < array[i]) {
                 max = array[i];
+            }
         }
-        while(start >= 0 && min < array[start])
+        while(start >= 0 && min < array[start]) {
             start--;
-        while(end < array.length && max > array[end])
+        }
+        while(end < array.length && max > array[end]) {
             end++;
+        }
         return new int[] {start + 1, end - 1};
     }
 
@@ -75,7 +83,8 @@ public class SubSort {
         int[] array = {1,2,4,7,10,11,7,12,6,7,16,18,19};
         SubSort subSort = new SubSort();
         int[] res = subSort.subSort(array);
-        for (int i : res)
+        for (int i : res) {
             System.out.println(i +  "  ");
+        }
     }
 }

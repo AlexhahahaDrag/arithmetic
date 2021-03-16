@@ -45,8 +45,9 @@ public class SmallerNumbersThanCurrent {
 
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] map = new int[101];
-        for (int i = 0; i < nums.length; i++)
+        for (int i = 0; i < nums.length; i++) {
             map[nums[i]]++;
+        }
         int pre = 0;
         int cur;
         for (int i = 1; i < map.length; i++) {
@@ -55,8 +56,9 @@ public class SmallerNumbersThanCurrent {
             pre = cur;
         }
         map[0] = 0;
-        for (int i = 0; i < nums.length; i++)
+        for (int i = 0; i < nums.length; i++) {
             nums[i] = map[nums[i]];
+        }
         return nums;
     }
 
@@ -79,7 +81,8 @@ public class SmallerNumbersThanCurrent {
         int[] arr = {};
         SmallerNumbersThanCurrent smallerNumbersThanCurrent = new SmallerNumbersThanCurrent();
         int[] res = smallerNumbersThanCurrent.smallerNumbersThanCurrent(arr);
-        for (int i: res)
+        for (int i: res) {
             System.out.print(i + "   ");
+        }
     }
 }

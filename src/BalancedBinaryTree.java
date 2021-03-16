@@ -45,17 +45,21 @@ public class BalancedBinaryTree {
         System.out.println(isBalanced(treeNode));
     }
     public static boolean isBalanced(TreeNode root) {
-        if(root==null)
+        if(root==null) {
             return true;
+        }
         TreeNode curr=root;
-        if(curr!=null)
-            if(Math.abs(height(curr.left)-height(curr.right))>1)
+        if(curr!=null) {
+            if(Math.abs(height(curr.left)-height(curr.right))>1) {
                 return false;
+            }
+        }
         return isBalanced(curr.left)&&isBalanced(curr.right);
     }
     public static int height(TreeNode node){
-        if(node==null)
+        if(node==null) {
             return 0;
+        }
         return Math.max(height(node.left),height(node.right))+1;
     }
 }

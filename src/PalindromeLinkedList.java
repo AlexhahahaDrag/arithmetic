@@ -30,8 +30,9 @@ public class PalindromeLinkedList {
         System.out.println(isPalindrome(listNode));
     }
     public static boolean isPalindrome(ListNode head) {
-        if(head==null||head.next==null)
+        if(head==null||head.next==null) {
             return true;
+        }
         ListNode slow=head;
         ListNode fast=head;
         ListNode prev=null;
@@ -40,8 +41,9 @@ public class PalindromeLinkedList {
             if (fast.next==null){
                 flag=true;
                 break;
-            }else
+            }else {
                 fast=fast.next.next;
+            }
             ListNode nextNode=slow.next;
             slow.next=prev;
             prev=slow;
@@ -49,8 +51,9 @@ public class PalindromeLinkedList {
         }
         slow=flag?slow.next:slow;
         while(prev!=null){
-            if(prev.val!=slow.val)
+            if(prev.val!=slow.val) {
                 return false;
+            }
             slow=slow.next;
             prev=prev.next;
         }
@@ -65,8 +68,9 @@ public class PalindromeLinkedList {
             current=current.next;
         }
         for(int i=0;i<list.size()/2;i++){
-            if(list.get(i).intValue()!=list.get(list.size()-1-i).intValue())
+            if(list.get(i).intValue()!=list.get(list.size()-1-i).intValue()) {
                 return false;
+            }
         }
         return true;
     }

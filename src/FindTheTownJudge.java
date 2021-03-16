@@ -65,9 +65,11 @@ public class FindTheTownJudge {
         Iterator<Integer> set=mapTrusted.keySet().iterator();
         while (set.hasNext()){
             int judge=set.next();
-            if (!mapTrust.containsKey(judge))
-                if (mapTrusted.get(judge)==N-1)
+            if (!mapTrust.containsKey(judge)) {
+                if (mapTrusted.get(judge)==N-1) {
                     return judge;
+                }
+            }
         }
         return -1;
     }

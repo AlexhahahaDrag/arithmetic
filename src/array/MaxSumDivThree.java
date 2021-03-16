@@ -52,30 +52,36 @@ public class MaxSumDivThree {
         List<Integer> one = new ArrayList<>();
         List<Integer> two = new ArrayList<>();
         for(int i = 0; i < nums.length; i++) {
-            if (nums[i] % 3 == 1)
+            if (nums[i] % 3 == 1) {
                 one.add(nums[i]);
-            else if (nums[i] % 3 == 2)
+            } else if (nums[i] % 3 == 2) {
                 two.add(nums[i]);
+            }
             sum += nums[i];
         }
         Collections.sort(one);
         Collections.sort(two);
         int ind = sum % 3;
-        if (ind == 0)
+        if (ind == 0) {
             return sum;
+        }
         int on = Integer.MAX_VALUE;
         int to = Integer.MAX_VALUE;
         if (ind == 1) {
-            if (one.size() > 0)
+            if (one.size() > 0) {
                 on = one.get(0);
-            if (two.size() > 1)
+            }
+            if (two.size() > 1) {
                 to = two.get(0) + two.get(1);
+            }
             return sum - (on > to ? to : on);
         } else {
-            if (one.size() > 1)
+            if (one.size() > 1) {
                 on = one.get(0) + one.get(1);
-            if (two.size() > 0)
+            }
+            if (two.size() > 0) {
                 to = two.get(0);
+            }
             return sum - (on > to ? to : on);
         }
     }

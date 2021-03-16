@@ -34,26 +34,30 @@ public class ContainsDuplicate {
         for (int i = 0; i < nums.length; i++) {
             int len=set.size();
             set.add(nums[i]);
-            if (len==set.size())
+            if (len==set.size()) {
                 return true;
+            }
         }
         return false;
     }
     public static boolean containsDuplicate1(int[] nums) {
         Set set=new HashSet();
         for (int i = 0; i < nums.length; i++) {
-            if (set.contains(nums[i]))
+            if (set.contains(nums[i])) {
                 return true;
-            else
+            } else {
                 set.add(nums[i]);
+            }
         }
         return false;
     }
     public static boolean containsDuplicate2(int[] nums) {
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length-1; i++)
-            if (nums[i]==nums[i+1])
+        for (int i = 0; i < nums.length-1; i++) {
+            if (nums[i]==nums[i+1]) {
                 return true;
+            }
+        }
         return false;
     }
 }

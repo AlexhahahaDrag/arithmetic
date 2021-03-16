@@ -32,19 +32,22 @@ public class RotateString {
         System.out.println(rotateString("fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf","fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf"));
     }
     public static boolean rotateString1(String A, String B) {
-       if (A.length()!=B.length())
+       if (A.length()!=B.length()) {
            return false;
-       else if (A.length()==0)
+       } else if (A.length()==0) {
            return true;
+       }
         int index=0;
         while(index<A.length()){
-            while(index<A.length()&&A.charAt(index)!=B.charAt(0))
+            while(index<A.length()&&A.charAt(index)!=B.charAt(0)) {
                 index++;
+            }
             System.out.println(B.length()-index);
             System.out.println(index-1);
             if (B.substring(0,B.length()-index).equals(A.substring(index))&&(
-                    B.substring(B.length()-index).equals(A.substring(0,index))))
+                    B.substring(B.length()-index).equals(A.substring(0,index)))) {
                 return true;
+            }
             index++;
         }
         return false;

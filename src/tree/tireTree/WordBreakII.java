@@ -51,25 +51,29 @@ public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
         root = new TrieTree<>('0');
         res = new ArrayList<>();
-        for (String word : wordDict)
+        for (String word : wordDict) {
             build(word.toCharArray());
+        }
         char[] ch = s.toCharArray();
         List<Integer>[] dp = new List[ch.length + 1];
-        for (int i = 0; i < ch.length; i++)
+        for (int i = 0; i < ch.length; i++) {
             dp[i] = search(ch, i);
+        }
         dfs(dp, "", 0, s);
         return res;
     }
 
     private void dfs(List<Integer>[] dp, String sb, int index, String s) {
-        if (index >= dp.length || dp[index] == null)
+        if (index >= dp.length || dp[index] == null) {
             return;
+        }
         for (int i : dp[index]) {
             sb += s.substring(index, i + 1);
-            if (i == s.length() - 1)
+            if (i == s.length() - 1) {
                 res.add(sb);
-            else
+            } else {
                 sb += " ";
+            }
             dfs(dp, sb, i + 1, s);
         }
     }
@@ -79,10 +83,12 @@ public class WordBreakII {
         List<Integer> res = new ArrayList<>();
         for (int i = from; i < ch.length; i++) {
             TrieTree tt = cur.children[ch[i]];
-            if (tt == null)
+            if (tt == null) {
                 break;
-            if (tt.isEnd)
+            }
+            if (tt.isEnd) {
                 res.add(i);
+            }
             cur = tt;
         }
         return res;
@@ -91,8 +97,9 @@ public class WordBreakII {
     private void build(char[] ch) {
         TrieTree cur = root;
         for (char c : ch) {
-            if (cur.children[c] == null)
+            if (cur.children[c] == null) {
                 cur.children[c] = new TrieTree<>(c);
+            }
             cur = cur.children[c];
         }
         cur.isEnd = true;

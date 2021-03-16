@@ -46,12 +46,14 @@ public class FindDuplicateSubtrees {
     }
 
     private String collect1(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return "#";
+        }
         String serial = root.val + "," + collect1(root.left) + "," + collect1(root.right);
         map.put(serial, map.getOrDefault(serial, 0) + 1);
-        if (map.get(serial) == 2)
+        if (map.get(serial) == 2) {
             res.add(root);
+        }
         return serial;
     }
 
@@ -65,7 +67,9 @@ public class FindDuplicateSubtrees {
     }
 
     private int dfs(TreeNode node) {
-        if (node == null) return 1111;
+        if (node == null) {
+            return 1111;
+        }
         int id = ((dfs(node.left) ^ 3) * 1111 + (dfs(node.right) ^ 5)) * 1111 + node.val;
         int count = counts.getOrDefault(id, 0) + 1;
         if (count == 2) {

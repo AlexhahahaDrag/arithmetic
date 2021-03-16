@@ -33,8 +33,9 @@ public class RotateArray {
     public static void rotate(int[] nums, int k) {
         while (k-->0){
             int a=nums[nums.length-1];
-            for (int i = nums.length-2; i >=0 ; i--)
+            for (int i = nums.length-2; i >=0 ; i--) {
                 nums[i+1]=nums[i];
+            }
             nums[0]=a;
         }
     }

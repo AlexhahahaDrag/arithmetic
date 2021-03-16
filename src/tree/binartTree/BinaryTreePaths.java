@@ -33,18 +33,21 @@ public class BinaryTreePaths {
     List<String> res = new ArrayList<>();
     public List<String> binaryTreePaths1(TreeNode root) {
         int[] dp = new int[depth(root)];
-        if (root != null)
+        if (root != null) {
             treePaths(root, dp, 0);
+        }
         return res;
     }
 
     private void treePaths(TreeNode root, int[] dp, int index) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         if (root.left == null && root.right == null) {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < index; i++) {
                 sb.append(dp[i] + "->");
+            }
             sb.append(root.val);
             res.add(sb.toString());
         } else {
@@ -55,8 +58,9 @@ public class BinaryTreePaths {
     }
 
     private int depth(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return 0;
+        }
         return Math.max(depth(root.left), depth(root.right)) + 1;
     }
 
@@ -66,12 +70,13 @@ public class BinaryTreePaths {
     }
 
     private void path(TreeNode root, String sb) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         sb = sb + Integer.toString(root.val);
-        if (root.left == null && root.right == null)
+        if (root.left == null && root.right == null) {
             res.add(sb.toString());
-        else {
+        } else {
             sb = sb + "->";
             path(root.left, sb);;
             path(root.right, sb);
@@ -80,15 +85,17 @@ public class BinaryTreePaths {
 
     public List<String> binaryTreePaths(TreeNode root) {
         res = new ArrayList<>();
-        if(root == null)
+        if(root == null) {
             return res;
+        }
         path(root, new StringBuilder());
         return res;
     }
 
     private void path(TreeNode root, StringBuilder str) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         if(root.left == null && root.right == null) {
             res.add(str.append(root.val).toString());
             return;

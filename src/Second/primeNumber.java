@@ -12,9 +12,10 @@ public class primeNumber {
                 break;
             }
         }
-        if (flag)
+        if (flag) {
             System.out.println(num+"是素数");
-        else
+        } else {
             System.out.println(num+"不是素数");
+        }
     }
 }

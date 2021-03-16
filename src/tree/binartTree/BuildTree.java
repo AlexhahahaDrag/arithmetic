@@ -33,8 +33,9 @@ public class BuildTree {
     }
 
     private TreeNode build(int[] inorder, int[] postorder, int curVal) {
-        if (po < 0)
+        if (po < 0) {
             return null;
+        }
         if(curVal == inorder[in]) {
             in--;
             return null;
@@ -54,14 +55,17 @@ public class BuildTree {
     }
 
     private TreeNode buildTree(int[] inorder, int[] postorder, int from, int to) {
-        if (from >= to)
+        if (from >= to) {
             return null;
+        }
         int val = postorder[index--];
         TreeNode treeNode = new TreeNode(val);
         int cur = from;
-        for (int i = 0; i < inorder.length; i++)
-            if (val == inorder[i])
+        for (int i = 0; i < inorder.length; i++) {
+            if (val == inorder[i]) {
                 cur = i;
+            }
+        }
         treeNode.right = buildTree(inorder, postorder, cur + 1, to);
         treeNode.left = buildTree(inorder, postorder, from, cur);
         return treeNode;
@@ -73,8 +77,9 @@ public class BuildTree {
     }
 
     private TreeNode build(int[] inorder, int from, int end, int[] postorder) {
-        if (index == -1 || from > end)
+        if (index == -1 || from > end) {
             return null;
+        }
         TreeNode root = new TreeNode(postorder[index]);
         int in = from;
         for(; in <= end; in++) {

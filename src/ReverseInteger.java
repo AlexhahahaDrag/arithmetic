@@ -5,13 +5,15 @@ public class ReverseInteger {
     public static int reverse(int x) {
         long num=0;
         for (; 0 != x; x/=10){
-            if (num>Integer.MAX_VALUE)
+            if (num>Integer.MAX_VALUE) {
                 return 0;
+            }
             num=num*10+x%10;
         }
-        if ((int)num==num)
+        if ((int)num==num) {
             return (int)num;
-        else
+        } else {
             return 0;
+        }
     }
 }

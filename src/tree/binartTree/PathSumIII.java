@@ -43,19 +43,22 @@ public class PathSumIII {
     }
 
     private void dfs(TreeNode root, int sum) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         find(root, 0, sum);
         dfs(root.left, sum);
         dfs(root.right, sum);
     }
 
     private void find(TreeNode root, int cur, int sum) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         cur += root.val;
-        if(sum == cur)
+        if(sum == cur) {
             count++;
+        }
         find(root.left, cur, sum);
         find(root.right, cur, sum);
     }

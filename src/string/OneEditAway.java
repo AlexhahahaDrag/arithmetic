@@ -32,8 +32,9 @@ public class OneEditAway {
         int flen = first.length();
         int slen = second.length();
         int one = flen - slen;
-        if (one < -1 || one > 1)
+        if (one < -1 || one > 1) {
             return false;
+        }
         int fi = 0;
         int se = 0;
         boolean flag = true;
@@ -41,12 +42,14 @@ public class OneEditAway {
             if(first.charAt(fi) != second.charAt(se)) {
                 if (flag) {
                     flag = false;
-                    if (one == 1)
+                    if (one == 1) {
                         se--;
-                    else if (one == -1)
+                    } else if (one == -1) {
                         fi--;
-                }else
+                    }
+                }else {
                     return false;
+                }
             }
             fi++;
             se++;

@@ -35,8 +35,9 @@ public class BalanceBST {
     List<Integer> res = new ArrayList<>();
     public TreeNode balanceBST(TreeNode root) {
         midOrder(root);
-        if (res.size() < 3)
+        if (res.size() < 3) {
             return root;
+        }
         root = build(0, res.size() - 1);
         return root;
     }
@@ -53,8 +54,9 @@ public class BalanceBST {
     }
 
     private void midOrder(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         midOrder(root.left);
         res.add(root.val);
         midOrder(root.right);

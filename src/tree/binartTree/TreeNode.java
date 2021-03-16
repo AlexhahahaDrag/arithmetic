@@ -14,23 +14,28 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        if (val == null)
+        if (val == null) {
             return "[]";
+        }
         StringBuilder stringBuilder=new StringBuilder();
         LinkedList<TreeNode> list=new LinkedList<>();
         stringBuilder.append("[");
         stringBuilder.append(val);
-        if (left!=null)
+        if (left!=null) {
             list.add(left);
-        if (right!=null)
+        }
+        if (right!=null) {
             list.add(right);
+        }
         while(list.size()>0){
             stringBuilder.append(",");
             TreeNode tn=list.pop();
-            if (tn.left!=null)
+            if (tn.left!=null) {
                 list.add(tn.left);
-            if (tn.right!=null)
+            }
+            if (tn.right!=null) {
                 list.add(tn.right);
+            }
             stringBuilder.append(tn.val);
         }
 
@@ -83,8 +88,9 @@ public class TreeNode {
                 treeNode.right = new TreeNode(arr[index++]);
                 queue.add(treeNode.right);
                 get(treeNode, arr, index, queue);
-            } else
+            } else {
                 get(queue.poll(), arr, index, queue);
+            }
         }
         return treeNode;
     }
@@ -109,8 +115,9 @@ public class TreeNode {
                 treeNode.right = new TreeNode(arr[index++]);
                 queue.add(treeNode.right);
                 get(treeNode, arr, index, queue);
-            } else
+            } else {
                 get(queue.poll(), arr, index, queue);
+            }
         }
         return treeNode;
     }

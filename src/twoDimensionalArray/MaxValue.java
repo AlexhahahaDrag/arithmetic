@@ -31,9 +31,11 @@ package twoDimensionalArray;
 public class MaxValue {
 
     public int maxValue(int[][] grid) {
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[i].length; j++)
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 grid[i][j] += Math.max((i - 1 < 0 ? 0 : grid[i - 1][j]), (j - 1 < 0 ? 0 : grid[i][j - 1]));
+            }
+        }
         return grid[grid.length - 1][grid[0].length - 1];
     }
 

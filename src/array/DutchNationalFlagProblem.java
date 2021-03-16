@@ -17,8 +17,9 @@ public class DutchNationalFlagProblem {
         DutchNationalFlagProblem dutchNationalFlagProblem = new DutchNationalFlagProblem();
         int[] arr = {0, 1 , 2, 1, 1, 2, 0, 1, 0, 1};
         int[] arrSort = dutchNationalFlagProblem.getDutchNationalFlagSort(arr);
-        for (int i : arrSort)
+        for (int i : arrSort) {
             System.out.println(i);
+        }
     }
     public int[] getDutchNationalFlagSort1(int[] arr) {
         int start = 0;
@@ -44,16 +45,18 @@ public class DutchNationalFlagProblem {
         int current = 0;
         while(current < end) {
             while(arr[current] == 0) {
-                if (current != start)
+                if (current != start) {
                     swap(arr, start, current);
+                }
                 current++;
                 start++;
             }
             while (arr[current] == 1) {
                 current++;
             }
-            while (arr[end] == 2)
+            while (arr[end] == 2) {
                 end--;
+            }
             while (current < end && arr[current] == 2) {
                 swap(arr, current, end);
                 end--;

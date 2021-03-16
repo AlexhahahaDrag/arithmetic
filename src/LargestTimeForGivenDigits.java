@@ -38,7 +38,7 @@ public class LargestTimeForGivenDigits {
         int time=-1;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (i!=j)
+                if (i!=j) {
                     for (int k = 0; k < 4; k++) {
                         if (i!=k&&j!=k){
                             int l=6-i-j-k;
@@ -49,6 +49,7 @@ public class LargestTimeForGivenDigits {
                             }
                         }
                     }
+                }
             }
         }
         return time==-1?"":((time/60>10?time/60:("0"+time/60))+":"+(time%60>10?time%60:("0"+time%60)));

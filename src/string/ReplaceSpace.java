@@ -26,15 +26,17 @@ public class ReplaceSpace {
     }
 
     public String replaceSpace2(String s) {
-        if(s == null || s.length() == 0)
+        if(s == null || s.length() == 0) {
             return s;
+        }
         char[] ch = s.toCharArray();
         StringBuilder sb = new StringBuilder();
         for(char c : ch) {
-            if (c == ' ')
+            if (c == ' ') {
                 sb.append("%20");
-            else
+            } else {
                 sb.append(c);
+            }
         }
         return sb.toString();
     }

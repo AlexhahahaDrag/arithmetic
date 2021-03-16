@@ -36,16 +36,18 @@ public class IsStraight {
         Arrays.sort(nums);
         int count = 0;
         int index = -1;
-        while(nums[++index] == 0)
+        while(nums[++index] == 0) {
             count++;
+        }
         int cur = nums[index++];
         while(index < 5) {
-            if (nums[index] == cur + 1)
+            if (nums[index] == cur + 1) {
                 index++;
-            else if (count > 0) {
+            } else if (count > 0) {
                 count--;
-            }else
+            }else {
                 return false;
+            }
             cur++;
         }
         return true;

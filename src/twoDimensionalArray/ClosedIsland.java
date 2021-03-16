@@ -62,13 +62,17 @@ public class ClosedIsland {
     int[][] direction = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     public int closedIsland(int[][] grid) {
         int islandNum = 0;
-        for(int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[i].length; j++)
+        for(int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 0) {
                     flag = true;
                     searchIsland(grid, i, j);
-                    if(flag) islandNum++;
+                    if (flag) {
+                        islandNum++;
+                    }
                 }
+            }
+        }
         return islandNum;
     }
     private void searchIsland (int[][] grid, int x, int y) {
@@ -76,10 +80,12 @@ public class ClosedIsland {
             flag = false;
             return;
         }
-        if(grid[x][y] == 1)
+        if(grid[x][y] == 1) {
             return;
+        }
         grid[x][y] = 1;
-        for(int[] dir : direction)
+        for(int[] dir : direction) {
             searchIsland(grid, x + dir[0], y + dir[1]);
+        }
     }
 }

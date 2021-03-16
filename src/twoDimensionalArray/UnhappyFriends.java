@@ -83,13 +83,16 @@ public class UnhappyFriends {
     }
 
     private int find(int[][] preferences, int x, int y, int u, int v) {
-        if (map[x])
+        if (map[x]) {
             return 0;
+        }
         for(int i : preferences[x]) {
-            if (i == y)
+            if (i == y) {
                 return 0;
-            if (i == u)
+            }
+            if (i == u) {
                 break;
+            }
         }
         for(int j : preferences[u]) {
             if (j == x) {
@@ -97,8 +100,9 @@ public class UnhappyFriends {
                 return 1;
             }
 
-            if (j == v)
+            if (j == v) {
                 return 0;
+            }
         }
         return 0;
     }

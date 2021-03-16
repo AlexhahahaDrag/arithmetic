@@ -33,8 +33,9 @@ public class PartitionLabels {
     public List<Integer> partitionLabels(String S) {
         int[] map = new int[26];
         //获取每个字母在字符串中的最后位置
-        for (char i = 'a'; i <= 'z'; i++)
+        for (char i = 'a'; i <= 'z'; i++) {
             map[i - 'a'] = S.lastIndexOf(i);
+        }
         List<Integer> res = new ArrayList<>();
         int index = 0;
         int len = S.length();
@@ -45,8 +46,9 @@ public class PartitionLabels {
             int cur = map[S.charAt(index) - 'a'];
             //从start到cur位置，查看其中的字符是否都在这个区间内，如果不在，则更新cur的位置，保证每一个片段上的字符都是唯一的
             while (++index <= cur && index < len) {
-                if (map[S.charAt(index) - 'a'] > cur)
+                if (map[S.charAt(index) - 'a'] > cur) {
                     cur = map[S.charAt(index) - 'a'];
+                }
             }
             //计算片段的长度
             res.add(index - start);

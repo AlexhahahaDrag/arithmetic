@@ -43,15 +43,17 @@ import java.util.Map;
  */
 public class Connect {
     public Node connect(Node root) {
-        if (root == null)
+        if (root == null) {
             return null;
+        }
         Node nodeLeft = root;
         while(nodeLeft.left != null) {
             Node head = nodeLeft;
             while(head != null) {
                 head.left.next = head.right;
-                if (head.next != null)
+                if (head.next != null) {
                     head.right.next = head.next.left;
+                }
                 head = head.next;
             }
             nodeLeft = nodeLeft.left;
@@ -68,8 +70,9 @@ public class Connect {
     }
 
     private void find(Node root, int level) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         if (map.get(level) != null) {
             root.next = map.get(level);
         }

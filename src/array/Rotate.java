@@ -47,8 +47,9 @@ public class Rotate {
 
     public void rotate(int[] nums, int k) {
         k %= nums.length;
-        if (k == 0)
+        if (k == 0) {
             return;
+        }
         rotateNums(nums, nums.length - k, k, 0, nums.length);
     }
 
@@ -77,7 +78,8 @@ public class Rotate {
         int[] nums = {1, 2};
             Rotate rotate = new Rotate();
         rotate.rotate(nums, 3);
-        for (int i : nums)
+        for (int i : nums) {
             System.out.print(i + "  ");
+        }
     }
 }

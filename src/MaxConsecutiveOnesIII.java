@@ -40,14 +40,16 @@ public class MaxConsecutiveOnesIII {
         int[] index=new int[A.length];
         int size=0;
         int start=0;
-        if(A[0]==0)
+        if(A[0]==0) {
             start=1;
+        }
         index[0]++;
         for(int i=1;i<A.length;i++){
-            if(A[i]==A[i-1])
+            if(A[i]==A[i-1]) {
                 index[size]++;
-            else
+            } else {
                 index[++size]++;
+            }
         }
         int sum=K;
         while(start<size){
@@ -61,10 +63,11 @@ public class MaxConsecutiveOnesIII {
         sum+=index[start++];
         int begin=start;
         while(start<=size&&K>=0){
-            if((begin&1)==(start&1))
+            if((begin&1)==(start&1)) {
                 K-=index[start];
-            else
+            } else {
                 sum+=index[start];
+            }
             start++;
         }
         return sum;

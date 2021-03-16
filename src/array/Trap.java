@@ -20,14 +20,17 @@ package array;
 public class Trap {
 
     public int trap1(int[] height) {
-        if (height == null || height.length < 3)
+        if (height == null || height.length < 3) {
             return 0;
+        }
         int left = 0;
-        while(left < height.length - 1 && height[left] < height[left + 1])
+        while(left < height.length - 1 && height[left] < height[left + 1]) {
             left++;
+        }
         int right = height.length - 1;
-        while(right > 0 && height[right] < height[right - 1])
+        while(right > 0 && height[right] < height[right - 1]) {
             right--;
+        }
         int res = 0;
         int index = left;
         int sum = 0;
@@ -36,8 +39,9 @@ public class Trap {
                 left = index;
                 res += sum;
                 sum = 0;
-            } else
+            } else {
                 sum += height[left] - height[index];
+            }
             index++;
         }
         index = right;
@@ -47,19 +51,22 @@ public class Trap {
                 right = index;
                 res += sum;
                 sum = 0;
-            } else
+            } else {
                 sum += height[right] - height[index];
+            }
             index--;
         }
         int less = Math.min(height[left], height[right]);
-        for (int i = left + 1; i < right; i++)
+        for (int i = left + 1; i < right; i++) {
             res += less - height[i];
+        }
         return res;
     }
 
     public int trap(int[] height) {
-        if (height == null || height.length == 0)
+        if (height == null || height.length == 0) {
             return 0;
+        }
         int i = 0;
         int j = height.length - 1;
         int leftMax = height[i];
@@ -67,15 +74,17 @@ public class Trap {
         int res = 0;
         while(i < j) {
             if (height[i] < height[j]) {
-                if (height[i] > leftMax)
+                if (height[i] > leftMax) {
                     leftMax = height[i++];
-                else
+                } else {
                     res += leftMax - height[i++];
+                }
             } else {
-                if (height[j] > rightMax)
+                if (height[j] > rightMax) {
                     rightMax = height[j--];
-                else
+                } else {
                     res += rightMax - height[j--];
+                }
             }
         }
         return res;

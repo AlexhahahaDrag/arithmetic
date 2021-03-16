@@ -37,10 +37,11 @@ public class CalculateII {
         int len = s.length();
         while(index < len) {
             char ch = s.charAt(index++);
-            if(ch == 'A')
+            if(ch == 'A') {
                 x = x * 2 + y;
-            else
+            } else {
                 y = y * 2 + x;
+            }
         }
         return x + y;
     }

@@ -23,16 +23,19 @@ public class SumOfLeftLeaves {
         TreeNode(int x) { val = x; }
     }
     public int sumOfLeftLeaves(TreeNode root) {
-        if(root==null)
+        if(root==null) {
             return 0;
+        }
         return getSum(root.left,true)+getSum(root.right,false);
     }
     public int getSum(TreeNode root,boolean isLeft){
-        if(root==null)
+        if(root==null) {
             return 0;
-        if(isLeft&&root.left==null&&root.right==null)
+        }
+        if(isLeft&&root.left==null&&root.right==null) {
             return root.val;
-        else
+        } else {
             return getSum(root.left,true)+getSum(root.right,false);
+        }
     }
 }

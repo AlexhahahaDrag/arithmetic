@@ -33,14 +33,16 @@ public class SortedSquares {
         int[] res = new int[len];
         int start = 0;
         if(A[0] >= 0) {
-            for(int i : A)
+            for(int i : A) {
                 res[start++] = i * i;
+            }
             return res;
         }
         int end = A.length - 1;
         if(A[len - 1] <= 0) {
-            for(int i : A)
+            for(int i : A) {
                 res[end--] = i * i;
+            }
             return res;
         }
         int index = len - 1;

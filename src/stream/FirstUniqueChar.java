@@ -24,14 +24,16 @@ public class FirstUniqueChar {
     public int firstUniqChar1(String s) {
         int[] map = new int[26];
         char[] ch = s.toCharArray();
-        for(char c : ch)
+        for(char c : ch) {
             map[c - 'a']++;
+        }
         int index = Integer.MAX_VALUE;
         for(int i = 0; i < map.length; i++) {
             if(map[i] == 1) {
                 int in = s.indexOf((char)(i + 'a'));
-                if (in != -1 && in < index)
+                if (in != -1 && in < index) {
                     index = in;
+                }
             }
         }
         return index == Integer.MAX_VALUE ? -1 : index;
@@ -41,8 +43,9 @@ public class FirstUniqueChar {
         int result = -1;
         for (char ch = 'a'; ch <= 'z'; ch++) {
             int index = s.indexOf(ch);
-            if (index != -1 && index == s.lastIndexOf(ch))
+            if (index != -1 && index == s.lastIndexOf(ch)) {
                 result = (result == -1 || result > index ? index : result);
+            }
         }
         return result;
     }

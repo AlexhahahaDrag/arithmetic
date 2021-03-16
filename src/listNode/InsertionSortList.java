@@ -50,8 +50,9 @@ public class InsertionSortList {
     }
 
     public ListNode insertionSortList(ListNode head) {
-        if (head == null || head.next == null)
+        if (head == null || head.next == null) {
             return head;
+        }
         ListNode slow = head;
         ListNode fast = head;
         ListNode pre = null;
@@ -82,10 +83,12 @@ public class InsertionSortList {
             re.next = cur;
             re = re.next;
         }
-        if (prefix != null)
+        if (prefix != null) {
             re.next = prefix;
-        if (suffix != null)
+        }
+        if (suffix != null) {
             re.next = suffix;
+        }
         return res.next;
     }
 

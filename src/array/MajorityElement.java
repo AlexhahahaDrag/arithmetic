@@ -33,10 +33,11 @@ public class MajorityElement {
             if(count == 0){
                 num = i;
                 count++;
-            } else if (num == i)
+            } else if (num == i) {
                 count++;
-            else
+            } else {
                 count--;
+            }
         }
         return num;
     }

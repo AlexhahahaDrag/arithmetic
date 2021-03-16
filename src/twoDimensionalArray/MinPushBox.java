@@ -76,14 +76,18 @@ public class MinPushBox {
 
     public int minPushBox(char[][] grid) {
         Stack<Integer[]> stack = new Stack<>();
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[i].length; j++)
-                if (grid[i][j] == 'B')
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 'B') {
                     stack.add(new Integer[]{i, j});
-                if (find(grid, stack))
+                }
+            }
+        }
+                if (find(grid, stack)) {
                     return step;
-                else
+                } else {
                     return -1;
+                }
     }
 
     private boolean find(char[][] grid, Stack<Integer[]> stack) {
@@ -94,10 +98,11 @@ public class MinPushBox {
             while(stack.size() > 0) {
                 Integer[] index = stack.pop();
                 char ch = grid[index[0]][index[1]];
-                if (ch == 'T')
+                if (ch == 'T') {
                     return true;
-                else if (ch == '#')
+                } else if (ch == '#') {
                     continue;
+                }
                 move(nextStack, index, x, y);
             }
             step++;
@@ -106,13 +111,17 @@ public class MinPushBox {
         return false;
     }
     private void move(Stack<Integer[]> nextStack, Integer[] mo, int x, int y) {
-        if (mo[0] - 1 >= 0)
+        if (mo[0] - 1 >= 0) {
             nextStack.add(new Integer[]{mo[0] - 1, mo[1]});
-        if (mo[0] + 1 < x)
+        }
+        if (mo[0] + 1 < x) {
             nextStack.add(new Integer[]{mo[0] + 1, mo[1]});
-        if (mo[1] - 1 >= 0)
+        }
+        if (mo[1] - 1 >= 0) {
             nextStack.add(new Integer[]{mo[0], mo[1] - 1});
-        if (mo[1] + 1 < y)
+        }
+        if (mo[1] + 1 < y) {
             nextStack.add(new Integer[]{mo[0], mo[1] + 1});
+        }
     }
 }

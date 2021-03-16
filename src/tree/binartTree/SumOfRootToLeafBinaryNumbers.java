@@ -37,8 +37,9 @@ public class SumOfRootToLeafBinaryNumbers {
         if(root!=null){
             cur<<=1;
             cur+=root.val;
-            if(root.left==null&&root.right==null)
+            if(root.left==null&&root.right==null) {
                 sum+=cur;
+            }
             getSum(root.left,cur);
             getSum(root.right,cur);
         }

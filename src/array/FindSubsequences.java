@@ -34,8 +34,9 @@ public class FindSubsequences {
         if (index == nums.length) {
             if (size >= 1) {
                 List<Integer> list = new ArrayList<>();
-                for (int i = 0; i <= size; i++)
+                for (int i = 0; i <= size; i++) {
                     list.add(res[i]);
+                }
                 result.add(list);
             }
             return;
@@ -45,8 +46,9 @@ public class FindSubsequences {
             dfs(nums, index + 1, res, size);
             size--;
         }
-        if (size == -1 || nums[index] != res[size])
+        if (size == -1 || nums[index] != res[size]) {
             dfs(nums, index + 1, res, size);
+        }
     }
 
     List<Integer> temp = new ArrayList<Integer>();

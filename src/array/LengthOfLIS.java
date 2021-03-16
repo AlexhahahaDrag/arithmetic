@@ -31,8 +31,9 @@ public class LengthOfLIS {
 
     private void find(int[] nums, int start, int cur, int len) {
         max = Math.max(max, len);
-        if (max > nums.length - start + len)
+        if (max > nums.length - start + len) {
             return;
+        }
         for (int i = start; i < nums.length; i++) {
             if (cur < nums[i]) {
                 find(nums, i + 1, nums[i], len + 1);

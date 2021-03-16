@@ -63,26 +63,31 @@ public class StringToInteger_atoi {
         String strNoSpace = str.trim();
         int len = strNoSpace.length();
         int index = 0;
-        if (strNoSpace.length() == 0)
+        if (strNoSpace.length() == 0) {
             return 0;
+        }
         boolean flag = true;
         if (strNoSpace.charAt(index) == '-') {
             flag = false;
             index = 1;
-        } else if (strNoSpace.charAt(index) == '+')
+        } else if (strNoSpace.charAt(index) == '+') {
             index = 1;
+        }
         long sum = 0L;
         while(index < len ) {
             char ch = strNoSpace.charAt(index);
             if (Character.isDigit(ch)) {
                 sum = sum * 10 + Integer.valueOf(ch + "");
-                if(sum > Integer.MAX_VALUE)
-                    if (flag)
+                if(sum > Integer.MAX_VALUE) {
+                    if (flag) {
                         return Integer.MAX_VALUE;
-                    else
+                    } else {
                         return Integer.MIN_VALUE;
-            } else
+                    }
+                }
+            } else {
                 break;
+            }
             index++;
         }
         return flag ? (int)sum : (int)-sum;

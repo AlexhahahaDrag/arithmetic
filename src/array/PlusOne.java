@@ -29,8 +29,9 @@ import java.util.Arrays;
 public class PlusOne {
 
     public int[] plusOne1(int[] digits) {
-        if (digits == null || digits.length == 0)
+        if (digits == null || digits.length == 0) {
             return digits;
+        }
         int index = digits.length;
         int dig = 0;
         digits[index - 1]++;
@@ -54,14 +55,16 @@ public class PlusOne {
     }
 
     public int[] plusOne(int[] digits) {
-        if (digits == null || digits.length == 0)
+        if (digits == null || digits.length == 0) {
             return digits;
+        }
         int index = digits.length;
         while(--index >= 0) {
             digits[index]++;
             digits[index] %= 10;
-            if (digits[index] != 0)
+            if (digits[index] != 0) {
                 return digits;
+            }
         }
         digits = new int[digits.length + 1];
         digits[0] = 1;
@@ -72,7 +75,8 @@ public class PlusOne {
         int[] digits = {1, 9};
         PlusOne plusOne = new PlusOne();
         int[] res = plusOne.plusOne(digits);
-        for (int i :res)
+        for (int i :res) {
             System.out.print(i + "   ");
+        }
     }
 }

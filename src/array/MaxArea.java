@@ -53,8 +53,9 @@ public class MaxArea {
     }
 
     private long findMaxLen(int l, int[] arr) {
-        if(arr == null || arr.length == 0)
+        if(arr == null || arr.length == 0) {
             return l;
+        }
         Arrays.sort(arr);
         long max = Math.max(arr[0], l - arr[arr.length - 1]);
         for(int i = 1; i < arr.length; i++) {

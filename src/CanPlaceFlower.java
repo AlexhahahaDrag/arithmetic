@@ -25,12 +25,14 @@ public class CanPlaceFlower {
             case 0:
                 return false;
             case 1:
-                if (flowerbed[0] == 0)
+                if (flowerbed[0] == 0) {
                     n--;
+                }
                 break;
             case 2:
-                if (flowerbed[0] == 0 && flowerbed[1] == 0)
+                if (flowerbed[0] == 0 && flowerbed[1] == 0) {
                     n--;
+                }
                 break;
             default:
                 for (int i = 0; i < flowerbed.length - 2; i++) {
@@ -46,17 +48,21 @@ public class CanPlaceFlower {
                         flowerbed[i + 1] = 1;
                         n--;
                     }
-                    if (n == 0)
+                    if (n == 0) {
                         return true;
+                    }
                 }
         }
-        if (n <= 0)
+        if (n <= 0) {
             return true;
+        }
         return false;
     }
 
     public static boolean canPlaceFlowers1(int[] flowerbed, int n) {
-        if (flowerbed == null || flowerbed.length == 0) return false;
+        if (flowerbed == null || flowerbed.length == 0) {
+            return false;
+        }
         int count = 0;
         for (int i = 0; i < flowerbed.length; i++) {
             if (flowerbed[i] == 1) {
@@ -67,7 +73,9 @@ public class CanPlaceFlower {
                 count++;
                 i++;  // we know that the next index won't be a candidate, so go to the next-next index
             }
-            if (count == n) return true;
+            if (count == n) {
+                return true;
+            }
         }
         return n == 0; // I missed this case, but this just returns true if n==0 and there are no spots to plant a flower
     }

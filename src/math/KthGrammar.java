@@ -40,13 +40,15 @@ package math;
 public class KthGrammar {
 
     public int kthGrammar(int N, int K) {
-        if (N == 1)
+        if (N == 1) {
             return 0;
+        }
         int mid = (int)Math.pow(2, N - 2);
-        if (mid >= K)
+        if (mid >= K) {
             return kthGrammar(N - 1, K);
-        else
+        } else {
             return 1 - kthGrammar(N - 1, K - mid);
+        }
     }
 
     public static void main(String[] args) {

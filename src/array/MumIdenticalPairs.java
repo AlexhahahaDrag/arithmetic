@@ -44,12 +44,15 @@ public class MumIdenticalPairs {
 
     public int numIdenticalPairs(int[] nums) {
         int[] map = new int[101];
-        for (int i : nums)
+        for (int i : nums) {
             map[i]++;
+        }
         int res = 0;
-        for (int i : map)
-            if (i > 1)
+        for (int i : map) {
+            if (i > 1) {
                 res += i * (i - 1) >> 1;
+            }
+        }
         return res;
     }
 

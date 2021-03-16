@@ -24,12 +24,15 @@ public class RangeSumOfBST {
     }
     private void getSum(TreeNode node, int L, int R) {
         if (node != null) {
-            if (node.val >= L && node.val <= R)
+            if (node.val >= L && node.val <= R) {
                 resultSum += node.val;
-            if (node.val > L)
+            }
+            if (node.val > L) {
                 getSum(node.left, L , R);
-            if (node.val < R)
+            }
+            if (node.val < R) {
                 getSum(node.right, L , R);
+            }
         }
     }
 }

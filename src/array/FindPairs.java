@@ -42,16 +42,18 @@ public class FindPairs {
         Arrays.sort(nums);
         int count = 0;
         for(int start = 0; start < nums.length; start++){
-            if (start > 0 && nums[start] == nums[start - 1])
+            if (start > 0 && nums[start] == nums[start - 1]) {
                 continue;
+            }
             int index = start + 1;
             while(index < nums.length) {
                 int diff = nums[index] - nums[start];
                 if (diff == k) {
                     count++;
                     break;
-                }else if (diff > k)
+                }else if (diff > k) {
                     break;
+                }
                 index++;
             }
         }

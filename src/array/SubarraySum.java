@@ -36,11 +36,13 @@ public class SubarraySum {
         sum = 0;
         for(int i : nums) {
             sum += i;
-            if (sum == k)
+            if (sum == k) {
                 ans++;
+            }
             if (sum >= min && sum <= max) {
-                if (map.containsKey(sum - k))
+                if (map.containsKey(sum - k)) {
                     ans += map.getOrDefault(sum - k, 0);
+                }
                 map.put(sum, map.getOrDefault(sum, 0) + 1);
             }
         }

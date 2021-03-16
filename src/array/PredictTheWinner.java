@@ -40,8 +40,9 @@ public class PredictTheWinner {
     }
 
     private int dfs(int[] nums, int from, int to, int turn) {
-        if (from == to)
+        if (from == to) {
             return nums[from] * turn;
+        }
         int fromNum = nums[from] * turn + dfs(nums, from + 1, to, -turn);
         int toNum = nums[to] * turn + dfs(nums, from, to - 1, -turn);
         return Math.max(fromNum * turn, toNum * turn) * turn;

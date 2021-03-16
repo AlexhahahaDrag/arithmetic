@@ -54,14 +54,16 @@ public class RomanToInteger {
     }
     public static int romanToInt(String s) {
         int index=s.length()-1;
-        if (s.length()==0)
+        if (s.length()==0) {
             return 0;
+        }
         int sum=map(s.charAt(index--));
         while (index>=0){
-            if (map(s.charAt(index+1))>map(s.charAt(index)))
+            if (map(s.charAt(index+1))>map(s.charAt(index))) {
                 sum-=map(s.charAt(index--));
-            else
+            } else {
                 sum+=map(s.charAt(index--));
+            }
         }
         return sum;
     }

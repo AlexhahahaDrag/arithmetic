@@ -22,27 +22,32 @@ package array;
 public class Jump {
 
     public int jump(int[] nums) {
-        if (nums.length <= 1)
+        if (nums.length <= 1) {
             return 0;
+        }
         return dfs(nums,0,0);
     }
 
     private int dfs(int[] nums, int index, int count) {
-        if (index >= nums.length - 1)
+        if (index >= nums.length - 1) {
             return count;
+        }
         int res = finMaxIndex(nums, index);
-        if (res == index)
+        if (res == index) {
             return -1;
+        }
         return dfs(nums, res, count + 1);
     }
 
     private int finMaxIndex(int[] nums, int index) {
-        if (index + nums[index] >= nums.length - 1)
+        if (index + nums[index] >= nums.length - 1) {
             return nums.length - 1;
+        }
         int end = index + nums[index];
         for (int i = index + 1; i <= end; i++) {
-            if (index + nums[index] < i + nums[i])
+            if (index + nums[index] < i + nums[i]) {
                 index = i;
+            }
         }
         return index;
     }

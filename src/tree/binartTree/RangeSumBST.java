@@ -37,12 +37,15 @@ public class RangeSumBST {
 
     private void find(TreeNode root, int l, int r) {
         if (root != null) {
-            if (root.val >= l && root.val <= r)
+            if (root.val >= l && root.val <= r) {
                 sum += root.val;
-            if (root.val > l)
+            }
+            if (root.val > l) {
                 find(root.left, l, r);
-            if (root.val < r)
+            }
+            if (root.val < r) {
                 find(root.right, l, r);
+            }
         }
     }
 

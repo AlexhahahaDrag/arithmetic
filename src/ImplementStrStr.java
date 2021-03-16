@@ -24,14 +24,17 @@ public class ImplementStrStr {
         System.out.println(strStr("mississippi","issipi"));
     }
     public static int strStr(String haystack, String needle) {
-        if (needle.length() == 0)
+        if (needle.length() == 0) {
             return 0;
-         else if (needle.length() > haystack.length())
+        } else if (needle.length() > haystack.length()) {
             return -1;
-        else
-            for (int i = 0; i <= haystack.length() - needle.length(); i ++)
-                if (needle.equals(haystack.substring(i, i + needle.length())))
+        } else {
+            for (int i = 0; i <= haystack.length() - needle.length(); i ++) {
+                if (needle.equals(haystack.substring(i, i + needle.length()))) {
                     return i;
+                }
+            }
+        }
         return -1;
     }
 }

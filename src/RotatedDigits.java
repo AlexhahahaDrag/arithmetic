@@ -29,10 +29,12 @@ public class RotatedDigits {
         int count=0;
         for(int i=1;i<=N;i++) {
             int[] index = new int[10];
-            for (char ch:String.valueOf(i).toCharArray())
+            for (char ch:String.valueOf(i).toCharArray()) {
                 index[ch-'0']++;
-            if (index[3]+index[4]+index[7]>0||index[2]+index[5]+index[6]+index[9]==0)
+            }
+            if (index[3]+index[4]+index[7]>0||index[2]+index[5]+index[6]+index[9]==0) {
                 continue;
+            }
             count++;
         }
         return count;
@@ -41,14 +43,16 @@ public class RotatedDigits {
         boolean[] flags=new boolean[N+1];
         int count=0;
         for(int i=1;i<=N;i++) {
-            if(flags[i])
+            if(flags[i]) {
                 count++;
-            else{
+            } else{
                 int[] index = new int[10];
-                for (char ch:String.valueOf(i).toCharArray())
+                for (char ch:String.valueOf(i).toCharArray()) {
                     index[ch-'0']++;
-                if (index[3]+index[4]+index[7]>0||index[2]+index[5]+index[6]+index[9]==0)
+                }
+                if (index[3]+index[4]+index[7]>0||index[2]+index[5]+index[6]+index[9]==0) {
                     continue;
+                }
                 int rotatedI=0;
                 int j=i;
                 while(j>0){
@@ -64,8 +68,9 @@ public class RotatedDigits {
                     rotatedI=rotatedI*10+a;
                     j/=10;
                 }
-                if(rotatedI>i&&rotatedI<=N)
+                if(rotatedI>i&&rotatedI<=N) {
                     flags[rotatedI]=true;
+                }
                 count++;
             }
         }
@@ -80,14 +85,22 @@ public class RotatedDigits {
         while(N!=0){
             //System.out.print(N);
             x=getLast(N);
-            if (x[1]>1) ret+=calculate(x[0]*((int)Math.pow(10,x[1]-1))-1,check);
-            else ret+=calculate(x[0]*((int)Math.pow(10,x[1]-1)),check);
+            if (x[1]>1) {
+                ret+=calculate(x[0]*((int)Math.pow(10,x[1]-1))-1,check);
+            } else {
+                ret+=calculate(x[0]*((int)Math.pow(10,x[1]-1)),check);
+            }
 
-            if (Arrays.binarySearch(all,x[0])<0) break;
-            else{
-                if (check==false && Arrays.binarySearch(aa,x[0])>-1) check=true;
+            if (Arrays.binarySearch(all,x[0])<0) {
+                break;
+            } else{
+                if (check==false && Arrays.binarySearch(aa,x[0])>-1) {
+                    check=true;
+                }
                 N-=x[0]*((int)Math.pow(10,x[1]-1));
-                if (N==0 && x[1]!=1 && check) ret++;
+                if (N==0 && x[1]!=1 && check) {
+                    ret++;
+                }
             }
         }
         return ret;
@@ -101,11 +114,17 @@ public class RotatedDigits {
         while (inp!=0){
             if (inp<10){
                 xm= Arrays.binarySearch(all,inp);
-                if (xm<0) xm=(xm+1)*-1;
-                else xm+=1;
+                if (xm<0) {
+                    xm=(xm+1)*-1;
+                } else {
+                    xm+=1;
+                }
                 ym=Arrays.binarySearch(aa,inp);
-                if (ym<0) ym=(ym+1)*-1;
-                else ym+=1;
+                if (ym<0) {
+                    ym=(ym+1)*-1;
+                } else {
+                    ym+=1;
+                }
                 x*=xm;
                 y*=ym;
             }else{
@@ -114,8 +133,11 @@ public class RotatedDigits {
             }
             inp/=10;
         }
-        if (check) return x;
-        else return x-y;
+        if (check) {
+            return x;
+        } else {
+            return x-y;
+        }
     }
     private static int[] getLast(int inp){
         int[] ret= new int[2];

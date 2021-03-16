@@ -22,16 +22,19 @@ public class ValidParentheses {
                     bytesNew[head++]=b;
                     break;
                 case ']':
-                    if (head==0||bytesNew[--head]!='[')
+                    if (head==0||bytesNew[--head]!='[') {
                         return false;
+                    }
                     break;
                 case ')':
-                    if (head==0||bytesNew[--head]!='(')
+                    if (head==0||bytesNew[--head]!='(') {
                         return false;
+                    }
                     break;
                 case '}':
-                    if (head==0||bytesNew[--head]!='{')
+                    if (head==0||bytesNew[--head]!='{') {
                         return false;
+                    }
                     break;
             }
         }

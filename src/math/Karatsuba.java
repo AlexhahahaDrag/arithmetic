@@ -43,10 +43,12 @@ public class Karatsuba {
     }
 
     private String getResultByKaratsuba(String num1, String num2) {
-        if (num1 == null || num2 == null || "".equals(num1) || "".equals(num2))
+        if (num1 == null || num2 == null || "".equals(num1) || "".equals(num2)) {
             return "0";
-        if (num1.length() < 2 || num2.length() < 2)
+        }
+        if (num1.length() < 2 || num2.length() < 2) {
             return Long.parseLong(num1) * Long.parseLong(num2) + "";
+        }
         int di1 = num1.length();
         int di2 = num2.length();
         int sub = di1 >= di2 ? di1 >> 1 : di2 >> 1;
@@ -71,11 +73,13 @@ public class Karatsuba {
      * @return
     */
     private String addSub0(String x, int sub) {
-        if (x == null || "0".equals(x))
+        if (x == null || "0".equals(x)) {
             return x;
+        }
         StringBuilder stringBuilder = new StringBuilder(x);
-        while (sub-- > 0)
+        while (sub-- > 0) {
             stringBuilder.append("0");
+        }
         return stringBuilder.toString();
     }
 
@@ -87,10 +91,12 @@ public class Karatsuba {
      * @return
     */
     private String minusString(String num1, String num2) {
-        if (num1 == null || "0".equals(num1))
+        if (num1 == null || "0".equals(num1)) {
             return "0".equals(num2) ? num2 : "-" + num2;
-        if (num2 == null || "".equals(num2))
+        }
+        if (num2 == null || "".equals(num2)) {
             return "0".equals(num1) ? num1 : num1;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         int di1 = num1.length() - 1;
         int di2 = num2.length() - 1;
@@ -105,19 +111,23 @@ public class Karatsuba {
             }
             stringBuilder.insert(0, num);
         }
-        while (di1 >= 0)
+        while (di1 >= 0) {
             stringBuilder.insert(0, num1.charAt(di1--));
+        }
         int index = 0;
-        while(stringBuilder.length() > 1 && stringBuilder.charAt(index) == '0')
+        while(stringBuilder.length() > 1 && stringBuilder.charAt(index) == '0') {
             stringBuilder.replace(0, 1,"");
+        }
         return stringBuilder.toString();
     }
 
     private String addString(String num1, String num2) {
-        if ("0".equals(num1))
+        if ("0".equals(num1)) {
             return num2;
-        if ("0".equals(num2))
+        }
+        if ("0".equals(num2)) {
             return num1;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         int di1 = num1.length() - 1;
         int di2 = num2.length() - 1;
@@ -139,12 +149,14 @@ public class Karatsuba {
         return sb.toString();
     }
     private int[] getResultByKaratsuba(int[] num1, int[] num2) {
-        if (num1 == null || num2 == null || num1.length == 0 || num2.length == 0)
+        if (num1 == null || num2 == null || num1.length == 0 || num2.length == 0) {
             return new int[]{0};
-        if (num1.length < 2)
+        }
+        if (num1.length < 2) {
             return getSum(num2, num1[0]);
-         else if (num2.length < 2)
+        } else if (num2.length < 2) {
             return getSum(num1, num2[0]);
+        }
         int di1 = num1.length;
         int di2 = num2.length;
         int sub = di1 >= di2 ? di1 >> 1 : di2 >> 1;
@@ -185,8 +197,9 @@ public class Karatsuba {
      * @return
      */
     private int[] addSub0(int[] x, int sub) {
-        if (x.length == 0 || (x.length == 1 &&  x[0] == 0))
+        if (x.length == 0 || (x.length == 1 &&  x[0] == 0)) {
             return new int[]{0};
+        }
         int[] res = new int[x.length + sub];
         System.arraycopy(x, 0, res, 0, x.length);
         return res;
@@ -220,8 +233,9 @@ public class Karatsuba {
 
     private int[] sub0(int[] res) {
         int zeroNum = 0;
-        while (zeroNum < res.length - 1 && res[zeroNum] == 0)
+        while (zeroNum < res.length - 1 && res[zeroNum] == 0) {
             zeroNum++;
+        }
         int[] lastRes = new int[res.length - zeroNum];
         System.arraycopy(res, zeroNum, lastRes, 0, lastRes.length);
         return lastRes;

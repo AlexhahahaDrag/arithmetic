@@ -68,12 +68,14 @@ public class RobotAdventure {
 
     private boolean robot(String command, int[][] obstacles, int x, int y) {
         //判断机器人是否经过终点
-        if (!check(command, x, y))
+        if (!check(command, x, y)) {
             return false;
+        }
         //判断是否机器人是否经过障碍
         for (int i = 0; i < obstacles.length; i++) {
-            if (x >= obstacles[i][0] && y >= obstacles[i][1] && check(command, obstacles[i][0], obstacles[i][1]))
+            if (x >= obstacles[i][0] && y >= obstacles[i][1] && check(command, obstacles[i][0], obstacles[i][1])) {
                 return false;
+            }
         }
         return true;
     }
@@ -88,16 +90,19 @@ public class RobotAdventure {
         int index = 0;
         int len = command.length();
         while (true) {
-            if (xStep == remainX && yStep == remainY)
+            if (xStep == remainX && yStep == remainY) {
                 return true;
-            else if (xStep > remainX || yStep > remainY)
+            } else if (xStep > remainX || yStep > remainY) {
                 return false;
-            if (command.charAt(index++) == 'U')
+            }
+            if (command.charAt(index++) == 'U') {
                 yStep++;
-            else
+            } else {
                 xStep++;
-            if (index == len)
+            }
+            if (index == len) {
                 break;
+            }
         }
         return false;
     }
@@ -107,10 +112,11 @@ public class RobotAdventure {
         int[] xyStep = {0, 0};
         int index = 0;
         while (index < len) {
-            if (command.charAt(index++) == 'U')
+            if (command.charAt(index++) == 'U') {
                 xyStep[1]++;
-            else
+            } else {
                 xyStep[0]++;
+            }
         }
         return xyStep;
     }

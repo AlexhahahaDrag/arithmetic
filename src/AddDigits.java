@@ -28,12 +28,14 @@ public class AddDigits {
            num/=10;
        }
         int sum=0;
-        for (int j = 0; j < nums.length; j++)
+        for (int j = 0; j < nums.length; j++) {
             sum+=nums[j];
-        if (sum>10)
+        }
+        if (sum>10) {
             return addDigits(sum);
-        else
+        } else {
             return sum;
+        }
     }
     public static int addDigits1(int num) {
         if (num == 0) {

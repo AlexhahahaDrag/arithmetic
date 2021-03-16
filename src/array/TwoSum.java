@@ -42,10 +42,11 @@ public class TwoSum {
                 res[0] = nums[start];
                 res[1] = nums[end];
                 break;
-            } else if (sum < target)
+            } else if (sum < target) {
                 start++;
-            else
+            } else {
                 end--;
+            }
         }
         return res;
     }

@@ -41,20 +41,24 @@ public class PivotIndex {
     }
 
     private int pivotIndex1(int[] nums) {
-        if (nums.length < 1)
+        if (nums.length < 1) {
             return -1;
+        }
         int rSum = 0;
-        for(int i : nums)
+        for(int i : nums) {
             rSum += i;
+        }
         int lSum = 0;
         rSum = rSum - nums[0];
-        if (0 == rSum)
+        if (0 == rSum) {
             return 0;
+        }
         for (int i = 1; i < nums.length; i++) {
             lSum += nums[i - 1];
             rSum -= nums[i];
-            if (lSum == rSum)
+            if (lSum == rSum) {
                 return i;
+            }
         }
         return -1;
     }
@@ -67,8 +71,9 @@ public class PivotIndex {
             res[i] = sum;
         }
         for(int j = 0; j < nums.length; j++) {
-            if(sum - res[j] == res[j] - nums[j])
+            if(sum - res[j] == res[j] - nums[j]) {
                 return j;
+            }
         }
         return -1;
     }

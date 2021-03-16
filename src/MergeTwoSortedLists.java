@@ -85,8 +85,9 @@ class MainClass {
     }
 
     public static String listNodeToString(ListNode node) {
-        if (node == null)
+        if (node == null) {
             return "[]";
+        }
         String result = "";
         while (node != null) {
             result += Integer.toString(node.val) + ", ";

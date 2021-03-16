@@ -36,17 +36,20 @@ public class BestSeqAtIndex {
     public int bestSeqAtIndex(int[] height, int[] weight) {
         int len = height.length;
         int[][] person = new int[len][2];
-        for (int i = 0; i < len; ++i)
+        for (int i = 0; i < len; ++i) {
             person[i] = new int[]{height[i], weight[i]};
+        }
         Arrays.sort(person, (a, b) -> a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]);
         int[] dp = new int[len];
         dp[0] = 1;
         int res = 1;
         for (int i = 1; i < len; ++i) {
             int max_val = 0, base_weight = person[i][1];
-            for (int j = i - 1; j >= 0 && j >= max_val; --j)
-                if (base_weight > person[j][1])
+            for (int j = i - 1; j >= 0 && j >= max_val; --j) {
+                if (base_weight > person[j][1]) {
                     max_val = Math.max(max_val, dp[j]);
+                }
+            }
             dp[i] = max_val + 1;
             res = Math.max(res, dp[i]);
         }

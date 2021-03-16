@@ -26,8 +26,9 @@ public class DeleteRepeatNodeLeftOne {
     }
 
     private ListNode deleteRepeatNodeLeftNone(ListNode listNode) {
-        if (listNode == null)
+        if (listNode == null) {
             return null;
+        }
         ListNode pre = listNode;
         ListNode cur = listNode.next;
         while (cur.next != null) {
@@ -43,14 +44,16 @@ public class DeleteRepeatNodeLeftOne {
     }
 
     private ListNode deleteRepeatNodeLeftOne(ListNode listNode) {
-        if (listNode == null)
+        if (listNode == null) {
             return null;
+        }
         ListNode cur = listNode.next;
         while (cur.next != null) {
             if (cur.next.val == cur.val) {
                 cur.next = cur.next.next;
-            } else
+            } else {
                 cur = cur.next;
+            }
         }
         return listNode;
     }

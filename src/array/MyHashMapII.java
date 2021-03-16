@@ -85,8 +85,9 @@ public class MyHashMapII {
         int index = hash(key);
         Node node = arr[index];
         while(node != null) {
-            if (node.key == key)
+            if (node.key == key) {
                 return node.value;
+            }
             node = node.next;
         }
         return -1;
@@ -96,8 +97,9 @@ public class MyHashMapII {
     public void remove(int key) {
         int index = hash(key);
         Node node = arr[index];
-        if(node == null)
+        if(node == null) {
             return;
+        }
         if(node.key == key) {
             arr[index] = node.next;
         } else {

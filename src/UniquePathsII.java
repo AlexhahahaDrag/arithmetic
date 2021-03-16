@@ -38,19 +38,24 @@ public class UniquePathsII {
     public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int[][] map = new int[obstacleGrid.length][obstacleGrid[0].length];
         for(int i=0;i<obstacleGrid.length;i++){
-            if (obstacleGrid[i][0]==1)
+            if (obstacleGrid[i][0]==1) {
                 break;
+            }
             map[i][0]=1;
         }
         for(int j=0;j<obstacleGrid[0].length;j++){
-            if (obstacleGrid[0][j]==1)
+            if (obstacleGrid[0][j]==1) {
                 break;
+            }
             map[0][j]=1;
         }
-        for(int k=1;k<obstacleGrid.length;k++)
-            for(int l=1;l<obstacleGrid[k].length;l++)
-                if (obstacleGrid[k][l]!=1)
-                    map[k][l]=map[k-1][l]+map[k][l-1];
+        for(int k=1;k<obstacleGrid.length;k++) {
+            for(int l=1;l<obstacleGrid[k].length;l++) {
+                if (obstacleGrid[k][l] != 1) {
+                    map[k][l] = map[k - 1][l] + map[k][l - 1];
+                }
+            }
+        }
         return map[obstacleGrid.length-1][obstacleGrid[0].length-1];
     }
 }

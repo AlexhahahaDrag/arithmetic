@@ -69,15 +69,17 @@ public class ProductOfNumbers {
     public int getProduct(int k) {
         int index = 1;
         int sum = 1;
-        while(index <= k)
+        while(index <= k) {
             sum *= res[size - index++];
+        }
         return sum;
     }
 
     private void more() {
         int[] newRes = new int[res.length << 1];
-        for(int i = 0; i < res.length; i++)
+        for(int i = 0; i < res.length; i++) {
             newRes[i] = res[i];
+        }
         res = newRes;
     }
 }

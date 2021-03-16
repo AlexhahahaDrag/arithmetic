@@ -57,22 +57,27 @@ import java.util.Arrays;
 public class MaxSumRangeQuery {
     public int maxSumRangeQuery(int[] nums, int[][] requests) {
         int[] map = new int[nums.length];
-        for(int[] i : requests)
-            for(int j = i[0]; j <= i[1]; j++)
+        for(int[] i : requests) {
+            for(int j = i[0]; j <= i[1]; j++) {
                 map[j]++;
+            }
+        }
         int[] li = new int[nums.length + 1];
-        for (int i = 0; i < map.length; i++)
+        for (int i = 0; i < map.length; i++) {
             li[map[i]]++;
+        }
         Arrays.sort(nums);
         int[] result = new int[nums.length + 1];
-        for (int i = 0; i < nums.length; i++)
+        for (int i = 0; i < nums.length; i++) {
             result[i + 1] = result[i] + nums[i];
+        }
         int cur = nums.length;
         int mod = 1000000007;
         long sum = 0;
         for(int i = li.length - 1; i >= 1; i--) {
-            if (li[i] == 0)
+            if (li[i] == 0) {
                 continue;
+            }
             sum += (long)(result[cur] - result[cur - li[i]]) * i;
             cur -= li[i];
         }

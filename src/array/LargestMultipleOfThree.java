@@ -56,19 +56,21 @@ public class LargestMultipleOfThree {
             }
         }
         Arrays.sort(digits);
-        if (digits[digits.length - 1] == 0)
+        if (digits[digits.length - 1] == 0) {
             return "0";
+        }
         int more1 = two % 3 - one % 3;
         int more2 = (two - one) % 3;
         int more = Math.abs(more1) <= Math.abs(more2) ? more1 : more2;
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < digits.length; i++) {
-            if (more > 0 && digits[i] % 3 == 2)
+            if (more > 0 && digits[i] % 3 == 2) {
                 more--;
-            else if (more < 0 && digits[i] % 3 == 1)
+            } else if (more < 0 && digits[i] % 3 == 1) {
                 more++;
-            else
+            } else {
                 stringBuilder.insert(0, digits[i]);
+            }
         }
         return stringBuilder.toString();
     }

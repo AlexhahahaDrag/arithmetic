@@ -29,35 +29,42 @@ public class MergerArray {
         int m = 3;
         int n = 3;
         mergerArray.merge(nums1, m, nums2, n);
-        for (int i : nums1)
+        for (int i : nums1) {
             System.out.print(i + "   ");
+        }
     }
 
     public void merge1(int[] nums1, int m, int[] nums2, int n) {
         int index = nums1.length;
         while(m > 0 && n > 0) {
-            if (nums1[m - 1] > nums2[n - 1])
+            if (nums1[m - 1] > nums2[n - 1]) {
                 nums1[--index] = nums1[m-- - 1];
-            else if (nums1[m - 1] <= nums2[n - 1])
+            } else if (nums1[m - 1] <= nums2[n - 1]) {
                 nums1[--index] = nums2[n-- - 1];
+            }
         }
-        while(m > 0)
+        while(m > 0) {
             nums1[--index] = nums1[m-- - 1];
-        while(n > 0)
+        }
+        while(n > 0) {
             nums1[--index] = nums2[n-- - 1];
-        if(index > 0)
-            for(int i = 0; i < nums1.length - index; i++)
+        }
+        if(index > 0) {
+            for(int i = 0; i < nums1.length - index; i++) {
                 nums1[i] = nums1[i + index];
+            }
+        }
     }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int size = m + n;
         while(n > 0) {
             int nu1 = m <= 0 ? Integer.MIN_VALUE : nums1[m - 1];
-            if(nu1 > nums2[n - 1])
+            if(nu1 > nums2[n - 1]) {
                 nums1[--size] = nums1[--m];
-            else
+            } else {
                 nums1[--size] = nums2[--n];
+            }
         }
     }
 }

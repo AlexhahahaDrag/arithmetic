@@ -40,8 +40,9 @@ public class WordBreak {
     TrieTree<Character> root;
     public boolean wordBreak(String s, List<String> wordDict) {
         root = new TrieTree(0);
-        for(String word : wordDict)
+        for(String word : wordDict) {
             build(word.toCharArray());
+        }
         return bfs(0, s.toCharArray());
     }
 
@@ -53,10 +54,12 @@ public class WordBreak {
            int index = queue.poll();
            Set<Integer> set = searchPrefixes(ch, index);
            for(int se : set) {
-               if (se == ch.length - 1)
+               if (se == ch.length - 1) {
                    return true;
-               if (visited[se])
+               }
+               if (visited[se]) {
                    continue;
+               }
                visited[se] = true;
                queue.add(se + 1);
            }
@@ -80,10 +83,11 @@ public class WordBreak {
         Set<Integer> res = new HashSet<>();
         for (int i = from; i < ch.length; i++) {
             cur = cur.children[ch[i]];
-            if (cur == null)
+            if (cur == null) {
                 break;
-            else if (cur.isEnd)
+            } else if (cur.isEnd) {
                 res.add(i);
+            }
         }
         return res;
     }

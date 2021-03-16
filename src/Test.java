@@ -21,8 +21,9 @@ public class Test {
         }
         long res = Math.round(nu * 100);
         double num= (double)res / 100;
-        if (negative)
+        if (negative) {
             num = -num;
+        }
         String str = num + " ";
         Integer rs = str.indexOf('.');
         if (rs < 0) {

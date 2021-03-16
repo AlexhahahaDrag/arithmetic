@@ -66,8 +66,9 @@ public class BreakfastNumber {
             if (staple[row] + drinks[col] <= x) {
                 sum = (sum + row + 1) % 1000000007;
                 col++;
-            } else
+            } else {
                 row--;
+            }
         }
         return sum;
     }

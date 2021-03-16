@@ -44,11 +44,13 @@ public class PermutationSequence {
     public String getPermutation(int n, int k) {
         List<Integer> list = new LinkedList<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++) {
             list.add(i);
+        }
         int factorial = 1;
-        for (int i = 2; i < n; i++)
+        for (int i = 2; i < n; i++) {
             factorial *= i;
+        }
         k--;
         while(n > 1) {
             int index = k / factorial;
@@ -65,8 +67,9 @@ public class PermutationSequence {
     public String getPermutation1(int n, int k) {
         int index = 1;
         int[] arr = new int[n];
-        while(index <= n)
+        while(index <= n) {
             arr[index - 1] = index++;
+        }
         int p = arr.length  - 1;
         int q;
         int pFind;
@@ -75,8 +78,9 @@ public class PermutationSequence {
             p--;
             if (arr[p] < arr[q]) {
                 pFind = arr.length - 1;
-                while (arr[pFind] < arr[p])
+                while (arr[pFind] < arr[p]) {
                     pFind--;
+                }
                 swap(arr, pFind, p);
                 sort(arr, q, arr.length - 1);
                 p = arr.length - 1;
@@ -84,8 +88,9 @@ public class PermutationSequence {
             }
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i : arr)
+        for (int i : arr) {
             stringBuilder.append(i);
+        }
         return stringBuilder.toString();
     }
 
@@ -96,7 +101,8 @@ public class PermutationSequence {
     }
 
     private void sort(int[] arr, int i, int j) {
-        while(i < j)
+        while(i < j) {
             swap(arr, i++, j--);
+        }
     }
 }

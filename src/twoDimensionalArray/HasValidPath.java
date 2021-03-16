@@ -67,10 +67,12 @@ public class HasValidPath {
     }
 
     private boolean getValidPaht(int[][] grid,int i, int j, int pre) {
-        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length ||(pre == 1 && grid[i][j] == 2) || (pre == 2 && grid[i][j] == 1) || grid[i][j] == 0)
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length ||(pre == 1 && grid[i][j] == 2) || (pre == 2 && grid[i][j] == 1) || grid[i][j] == 0) {
             return false;
-        if(i == grid.length - 1 && j == grid[0].length - 1)
+        }
+        if(i == grid.length - 1 && j == grid[0].length - 1) {
             return true;
+        }
         int index = grid[i][j];
         grid[i][j] = 0;
         switch(index) {

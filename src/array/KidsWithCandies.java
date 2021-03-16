@@ -47,16 +47,20 @@ public class KidsWithCandies {
 
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         int max = Integer.MIN_VALUE;
-        for(int i : candies)
-            if (i > max)
+        for(int i : candies) {
+            if (i > max) {
                 max = i;
+            }
+        }
         int cur = max - extraCandies;
         List<Boolean> res = new ArrayList<>()                   ;
-        for(int j : candies)
-            if (j < cur)
+        for(int j : candies) {
+            if (j < cur) {
                 res.add(false);
-            else
+            } else {
                 res.add(true);
+            }
+        }
         return res;
     }
 

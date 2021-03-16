@@ -62,16 +62,18 @@ public class MinCostConnectPoints {
         int res = 0;
         map = new int[points.length];
         Arrays.fill(map, -1);
-        for (int i = 0; i < points.length; i++)
+        for (int i = 0; i < points.length; i++) {
             res += findMin(points, i);
+        }
         return res;
     }
 
     private int findMin(int[][] points, int i) {
         int min = Integer.MAX_VALUE;
         for (int j = 0; j < points.length ; j++) {
-            if (j == i)
+            if (j == i) {
                 continue;
+            }
             int cur = Math.abs(points[i][0] - points[j][0]) + Math.abs(points[i][1] - points[j][1]);
             if (cur < min && map[j] != i) {
                 min = cur;

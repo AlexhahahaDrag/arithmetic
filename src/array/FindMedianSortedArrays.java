@@ -29,25 +29,28 @@ public class FindMedianSortedArrays {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1 == null || nums1.length == 0) {
-            if (nums2 == null || nums2.length == 0)
+            if (nums2 == null || nums2.length == 0) {
                 return 0;
-            else
+            } else {
                 return findMedian(nums2);
+            }
         } else {
-            if (nums2 == null || nums2.length == 0)
+            if (nums2 == null || nums2.length == 0) {
                 return findMedian(nums1);
-            else
+            } else {
                 return (findMedian(nums1) + findMedian(nums2)) / 2;
+            }
         }
     }
 
     private double findMedian(int[] nums) {
         double mid;
         int len = nums.length;
-        if((len & 1) == 1)
+        if((len & 1) == 1) {
             mid = nums[len >> 1];
-        else
+        } else {
             mid = (double)(nums[len >> 1] + nums[(len >> 1) - 1] ) / 2;
+        }
         return mid;
     }
 

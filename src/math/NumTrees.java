@@ -33,8 +33,9 @@ public class NumTrees {
     public int numTrees(int n) {
         long res = 1;
         long index = 1;
-        while(++index <= n)
+        while(++index <= n) {
             res = res * (4 * index - 2) / (index + 1);
+        }
         return (int)res;
     }
 

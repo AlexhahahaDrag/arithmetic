@@ -38,16 +38,18 @@ public class AverageOfLevels {
         List<Double> res = new ArrayList<>();
         for(List<Integer> li : map.values()) {
             double sum = 0.0;
-            for(Integer i : li)
+            for(Integer i : li) {
                 sum += i;
+            }
             res.add(sum / li.size());
         }
         return res;
     }
 
     private void getAverage(TreeNode root, int level) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         List<Integer> li;
         if(map.get(level) == null) {
             li = new ArrayList<>();
@@ -71,18 +73,21 @@ public class AverageOfLevels {
     }
 
     private void average(List<TreeNode> parents) {
-        if (parents == null || parents.isEmpty())
+        if (parents == null || parents.isEmpty()) {
             return;
+        }
         List<TreeNode> cur = new ArrayList<>();
         double sum = 0;
         int count = 0;
         for (TreeNode treeNode : parents) {
             count++;
             sum += treeNode.val;
-            if (treeNode.left != null)
+            if (treeNode.left != null) {
                 cur.add(treeNode.left);
-            if (treeNode.right != null)
+            }
+            if (treeNode.right != null) {
                 cur.add(treeNode.right);
+            }
         }
         res.add(sum / count);
         average(cur);

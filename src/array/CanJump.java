@@ -27,9 +27,11 @@ public class CanJump {
 
     public boolean canJump1(int[] nums) {
         int index = nums.length - 1;
-        for (int i = index; i >= 0 ; i--)
-            if (i + nums[i] >= index)
+        for (int i = index; i >= 0 ; i--) {
+            if (i + nums[i] >= index) {
                 index = i;
+            }
+        }
 
         return index == 0;
     }
@@ -40,29 +42,35 @@ public class CanJump {
     }
 
     private boolean dfs(int[] nums, int index, boolean[] map) {
-        if (index + nums[index] >= nums.length - 1)
+        if (index + nums[index] >= nums.length - 1) {
             return true;
+        }
         for (int i = index; i <= index + nums[index]; i++) {
-            if (map[i])
+            if (map[i]) {
                 continue;
+            }
             map[i] = true;
-            if (dfs(nums, i, map))
+            if (dfs(nums, i, map)) {
                 return true;
+            }
         }
         return false;
     }
 
     private boolean dfs1(int[] nums, int index, boolean[] map) {
-        if (index + nums[index] >= nums.length - 1)
+        if (index + nums[index] >= nums.length - 1) {
             return true;
+        }
         int start = index - nums[index] < 0 ? 0 : index - nums[index];
         int end = index + nums[index];
         for (int i = start; i <= end; i++) {
-            if (map[i])
+            if (map[i]) {
                 continue;
+            }
             map[i] = true;
-            if (dfs(nums, i, map))
+            if (dfs(nums, i, map)) {
                 return true;
+            }
         }
         return false;
     }

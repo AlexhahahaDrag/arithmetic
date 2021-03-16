@@ -29,8 +29,9 @@ import java.util.Map;
 public class CheckSubarraySum {
 
     public boolean checkSubarraySum1(int[] nums, int k) {
-        if (nums == null || nums.length < 2)
+        if (nums == null || nums.length < 2) {
             return false;
+        }
         int[] sums = new int[nums.length + 1];
         int sum = 0;
         int index = 0;
@@ -40,28 +41,33 @@ public class CheckSubarraySum {
         }
         for (int i = 0; i < sums.length - 2; i++) {
             for (int j = i + 2; j < sums.length; j++) {
-                if (sums[j] - sums[i] == k || (k != 0 && (sums[j] - sums[i]) % k == 0))
+                if (sums[j] - sums[i] == k || (k != 0 && (sums[j] - sums[i]) % k == 0)) {
                     return true;
+                }
             }
         }
         return false;
     }
 
     public boolean checkSubarraySum(int[] nums, int k) {
-        if (nums == null || nums.length < 2)
+        if (nums == null || nums.length < 2) {
             return false;
+        }
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            if (k != 0)
+            if (k != 0) {
                 sum = sum % k;
+            }
             if (map.containsKey(sum)) {
-                if (i - map.get(sum) > 1)
+                if (i - map.get(sum) > 1) {
                     return true;
-            } else
+                }
+            } else {
                 map.put(sum, i);
+            }
         }
         return false;
     }

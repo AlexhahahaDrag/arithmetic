@@ -21,15 +21,18 @@ public class SetMismatch {
     }
     public static int[] findErrorNums(int[] nums) {
         int[] indexs=new int[nums.length+1];
-        for(int i:nums)
+        for(int i:nums) {
             indexs[i]++;
+        }
         int missing=1;
         int due=-1;
-        for(int k=1;k<indexs.length;k++)
-            if(indexs[k]==0)
-                missing=k;
-            else if(indexs[k]==2)
-                due=k;
+        for(int k=1;k<indexs.length;k++) {
+            if(indexs[k]==0) {
+                missing = k;
+            } else if(indexs[k]==2) {
+                due = k;
+            }
+        }
         return new int[]{due,missing};
     }
 }

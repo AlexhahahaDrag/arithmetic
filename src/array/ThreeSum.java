@@ -36,10 +36,12 @@ public class ThreeSum {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > 0)
+            if (nums[i] > 0) {
                 break;
-            if (i > 0 && nums[i] == nums[i - 1])
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 i++;
+            }
             int l = i + 1;
             int r = nums.length - 1;
             while(l < r) {
@@ -50,16 +52,19 @@ public class ThreeSum {
                     list.add(nums[l]);
                     list.add(nums[r]);
                     result.add(list);
-                    while(l < r && nums[l] == nums[l + 1])
+                    while(l < r && nums[l] == nums[l + 1]) {
                         l++;
-                    while(l < r && nums[r] == nums[r - 1])
+                    }
+                    while(l < r && nums[r] == nums[r - 1]) {
                         r--;
+                    }
                     l++;
                     r--;
-                }else if (sum > 0)
+                }else if (sum > 0) {
                     r--;
-                else
+                } else {
                     l++;
+                }
             }
         }
         return result;

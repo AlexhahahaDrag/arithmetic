@@ -31,35 +31,42 @@ public class FourSum {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
         for(int i : nums) {
-            if (i > max)
+            if (i > max) {
                 max = i;
-            if (i < min)
+            }
+            if (i < min) {
                 min = i;
-            if (i < 0)
+            }
+            if (i < 0) {
                 negative++;
-            else if (i == 0)
+            } else if (i == 0) {
                 zero++;
-            else
+            } else {
                 positive++;
+            }
         }
 
         if (zero > 3) {
             List<Integer> list = new ArrayList<>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++) {
                 list.add(0);
+            }
             result.add(list);
         }
-        if (negative == 0 || positive == 0)
+        if (negative == 0 || positive == 0) {
             return result;
+        }
         int[] pos = new int[positive];
         int[] neg = new int[negative];
         positive = 0;
         negative = 0;
-        for(int i : nums)
-            if (i < 0)
+        for(int i : nums) {
+            if (i < 0) {
                 neg[negative++] = i;
-            else if (i > 0)
+            } else if (i > 0) {
                 pos[positive++] = i;
+            }
+        }
         Arrays.sort(pos);
         Arrays.sort(neg);
         return result;

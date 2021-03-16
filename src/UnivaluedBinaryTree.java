@@ -37,8 +37,12 @@ public class UnivaluedBinaryTree {
         System.out.println(isUnivalTree(treeNode));
     }
     public static boolean isUnivalTree(TreeNode root) {
-        if(root==null) return true;
-        if(root.left==null&&root.right==null) return true;
+        if(root==null) {
+            return true;
+        }
+        if(root.left==null&&root.right==null) {
+            return true;
+        }
         return (root.left==null||(root.left.val==root.val&&isUnivalTree(root.left)))&&
                 (root.right==null||(root.right.val==root.val&&isUnivalTree(root.right)));
     }

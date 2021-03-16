@@ -63,18 +63,20 @@ public class SolveSudoku {
                     }
                 }
             }
-        } else
+        } else {
             return search(board, i, j);
+        }
         return false;
     }
 
     private boolean search (char[][] board, int i, int j) {
         if (i + 1 == board.length && j + 1 == board[i].length) {
             return true;
-        } else if (j + 1 == board.length)
+        } else if (j + 1 == board.length) {
             return dfs(board, i + 1, 0);
-        else
+        } else {
             return dfs(board, i, j + 1);
+        }
     }
 
     public static void main(String[] args) {
@@ -84,8 +86,9 @@ public class SolveSudoku {
         SolveSudoku solveSudoku = new SolveSudoku();
         solveSudoku.solveSudoku(board);
         for (char[] ch : board) {
-            for (char c : ch)
+            for (char c : ch) {
                 System.out.print(c + "   ");
+            }
             System.out.println();
         }
     }

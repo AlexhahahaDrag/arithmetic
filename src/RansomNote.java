@@ -26,31 +26,37 @@ public class RansomNote {
     public static boolean canConstruct1(String ransomNote, String magazine) {
         Map<Character,Integer> mapRansomNote=new HashMap<>();
         Map<Character,Integer> mapMagazine=new HashMap<>();
-        for(char ch:ransomNote.toCharArray())
+        for(char ch:ransomNote.toCharArray()) {
             mapRansomNote.put(ch,mapRansomNote.getOrDefault(ch,0)+1);
-        for(char ch1:magazine.toCharArray())
+        }
+        for(char ch1:magazine.toCharArray()) {
             mapMagazine.put(ch1,mapMagazine.getOrDefault(ch1,0)+1);
+        }
         Iterator<Map.Entry<Character,Integer>> it=mapRansomNote.entrySet().iterator();
         while(it.hasNext()){
             Map.Entry<Character,Integer> entry=it.next();
-            if(!(mapMagazine.containsKey(entry.getKey())&&entry.getValue()<=mapMagazine.get(entry.getKey())))
+            if(!(mapMagazine.containsKey(entry.getKey())&&entry.getValue()<=mapMagazine.get(entry.getKey()))) {
                 return false;
+            }
         }
         return true;
     }
     public static boolean canConstruct(String ransomNote, String magazine) {
         int ransomNoteLen=ransomNote.length();
-        if(ransomNoteLen==0)
+        if(ransomNoteLen==0) {
             return true;
+        }
         int[] indexs=new int[26];
-        for(int i=0;i<ransomNoteLen;i++)
+        for(int i=0;i<ransomNoteLen;i++) {
             indexs[ransomNote.charAt(i)-'a']++;
+        }
         for(int j=0;j<magazine.length();j++){
             if(indexs[magazine.charAt(j)-'a']>0){
                 indexs[magazine.charAt(j)-'a']--;
                 ransomNoteLen--;
-                if(ransomNoteLen==0)
+                if(ransomNoteLen==0) {
                     return true;
+                }
             }
         }
         return false;

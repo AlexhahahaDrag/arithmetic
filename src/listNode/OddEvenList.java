@@ -26,8 +26,9 @@ package listNode;
 public class OddEvenList {
 
     public ListNode oddEvenList(ListNode head) {
-        if (head == null)
+        if (head == null) {
             return head;
+        }
         ListNode even = new ListNode(-1);
         ListNode cur = head;
         ListNode pre = even;
@@ -37,8 +38,9 @@ public class OddEvenList {
             pre.next = cur.next;
             pre = pre.next;
             cur.next = temp;
-            if (temp != null)
+            if (temp != null) {
                 cur = temp;
+            }
         }
         cur.next = even.next;
         return head;

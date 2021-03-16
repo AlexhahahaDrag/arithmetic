@@ -8,8 +8,9 @@ public class MinStack {
     public void push(int x) {
         if(arr.length<=size){
             int[] arrNew=new int[size*2];
-            for(int i=0;i<arr.length;i++)
+            for(int i=0;i<arr.length;i++) {
                 arrNew[i]=arr[i];
+            }
             arr=arrNew;
         }
         arr[size++]=x;
@@ -25,8 +26,9 @@ public class MinStack {
     public int getMin() {
         int minNum=arr[0];
         for(int i=0;i<size;i++){
-            if(arr[i]<minNum)
+            if(arr[i]<minNum) {
                 minNum=arr[i];
+            }
         }
         return minNum;
     }

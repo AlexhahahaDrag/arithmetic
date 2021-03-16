@@ -16,14 +16,15 @@ public class GetAllElements {
     int remainInd = 0;
     public List<Integer> getAllElements1(TreeNode root1, TreeNode root2) {
         getList(root1, root2);
-        for(int i = remainInd; i < remain.size(); i++)
+        for(int i = remainInd; i < remain.size(); i++) {
             res.add(remain.get(remainInd));
+        }
         return res;
     }
     private void getList(TreeNode root1, TreeNode root2) {
-        if (root1 == null && root2 == null)
+        if (root1 == null && root2 == null) {
             ;
-        else if(root1 == null) {
+        } else if(root1 == null) {
             getList(root1, root2.left);
             remain.add(root2.val);
             getList(root1, root2.right);
@@ -40,8 +41,9 @@ public class GetAllElements {
     private void add(int val1, int val2) {
         int val = Math.min(val1, val2);
         remain.add(Math.max(val1, val2));
-        while(remain.get(remainInd) < val)
+        while(remain.get(remainInd) < val) {
             res.add(remain.get(remainInd++));
+        }
         res.add(val);
     }
 
@@ -56,21 +58,25 @@ public class GetAllElements {
         int len1 = list1.size();
         int len2 = list2.size();
         while(index1 < len1 && index2 < len2) {
-            if(list1.get(index1) < list2.get(index2))
+            if(list1.get(index1) < list2.get(index2)) {
                 res.add(list1.get(index1++));
-             else
+            } else {
                 res.add(list2.get(index2++));
+            }
         }
-        while(index1 < len1)
+        while(index1 < len1) {
             res.add(list1.get(index1++));
-        while(index2 < len2)
+        }
+        while(index2 < len2) {
             res.add(list2.get(index2++));
+        }
         return res;
     }
 
     private void getL(TreeNode treeNode, List<Integer> list) {
-        if (treeNode == null)
+        if (treeNode == null) {
             return;
+        }
         getL(treeNode.left, list);
         list.add(treeNode.val);
         getL(treeNode.right, list);

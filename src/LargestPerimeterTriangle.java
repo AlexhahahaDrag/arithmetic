@@ -40,8 +40,9 @@ public class LargestPerimeterTriangle {
             a=A[A.length-1-i];
             b=A[A.length-2-i];
             c=A[A.length-3-i];
-            if (b+c>a)
+            if (b+c>a) {
                 return a+b+c>Integer.MAX_VALUE?Integer.MAX_VALUE:(int)(a+b+c);
+            }
         }
         return 0;
     }

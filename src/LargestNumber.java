@@ -21,8 +21,9 @@ public class LargestNumber {
         System.out.println(largestNumber(nums));
     }
     public static String largestNumber(int[] nums){
-        if (nums.length==0)
+        if (nums.length==0) {
             return "";
+        }
         for (int i = 0; i < nums.length; i++) {
             int count=0;
             for (int j = 0; j < nums.length-1-i; j++) {
@@ -33,8 +34,9 @@ public class LargestNumber {
                     count++;
                 }
             }
-            if (count==0)
+            if (count==0) {
                 break;
+            }
         }
         StringBuilder stringBuilder=new StringBuilder();
         for (int k = 0; k < nums.length; k++) {
@@ -65,10 +67,12 @@ public class LargestNumber {
             countY++;
             b/=10;
         }
-        if (x==0)
+        if (x==0) {
             countX=1;
-        if (y==0)
+        }
+        if (y==0) {
             countY=1;
+        }
         return x+y*Math.pow(10,countX)>y+x*Math.pow(10,countY)?true:false;
     }
 }

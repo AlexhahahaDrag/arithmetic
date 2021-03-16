@@ -25,8 +25,9 @@ public class PermuteUnique {
     List<List<Integer>> res1;
     public List<List<Integer>> permuteUnique1(int[] nums) {
         res1 = new ArrayList<>();
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return res1;
+        }
         Arrays.sort(nums);
         add(nums);
         dfs(nums, nums.length - 1);
@@ -35,8 +36,9 @@ public class PermuteUnique {
     }
 
     private void dfs(int[] nums, int start) {
-        if (start <= 0)
+        if (start <= 0) {
             return;
+        }
         for (int i = start; i >= 0; i--) {
             if (nums[i] < nums[start]) {
                 swap(nums, i, start);
@@ -51,8 +53,9 @@ public class PermuteUnique {
 
     private void add(int[] nums) {
         List<Integer> list = new ArrayList<>();
-        for (int j : nums)
+        for (int j : nums) {
             list.add(j);
+        }
         res1.add(list);
     }
 
@@ -65,8 +68,9 @@ public class PermuteUnique {
     List<List<Integer>> res;
     public List<List<Integer>> permuteUnique(int[] nums) {
         res = new ArrayList<>();
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return res;
+        }
         Arrays.sort(nums);
         List<Integer> deque = new ArrayList<>();
         boolean[] visited = new boolean[nums.length];
@@ -75,13 +79,16 @@ public class PermuteUnique {
     }
 
     private void dfs1(int[] nums, int depth, List<Integer> deque, boolean[] visited) {
-        if (depth == nums.length)
+        if (depth == nums.length) {
             res.add(new ArrayList<>(deque));
+        }
         for (int i = 0; i < nums.length; i++) {
-            if (visited[i])
+            if (visited[i]) {
                 continue;
-            if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1])
+            }
+            if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1]) {
                 continue;
+            }
             visited[i] = true;
             deque.add(nums[i]);
             dfs1(nums, depth + 1, deque, visited);

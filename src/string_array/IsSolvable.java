@@ -65,22 +65,26 @@ public class IsSolvable {
         noZeroChar = new int[10];
         int maxLen = 0;
         for(String word : words) {
-            if (word.length() > maxLen)
+            if (word.length() > maxLen) {
                 maxLen = word.length();
+            }
             noZeroChar[word.charAt(0) - 'A'] = 1;
         }
-        if (maxLen > result.length())
+        if (maxLen > result.length()) {
             return false;
+        }
         charToNum = new int[26];
-        for(int i = 0; i < charToNum.length; i++)
+        for(int i = 0; i < charToNum.length; i++) {
             charToNum[i] = -1;
+        }
         numToChar = new int[result.length()];
         return dfs(words, result, 0, 0, 0);
     }
 
     private boolean dfs(String[] words, String result, int index, int postInd, int digit) {
-        if (postInd >= words[index].length())
+        if (postInd >= words[index].length()) {
             dfs(words, result, ++index, postInd, digit);
+        }
         char ch = words[index].charAt(postInd);
         if (charToNum[ch - 'A'] != -1) {
             int sum = digit + numToChar[postInd] + charToNum[ch - 'A'];

@@ -34,20 +34,25 @@ public class FindMode {
     public int[] findMode1(TreeNode root) {
         find(root);
         int max = 0;
-        for (Integer i : map.values())
-            if (i > max)
+        for (Integer i : map.values()) {
+            if (i > max) {
                 max = i;
+            }
+        }
         int[] arr = new int[map.size()];
         int size = 0;
-        for (Map.Entry<Integer, Integer> entry : map.entrySet())
-            if (max == entry.getValue())
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (max == entry.getValue()) {
                 arr[size++] = entry.getKey();
+            }
+        }
         return Arrays.copyOf(arr, size);
     }
 
     private void find(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         find(root.left);
         map.put(root.val, map.getOrDefault(root.val, 0) + 1);
         find(root.right);
@@ -58,24 +63,27 @@ public class FindMode {
         find1(root);
         int len = list.size();
         int[] arr = new int[len];
-        for(int i = 0; i < len; i++)
+        for(int i = 0; i < len; i++) {
             arr[i] = list.get(i);
+        }
         return arr;
     }
     TreeNode pre = null;
     int index = 0;
     int max = 0;
     private void find1(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         find1(root.left);
         if (pre == null || pre.val == root.val) {
             index++;
-        } else
+        } else {
             index = 1;
-        if (index == max)
+        }
+        if (index == max) {
             list.add(root.val);
-        else if (index > max) {
+        } else if (index > max) {
             list.clear();
             max = index;
             list.add(root.val);
@@ -92,23 +100,26 @@ public class FindMode {
         findCount(root);
         int len = res.size();
         int[] arr = new int[len];
-        for(int i = 0; i < len; i++)
+        for(int i = 0; i < len; i++) {
             arr[i] = res.get(i);
+        }
         return arr;
     }
 
     private int count = 0;
     private void findCount(TreeNode root) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         findCount(root.left);
-        if (preTree == null || root.val == preTree.val)
+        if (preTree == null || root.val == preTree.val) {
             count++;
-        else
+        } else {
             count = 1;
-        if (count == maxCount)
+        }
+        if (count == maxCount) {
             res.add(root.val);
-        else if (count > maxCount) {
+        } else if (count > maxCount) {
             res.clear();
             maxCount = count;
             res.add(root.val);
@@ -123,7 +134,8 @@ public class FindMode {
         treeNode.right.left = new TreeNode(2);
         FindMode findMode = new FindMode();
         int res[] = findMode.findMode(treeNode);
-        for (int i : res)
+        for (int i : res) {
             System.out.println(i + "  ");
+        }
     }
 }

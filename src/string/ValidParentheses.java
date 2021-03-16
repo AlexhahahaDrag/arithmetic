@@ -51,24 +51,28 @@ public class ValidParentheses {
         char ch[] = s.toCharArray();
         Stack<Character> track = new Stack<>();
         for(char c : ch) {
-            if(c == '{' || c == '[' || c == '(')
+            if(c == '{' || c == '[' || c == '(') {
                 track.add(c);
-            else {
-                if (track.size() == 0)
+            } else {
+                if (track.size() == 0) {
                     return false;
+                }
                 char chSt = track.pop();
-                if (!map(chSt, c))
+                if (!map(chSt, c)) {
                     return false;
+                }
             }
         }
-        if(track.size() > 0)
+        if(track.size() > 0) {
             return false;
+        }
         return true;
     }
 
     private boolean map(char ch1, char ch2) {
-        if((ch1 == '(' && ch2 == ')') || (ch1 == '{' && ch2 == '}') || (ch1 == '[' && ch2 == ']'))
+        if((ch1 == '(' && ch2 == ')') || (ch1 == '{' && ch2 == '}') || (ch1 == '[' && ch2 == ']')) {
             return true;
+        }
         return false;
     }
 
@@ -84,16 +88,19 @@ public class ValidParentheses {
                     stack[len++] = c;
                     break;
                 case ')':
-                    if (len == 0 || stack[--len] != '(')
+                    if (len == 0 || stack[--len] != '(') {
                         return false;
+                    }
                     break;
                 case ']':
-                    if (len == 0 || stack[--len] != '[')
+                    if (len == 0 || stack[--len] != '[') {
                         return false;
+                    }
                     break;
                 case '}':
-                    if (len == 0 || stack[--len] != '{')
+                    if (len == 0 || stack[--len] != '{') {
                         return false;
+                    }
                     break;
             }
         }
@@ -104,10 +111,11 @@ public class ValidParentheses {
         char[] map = new char[s.length()];
         int size = -1;
         for(char ch : s.toCharArray()) {
-            if(ch == '(' || ch == '[' || ch == '{')
+            if(ch == '(' || ch == '[' || ch == '{') {
                 map[++size] = ch;
-            else if(size < 0 || (ch == ')' && map[size--] != '(') || (ch == ']' && map[size--] != '[') || (ch == '}' && map[size--] != '{'))
+            } else if(size < 0 || (ch == ')' && map[size--] != '(') || (ch == ']' && map[size--] != '[') || (ch == '}' && map[size--] != '{')) {
                 return false;
+            }
         }
         return size == -1;
     }

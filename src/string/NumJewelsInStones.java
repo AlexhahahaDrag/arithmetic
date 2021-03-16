@@ -27,12 +27,15 @@ public class NumJewelsInStones {
 
     public int numJewelsInStones(String J, String S) {
         boolean[] map = new boolean[256];
-        for(char c : J.toCharArray())
+        for(char c : J.toCharArray()) {
             map[c - 'A'] = true;
+        }
         int res = 0;
-        for(char h : S.toCharArray())
-            if (map[h - 'A'])
+        for(char h : S.toCharArray()) {
+            if (map[h - 'A']) {
                 res++;
+            }
+        }
         return res;
     }
 

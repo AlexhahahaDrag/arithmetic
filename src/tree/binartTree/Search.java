@@ -36,12 +36,13 @@ public class Search {
     private int findTarget(int[] nums,int start, int end, int target) {
         while(start <= end) {
             int mid = start + ((end - start) >> 1);
-            if (nums[mid] == target)
+            if (nums[mid] == target) {
                 return mid;
-            else if (nums[mid] > target)
+            } else if (nums[mid] > target) {
                 return findTarget(nums, start, mid - 1, target);
-            else
+            } else {
                 return findTarget(nums, mid + 1, end, target);
+            }
         }
         return -1;
     }

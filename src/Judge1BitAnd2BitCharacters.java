@@ -14,10 +14,11 @@ public class Judge1BitAnd2BitCharacters {
     public static boolean isOneBitCharacter(int[] bits) {
         int i = 0;
         while (i < bits.length - 1) {
-            if (bits[i] == 0)
+            if (bits[i] == 0) {
                 i++;
-            else
+            } else {
                 i += 2;
+            }
         }
         return i==bits.length-1;
     }

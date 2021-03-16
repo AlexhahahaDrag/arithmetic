@@ -22,16 +22,19 @@ public class MinSubArrayLen {
 
     public int minSubArrayLen1(int s, int[] nums) {
         int res = Integer.MAX_VALUE;
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return 0;
+        }
         int[] map = new int[nums.length];
-        if (nums[0] >= s)
+        if (nums[0] >= s) {
             return 1;
+        }
         map[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
             map[i] = map[i - 1] + nums[i];
-            if (map[i] >= s)
+            if (map[i] >= s) {
                 res = Math.min(res, i + 1);
+            }
         }
         int len = 0;
         outloop: while(len++ < nums.length) {
@@ -47,16 +50,18 @@ public class MinSubArrayLen {
 
     public int minSubArrayLen(int s, int[] nums) {
 
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return 0;
+        }
         int res = Integer.MAX_VALUE;
         int total = nums[0];
         int start = 0;
         int end = 0;
         while(start <= end) {
             if (total >= s) {
-                if (res > end - start)
+                if (res > end - start) {
                     res = end - start;
+                }
                 total -= nums[start];
                 start++;
             } else {

@@ -23,10 +23,11 @@ public class UpdateMatrix {
         LinkedList<Ma> linkedList = new LinkedList<>();
         for (int i = 0; i < matrix.length; i++) {
             for(int j = 0; j < matrix[i].length; j++) {
-                if(matrix[i][j] == 0)
+                if(matrix[i][j] == 0) {
                     linkedList.add(new Ma(i+2,j+2));
-                else
+                } else {
                     result[i+2][j+2] =  Integer.MAX_VALUE;
+                }
             }
         }
         int i;
@@ -37,23 +38,27 @@ public class UpdateMatrix {
             j = ma.j;
             if (result[i][j-1] == Integer.MAX_VALUE) {
                 result[i][j-1] = finMin(result,i,j-1);
-                if (j-1 > 1)
+                if (j-1 > 1) {
                     linkedList.add(new Ma(i,j-1));
+                }
             }
             if (result[i][j+1] == Integer.MAX_VALUE) {
                 result[i][j+1] = finMin(result,i,j+1);
-                if (j+1 < result[i].length-2)
+                if (j+1 < result[i].length-2) {
                     linkedList.add(new Ma(i,j+1));
+                }
             }
             if (result[i-1][j] == Integer.MAX_VALUE) {
                 result[i-1][j] = finMin(result,i-1,j);
-                if (i-1 > 1)
+                if (i-1 > 1) {
                     linkedList.add(new Ma(i-1,j));
+                }
             }
             if (result[i+1][j] == Integer.MAX_VALUE) {
                 result[i+1][j] = finMin(result,i+1,j);
-                if (i+1 < result.length-2)
+                if (i+1 < result.length-2) {
                     linkedList.add(new Ma(i+1,j));
+                }
             }
         }
         for (int k = 0; k < matrix.length; k++) {

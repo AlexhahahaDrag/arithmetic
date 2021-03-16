@@ -32,15 +32,18 @@ public class CustomSortString {
     public static String customSortString(String S, String T) {
         StringBuilder sb=new StringBuilder();
         int[] count=new int[26];
-        for(char t:T.toCharArray())
+        for(char t:T.toCharArray()) {
             count[t-'a']++;
+        }
         for(char s:S.toCharArray()){
-            while(count[s-'a']-->0)
+            while(count[s-'a']-->0) {
                 sb.append(s);
+            }
         }
         for(char t:T.toCharArray()){
-            while(count[t-'a']-->0)
+            while(count[t-'a']-->0) {
                 sb.append(t);
+            }
         }
         return sb.toString();
     }
@@ -55,8 +58,9 @@ public class CustomSortString {
                 add++;
             }else{
                 int d=add;
-                while(d>0&&((S.indexOf(sb.charAt(d-1))==-1)||S.indexOf(sb.charAt(d-1))>index))
+                while(d>0&&((S.indexOf(sb.charAt(d-1))==-1)||S.indexOf(sb.charAt(d-1))>index)) {
                     d--;
+                }
                 sb.insert(d,ch);
                 add++;
             }

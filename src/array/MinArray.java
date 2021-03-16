@@ -21,12 +21,15 @@ package array;
 public class MinArray {
 
     public int minArray1(int[] numbers) {
-        if (numbers == null || numbers.length == 0)
+        if (numbers == null || numbers.length == 0) {
             return  -1;
+        }
         int cur = numbers[0];
-        for(int i : numbers)
-            if (i < cur)
+        for(int i : numbers) {
+            if (i < cur) {
                 return i;
+            }
+        }
             return cur;
     }
 
@@ -35,12 +38,13 @@ public class MinArray {
         int end = numbers.length -1;
         while (start < end) {
             int mid = start + (end - start >> 1);
-            if (numbers[mid] < numbers[end])
+            if (numbers[mid] < numbers[end]) {
                 end = mid;
-            else if (numbers[mid] > numbers[end])
+            } else if (numbers[mid] > numbers[end]) {
                 start = mid + 1;
-            else
+            } else {
                 end -= 1;
+            }
         }
         return numbers[start];
     }

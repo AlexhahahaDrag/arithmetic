@@ -38,14 +38,16 @@ public class KoKoEatingBananas {
 
     public static int minEatingSpeed(int[] piles,int H){
         long sum=0;
-        for (int i = 0; i < piles.length; i++)
+        for (int i = 0; i < piles.length; i++) {
             sum+=piles[i];
+        }
         int start=(int)(sum/H);
         int num;
         do{
             num=0;
-            for (int j = 0; j < piles.length; j++)
+            for (int j = 0; j < piles.length; j++) {
                 num+=Math.ceil((double) piles[j]/start);
+            }
             start++;
         }while(num>H);
         return --start;

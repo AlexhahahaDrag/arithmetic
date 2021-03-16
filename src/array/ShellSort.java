@@ -11,16 +11,18 @@ public class ShellSort {
         int[] arr = {45,676,234,17,87,9,8,90,8,2,423,1,23};
         ShellSort shellSort = new ShellSort();
         shellSort.shellSort1(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.println(i);
+        }
     }
     private void shellSort1(int[] arr) {
         int k;
         for (int i = (arr.length >> 1); i > 0 ; i >>= 1) {
             for (int j = i; j < arr.length ; j++) {
                 int temp = arr[j];
-                for (k = j; k >= i && temp > arr[k - i]; k -= i)
+                for (k = j; k >= i && temp > arr[k - i]; k -= i) {
                     arr[k]  = arr[k - i];
+                }
                 arr[k] = temp;
             }
         }

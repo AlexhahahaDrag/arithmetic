@@ -28,12 +28,14 @@ public class TwoSum {
     public int[] twoSum2(int[] nums, int target) {
         int[] answer = new int[2];
         HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; ++i)
+        for (int i = 0; i < nums.length; ++i) {
             map.put(nums[i], i);
+        }
         for (int i = 0; i < nums.length; ++i){
             int b = target - nums[i];
-            if (map.containsKey(b) && i != map.get(b))
+            if (map.containsKey(b) && i != map.get(b)) {
                 return new int[]{i, map.get(b)};
+            }
         }
         return answer;
     }
@@ -58,13 +60,15 @@ public class TwoSum {
                         if (isFirst && nums[k] == s1) {
                             a = k;
                             isFirst = false;
-                            if(!isSec)
+                            if(!isSec) {
                                 break;
+                            }
                         } else if (isSec && nums[k] == s2) {
                             b = k;
                             isSec = false;
-                            if(!isFirst)
+                            if(!isFirst) {
                                 break;
+                            }
                         }
                     }
                     return new int[] { a, b };
@@ -94,18 +98,21 @@ public class TwoSum {
                         if (isFirst && nums[k] == ns[i]) {
                             a = k;
                             isFirst = false;
-                            if (!isSecond)
+                            if (!isSecond) {
                                 break;
+                            }
                         } else if (isSecond && nums[k] == ns[j]) {
                             b = k;
                             isSecond = false;
-                            if(!isFirst)
+                            if(!isFirst) {
                                 break;
+                            }
                         }
                     }
                     return new int[] {a, b};
-                } else if (sum < target)
+                } else if (sum < target) {
                     break;
+                }
             }
         }
         return new int[] {};

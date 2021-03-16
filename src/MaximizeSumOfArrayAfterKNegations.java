@@ -47,20 +47,22 @@ public class MaximizeSumOfArrayAfterKNegations {
             if(A[i]<0){
                 A[i]=-A[i];
                 pre=A[i];
-            }else if(A[i]==0)
+            }else if(A[i]==0) {
                 break;
-            else {
+            } else {
                 if((K&1)==1){
-                    if(A[i]>pre)
+                    if(A[i]>pre) {
                         A[i-1]=-A[i-1];
-                    else
+                    } else {
                         A[i]=-A[i];
+                    }
                 }
                 break;
             }
         }
-        for(int a:A)
+        for(int a:A) {
             sum+=a;
+        }
         return sum;
     }
 }

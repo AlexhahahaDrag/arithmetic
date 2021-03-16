@@ -27,8 +27,9 @@ public class ContainsDuplicateII {
         int start=0;
         while(start<nums.length){
             int index=start+1;
-            while (index<nums.length&&nums[start]!=nums[index])
+            while (index<nums.length&&nums[start]!=nums[index]) {
                 index++;
+            }
         }
         return false;
     }
@@ -36,10 +37,11 @@ public class ContainsDuplicateII {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i+1; j < nums.length; j++) {
                 if (nums[i]==nums[j]){
-                    if (j-i<=k)
+                    if (j-i<=k) {
                         return true;
-                    else
+                    } else {
                         break;
+                    }
                 }
 
             }

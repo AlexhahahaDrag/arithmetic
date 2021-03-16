@@ -174,10 +174,12 @@ public class LadderLength {
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         wordId = new HashMap<>();
-        for (String word : wordList)
+        for (String word : wordList) {
             addEdge(word);
-        if (!wordId.containsKey(endWord))
+        }
+        if (!wordId.containsKey(endWord)) {
             return 0;
+        }
         addEdge(beginWord);
         int[] disBegin = new int[nodeNum];
         int[] disEnd = new int[nodeNum];

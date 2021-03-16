@@ -37,12 +37,14 @@ public class NumberOfIslands {
     }
 
     public int numIslands(char[][] arr) {
-        if (arr == null || arr.length == 0)
+        if (arr == null || arr.length == 0) {
             return 0;
+        }
         char[][] moreArr = new char[arr.length + 2][arr[0].length + 2];
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++)
+            for (int j = 0; j < arr[i].length; j++) {
                 moreArr[i + 1][j + 1] = arr[i][j];
+            }
         }
         boolean[][] map = new boolean[moreArr.length][moreArr[0].length];
         int count = 0;
@@ -80,7 +82,9 @@ public class NumberOfIslands {
         return ans;
     }
     public void dfs(char[][] grid,int i, int j){
-        if(i < 0 || j < 0 || i >= grid.length||j >= grid[0].length|| grid[i][j] == '0') return;
+        if(i < 0 || j < 0 || i >= grid.length||j >= grid[0].length|| grid[i][j] == '0') {
+            return;
+        }
         grid[i][j] = '0';
         dfs(grid,i-1,j);
         dfs(grid,i,j-1);

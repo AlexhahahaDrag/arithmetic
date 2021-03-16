@@ -26,8 +26,9 @@ import java.util.*;
 public class MaximumProduct {
 
     public int maximumProduct1(int[] nums) {
-        if (nums.length < 3)
+        if (nums.length < 3) {
             return 0;
+        }
         int max = Integer.MIN_VALUE;
         int[] maxl = new int[2];
         int min = Integer.MAX_VALUE;
@@ -48,17 +49,20 @@ public class MaximumProduct {
         }
         int res = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
-            if (max != Integer.MIN_VALUE && i != maxl[0] && i != maxl[1])
+            if (max != Integer.MIN_VALUE && i != maxl[0] && i != maxl[1]) {
                 res = Math.max(res, max * nums[i]);
-            if (min != Integer.MIN_VALUE && i != minl[0] && i != minl[1])
+            }
+            if (min != Integer.MIN_VALUE && i != minl[0] && i != minl[1]) {
                 res = Math.max(res, min * nums[i]);
+            }
         }
         return res;
     }
 
     public int maximumProduct(int[] nums) {
-        if (nums.length < 3)
+        if (nums.length < 3) {
             return 0;
+        }
         int[] positive = new int[3];
         int[] negative = new int[2];
         Arrays.fill(positive, Integer.MIN_VALUE);
@@ -66,20 +70,24 @@ public class MaximumProduct {
         for (int num : nums) {
             if (num > positive[positive.length - 1]) {
                 int j = positive.length - 1;
-                for (; j > 0; j--)
-                    if (num > positive[j - 1])
+                for (; j > 0; j--) {
+                    if (num > positive[j - 1]) {
                         positive[j] = positive[j - 1];
-                    else
+                    } else {
                         break;
+                    }
+                }
                 positive[j] = num;
             }
             if (num < negative[negative.length - 1]) {
                 int j = negative.length - 1;
-                for (; j > 0; j--)
-                    if (num< negative[j - 1])
+                for (; j > 0; j--) {
+                    if (num< negative[j - 1]) {
                         negative[j] = negative[j - 1];
-                    else
+                    } else {
                         break;
+                    }
+                }
                 negative[j] = num;
             }
         }

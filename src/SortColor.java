@@ -33,10 +33,11 @@ public class SortColor {
         int start=0;
         int end=nums.length-1;
         for (int i = 0; i < numsNew.length; i++) {
-            if (numsNew[i]==0)
+            if (numsNew[i]==0) {
                 nums[start++]=0;
-            else if (numsNew[i]==2)
+            } else if (numsNew[i]==2) {
                 nums[end--]=2;
+            }
         }
     }
 }

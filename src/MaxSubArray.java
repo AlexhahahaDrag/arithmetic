@@ -25,10 +25,12 @@ public class MaxSubArray {
         int thisSub=0;
         for (int i = 0; i < nums.length; i++) {
             thisSub+=nums[i];
-            if (thisSub>maxSub)
+            if (thisSub>maxSub) {
                 maxSub=thisSub;
-            if (thisSub<0)
+            }
+            if (thisSub<0) {
                 thisSub=0;
+            }
         }
         return maxSub;
     }

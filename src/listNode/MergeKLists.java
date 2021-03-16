@@ -25,12 +25,14 @@ package listNode;
 public class MergeKLists {
 
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0)
+        if (lists == null || lists.length == 0) {
             return new ListNode(-1).next;
+        }
         int len = lists.length;
         while(len > 1) {
-            for (int i = 0; i < (len >> 1); i++)
+            for (int i = 0; i < (len >> 1); i++) {
                 lists[i] = mergeTwoList(lists[i], lists[len - 1 - i]);
+            }
             len = len + 1 >> 1;
         }
         return lists[0];
@@ -49,10 +51,12 @@ public class MergeKLists {
             }
             cur = cur.next;
         }
-        if (l1 != null)
+        if (l1 != null) {
             cur.next = l1;
-        if (l2 != null)
+        }
+        if (l2 != null) {
             cur.next = l2;
+        }
         return list.next;
     }
 

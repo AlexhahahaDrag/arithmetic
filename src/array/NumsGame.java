@@ -99,7 +99,8 @@ public class NumsGame {
         int[] nums = {3,4,5,1,6,7};
         NumsGame numsGame = new NumsGame();
         int[] res = numsGame.numsGame(nums);
-        for (int i : res)
+        for (int i : res) {
             System.out.print(i +"   ");
+        }
     }
 }

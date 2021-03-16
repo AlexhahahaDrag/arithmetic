@@ -26,11 +26,13 @@ package math;
 public class DivingBoard {
 
     public int[] divingBoard1(int shorter, int longer, int k) {
-        if (k == 0)
+        if (k == 0) {
             return new int[]{};
+        }
         int add = longer - shorter;
-        if (add == 0)
+        if (add == 0) {
             return new int[]{shorter * k};
+        }
         int[] res = new int[k + 1];
         int start = shorter * k;
         for (int i = 0; i <= k; i ++) {
@@ -41,13 +43,16 @@ public class DivingBoard {
     }
 
     public int[] divingBoard(int shorter, int longer, int k) {
-        if (k == 0)
+        if (k == 0) {
             return new int[]{};
-        if (longer == shorter)
+        }
+        if (longer == shorter) {
             return new int[]{shorter * k};
+        }
         int[] res = new int[k + 1];
-        for (int i = 0; i <= k; i ++)
+        for (int i = 0; i <= k; i ++) {
             res[i] = shorter * (k - i) + longer * i;
+        }
         return res;
     }
 
@@ -57,7 +62,8 @@ public class DivingBoard {
         int k = 5;
         DivingBoard divingBoard = new DivingBoard();
         int[] res = divingBoard.divingBoard(shorter, longer, k);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "  ");
+        }
     }
 }

@@ -34,11 +34,13 @@ public class Preorder {
     }
 
     private void pre(Node<Integer> root) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         int index = root.children.size();
         res.add(root.val);
-        for(int i = 0; i < index; i++)
+        for(int i = 0; i < index; i++) {
             pre(root.children.get(i));
+        }
     }
 }

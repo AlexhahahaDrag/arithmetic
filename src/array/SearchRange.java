@@ -27,34 +27,39 @@ import java.util.Arrays;
 public class SearchRange {
 
     public int[] searchRange2(int[] nums, int target) {
-        if (nums == null || nums.length < 1)
+        if (nums == null || nums.length < 1) {
             return new int[2];
+        }
         int num = 0;
         int index = find(nums, target, 0, nums.length - 1);
-        if (index == -1)
+        if (index == -1) {
             return new int[2];
+        }
         return findMore(nums, target, index, num);
     }
 
     private int[] findMore(int[] nums, int target, int now, int num) {
         int start = now;
-        while (start >= 0 && nums[start] == target)
+        while (start >= 0 && nums[start] == target) {
             start--;
+        }
         int end = now + 1;
-        while (end < nums.length && nums[end] == target)
+        while (end < nums.length && nums[end] == target) {
             end++;
+        }
         return new int[]{start + 1, end - 1};
     }
 
     private int find(int[] nums, int target, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start >> 1);
-            if (nums[mid] == target)
+            if (nums[mid] == target) {
                 return mid;
-            else if (nums[mid] > target)
+            } else if (nums[mid] > target) {
                 end = mid - 1;
-            else
+            } else {
                 start = mid + 1;
+            }
         }
         return -1;
     }
@@ -87,8 +92,9 @@ public class SearchRange {
     public int[] searchRange(int[] nums, int target) {
         int start = binary(nums, 0, nums.length - 1, target, true);
         int end = binary(nums, 0, nums.length - 1, target, false) - 1;
-        if (start <= end && end < nums.length && nums[start] == target && nums[end] == target)
+        if (start <= end && end < nums.length && nums[start] == target && nums[end] == target) {
             return new int[] {start, end};
+        }
         return new int[] {-1, -1};
     }
 
@@ -99,8 +105,9 @@ public class SearchRange {
             if(nums[mid] > target || (low && target <= nums[mid])) {
                 end = mid - 1;
                 ans = mid;
-            } else
+            } else {
                 start = mid + 1;
+            }
         }
         return ans;
     }
@@ -110,7 +117,8 @@ public class SearchRange {
         int target = 2;
         int nums[] = { 2};
         int[] arr = searchRange.searchRange(nums, target);
-        for(int i : arr)
+        for(int i : arr) {
             System.out.print(i + " ");
+        }
     }
 }

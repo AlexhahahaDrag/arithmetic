@@ -27,19 +27,22 @@ public class RepeatedSubstringPattern {
         System.out.println(repeatedSubstringPattern("abcabcabcabc"));
     }
     public static boolean repeatedSubstringPattern(String s) {
-        if (s.length()==0)
+        if (s.length()==0) {
             return true;
+        }
         int len=s.length();
         for (int i = 2; i <= len; i++) {
             if (len%i==0){
                 int index=len/i;
                 while (index<len){
-                    if (!s.substring(index-len/i,index).equals(s.substring(index,index+len/i)))
+                    if (!s.substring(index-len/i,index).equals(s.substring(index,index+len/i))) {
                         break;
+                    }
                    index+= len/i;
                 }
-                if (index==len)
+                if (index==len) {
                     return true;
+                }
             }
         }
         return false;

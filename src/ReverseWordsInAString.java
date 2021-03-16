@@ -26,8 +26,9 @@ public class ReverseWordsInAString {
         for (int i = strings.length-1; i >= 0 ; i--) {
             if (!"".equals(strings[i])) {
                 stringBuilder.append(strings[i]);
-                if (i!=0)
+                if (i!=0) {
                     stringBuilder.append(" ");
+                }
             }
         }
         return stringBuilder.toString();

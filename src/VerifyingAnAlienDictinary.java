@@ -40,23 +40,27 @@ public class VerifyingAnAlienDictinary {
         System.out.println(isAlienSorted(strings,order));
     }
     public static boolean isAlienSorted(String[] words, String order) {
-        for (int i = 0; i < words.length-1; i++)
-            if (!getSort(words[i],words[i+1],order))
+        for (int i = 0; i < words.length-1; i++) {
+            if (!getSort(words[i],words[i+1],order)) {
                 return false;
+            }
+        }
         return true;
     }
     public static boolean getSort(String s1,String s2,String order){
         int i=0;
         while(i<s1.length()&&i<s2.length()){
-            if (order.indexOf(s1.charAt(i))<order.indexOf(s2.charAt(i)))
+            if (order.indexOf(s1.charAt(i))<order.indexOf(s2.charAt(i))) {
                 return true;
-            else if(order.indexOf(s1.charAt(i))==order.indexOf(s2.charAt(i)))
+            } else if(order.indexOf(s1.charAt(i))==order.indexOf(s2.charAt(i))) {
                 i++;
-            else
+            } else {
                 return false;
+            }
         }
-        if (s1.length()>i)
+        if (s1.length()>i) {
             return false;
+        }
         return true;
     }
 }

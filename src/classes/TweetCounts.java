@@ -91,8 +91,9 @@ public class TweetCounts {
             for (int i = 0; i < delta; i++) {
                 int sum = 0;
                 for (int ti: l) {
-                    if (ti >= startTime + time * i && ti < Math.min(startTime + time * (i + 1), endTime + 1))
+                    if (ti >= startTime + time * i && ti < Math.min(startTime + time * (i + 1), endTime + 1)) {
                         sum ++;
+                    }
                 }
                 res.add(sum);
             }

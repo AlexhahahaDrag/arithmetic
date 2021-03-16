@@ -19,10 +19,11 @@ public class FlippingAnImage {
         }
         for(int i=0;i<A.length;i++){
             for(int j=0;j<A[i].length;j++){
-                if(A[i][j]==0)
+                if(A[i][j]==0) {
                     A[i][j]=1;
-                else
+                } else {
                     A[i][j]=0;
+                }
             }
         }
         return A;

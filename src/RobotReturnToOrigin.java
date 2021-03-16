@@ -4,8 +4,9 @@ public class RobotReturnToOrigin {
     }
     public static boolean judgeCircle(String moves) {
         int[] cnt = new int[128];
-        for (char c : moves.toCharArray())
+        for (char c : moves.toCharArray()) {
             cnt[c]++;
+        }
         return cnt['L'] == cnt['R'] && cnt['U'] == cnt['D'];
     }
     public static boolean judgeCircle1(String moves) {
@@ -19,8 +20,9 @@ public class RobotReturnToOrigin {
                 case 'R':index--;break;
             }
         }
-        if(index==0&&count==0)
+        if(index==0&&count==0) {
             return true;
+        }
         return false;
     }
 }

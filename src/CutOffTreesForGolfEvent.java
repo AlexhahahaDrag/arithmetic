@@ -38,10 +38,12 @@ public class CutOffTreesForGolfEvent {
         System.out.println(cutOffTree(forest));
     }
     public static int cutOffTree(List<List<Integer>> forest) {
-        if(forest.size()==0)
+        if(forest.size()==0) {
             return -1;
-        if(forest.get(0).get(0)==0)
+        }
+        if(forest.get(0).get(0)==0) {
             return -1;
+        }
         int x=0;
         int y=0;
         method:while(x>=0&&y>=0&&x<forest.size()&&y<forest.get(x).size()){
@@ -50,46 +52,50 @@ public class CutOffTreesForGolfEvent {
             int lmove=1;
             while(y-lmove>=0){
                 int lnum=forest.get(x).get(y-lmove);
-                if (lnum==1)
+                if (lnum==1) {
                     lmove++;
-                else if(lnum!=0&&min>lnum){
+                } else if(lnum!=0&&min>lnum){
                     min=lnum;
                     flag='l';
-                }else
+                }else {
                     break;
+                }
             }
             int rmove=1;
             while(x<forest.size()&&y+rmove<forest.get(x).size()){
                 int lnum=forest.get(x).get(y+rmove);
-                if (lnum==1)
+                if (lnum==1) {
                     rmove++;
-                else if(lnum!=0&&min>lnum){
+                } else if(lnum!=0&&min>lnum){
                     min=lnum;
                     flag='r';
-                }else
+                }else {
                     break;
+                }
             }
             int umove=1;
             while(x-umove>=0&&y<forest.get(x-umove).size()){
                 int lnum=forest.get(x-umove).get(y);
-                if (lnum==1)
+                if (lnum==1) {
                     umove++;
-                else if(lnum!=0&&min>lnum){
+                } else if(lnum!=0&&min>lnum){
                     min=lnum;
                     flag='u';
-                }else
+                }else {
                     break;
+                }
             }
             int dmove=1;
             while(x+dmove<forest.size()&&y<forest.get(x+dmove).size()){
                 int lnum=forest.get(x+dmove).get(y);
-                if (lnum==1)
+                if (lnum==1) {
                     dmove++;
-                else if(lnum!=0&&min>lnum){
+                } else if(lnum!=0&&min>lnum){
                     min=lnum;
                     flag='d';
-                }else
+                }else {
                     break;
+                }
             }
             forest.get(x).remove(y);
             forest.get(x).add(y,1);
@@ -113,8 +119,9 @@ public class CutOffTreesForGolfEvent {
         }
         for (List list: forest) {
             for (Object i:list ) {
-                if ((Integer)i!=1&&(Integer)i!=0)
+                if ((Integer)i!=1&&(Integer)i!=0) {
                     return -1;
+                }
             }
         }
         return treeNum;

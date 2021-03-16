@@ -54,19 +54,22 @@ public class LemonadeChange {
                     five++;
                     break;
                 case 10:
-                    if (five == 0)
+                    if (five == 0) {
                         return false;
+                    }
                     five--;
                     ten++;
                     break;
                 case 20:
                     if (ten == 0) {
-                        if (five < 3)
+                        if (five < 3) {
                             return false;
+                        }
                         five -= 3;
                     } else {
-                        if (five == 0)
+                        if (five == 0) {
                             return false;
+                        }
                         five--;
                         ten--;
                     }

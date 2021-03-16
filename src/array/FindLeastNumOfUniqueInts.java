@@ -36,16 +36,18 @@ public class FindLeastNumOfUniqueInts {
 
     public int findLeastNumOfUniqueInts1(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i : arr)
+        for(int i : arr) {
             map.put(i, map.getOrDefault(i, 0) + 1);
+        }
         Integer[] mapp = map.values().toArray(new Integer[0]);
         Arrays.sort(mapp);
         int i = 0;
         for (; i < mapp.length; i++) {
-            if (k >= mapp[i])
+            if (k >= mapp[i]) {
                 k -= mapp[i];
-            else
+            } else {
                 break;
+            }
         }
         return mapp.length - i;
     }
@@ -56,18 +58,20 @@ public class FindLeastNumOfUniqueInts {
         int index = 0;
         counts[index]++;
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] == arr[i - 1])
+            if (arr[i] == arr[i - 1]) {
                 counts[index]++;
-            else
+            } else {
                 counts[++index]++;
+            }
         }
         Arrays.sort(counts);
         int i = 0;
         for (; i < counts.length; i++) {
-            if (k >= counts[i])
+            if (k >= counts[i]) {
                 k -= counts[i];
-            else
+            } else {
                 break;
+            }
         }
         return counts.length - i;
     }

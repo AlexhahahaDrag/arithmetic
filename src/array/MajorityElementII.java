@@ -44,11 +44,11 @@ public class MajorityElementII {
         int firstCount = 0;
         int secondCount = 0;
         for (int num : nums) {
-            if (firstNum == num)
+            if (firstNum == num) {
                 firstCount++;
-            else if (secondNum == num)
+            } else if (secondNum == num) {
                 secondCount++;
-            else if (firstCount == 0) {
+            } else if (firstCount == 0) {
                 firstNum = num;
                 firstCount++;
             } else if (secondCount == 0) {
@@ -62,15 +62,19 @@ public class MajorityElementII {
         firstCount = 0;
         secondCount = 0;
         for (int num1 : nums) {
-            if (firstNum == num1)
+            if (firstNum == num1) {
                 firstCount++;
-            if (secondNum == num1)
+            }
+            if (secondNum == num1) {
                 secondCount++;
+            }
         }
-        if (firstCount > nums.length/3)
+        if (firstCount > nums.length/3) {
             list.add(firstNum);
-        if (secondCount > nums.length/3)
+        }
+        if (secondCount > nums.length/3) {
             list.add(secondNum);
+        }
         return list;
     }
 }

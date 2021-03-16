@@ -34,11 +34,13 @@ import java.util.Map;
 public class FractionToDecimal {
 
     public String fractionToDecimal(int numerator, int denominator) {
-        if (numerator == 0)
+        if (numerator == 0) {
             return "0";
+        }
         StringBuilder stringBuilder = new StringBuilder();
-        if (numerator < 0 ^ denominator < 0)
+        if (numerator < 0 ^ denominator < 0) {
             stringBuilder.append("-");
+        }
         long num = numerator;
         long den = denominator;
         num = Math.abs(num);

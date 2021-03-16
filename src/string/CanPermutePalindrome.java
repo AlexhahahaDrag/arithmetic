@@ -32,16 +32,19 @@ public class CanPermutePalindrome {
         int index = 0;
         int len = s.length();
         char[] ch = s.toCharArray();
-        while(index < len)
-                map[ch[index++]]++;
+        while(index < len) {
+            map[ch[index++]]++;
+        }
         boolean flag = true;
-        for(int i : map)
+        for(int i : map) {
             if((i & 1) == 1) {
-                if (flag)
+                if (flag) {
                     flag = false;
-                else
+                } else {
                     return false;
+                }
             }
+        }
         return true;
     }
 

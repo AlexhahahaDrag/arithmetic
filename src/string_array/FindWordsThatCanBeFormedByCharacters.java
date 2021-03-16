@@ -47,21 +47,26 @@ public class FindWordsThatCanBeFormedByCharacters {
         char[] ch = chars.toCharArray();
         int[] map = new int[26];
         int sum = 0;
-        for(char c : ch)
+        for(char c : ch) {
             map[c - 'a']++;
-        for(String word : words)
-            if(find(map, word))
+        }
+        for(String word : words) {
+            if(find(map, word)) {
                 sum += word.length();
+            }
+        }
         return sum;
     }
     private boolean find(int[] map, String st) {
         int[] newMap = Arrays.copyOf(map, map.length);
         int start = 0;
-        while(start < st.length() && newMap[st.charAt(start) - 'a'] > 0)
+        while(start < st.length() && newMap[st.charAt(start) - 'a'] > 0) {
             newMap[st.charAt(start++) - 'a']--;
+        }
         if(start == st.length()) {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 }

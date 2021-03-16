@@ -31,8 +31,9 @@ package string;
 public class RepeatedSubstringPattern {
 
     public boolean repeatedSubstringPattern(String s) {
-        if (s == null || s.length() < 2)
+        if (s == null || s.length() < 2) {
             return false;
+        }
         int len = s.length();
         for(int i = 2; i <= s.length(); i++) {
             if (len % i == 0) {
@@ -42,11 +43,13 @@ public class RepeatedSubstringPattern {
                     if (!s.substring(j, j + len / i).equals(s.substring(j + len / i, j + len / i * 2))) {
                         flag = false;
                         break;
-                    } else
+                    } else {
                         j += len / i;
+                    }
                 }
-                if (flag)
+                if (flag) {
                     return true;
+                }
             }
         }
         return false;

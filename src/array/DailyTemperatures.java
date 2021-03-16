@@ -25,8 +25,9 @@ public class DailyTemperatures {
             }
             map[++size] = i;
         }
-        while(size >= 0)
+        while(size >= 0) {
             T[map[size--]] = 0;
+        }
         return T;
     }
 
@@ -34,7 +35,8 @@ public class DailyTemperatures {
         int[] T = {73, 74, 75, 71, 69, 72, 76, 73};
         DailyTemperatures dailyTemperatures = new DailyTemperatures();
         int[] res = dailyTemperatures.dailyTemperatures(T);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "  ");
+        }
     }
 }

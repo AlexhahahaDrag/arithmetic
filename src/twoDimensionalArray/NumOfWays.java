@@ -52,10 +52,11 @@ package twoDimensionalArray;
 public class NumOfWays {
 
     public int numOfWays(int n) {
-        if (n == 0)
+        if (n == 0) {
             return 0;
-        else if (n == 1)
+        } else if (n == 1) {
             return 12;
+        }
         long aba = 6;
         long abc = 6;
         int mod = 1000000007;

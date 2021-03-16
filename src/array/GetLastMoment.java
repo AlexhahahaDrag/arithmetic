@@ -67,12 +67,16 @@ public class GetLastMoment {
 
     public int getLastMoment(int n, int[] left, int[] right) {
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < left.length; i++)
-            if (left[i] > max)
+        for (int i = 0; i < left.length; i++) {
+            if (left[i] > max) {
                 max = left[i];
-        for (int j = 0; j < right.length; j++)
-            if (n - right[j] > max)
+            }
+        }
+        for (int j = 0; j < right.length; j++) {
+            if (n - right[j] > max) {
                 max = n - right[j];
+            }
+        }
         return max;
     }
 

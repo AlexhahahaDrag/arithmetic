@@ -50,8 +50,9 @@ public class SmallestSufficientTeam {
         List<List<String>> people = new ArrayList<>();
         String[][] peo = {{"algorithms","math","java"},{"algorithms","math","reactjs"},
                 {"java","csharp","aws"},{"reactjs","csharp"},{"csharp","math"},{"aws","java"}};
-        for (String[] p : peo)
+        for (String[] p : peo) {
             people.add(Arrays.asList(p));
+        }
         SmallestSufficientTeam smallestSufficientTeam = new SmallestSufficientTeam();
         System.out.println(smallestSufficientTeam.smallestSufficientTeam(req_skills, people));
     }

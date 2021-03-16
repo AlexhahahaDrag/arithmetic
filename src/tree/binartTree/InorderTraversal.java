@@ -34,8 +34,9 @@ public class InorderTraversal {
     }
 
     private void inorder(TreeNode treeNode) {
-        if (treeNode == null)
+        if (treeNode == null) {
             return;
+        }
         inorder(treeNode.left);
         res.add(treeNode.val);
         inorder(treeNode.right);

@@ -44,44 +44,53 @@ public class ReversePairs {
         int p1 = start;
         int p2 = mid + 1;
         while(p1 <= mid && p2 <= end) {
-            if (nums[p1] <= nums[p2])
+            if (nums[p1] <= nums[p2]) {
                 temp[p++] = nums[p1++];
-            else {
+            } else {
                 count += mid - p1 + 1;
                 temp[p++] = nums[p2++];
             }
         }
-        while(p1 <= mid)
+        while(p1 <= mid) {
             temp[p++] = nums[p1++];
-        while(p2 <= end)
+        }
+        while(p2 <= end) {
             temp[p++] = nums[p2++];
-        for (int i = 0; i < end - start + 1; i++)
+        }
+        for (int i = 0; i < end - start + 1; i++) {
             nums[start + i] = temp[i];
+        }
     }
 
     //字段树
     public int reversePairs(int[] nums) {
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return 0;
+        }
         int count1 = 1;
         int count2 = 1;
         for (int i = 1; i < nums.length; i++) {
-            if (count1 != 1 && count2 != 1)
+            if (count1 != 1 && count2 != 1) {
                 break;
-            if (nums[i - 1] > nums[i])
+            }
+            if (nums[i - 1] > nums[i]) {
                 count1++;
-            else
+            } else {
                 count2++;
+            }
         }
-        if (count1 == nums.length)
+        if (count1 == nums.length) {
             return (int)((double)nums.length * (nums.length - 1) / 2);
-        if (count1 == 1)
+        }
+        if (count1 == 1) {
             return 0;
+        }
         FieldTree fieldTree = new FieldTree(nums[nums.length - 1]);
         fieldTree.dup = 1;
         int ret = 0;
-        for (int i = nums.length - 2; i >= 0; i--)
+        for (int i = nums.length - 2; i >= 0; i--) {
             ret += build(fieldTree, nums[i]);
+        }
         return ret;
     }
 
@@ -90,13 +99,15 @@ public class ReversePairs {
         while(fieldTree.value != value) {
             if (fieldTree.value >= value) {
                 fieldTree.count++;
-                if (fieldTree.left == null)
+                if (fieldTree.left == null) {
                     fieldTree.left = new FieldTree(value);
+                }
                 fieldTree = fieldTree.left;
             } else {
                 ret += fieldTree.count + fieldTree.dup;
-                if(fieldTree.right == null)
+                if(fieldTree.right == null) {
                     fieldTree.right = new FieldTree(value);
+                }
                 fieldTree = fieldTree.right;
             }
         }

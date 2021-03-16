@@ -15,8 +15,9 @@ public class SlowestKey {
             if(releaseTimes[i] - releaseTimes[i - 1] > num) {
                 num = releaseTimes[i] - releaseTimes[i - 1];
                 max = i;
-            } else if (releaseTimes[i] - releaseTimes[i - 1] == num && keysPressed.charAt(i) > keysPressed.charAt(max))
+            } else if (releaseTimes[i] - releaseTimes[i - 1] == num && keysPressed.charAt(i) > keysPressed.charAt(max)) {
                 max = i;
+            }
         }
         return keysPressed.charAt(max);
     }

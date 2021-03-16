@@ -37,13 +37,15 @@ public class AddTwoNumbers {
             if(l1 != null) {
                 num1 = l1.val;
                 l1 = l1.next;
-            } else
+            } else {
                 num1 = 0;
+            }
             if(l2 != null) {
                 num2 = l2.val;
                 l2 = l2.next;
-            } else
+            } else {
                 num2 = 0;
+            }
             int sum = num1 + num2 + digit;
             cur.next = new ListNode(sum % 10);
             cur = cur.next;

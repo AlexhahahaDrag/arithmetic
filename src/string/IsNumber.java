@@ -15,29 +15,34 @@ public class IsNumber {
 
     public boolean isNumber(String s) {
         s = s.replace(" ", "");
-        if (s == null || s.length() == 0)
+        if (s == null || s.length() == 0) {
             return false;
+        }
         char[] ch = s.toCharArray();
         int eNum = 0;
         int pointNum = 0;
         for (int i = 0; i < ch.length; i++) {
-            if (ch[i] >= '0' && ch[i] <= '9')
+            if (ch[i] >= '0' && ch[i] <= '9') {
                 continue;
-            else if (ch[i] == 'e' || ch[i] == 'E') {
-                if (i == 0 || eNum == 1 || i == ch.length - 1)
+            } else if (ch[i] == 'e' || ch[i] == 'E') {
+                if (i == 0 || eNum == 1 || i == ch.length - 1) {
                     return false;
+                }
                 eNum++;
             } else if (ch[i] == '.') {
-                if (pointNum == 1 || 1 == ch.length)
+                if (pointNum == 1 || 1 == ch.length) {
                     return false;
+                }
                 pointNum++;
-            } else if (i > 0 && ch[i] == '+')
+            } else if (i > 0 && ch[i] == '+') {
                 return false;
-            else if (ch[i] == '-') {
-                if (i != 0 && (ch[i - 1] != 'e' && ch[i - 1] != 'E'))
+            } else if (ch[i] == '-') {
+                if (i != 0 && (ch[i - 1] != 'e' && ch[i - 1] != 'E')) {
                     return false;
-            } else
+                }
+            } else {
                 return false;
+            }
         }
         return true;
     }

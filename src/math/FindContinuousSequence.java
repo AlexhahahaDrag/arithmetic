@@ -41,12 +41,14 @@ public class FindContinuousSequence {
         while(start < len) {
             sum = start;
             index = start + 1;
-            while(sum < target)
+            while(sum < target) {
                 sum += index++;
+            }
             if(sum == target) {
                 int[] res = new int[index - start];
-                for (int i = start; i < index; i++)
+                for (int i = start; i < index; i++) {
                     res[i - start] = i;
+                }
                 list.add(res);
             }
             start++;
@@ -69,10 +71,12 @@ public class FindContinuousSequence {
         int le = end;
         while(start < end) {
             int cur = sum;
-            while(cur > target)
+            while(cur > target) {
                 cur -= end--;
-            if (cur == target)
+            }
+            if (cur == target) {
                 map[count++] = Arrays.copyOfRange(or, start, end + 1);
+            }
             sum -= start++;
             end = le;
         }
@@ -83,8 +87,9 @@ public class FindContinuousSequence {
         FindContinuousSequence findContinuousSequence = new FindContinuousSequence();
         int[][] res = findContinuousSequence.findContinuousSequence1(15);
         for(int[] re : res) {
-            for(int i : re)
+            for(int i : re) {
                 System.out.print(i + "    ");
+            }
             System.out.println();
         }
 

@@ -34,8 +34,9 @@ public class CountAndSay {
         System.out.println(countAndSay(4));
     }
     public static String countAndSay(int n){
-        if (n==1)
+        if (n==1) {
             return "1";
+        }
         int count=0;
         String preString =countAndSay(n-1);
         StringBuilder stringBuilder=new StringBuilder();

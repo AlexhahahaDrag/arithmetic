@@ -24,16 +24,18 @@ import java.util.Comparator;
 public class Merge {
 
     public int[][] merge(int[][] intervals) {
-        if(intervals == null || intervals.length == 0 || intervals[0].length == 0)
+        if(intervals == null || intervals.length == 0 || intervals[0].length == 0) {
             return intervals;
+        }
         sort(intervals);
         int size = 0;
         for (int i = 1; i < intervals.length; i++) {
             if (intervals[size][1] >= intervals[i][0]) {
-                if (intervals[size][1] >= intervals[i][1])
+                if (intervals[size][1] >= intervals[i][1]) {
                     continue;
-                else
+                } else {
                     intervals[size][1] = intervals[i][1];
+                }
             } else {
                 size++;
                 intervals[size][0] = intervals[i][0];
@@ -53,8 +55,9 @@ public class Merge {
         Merge merge = new Merge();
         int[][] res = merge.merge(intervals);
         for (int[] i : res) {
-            for (int ij : i)
+            for (int ij : i) {
                 System.out.println(ij);
+            }
         }
     }
 }

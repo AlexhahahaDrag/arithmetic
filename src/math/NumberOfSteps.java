@@ -45,8 +45,9 @@ public class NumberOfSteps {
     public int numberOfSteps (int num) {
         int res = -1;
         while(num != 0) {
-            if ((num & 1) == 1)
+            if ((num & 1) == 1) {
                 res++;
+            }
             res++;
             num >>= 1;
         }

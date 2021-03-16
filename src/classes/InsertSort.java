@@ -12,8 +12,9 @@ public class InsertSort {
         for (int i = 1; i < arr.length; i++) {
             AnyType temp = arr[i];
             int j;
-            for (j = i; j > 0 && temp.compareTo(arr[j - 1]) < 0; j--)
+            for (j = i; j > 0 && temp.compareTo(arr[j - 1]) < 0; j--) {
                 arr[j] = arr[j - 1];
+            }
             arr[j] = temp;
         }
     }
@@ -22,7 +23,8 @@ public class InsertSort {
         Integer[] arr = {-1, 2, -56, 6, 28, 35, -42, 5, 6, 9, 23, 43, 23};
         InsertSort insertSort = new InsertSort();
         insertSort.insertSort(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.print(i + "   ");
+        }
     }
 }

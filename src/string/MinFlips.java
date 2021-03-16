@@ -44,17 +44,19 @@ package string;
 public class MinFlips {
 
     public int minFlips(String target) {
-        if (target == null || target.length() == 0)
+        if (target == null || target.length() == 0) {
             return 0;
+        }
         int i = 0;
         int len = target.length();
         char pre = target.charAt(0);
         int min = pre == '1' ? 1 : 0;
-        while(++i < len)
+        while(++i < len) {
             if(pre != target.charAt(i)) {
                 min++;
                 pre = target.charAt(i);
             }
+        }
 
         return min;
     }

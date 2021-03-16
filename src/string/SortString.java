@@ -52,19 +52,22 @@ public class SortString {
     public String sortString(String s) {
         char[] ch = s.toCharArray();
         int[] map = new int[26];
-        for(char c : ch)
+        for(char c : ch) {
             map[c - 'a']++;
+        }
         int index = 0;
         int len = ch.length;
         int i = 0;
         while(index < len) {
             for(; index < len && i < 26; i++) {
-                if (map[i]-- > 0)
+                if (map[i]-- > 0) {
                     ch[index++] = (char)(i + 'a');
+                }
             }
             for(; index < len && i > 0;) {
-                if (map[--i]-- > 0)
+                if (map[--i]-- > 0) {
                     ch[index++] = (char)(i + 'a');
+                }
             }
         }
         return new String(ch);

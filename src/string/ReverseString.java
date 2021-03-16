@@ -31,15 +31,17 @@ public class ReverseString {
         ReverseString reverseString = new ReverseString();
         char[] s = {'H', 'a', 'n', 'n', 'a', 'h'};
         reverseString.reverseString(s);
-        for (char ch : s)
+        for (char ch : s) {
             System.out.print(ch);
+        }
     }
 
     public void reverseString(char[] s) {
         int start = 0;
         int end = s.length - 1;
-        while (start < end)
+        while (start < end) {
             swap(s, start++, end--);
+        }
     }
     private void swap(char[] s, int start, int end) {
         s[start] = (char)(s[start] + s[end]);

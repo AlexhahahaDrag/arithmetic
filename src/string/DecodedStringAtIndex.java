@@ -43,20 +43,23 @@ public class DecodedStringAtIndex {
         int len=S.length();
         while (index<len){
             char ch=S.charAt(index++);
-            if (Character.isDigit(ch))
+            if (Character.isDigit(ch)) {
                 size*=ch-'0';
-            else
+            } else {
                 size++;
+            }
         }
         for (int i = len-1; i >=0 ; i--) {
             K%=size;
             char c=S.charAt(i);
-            if (K==0&&Character.isLetter(c))
+            if (K==0&&Character.isLetter(c)) {
                 return c+"";
-            if (Character.isDigit(c))
+            }
+            if (Character.isDigit(c)) {
                 size/=c-'0';
-            else
+            } else {
                 size--;
+            }
         }
         return "";
     }

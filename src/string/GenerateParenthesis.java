@@ -40,23 +40,26 @@ public class GenerateParenthesis {
     }
 
     private void getList(List<String> list, int index, char[] ch, int left, int right) {
-        if (left > (ch.length >> 1) || right > left)
+        if (left > (ch.length >> 1) || right > left) {
             return;
+        }
         if (index == ch.length) {
             list.add(new String(ch));
             return;
         }
         for (int i = '('; i <= ')'; i++) {
             ch[index] = (char)i;
-            if (i == '(')
+            if (i == '(') {
                 left++;
-            else
+            } else {
                 right++;
+            }
             getList(list, index + 1, ch, left, right);
-            if (i == '(')
+            if (i == '(') {
                 left--;
-            else
+            } else {
                 right--;
+            }
         }
     }
 }

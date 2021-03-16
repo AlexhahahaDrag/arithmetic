@@ -48,12 +48,15 @@ public class SmallestFromLeaf {
     public String smallestFromLeaf(TreeNode root) {
         path(root, new ArrayList<>());
         int min = 0;
-        for (int i = 1; i < lists.size(); i++)
-            if (!judge(lists.get(min), lists.get(i)))
+        for (int i = 1; i < lists.size(); i++) {
+            if (!judge(lists.get(min), lists.get(i))) {
                 min = i;
+            }
+        }
         StringBuilder res = new StringBuilder();
-        for (int i = lists.get(min).size() - 1; i >= 0; i--)
+        for (int i = lists.get(min).size() - 1; i >= 0; i--) {
             res.append((char)(lists.get(min).get(i) + 'a'));
+        }
         return res.toString();
     }
 
@@ -61,29 +64,33 @@ public class SmallestFromLeaf {
         int len1 = l1.size();
         int len2 = l2.size();
         while(--len1 >= 0 && --len2 >= 0) {
-            if (l1.get(len1) < l2.get(len2))
+            if (l1.get(len1) < l2.get(len2)) {
                 return true;
-            else if (l1.get(len1) > l2.get(len2))
+            } else if (l1.get(len1) > l2.get(len2)) {
                 return false;
+            }
         }
         return len1 == 0;
     }
 
     private void path(TreeNode root, List<Integer> list) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         List<Integer> cur = new ArrayList<>();
         cur.addAll(list);
         cur.add(root.val);
-        if (root.left == null && root.right == null)
+        if (root.left == null && root.right == null) {
             lists.add(cur);
+        }
         path(root.left, cur);
         path(root.right, cur);
     }
 
     private int depth(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return 0;
+        }
         return Math.max(depth(root.left), depth(root.right)) + 1;
     }
 

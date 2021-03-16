@@ -62,20 +62,23 @@ public class CustomStack {
     }
 
     public void push(int x) {
-        if(size == max)
+        if(size == max) {
             return;
+        }
         stack[size++] = x;
     }
 
     public int pop() {
-        if(size == 0)
+        if(size == 0) {
             return -1;
+        }
         return stack[--size];
     }
 
     public void increment(int k, int val) {
-        for(int i = 0; i < k && i < size; i++)
+        for(int i = 0; i < k && i < size; i++) {
             stack[i] += val;
+        }
     }
 
     public static void main(String[] args) {

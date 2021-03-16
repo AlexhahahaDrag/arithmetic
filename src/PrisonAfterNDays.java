@@ -48,21 +48,24 @@ public class PrisonAfterNDays {
     public static void main(String[] args) {
         int[] cells={1, 0, 0, 1, 0, 0, 0, 1};
         int[] cellsOld=prisonAfterNDays(cells,15);
-        for(int i:cellsOld)
+        for(int i:cellsOld) {
             System.out.print(i+"  ");
+        }
     }
     public static int[] prisonAfterNDays(int[] cells, int N) {
         N =(N - 1) % 14 + 1;
-        while(0<N--)
+        while(0<N--) {
             cells=prisonAfterOneDay(cells);
+        }
         return cells;
     }
     public static int[] prisonAfterOneDay(int[] cells){
         int len=cells.length;
         int[] newCells=new int[len];
         for(int i=1;i<len-1;i++){
-            if(cells[i-1]==cells[i+1])
+            if(cells[i-1]==cells[i+1]) {
                 newCells[i]=1;
+            }
         }
         return newCells;
     }

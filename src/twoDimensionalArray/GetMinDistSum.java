@@ -70,10 +70,11 @@ public class GetMinDistSum {
             midr = (midl + right) / 2;
             vall = solve(0, 100, midl, positions);
             valr = solve(0, 100, midr, positions);
-            if (vall < valr)
+            if (vall < valr) {
                 right = midr;
-            else
+            } else {
                 left = midl;
+            }
         }
         return Math.min(vall, valr);
     }
@@ -88,18 +89,20 @@ public class GetMinDistSum {
             midr = (midl + right) / 2;
             vall = calculate(midl, index, positions);
             valr = calculate(midr, index, positions);
-            if (vall < valr)
+            if (vall < valr) {
                 right = midr;
-            else
+            } else {
                 left = midl;
+            }
          }
         return calculate(midl, index, positions);
     }
 
     private double calculate(double x, double y, int[][] positions) {
         double res = 0.0;
-        for (int i = 0; i < positions.length; i++)
+        for (int i = 0; i < positions.length; i++) {
             res += Math.sqrt(Math.pow(x- positions[i][0], 2) + Math.pow(y - positions[i][1], 2));
+        }
         return res;
     }
 

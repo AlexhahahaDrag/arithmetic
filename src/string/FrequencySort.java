@@ -48,12 +48,14 @@ import java.util.Arrays;
 public class FrequencySort {
 
     public String frequencySort(String s) {
-        if(s == null || s.length() == 0)
+        if(s == null || s.length() == 0) {
             return s;
+        }
         char[] st = s.toCharArray();
         int[] map = new int[256];
-        for(char ch : st)
+        for(char ch : st) {
             map[ch]++;
+        }
         int[] copy = Arrays.copyOf(map, map.length);
         Arrays.sort(copy);
         StringBuilder sb = new StringBuilder();
@@ -61,8 +63,9 @@ public class FrequencySort {
             if (copy[i] > 0) {
                 for(int j = 0; j < map.length; j++) {
                     if (map[j] != 0 && copy[i] == map[j]) {
-                        while(map[j]-- > 0)
+                        while(map[j]-- > 0) {
                             sb.append((char)j);
+                        }
                     }
                 }
             }

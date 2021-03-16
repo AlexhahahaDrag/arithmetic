@@ -55,8 +55,9 @@ public class CheckPalindromeFormation {
             start--;
             end++;
         }
-        if (start < 0 || end >= len)
+        if (start < 0 || end >= len) {
             return true;
+        }
         return checkStr(a, b, start, end, len) || checkStr(b, a, start, end, len);
     }
 

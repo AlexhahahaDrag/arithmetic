@@ -30,8 +30,9 @@ public class MostFrequentSubtreeSum {
         treeNode.left=new TreeNode(14);
         treeNode.left.left=new TreeNode(1);
         int[] nums=findFrequentTreeSum(treeNode);
-        for (int i:nums)
+        for (int i:nums) {
             System.out.println(i);
+        }
     }
     public static int[] findFrequentTreeSum(TreeNode root) {
         List<Integer> list=new ArrayList<>();
@@ -44,7 +45,9 @@ public class MostFrequentSubtreeSum {
         return results;
     }
     public static int getSum(TreeNode root,List<Integer> list){
-        if(root==null) return 0;
+        if(root==null) {
+            return 0;
+        }
         int sum=root.val;
         int left=getSum(root.left,list);
         int right=getSum(root.right,list);
@@ -55,8 +58,9 @@ public class MostFrequentSubtreeSum {
             maxTime=num;
             list.clear();
             list.add(sum);
-        }else if (num==maxTime)
+        }else if (num==maxTime) {
             list.add(sum);
+        }
         return sum;
     }
 }

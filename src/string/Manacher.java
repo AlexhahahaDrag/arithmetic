@@ -15,11 +15,13 @@ public class Manacher {
         System.out.println(manacher.getMaxPelindromePosition("abcbaabc"));
     }
     private int getMaxPelindromePosition(String str) {
-        if (str == null)
+        if (str == null) {
             return -1;
+        }
         int len = str.length();
-        if (len == 1)
+        if (len == 1) {
             return 0;
+        }
         char[] strChar = new char[(len << 1) + 2];
         int[] results = new int[strChar.length];
         Arrays.fill(strChar, '#');
@@ -35,11 +37,13 @@ public class Manacher {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < strChar.length; i++) {
             results[i] = R > i ? Math.min(R - i + 1, results[(c << 1) - i]) : 1;
-            while (i + results[i] < strChar.length && i -results[i] > -1)
-                if (strChar[i + results[i]] == strChar[i - results[i]])
+            while (i + results[i] < strChar.length && i -results[i] > -1) {
+                if (strChar[i + results[i]] == strChar[i - results[i]]) {
                     results[i]++;
-                else
+                } else {
                     break;
+                }
+            }
             if (i + results[i] > R) {
                 R = i + results[i] - 1;
                 c = i;

@@ -26,8 +26,9 @@ public class PermutationAndCombination {
             --p;
             if (arr[p] < arr[q]) {
                 pFind = arr.length - 1;
-                while(arr[pFind] < arr[p])
+                while(arr[pFind] < arr[p]) {
                     pFind--;
+                }
                 swap(arr, pFind, p);
                 reverse(arr, q, arr.length - 1);
                 printArr(arr);
@@ -36,8 +37,9 @@ public class PermutationAndCombination {
         }
     }
     private void reverse(int[] arr, int start, int end) {
-        while (start < end)
+        while (start < end) {
             swap(arr, start++, end--);
+        }
     }
     private void swap(int[] arr, int start, int end) {
         int temp = arr[start];

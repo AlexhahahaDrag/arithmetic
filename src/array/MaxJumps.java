@@ -60,12 +60,14 @@ public class MaxJumps {
 
     public int maxJumps(int[] arr, int d) {
         int[] map = new int[arr.length];
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < arr.length; i++) {
             findLen(arr, d, i, map);
+        }
         int max = map[0];
         for (int j = 0; j < map.length; j++) {
-            if (max <map[j])
+            if (max <map[j]) {
                 max = map[j];
+            }
         }
         return max;
     }
@@ -76,12 +78,15 @@ public class MaxJumps {
         for (int direction = - 1; direction <= 1; direction += 2) {
             int h = arr[start];
             for (int cur = start; cur >= min && cur <= max; cur += direction) {
-                if (cur == start)
+                if (cur == start) {
                     continue;
-                if (arr[cur] >= h)
+                }
+                if (arr[cur] >= h) {
                     break;
-                if (map[cur] == 0)
+                }
+                if (map[cur] == 0) {
                     findLen(arr, d, cur, map);
+                }
                 step =  Math.max(step, map[cur]);
             }
         }

@@ -53,24 +53,27 @@ public class FizzBuzz {
             }else if(i5 == 0){
                 i5 = 5;
                 l1.add("Buzz");
-            }else
+            }else {
                 l1.add(Integer.toString(i));
+            }
         }
         return l1;
     }
     public static List<String> fizzBuzz1(int n) {
         List list=new ArrayList<>();
         for(int i=1;i<=n;i++){
-            if(i%3==0)
-                if(i%5==0)
+            if(i%3==0) {
+                if(i%5==0) {
                     list.add("FizzBuzz");
-                else
+                } else {
                     list.add("Fizz");
-            else
-            if(i%5==0)
+                }
+            } else
+            if(i%5==0) {
                 list.add("Buzz");
-            else
+            } else {
                 list.add(Integer.toString(i));
+            }
         }
         return list;
     }

@@ -45,10 +45,12 @@ public class ReverseVowelsOfAString {
         int start=0;
         int end=letters.length-1;
         while (start<end){
-            while (start<end&&!list.contains(letters[start]))
+            while (start<end&&!list.contains(letters[start])) {
                 start++;
-            while (start<end&&!list.contains(letters[end]))
+            }
+            while (start<end&&!list.contains(letters[end])) {
                 end--;
+            }
             letters[start]=(char)(letters[start]^letters[end]);
             letters[end]=(char)(letters[start]^letters[end]);
             letters[start]=(char)(letters[start]^letters[end]);
@@ -61,10 +63,12 @@ public class ReverseVowelsOfAString {
         int start=0;
         int end=letters.length-1;
         while (start<end){
-            while (start<end&&!isVowel(letters[start]))
+            while (start<end&&!isVowel(letters[start])) {
                 start++;
-            while (start<end&&!isVowel(letters[end]))
+            }
+            while (start<end&&!isVowel(letters[end])) {
                 end--;
+            }
             letters[start]=(char)(letters[start]^letters[end]);
             letters[end]=(char)(letters[start]^letters[end]);
             letters[start]=(char)(letters[start]^letters[end]);

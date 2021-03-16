@@ -46,9 +46,9 @@ public class ScoreOfParentheses {
         int len = S.length();
         Stack<Integer> stack = new Stack();
         while (index < len) {
-            if (S.charAt(index) == '(')
+            if (S.charAt(index) == '(') {
                 stack.add(-1);
-            else if (!stack.isEmpty()){
+            } else if (!stack.isEmpty()){
                 int sum = 0;
                 Integer object = stack.pop();
                 while(!stack.isEmpty() && object != -1) {
@@ -58,8 +58,9 @@ public class ScoreOfParentheses {
                 if (object == -1) {
                     sum = sum == 0 ? 1 : sum << 1;
                     stack.add(sum);
-                } else
+                } else {
                     stack.add(sum);
+                }
             }
             index++;
         }

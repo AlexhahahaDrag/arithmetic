@@ -25,8 +25,9 @@ public class UniqueLetterString {
             subLen++;
         }
         int sum = 0;
-        for (String st : set)
+        for (String st : set) {
             sum += findUnique(st);
+        }
         return sum;
     }
     private int findUnique(String ss) {
@@ -40,8 +41,9 @@ public class UniqueLetterString {
         }
 
         for (int i = 0; i < flag.length; i++) {
-            if (flag[i]==1)
+            if (flag[i]==1) {
                 count++;
+            }
         }
         return count;
     }

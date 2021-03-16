@@ -42,8 +42,9 @@ public class NumberOfLinesToWriteString {
         int[] widths={4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
         String S="bbbcccdddaaa";
         int[] strs=numberOfLines(widths,S);
-        for (int i = 0; i < strs.length; i++)
+        for (int i = 0; i < strs.length; i++) {
             System.out.println(strs[i]);
+        }
     }
     public static int[] numberOfLines(int[] widths, String S) {
         int sum=0;

@@ -39,8 +39,9 @@ public class TitleToNumber {
         int res = 0;
         int index = 0;
         int len = s.length();
-        while(index < len)
+        while(index < len) {
             res = res * 26 + s.charAt(index++) - 'A' + 1;
+        }
         return res;
     }
 

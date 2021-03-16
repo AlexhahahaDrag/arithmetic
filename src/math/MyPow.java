@@ -29,28 +29,33 @@ package math;
 public class MyPow {
 
     public double myPow(double x, int n) {
-        if (n == 0)
+        if (n == 0) {
             return 1;
+        }
         return pow(x, n);
     }
     private double pow(double x, long n) {
         if (n != 1 && n != -1) {
-            if ( (n & 1) == 1)
+            if ( (n & 1) == 1) {
                 return pow(x * x, n >> 1) * x;
-            else
+            } else {
                 return pow(x * x, n >> 1);
-        } else
+            }
+        } else {
             return n == 1 ? x : 1 / x;
+        }
     }
 
     public double myPow1(double x, int n) {
-        if (n == 0)
+        if (n == 0) {
             return 1;
+        }
         if (n != 1 && n != -1) {
-            if((n & 1) == 1)
+            if((n & 1) == 1) {
                 return myPow1(x * x, n >> 1) * x;
-            else
+            } else {
                 return myPow1(x * x, n >> 1);
+            }
         } else {
             return n == 1 ? x : 1 / x;
         }

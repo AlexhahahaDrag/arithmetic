@@ -30,8 +30,9 @@ public class ProductExceptSelf {
         int len = nums.length;
         int[] res = new int[len];
         res[0] = 1;
-        for(int i = 1; i < len; i++)
+        for(int i = 1; i < len; i++) {
             res[i] = res[i - 1] * nums[i - 1];
+        }
         int post = 1;
         for(int i = len - 1; i >= 0; i--) {
             res[i] *= post;
@@ -44,7 +45,8 @@ public class ProductExceptSelf {
         int[] nums = {1,2,3,4};
         ProductExceptSelf productExceptSelf = new ProductExceptSelf();
         int[] res = productExceptSelf.productExceptSelf(nums);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + " ");
+        }
     }
 }

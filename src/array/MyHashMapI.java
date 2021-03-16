@@ -50,8 +50,9 @@ class MyHashMapI {
     }
 
     public void add(int key) {
-        if (contains(key))
+        if (contains(key)) {
             return;
+        }
         int index = hash(key);
         if (arr[index] == null) {
             Node node = new Node();
@@ -61,35 +62,40 @@ class MyHashMapI {
             Node node = new Node();
             node.value = key;
             Node oldNode = arr[index];
-            while(oldNode.nextNode != null)
+            while(oldNode.nextNode != null) {
                 oldNode = oldNode.nextNode;
+            }
             oldNode.nextNode = node;
         }
     }
 
     public void remove(int key) {
-        if (!contains(key))
+        if (!contains(key)) {
             return;
+        }
         int index = hash(key);
         if (arr[index].value == key) {
             arr[index] = arr[index].nextNode;
             return;
         }
         Node preNode = arr[index];
-        while(preNode.nextNode.value != key)
+        while(preNode.nextNode.value != key) {
             preNode = preNode.nextNode;
+        }
         preNode.nextNode = preNode.nextNode.nextNode;
     }
 
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
         int index = hash(key);
-        if (arr[index] == null)
+        if (arr[index] == null) {
             return false;
+        }
         Node node = arr[index];
         while(node != null) {
-            if (node.value == key)
+            if (node.value == key) {
                 return true;
+            }
             node = node.nextNode;
         }
 

@@ -39,9 +39,9 @@ public class KthSmallest {
         while(left < right) {
             int mid = left + (right - left >> 1);
             int res = findNum(matrix, mid, n);
-            if (res < k)
+            if (res < k) {
                 left = mid + 1;
-            else {
+            } else {
                 right = mid;
             }
         }
@@ -55,8 +55,9 @@ public class KthSmallest {
             if (matrix[j][i] <= mid) {
                 res += i + 1;
                 j++;
-            } else
+            } else {
                 i--;
+            }
         }
         return res;
     }
@@ -67,10 +68,11 @@ public class KthSmallest {
         int right = matrix[n - 1][n - 1];
         while(left < right) {
             int mid = left + (right - left >> 1);
-            if (findNum1(matrix, mid, n, k))
+            if (findNum1(matrix, mid, n, k)) {
                 right = mid;
-            else
+            } else {
                 left = mid + 1;
+            }
         }
         return left;
     }
@@ -83,8 +85,9 @@ public class KthSmallest {
             if (matrix[i][j] <= mid) {
                 num += i + 1;
                 j++;
-            } else
+            } else {
                 i--;
+            }
         }
         return num >= k;
     }

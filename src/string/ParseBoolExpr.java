@@ -73,10 +73,11 @@ public class ParseBoolExpr {
         char[] chars = expression.toCharArray();
         int index = 0;
         while(index < chars.length) {
-            if (chars[index] == '!' || chars[index] == '&' || chars[index] == '|')
+            if (chars[index] == '!' || chars[index] == '&' || chars[index] == '|') {
                 stack.add(index);
-             else if (chars[index] == ')')
+            } else if (chars[index] == ')') {
                 judge(chars, stack.pop(), index);
+            }
             index++;
         }
         return chars[chars.length - 1] == 't';
@@ -87,12 +88,14 @@ public class ParseBoolExpr {
         switch (chars[start]) {
             case '!' :
                 for (int i = start; i < end; i++) {
-                    if (chars[i] == '0')
+                    if (chars[i] == '0') {
                         continue;
-                    if (chars[i] == 't')
+                    }
+                    if (chars[i] == 't') {
                         flag = false;
-                    else if (chars[i] == 'f')
+                    } else if (chars[i] == 'f') {
                         flag = true;
+                    }
                     chars[i] = '0';
                 };
                 chars[end] = flag ? 't' : 'f';
@@ -100,20 +103,24 @@ public class ParseBoolExpr {
             case '&' :
                 flag = true;
                 for (int i = start; i <= end; i++) {
-                    if (chars[i] == '0')
+                    if (chars[i] == '0') {
                         continue;
-                    if (chars[i] == 'f')
+                    }
+                    if (chars[i] == 'f') {
                         flag = false;
+                    }
                     chars[i] = '0';
                 };
                 chars[end] = flag ? 't' : 'f';
                 break;
             case '|' :
                 for (int i = start; i <= end; i++) {
-                    if (chars[i] == '0')
+                    if (chars[i] == '0') {
                         continue;
-                    if (chars[i] == 't')
+                    }
+                    if (chars[i] == 't') {
                         flag = true;
+                    }
                     chars[i] = '0';
                 };
                 chars[end] = flag ? 't' : 'f';

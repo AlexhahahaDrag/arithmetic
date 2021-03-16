@@ -30,10 +30,11 @@ public class PascalsTriangleII {
         for (int i = 0; i <= rowIndex; i++) {
             List<Integer> list=new ArrayList<>();
             for (int j = 0; j < i+1; j++) {
-                if (j==0||j==i)
+                if (j==0||j==i) {
                     list.add(1);
-                else
+                } else {
                     list.add(lists.get(i-1).get(j)+lists.get(i-1).get(j-1));
+                }
             }
             lists.add(list);
         }

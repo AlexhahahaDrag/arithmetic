@@ -48,8 +48,9 @@ public class MostCommonWord {
         Map<String,Integer> map1=new HashMap<>();
         String lowerPragraph=paragraph.toLowerCase().replaceAll("[^a-z]"," ");
         String[] strings=lowerPragraph.split(" ");
-        for (int i = 0; i < banned.length; i++)
+        for (int i = 0; i < banned.length; i++) {
             map.put(banned[i],map.getOrDefault(banned[i],0));
+        }
         int mostNum=0;
         String mostCommon="";
         for (int i = 0; i < strings.length; i++) {
@@ -82,9 +83,11 @@ public class MostCommonWord {
         return result;
     }
     private static boolean contains(String[] banned,String s){
-        for(int i=0;i<banned.length;i++)
-            if(banned[i].equals(s))
+        for(int i=0;i<banned.length;i++) {
+            if(banned[i].equals(s)) {
                 return true;
+            }
+        }
         return false;
     }
 }

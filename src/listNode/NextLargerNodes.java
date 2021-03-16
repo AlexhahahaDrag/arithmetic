@@ -38,8 +38,9 @@ package listNode;
 public class NextLargerNodes {
 
     public int[] nextLargerNodes(ListNode head) {
-        if (head == null)
+        if (head == null) {
             return new int[] {};
+        }
         int[] fi = new int[10001];
         ListNode find = head;
         int count = 1;
@@ -47,8 +48,9 @@ public class NextLargerNodes {
         int pre = find.val;
         find = find.next;
         while (find != null) {
-            if (find.val > pre)
+            if (find.val > pre) {
                 fi[size++] = find.val;
+            }
             pre = find.val;
             find = find.next;
             count++;
@@ -58,15 +60,16 @@ public class NextLargerNodes {
         int[] result = new int[count];
         int start = 0;
         while(head != null) {
-            if(head.val < fi[index])
+            if(head.val < fi[index]) {
                 result[start++] = fi[index];
-            else if (head.val > fi[index])
+            } else if (head.val > fi[index]) {
                 result[start++] = 0;
-            else if (head.val == fi[index]) {
+            } else if (head.val == fi[index]) {
                 if (head.val > fi[index + 1]) {
                     result[start++] = 0;
-                } else
+                } else {
                     result[start++] = fi[index + 1];
+                }
                 index++;
             }
             head = head.next;
@@ -79,7 +82,8 @@ public class NextLargerNodes {
         int[] nums = {5, 2, 5};
         ListNode listNode = ListNode.getListNodeByArr(nums);
         int[] result = nextLargerNodes.nextLargerNodes(listNode);
-        for (int i : result)
+        for (int i : result) {
             System.out.print(i + "  ");
+        }
     }
 }

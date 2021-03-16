@@ -47,8 +47,9 @@ public class LowestCommonAncestorII {
     }
 
     private int findList(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null)
+        if (root == null) {
             return  0;
+        }
         int le = findList(root.left, p, q);
         int ri = findList(root.right, p, q);
         int res = le + ri + ((p.val == root.val || q.val == root.val) ? 1 : 0);

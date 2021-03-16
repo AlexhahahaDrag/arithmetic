@@ -47,23 +47,28 @@ public class KLengthApart {
         int len = k;
         for(int i : nums) {
             if (i == 1) {
-                if (len >= k)
+                if (len >= k) {
                     len = 0;
-                else
+                } else {
                     return false;
-            } else
+                }
+            } else {
                 len++;
+            }
         }
         return true;
     }
 
     public boolean kLengthApart2(int[] nums, int k) {
-        if(k == 0) return true;
+        if(k == 0) {
+            return true;
+        }
         int pre = -k - 1;
         for(int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
-                if (i - pre - 1 < k)
+                if (i - pre - 1 < k) {
                     return false;
+                }
                 pre = i;
             }
         }
@@ -71,12 +76,16 @@ public class KLengthApart {
     }
 
     public boolean kLengthApart(int[] nums, int k) {
-        if(k == 0) return true;
+        if(k == 0) {
+            return true;
+        }
         int i1 = indexOfOne(nums, 0);
         int i2 = indexOfOne(nums, i1 + 1);
         while (i2 > 0) {
             // System.out.println(i1 + " " + i2);
-            if(i2 - i1 - 1 < k) return false;
+            if(i2 - i1 - 1 < k) {
+                return false;
+            }
             i1 = i2;
             i2 = indexOfOne(nums, i2 + 1);
         }
@@ -87,7 +96,9 @@ public class KLengthApart {
     // -1 如果不存在的话
     private int indexOfOne(int[] nums, int from) {
         for (int i = from; i < nums.length; i++) {
-            if(nums[i] == 1) return i;
+            if(nums[i] == 1) {
+                return i;
+            }
         }
         return -1;
     }

@@ -36,14 +36,17 @@ public class UniqueOccurrences {
 
     public boolean uniqueOccurrences(int[] arr) {
         int[] count = new int[2001];
-        for(int i : arr)
+        for(int i : arr) {
             count[i + 1000]++;
+        }
         int[] map = new int[1001];
         for(int i : count) {
-            if (i == 0)
+            if (i == 0) {
                 continue;
-            if (map[i] != 0)
+            }
+            if (map[i] != 0) {
                 return false;
+            }
             map[i]++;
         }
           return true;

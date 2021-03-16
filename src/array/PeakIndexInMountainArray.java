@@ -42,10 +42,11 @@ public class PeakIndexInMountainArray {
         int start = 0; int end = A.length - 1;
         while(start < end) {
             int mid = start + (end - start >> 1) ;
-            if (A[mid] > A[mid + 1])
+            if (A[mid] > A[mid + 1]) {
                 end = mid;
-            else
+            } else {
                 start = mid + 1;
+            }
 
         }
         return start;

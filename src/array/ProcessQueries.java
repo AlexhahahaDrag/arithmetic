@@ -49,8 +49,9 @@ public class ProcessQueries {
 
     public int[] processQueries(int[] queries, int m) {
         int[] map = new int[m + 1];
-        for(int i = 1; i <= m; i++)
+        for(int i = 1; i <= m; i++) {
             map[i] = i;
+        }
         int[] res = new int[queries.length];
         int start = 0;
         for(int index : queries) {
@@ -63,8 +64,9 @@ public class ProcessQueries {
 
     private void update(int[] map, int index) {
         for(int i = 1; i < map.length; i++) {
-            if(map[i] < index)
+            if(map[i] < index) {
                 map[i]++;
+            }
         }
     }
 
@@ -72,7 +74,9 @@ public class ProcessQueries {
         int[] arr = {4,1,2,2};
         ProcessQueries processQueries = new ProcessQueries();
         int[] res = processQueries.processQueries(arr, 4);
-        for(int i : res)
-            System.out.print(i + "   ");;
+        for(int i : res) {
+            System.out.print(i + "   ");
+        }
+        ;
     }
 }

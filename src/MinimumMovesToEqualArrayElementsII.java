@@ -29,18 +29,21 @@ public class MinimumMovesToEqualArrayElementsII {
     public static int minMoves2(int[] nums) {
         int min=nums[0];
         int max=nums[0];
-        for(int x:nums)
-            if(min>x)
-                min=x;
-            else if(max<x)
-                max=x;
+        for(int x:nums) {
+            if(min>x) {
+                min = x;
+            } else if(max<x) {
+                max = x;
+            }
+        }
         long minMoves=Integer.MAX_VALUE;
         out: for(int i=min;i<=max;i++){
             long moves=0;
             for(int y:nums){
                 moves+=Math.abs(y-i);
-                if(moves<0||moves>=minMoves)
+                if(moves<0||moves>=minMoves) {
                     continue out;
+                }
             }
             minMoves=Math.min(minMoves,moves);
         }

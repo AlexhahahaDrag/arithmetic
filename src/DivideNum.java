@@ -22,8 +22,9 @@ public class DivideNum {
             divisor+=divisor;
             num+=num;
         }
-        if (minusFlag%2==1)
+        if (minusFlag%2==1) {
             num=-num;
+        }
         return num;
     }
 }

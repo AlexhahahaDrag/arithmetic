@@ -17,8 +17,9 @@ public class Test2 {
     }
     public static boolean contains2Or4(int num){
         while(num>0){
-            if (num%10==2||num%10==4)
+            if (num%10==2||num%10==4) {
                 return false;
+            }
             num/=10;
         }
         return true;

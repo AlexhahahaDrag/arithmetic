@@ -58,8 +58,9 @@ public class AllCellsDistOrder {
     }
 
     private void bfs(Queue<int[]> queue) {
-        if (queue.isEmpty())
+        if (queue.isEmpty()) {
             return;
+        }
         Queue<int[]> next = new LinkedList<>();
         while(!queue.isEmpty()) {
             int[] cur = queue.poll();
@@ -82,7 +83,8 @@ public class AllCellsDistOrder {
         int c0 = 2;
         AllCellsDistOrder allCellsDistOrder = new AllCellsDistOrder();
         int[][] res = allCellsDistOrder.allCellsDistOrder(R, C, r0, c0);
-        for (int[] i : res)
+        for (int[] i : res) {
             System.out.print("[" + i[0] + "," + i[1] + "]" + ",");
+        }
     }
 }

@@ -44,8 +44,9 @@ import java.util.List;
 public class LuckyNumbers {
     public List<Integer> luckyNumbers (int[][] matrix) {
         List<Integer> res = new ArrayList<>();
-        if(matrix == null || matrix.length < 1 || matrix[0].length < 1)
+        if(matrix == null || matrix.length < 1 || matrix[0].length < 1) {
             return res;
+        }
         int[] column = new int[matrix.length];
         for(int i = 0; i < matrix.length; i++) {
             int min = matrix[i][0];
@@ -54,15 +55,17 @@ public class LuckyNumbers {
                 if(min > matrix[i][j]) {
                     min = matrix[i][j];
                     cur = j;
-                } else if(min == matrix[i][j])
+                } else if(min == matrix[i][j]) {
                     cur = -1;
+                }
             }
             column[i] = cur;
         }
 
         for(int k = 0; k < column.length; k++) {
-            if (column[k] == -1)
+            if (column[k] == -1) {
                 continue;
+            }
             boolean flag = true;
             for(int l = 0; l < matrix.length; l++) {
                 if(l != k && matrix[k][column[k]] <= matrix[l][column[k]]) {
@@ -70,8 +73,9 @@ public class LuckyNumbers {
                     break;
                 }
             }
-            if(flag)
+            if(flag) {
                 res.add(matrix[k][column[k]]);
+            }
         }
         return res;
     }

@@ -40,14 +40,16 @@ public class ThirdMaximumNumber {
                 long temp=first;
                 first=index;
                 index=temp;
-            }else if (index==first)
+            }else if (index==first) {
                 continue;
+            }
             if (index>second){
                 long temp=second;
                 second=index;
                 index=temp;
-            }else if (index==second)
+            }else if (index==second) {
                 continue;
+            }
             if (index>third){
                 long temp=third;
                 third=index;

@@ -11,8 +11,9 @@ public class HeapSort {
         HeapSort heapSort = new HeapSort();
         heapSort.getHeapSort(arr);
         heapSort.sort(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.print(i + " ");
+        }
     }
 
     private void sort(int arr[]) {
@@ -30,8 +31,9 @@ public class HeapSort {
 
     private void getHeapSort(int[] arr){
         int len = arr.length;
-        for (int i = arr.length/2-1; i >= 0 ; i--)
+        for (int i = arr.length/2-1; i >= 0 ; i--) {
             peerDown(arr, i, len);
+        }
     }
 
     private void peerDown(int[] arr, int start, int len) {
@@ -40,12 +42,14 @@ public class HeapSort {
         int i;
         for (i = start; 2 * i + 1 < len; i = child ) {
             child = 2 * i + 1;
-            if (child < len - 1 && arr[child] < arr[child + 1])
+            if (child < len - 1 && arr[child] < arr[child + 1]) {
                 child++;
-            if (value > arr[child])
+            }
+            if (value > arr[child]) {
                 break;
-            else
+            } else {
                 arr[i] = arr[child];
+            }
         }
         arr[i] = value;
     }

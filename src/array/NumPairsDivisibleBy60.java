@@ -29,11 +29,13 @@ public class NumPairsDivisibleBy60 {
 
     public int numPairsDivisibleBy60(int[] time) {
         int[] map = new int[60];
-        for(int i = 0; i < time.length; i++)
+        for(int i = 0; i < time.length; i++) {
             map[time[i] % 60]++;
+        }
         int count =  map[0] * (map[0] - 1) / 2 + map[30] * (map[30] - 1) / 2;
-        for(int i = 1; i < 30; i++)
+        for(int i = 1; i < 30; i++) {
             count += map[i] * map[60 - i];
+        }
         return count;
     }
 

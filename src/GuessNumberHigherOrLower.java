@@ -38,11 +38,12 @@ public class GuessNumberHigherOrLower {
     }
     public static int guess(int num) {
         int target=6;
-        if (target==num)
+        if (target==num) {
             return 0;
-        else if (target>num)
+        } else if (target>num) {
             return 1;
-        else
+        } else {
             return -1;
+        }
     }
 }

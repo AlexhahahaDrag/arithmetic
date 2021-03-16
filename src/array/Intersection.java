@@ -27,15 +27,17 @@ public class Intersection {
     int max;
 
     public int[] intersection(int[] nums1, int[] nums2) {
-        if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0)
+        if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0) {
             return new int[]{};
+        }
         min = nums1[0];
         max = nums1[0];
         findMinAndMax(nums1);
         findMinAndMax(nums2);
         int[] map1 = new int[max - min + 1];
-        for(int i : nums1)
+        for(int i : nums1) {
             map1[i - min]++;
+        }
         int[] result = new int[nums1.length > nums2.length ? nums2.length : nums1.length];
         int size = 0;
         for(int i : nums2) {
@@ -45,16 +47,19 @@ public class Intersection {
             }
         }
         int[] fi = new int[size];
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < size; i++) {
             fi[i] = result[i];
+        }
         return fi;
     }
     private void findMinAndMax(int[] nums) {
         for(int i : nums){
-            if (min > i)
+            if (min > i) {
                 min = i;
-            if(max < i)
+            }
+            if(max < i) {
                 max =i;
+            }
         }
     }
 
@@ -63,7 +68,8 @@ public class Intersection {
         int[] nums1 = {1,2,2,1};
         int[] nums2 = {2,2};
         int[] arr = interSection.intersection(nums1, nums2);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.println(i);
+        }
     }
 }

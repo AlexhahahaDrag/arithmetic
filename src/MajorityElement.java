@@ -26,8 +26,9 @@ public class MajorityElement {
         Iterator<Map.Entry> it=set.iterator();
         while(it.hasNext()){
             Map.Entry<Integer, Integer> entry = it.next();
-            if (entry.getValue()>nums.length/2)
+            if (entry.getValue()>nums.length/2) {
                 System.out.println(entry.getKey());
+            }
         }
     }
     public static int getMajorityElement1(int[] nums){

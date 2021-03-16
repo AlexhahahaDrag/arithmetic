@@ -24,8 +24,9 @@ public class MaximumAverageSubarrayI {
     }
     public static double findMaxAverage(int[] nums, int k) {
         int sum=0;
-        for(int i=0;i<k;i++)
+        for(int i=0;i<k;i++) {
             sum+=nums[i];
+        }
         double res=sum;
         for(int j=k;j<nums.length;j++){
             sum+=nums[j]-nums[j-k];

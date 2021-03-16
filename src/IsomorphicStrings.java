@@ -27,18 +27,23 @@ public class IsomorphicStrings {
         System.out.println(isIsomorphic1("",""));
     }
     public static boolean isIsomorphic(String s, String t) {
-        if (s.length()!=t.length())
+        if (s.length()!=t.length()) {
             return false;
-        for (int i = 0; i < s.length(); i++)
-            if(s.lastIndexOf(s.charAt(i))!=t.lastIndexOf(t.charAt(i)))
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if(s.lastIndexOf(s.charAt(i))!=t.lastIndexOf(t.charAt(i))) {
                 return false;
+            }
+        }
         return true;
     }
     public static boolean isIsomorphic1(String s, String t) {
         char[] sString = s.toCharArray();
         char[] tString = t.toCharArray();
         int length = sString.length;
-        if(length != tString.length) return false;
+        if(length != tString.length) {
+            return false;
+        }
         char[] sm = new char[256];
         char[] tm = new char[256];
         for(int i=0; i<length; i++){
@@ -48,8 +53,9 @@ public class IsomorphicStrings {
                 sm[sc] = tc;
                 tm[tc] = sc;
             }else{
-                if(sm[sc] != tc || tm[tc] != sc)
+                if(sm[sc] != tc || tm[tc] != sc) {
                     return false;
+                }
             }
         }
         return true;

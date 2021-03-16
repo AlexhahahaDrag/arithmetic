@@ -86,11 +86,13 @@ public class SolveNQueens {
     private List<List<String>> res;
     public List<List<String>> solveNQueens(int n) {
         res = new ArrayList<>();
-        if (n <= 0)
+        if (n <= 0) {
             return res;
+        }
         char[][] map = new char[n][n];
-        for(char[] m : map)
+        for(char[] m : map) {
             Arrays.fill(m, '.');
+        }
         column = new boolean[n];
         left = new boolean[n << 1];
         right = new boolean[n << 1];
@@ -101,8 +103,9 @@ public class SolveNQueens {
     private void dfs(char[][] map, int i, int n) {
         if(i == n) {
             List<String> list = new ArrayList<>();
-            for(char[] m : map)
+            for(char[] m : map) {
                 list.add(new String(m));
+            }
             res.add(list);
             return;
         }

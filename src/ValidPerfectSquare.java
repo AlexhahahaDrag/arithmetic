@@ -19,17 +19,19 @@ public class ValidPerfectSquare {
     public static boolean getValidPerfectSquare(int num){
         if (num<23170*23170){
             for (int i = 0; i*i <= num&&i<23171; i++) {
-                if (i*i==num)
+                if (i*i==num) {
                     return true;
-                else if (i*i>num)
+                } else if (i*i>num) {
                     return false;
+                }
             }
         }else{
             for (int i = 23171; i*i <= num&&i<=46341; i++) {
-                if (i*i==num)
+                if (i*i==num) {
                     return true;
-                else if (i*i>num)
+                } else if (i*i>num) {
                     return false;
+                }
             }
         }
         return false;

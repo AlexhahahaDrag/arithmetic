@@ -33,54 +33,61 @@ public class SearchMatrix {
         System.out.println(searchMatrix.searchMatrix(matrix, 5));
     }
     public boolean searchMatrix3(int[][] matrix, int target) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return false;
+        }
         int row = 0;
         int column = matrix[0].length - 1;
         while(row < matrix.length && column >= 0) {
-            if (target == matrix[row][column])
+            if (target == matrix[row][column]) {
                 return true;
-            else if (target < matrix[row][column])
+            } else if (target < matrix[row][column]) {
                 column--;
-            else
+            } else {
                 row++;
+            }
         }
         return false;
     }
     public boolean searchMatrix1(int[][] matrix, int target) {
-        if (matrix.length == 0)
+        if (matrix.length == 0) {
             return false;
+        }
         return find(matrix, 0, 0, matrix.length - 1, matrix[0].length - 1, target);
     }
     private boolean find(int[][] matrix, int x, int y, int xx, int yy, int target) {
         if (x <= xx && y <= yy) {
             int midx = x + xx >> 1;
             int midy = y + yy >> 1;
-            if (matrix[midx][midy] == target)
+            if (matrix[midx][midy] == target) {
                 return true;
-            else if (matrix[midx][midy] < target)
+            } else if (matrix[midx][midy] < target) {
                 return find(matrix, midx + 1, y, xx, yy, target) || find(matrix, x, midy + 1, xx, yy, target);
-            else
+            } else {
                 return find(matrix, x, y, midx - 1, yy, target) || find(matrix, x, y, xx, midy - 1, target);
+            }
         }
         return false;
     }
     public boolean searchMatrix(int[][] matrix, int target) {
-        if(matrix == null || matrix.length == 0 || matrix[0].length == 0)
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return false;
+        }
         return search(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1, target);
     }
 
     private boolean search(int[][] matrix, int xs, int xe, int ys, int ye, int target) {
-        if(xs > xe || ys > ye)
+        if(xs > xe || ys > ye) {
             return false;
+        }
         int xmid = xs + (xe - xs >> 1);
         int ymid = ys + (ye - ys >> 1);
-        if(matrix[xmid][ymid] == target)
+        if(matrix[xmid][ymid] == target) {
             return true;
-        else if (target < matrix[xmid][ymid])
+        } else if (target < matrix[xmid][ymid]) {
             return search(matrix, xs, xmid - 1, ys, ye, target) || search(matrix, xs, xe, ys, ymid - 1, target);
-        else
+        } else {
             return search(matrix, xmid + 1, xe, ys, ye, target) || search(matrix, xs, xe, ymid + 1, ye, target);
+        }
     }
 }

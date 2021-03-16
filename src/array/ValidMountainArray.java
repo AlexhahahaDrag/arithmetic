@@ -42,33 +42,39 @@ package array;
 public class ValidMountainArray {
 
     public boolean validMountainArray1(int[] A) {
-        if(A == null || A.length < 3 || A[0] >= A[1])
+        if(A == null || A.length < 3 || A[0] >= A[1]) {
             return false;
+        }
         boolean down = false;
         for(int i = 1; i < A.length - 1; i++) {
-            if (A[i] == A[i + 1])
+            if (A[i] == A[i + 1]) {
                 return false;
-            else if (A[i] > A[i + 1]) {
+            } else if (A[i] > A[i + 1]) {
                 down = true;
-            } else if (down)
+            } else if (down) {
                 return false;
+            }
         }
         return down;
     }
 
     public boolean validMountainArray(int[] A) {
-        if(A == null || A.length < 3 || A[0] >= A[1])
+        if(A == null || A.length < 3 || A[0] >= A[1]) {
             return false;
+        }
         int i = 0;
         for (; i < A.length - 1; i++) {
-            if(A[i] >= A[i + 1])
+            if(A[i] >= A[i + 1]) {
                 break;
+            }
         }
-        if (i == 0 || i == A.length - 1)
+        if (i == 0 || i == A.length - 1) {
             return false;
+        }
         for(; i < A.length - 1; i++) {
-            if (A[i] <= A[i + 1])
+            if (A[i] <= A[i + 1]) {
                 return false;
+            }
         }
         return true;
     }

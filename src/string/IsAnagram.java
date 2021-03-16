@@ -26,24 +26,31 @@ package string;
 public class IsAnagram {
 
     public boolean isAnagram(String s, String t) {
-        if(s == t)
+        if(s == t) {
             return true;
-        if(s == null || t == null)
+        }
+        if(s == null || t == null) {
             return false;
-        if(s.length() != t.length())
+        }
+        if(s.length() != t.length()) {
             return false;
+        }
         int[] map = new int[26];
-        for(char ch : s.toCharArray())
+        for(char ch : s.toCharArray()) {
             map[ch - 'a']++;
+        }
         for(char ch : t.toCharArray()) {
             map[ch - 'a']--;
-            if (map[ch - 'a'] < 0)
+            if (map[ch - 'a'] < 0) {
                 return false;
+            }
         }
 
-        for(int i : map)
-            if(i != 0)
+        for(int i : map) {
+            if(i != 0) {
                 return false;
+            }
+        }
         return true;
     }
 

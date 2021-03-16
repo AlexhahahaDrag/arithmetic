@@ -29,29 +29,34 @@ public class AVLTree<AnyType extends Comparable<? super AnyType>> {
         return insert(x,root);
     }
     private AvlNode<AnyType> insert(AnyType x,AvlNode<AnyType> t){
-        if(t==null)
+        if(t==null) {
             return new AvlNode<>(x,null,null);
+        }
         int compareResult=x.compareTo(t.element);
-        if (compareResult<0)
+        if (compareResult<0) {
             insert(x,t.left);
-        else if (compareResult>0)
+        } else if (compareResult>0) {
             insert(x,t.right);
+        }
         return balance(t);
     }
     private static final int ALLOWED_IMBALANCE = 1;
     private AvlNode<AnyType> balance(AvlNode<AnyType> t){
-        if (t==null)
+        if (t==null) {
             return t;
+        }
         if (height(t.left)-height(t.right)>ALLOWED_IMBALANCE){
-            if (height(t.left.left)>=height(t.left.right))
+            if (height(t.left.left)>=height(t.left.right)) {
                 t=rotateWithLeftChild(t);
-            else
+            } else {
                 t=doubleWithLeftChild(t);
+            }
         }else if (height(t.right)-height(t.left)>ALLOWED_IMBALANCE){
-            if (height(t.right.left)>=height(t.right.right))
+            if (height(t.right.left)>=height(t.right.right)) {
                 t=rotateWithLeftChild(t);
-            else
+            } else {
                 t=doubleWithRightChild(t);
+            }
         }
         t.height=Math.max(height(t.left),height(t.right))+1;
         return t;
@@ -81,28 +86,32 @@ public class AVLTree<AnyType extends Comparable<? super AnyType>> {
         return rotateWithRightChild(k3);
     }
     private AvlNode<AnyType> remove(AnyType x,AvlNode<AnyType> t){
-        if (t==null)
+        if (t==null) {
             return t;
+        }
         int compareResult=x.compareTo(t.element);
-        if (compareResult<0)
+        if (compareResult<0) {
             t.left=remove(x,t.left);
-        else if (compareResult>0)
+        } else if (compareResult>0) {
             t.right=remove(x,t.right);
-        else if (t.left!=null&&t.right!=null){
+        } else if (t.left!=null&&t.right!=null){
             t.element=findMin(t.right).element;
             t.right=remove(t.element,t.right);
-        }else
+        }else {
             t=t.left==null?t.right:t.left;
+        }
         return balance(t);
     }
     public AnyType findMin(){
-        if (isEmpty())
+        if (isEmpty()) {
             throw new BufferUnderflowException();
+        }
         return findMin(root).element;
     }
     private AvlNode<AnyType> findMin(AvlNode t){
-        while(t.left!=null)
+        while(t.left!=null) {
             t=t.left;
+        }
         return t;
     }
 }

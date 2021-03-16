@@ -22,20 +22,23 @@ public class LCA {
 
     private TreeNode getCommonAncestor(TreeNode root, TreeNode node1, TreeNode node2) {
         if (root != null) {
-            if (node1.val == root.val || node2.val == root.val)
+            if (node1.val == root.val || node2.val == root.val) {
                 return root;
+            }
             TreeNode left = getCommonAncestor(root.left, node1, node2);
             TreeNode right = getCommonAncestor(root.right, node1, node2);
             if (left != null) {
-                if (right != null)
+                if (right != null) {
                     return root;
-                else
+                } else {
                     return left;
+                }
             } else
-            if (right != null)
+            if (right != null) {
                 return right;
-            else
+            } else {
                 return null;
+            }
         }
         return null;
     }

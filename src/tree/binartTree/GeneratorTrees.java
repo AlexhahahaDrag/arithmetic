@@ -35,10 +35,11 @@ public class GeneratorTrees {
 
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode> result = new ArrayList<>();
-        if (n < 0)
+        if (n < 0) {
             return null;
-        else if (n == 0)
+        } else if (n == 0) {
             return result;
+        }
         return generate(1, n);
     }
 

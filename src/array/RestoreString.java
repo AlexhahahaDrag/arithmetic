@@ -52,8 +52,9 @@ public class RestoreString {
         }
         Arrays.sort(map, Comparator.comparingInt(o1 -> o1[0]));
         StringBuilder sb = new StringBuilder();
-        for (int[] i : map)
+        for (int[] i : map) {
             sb.append((char)i[1]);
+        }
         return sb.toString();
     }
 

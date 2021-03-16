@@ -46,11 +46,13 @@ public class CQueue {
 
     public int deleteHead() {
        if (delete.isEmpty()) {
-           while(!add.isEmpty())
+           while(!add.isEmpty()) {
                delete.add(add.pop());
+           }
        }
-       if (delete.isEmpty())
+       if (delete.isEmpty()) {
            return -1;
+       }
        return delete.pop();
     }
 

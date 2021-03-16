@@ -33,12 +33,15 @@ public class UglyNumberTwo {
         int count=1;
         while (count<n){
             nums[count]=Math.min(prime2,Math.min(prime3,prime5));
-            if (nums[count]==prime2)
+            if (nums[count]==prime2) {
                 prime2=2*nums[++count2];
-            if (nums[count]==prime3)
+            }
+            if (nums[count]==prime3) {
                 prime3=3*nums[++count3];
-            if (nums[count]==prime5)
+            }
+            if (nums[count]==prime5) {
                 prime5=5*nums[++count5];
+            }
             count++;
         }
         return nums[n-1];

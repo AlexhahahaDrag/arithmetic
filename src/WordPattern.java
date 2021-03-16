@@ -45,28 +45,33 @@ public class WordPattern {
     }
 
     public boolean wordPattern(String pattern, String s) {
-        if ((pattern == null || pattern.length() == 0) && (s == null || s.length() == 0))
+        if ((pattern == null || pattern.length() == 0) && (s == null || s.length() == 0)) {
             return true;
-        if (pattern == null || pattern.length() == 0 || s == null || s.length() == 0)
+        }
+        if (pattern == null || pattern.length() == 0 || s == null || s.length() == 0) {
             return false;
+        }
         String[] st = s.split(" ");
         int len = pattern.length();
-        if(st.length != len)
+        if(st.length != len) {
             return false;
+        }
         String[] map = new String[26];
         int index = -1;
         while(++index < len) {
             char ch = pattern.charAt(index);
             if (map[ch - 'a'] == null) {
                 for (int i = 0; i < 26; i++) {
-                    if (st[index].equals(map[i]))
+                    if (st[index].equals(map[i])) {
                         return false;
+                    }
                 }
                 map[ch - 'a'] = st[index];
             }
 
-            else if (!map[ch - 'a'].equals(st[index]))
+            else if (!map[ch - 'a'].equals(st[index])) {
                 return false;
+            }
         }
         return true;
     }

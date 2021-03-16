@@ -74,8 +74,9 @@ public class LongestSubstringWithoutRepeatingCharacters {
         while (i < len) {
             if (map[s.charAt(i)] == 1) {
                 maxlen = i - start > maxlen ? i - start: maxlen;
-                while(map[s.charAt(i)] == 1)
+                while(map[s.charAt(i)] == 1) {
                     map[s.charAt(start++)]--;
+                }
             }
             map[s.charAt(i++)]++;
         }

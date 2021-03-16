@@ -67,8 +67,9 @@ public class NumRookCaptures {
     private void findRow(char[][] board, int i, int j, int move, int[] map) {
         int exe = 0;
         for (int k = 0; k < map.length; k++) {
-            if (map[k] == 0)
+            if (map[k] == 0) {
                 continue;
+            }
             int index = i + map[k] * move;
             if (index < 0 || index >= board.length || board[index][j] == 'B') {
                 map[k] = 0;
@@ -81,15 +82,17 @@ public class NumRookCaptures {
             }
             exe++;
         }
-        if (exe != 0)
+        if (exe != 0) {
             findRow(board, i, j, move + 1, map);
+        }
     }
 
     private void findColumn(char[][] board, int i, int j, int move, int[] map) {
         int exe = 0;
         for (int k = 0; k < map.length; k++) {
-            if (map[k] == 0)
+            if (map[k] == 0) {
                 continue;
+            }
             int index = j + map[k] * move;
             if (index < 0 || index >= board[i].length || board[i][index] == 'B') {
                 map[k] = 0;
@@ -102,8 +105,9 @@ public class NumRookCaptures {
             }
             exe++;
         }
-        if (exe != 0)
+        if (exe != 0) {
             findColumn(board, i, j, move + 1, map);
+        }
     }
 
     public static void main(String[] args) {

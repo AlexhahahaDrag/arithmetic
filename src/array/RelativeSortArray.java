@@ -31,15 +31,20 @@ public class RelativeSortArray {
 
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
         int[] map = new int[1001];
-        for(int i : arr1)
+        for(int i : arr1) {
             map[i]++;
+        }
         int index = 0;
-        for(int i : arr2)
-            while(map[i]-- > 0)
+        for(int i : arr2) {
+            while(map[i]-- > 0) {
                 arr1[index++] = i;
-        for(int i = 0; i < 1001; i++)
-            while (map[i]-- > 0)
+            }
+        }
+        for(int i = 0; i < 1001; i++) {
+            while (map[i]-- > 0) {
                 arr1[index++] = i;
+            }
+        }
         return arr1;
     }
 
@@ -48,7 +53,8 @@ public class RelativeSortArray {
         int[] arr2 = {};
         RelativeSortArray relativeSortArray = new RelativeSortArray();
         int[] res = relativeSortArray.relativeSortArray(arr1, arr2);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "   ");
+        }
     }
 }

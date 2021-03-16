@@ -27,8 +27,9 @@ public class ReorderList {
             slow = slow.next;
             fast = fast.next.next;
         }
-        if (fast != null)
+        if (fast != null) {
             slow = slow.next;
+        }
         ListNode next = slow;
         slow.next = null;
         ListNode pre = null;
@@ -40,8 +41,9 @@ public class ReorderList {
         }
 
         ListNode list = new ListNode(-1);
-        if (fast != null)
-        System.out.println(11);
+        if (fast != null) {
+            System.out.println(11);
+        }
 
     }
 

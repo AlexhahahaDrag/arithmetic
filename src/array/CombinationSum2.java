@@ -49,13 +49,15 @@ public class CombinationSum2 {
     private void combination(int[] candidates, int target, int start, int[] map, int size) {
         if(target == 0) {
             List<Integer> list1 = new ArrayList<>();
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++) {
                 list1.add(map[i]);
+            }
             res.add(list1);
         }
         for (int i = start; i < candidates.length && target - candidates[i] >= 0; i++) {
-            if (i > start && candidates[i] == candidates[i - 1])
+            if (i > start && candidates[i] == candidates[i - 1]) {
                 continue;
+            }
             map[size++] = candidates[i];
             combination(candidates, target - candidates[i], i + 1, map, size);
             size--;

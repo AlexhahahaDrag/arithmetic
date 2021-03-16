@@ -38,31 +38,39 @@ public class CommonChars {
     public List<String> commonChars(String[] A) {
         List<String> res = new ArrayList<>();
         int[][] map = new int[A.length][];
-        if (A == null || A.length == 0)
+        if (A == null || A.length == 0) {
             return res;
+        }
         for (int i = 0; i < A.length; i++) {
-            if (A[i] == null || A[i].length() == 0)
+            if (A[i] == null || A[i].length() == 0) {
                 return null;
+            }
             map[i] = getCount(A[i]);
         }
         int[] common = map[0];
-        for (int i = 1; i < map.length; i++)
-            for (int j = 0; j < common.length; j++)
-                if (common[j] > 0)
+        for (int i = 1; i < map.length; i++) {
+            for (int j = 0; j < common.length; j++) {
+                if (common[j] > 0) {
                     common[j] = Math.min(common[j], map[i][j]);
-        for (int i = 0; i < common.length; i++)
+                }
+            }
+        }
+        for (int i = 0; i < common.length; i++) {
             if (common[i] > 0) {
                 String temp = String.valueOf((char)(i + 'a'));
-                while (common[i]-- > 0)
+                while (common[i]-- > 0) {
                     res.add(temp);
+                }
             }
+        }
         return res;
     }
 
     private int[] getCount(String str) {
         int[] res = new int[26];
-        for (char c : str.toCharArray())
+        for (char c : str.toCharArray()) {
             res[c - 'a']++;
+        }
         return res;
     }
 

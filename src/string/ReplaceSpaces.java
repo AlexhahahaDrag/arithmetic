@@ -38,8 +38,9 @@ public class ReplaceSpaces {
                 res[index++] = '%';
                 res[index++] = '2';
                 res[index++] = '0';
-            } else
+            } else {
                 res[index++] = s[cur];
+            }
             cur++;
         }
         char[] newRes = Arrays.copyOf(res, index);

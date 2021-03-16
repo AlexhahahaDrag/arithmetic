@@ -30,8 +30,9 @@ public class ConvertBiNode {
     List<Integer> res = new ArrayList<>();
     public TreeNode convertBiNode1(TreeNode root) {
         midorder(root);
-        if (res.size() < 2)
+        if (res.size() < 2) {
             return root;
+        }
         return convert();
     }
 
@@ -48,8 +49,9 @@ public class ConvertBiNode {
     }
 
     private void midorder(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         midorder(root.left);
         res.add(root.val);
         midorder(root.right);
@@ -62,8 +64,9 @@ public class ConvertBiNode {
     }
 
     private TreeNode midConvert(TreeNode root, TreeNode head) {
-        if(root == null)
+        if(root == null) {
             return head;
+        }
         head = midConvert(root.left, head);
         root.left = null;
         head.right = root;

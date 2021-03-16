@@ -36,25 +36,29 @@ package twoDimensionalArray;
 public class UniquePathsWithObstacles {
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        if (obstacleGrid.length == 0 || obstacleGrid[0].length == 0)
+        if (obstacleGrid.length == 0 || obstacleGrid[0].length == 0) {
             return 0;
+        }
         int[][] map = new int[obstacleGrid.length][obstacleGrid[0].length];
         for (int i = 0; i < obstacleGrid.length; i++) {
-            if (obstacleGrid[i][0] == 1)
+            if (obstacleGrid[i][0] == 1) {
                 break;
+            }
             map[i][0] = 1;
         }
         for (int i = 0; i < obstacleGrid[0].length; i++) {
-            if (obstacleGrid[0][i] == 1)
+            if (obstacleGrid[0][i] == 1) {
                 break;
+            }
             map[0][i] = 1;
         }
         for (int i = 1; i < obstacleGrid.length; i++) {
             for (int j = 1; j < obstacleGrid[i].length; j++) {
-                if (obstacleGrid[i][j] == 1)
+                if (obstacleGrid[i][j] == 1) {
                     map[i][j] = 0;
-                else
+                } else {
                     map[i][j] = map[i - 1][j] + map[i][j - 1];
+                }
             }
         }
         return map[obstacleGrid.length - 1][obstacleGrid[0].length - 1];

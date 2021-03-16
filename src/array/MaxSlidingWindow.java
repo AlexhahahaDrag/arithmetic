@@ -53,17 +53,20 @@ public class MaxSlidingWindow {
         LinkedList<Integer> queue = new LinkedList<>();
         int[] map = new int[nums.length - k + 1];
         for(int i = 0; i < k && i < nums.length; i++) {
-            while(!queue.isEmpty() && nums[queue.getLast()] < nums[i])
+            while(!queue.isEmpty() && nums[queue.getLast()] < nums[i]) {
                 queue.removeLast();
+            }
             queue.add(i);
         }
         for(int i = 0; i < map.length; i++) {
-            while(queue.getFirst() < i)
+            while(queue.getFirst() < i) {
                 queue.removeFirst();
+            }
             map[i] = nums[queue.getFirst()];
             if (i + k < nums.length) {
-                while(!queue.isEmpty() && nums[queue.getLast()] < nums[i + k])
+                while(!queue.isEmpty() && nums[queue.getLast()] < nums[i + k]) {
                     queue.removeLast();
+                }
                 queue.add(i + k);
             }
         }
@@ -71,23 +74,27 @@ public class MaxSlidingWindow {
     }
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-        if (nums == null || k == 0)
+        if (nums == null || k == 0) {
             return new int[0];
+        }
         int[] res = new int[nums.length - k + 1];
         int[] path = new int[nums.length];
         int index = -1;
         int start = -1;
         for(int i = 0; i < k; i++) {
-            while(index > start && nums[i] >= nums[path[index]])
+            while(index > start && nums[i] >= nums[path[index]]) {
                 index--;
+            }
             path[++index] = i;
         }
         for(int i = k - 1; i < nums.length; i++) {
-            while(index > start && nums[i] >= nums[path[index]])
+            while(index > start && nums[i] >= nums[path[index]]) {
                 index--;
+            }
             path[++index] = i;
-            if (i - k >= path[start + 1])
+            if (i - k >= path[start + 1]) {
                 start++;
+            }
             res[i - k + 1] = nums[path[start + 1]];
         }
         return res;
@@ -102,7 +109,8 @@ public class MaxSlidingWindow {
         int k = 3;*/
         MaxSlidingWindow maxSlidingWindow = new MaxSlidingWindow();
         int[] res = maxSlidingWindow.maxSlidingWindow(nums, k);;
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + "      ");
+        }
     }
 }

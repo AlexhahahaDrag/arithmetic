@@ -22,16 +22,18 @@ public class Codec {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return "";
+        }
         StringBuilder sb = serial(root, new StringBuilder());
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
 
     private StringBuilder serial(TreeNode root, StringBuilder sb) {
-        if (root == null)
+        if (root == null) {
             return sb;
+        }
         serial(root.left, sb);
         serial(root.right, sb);
         sb.append(root.val + ",");
@@ -40,21 +42,25 @@ public class Codec {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if(data == null || data.length() == 0)
+        if(data == null || data.length() == 0) {
             return null;
+        }
         String[] strs = data.split(",");
         ArrayDeque<Integer> nums = new ArrayDeque<>();
-        for (String str : strs)
+        for (String str : strs) {
             nums.add(Integer.parseInt(str));
+        }
         return deseial(Integer.MIN_VALUE, Integer.MAX_VALUE, nums);
     }
 
     private TreeNode deseial(Integer lower, Integer uppper, ArrayDeque<Integer> nums) {
-        if (nums.isEmpty())
+        if (nums.isEmpty()) {
             return null;
+        }
         int num = nums.getLast();
-        if (num < lower || num > uppper)
+        if (num < lower || num > uppper) {
             return null;
+        }
         nums.removeLast();
         TreeNode root = new TreeNode(num);
         root.right = deseial(num, uppper, nums);

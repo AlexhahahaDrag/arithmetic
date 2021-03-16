@@ -64,8 +64,9 @@ public class KthSmallestPath {
         }
         while(--k > 0) {
             int in = ch.length - 1;
-            while(in >= 1 && ch[in] <= ch[in - 1])
+            while(in >= 1 && ch[in] <= ch[in - 1]) {
                 in--;
+            }
             if (in >= 1) {
                 char temp = ch[in];
                 ch[in] = ch[in - 1];
@@ -79,26 +80,32 @@ public class KthSmallestPath {
     public String kthSmallestPath(int[] d, int k) {
         char[] ch = new char[d[0] + d[1]];
         int[][] dp = new int[d[0] + 1][d[1] + 1];
-        for (int i = 0; i <= d[0]; i++)
+        for (int i = 0; i <= d[0]; i++) {
             dp[i][d[1]] = 1;
-        for (int i = 0; i <= d[1]; i++)
+        }
+        for (int i = 0; i <= d[1]; i++) {
             dp[d[0]][i] = 1;
-        for (int i = d[0] - 1; i >= 0; i--)
-            for (int j = d[1] - 1; j >= 0; j--)
+        }
+        for (int i = d[0] - 1; i >= 0; i--) {
+            for (int j = d[1] - 1; j >= 0; j--) {
                 dp[i][j] = dp[i + 1][j] + dp[i][j + 1];
+            }
+        }
         find(dp, 0, 0, ch, 0, k);
         return new String(ch);
     }
 
     private void find(int[][] dp, int i, int j, char[] ch, int index, int k) {
         if (i == dp.length - 1) {
-            while(index < ch.length)
+            while(index < ch.length) {
                 ch[index++] = 'H';
+            }
             return;
         }
         if (j == dp[i].length - 1) {
-            while(index < ch.length)
+            while(index < ch.length) {
                 ch[index++] = 'V';
+            }
             return;
         }
         if (dp[i][j + 1] >= k) {

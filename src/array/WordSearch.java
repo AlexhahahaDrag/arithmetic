@@ -33,36 +33,45 @@ public class WordSearch {
     static boolean[][] visited;
     public boolean exist(char[][] board, String word) {
         visited = new boolean[board.length + 2][board[0].length + 2];
-        if (word == null)
+        if (word == null) {
             return true;
-        if (board == null || board.length == 0)
+        }
+        if (board == null || board.length == 0) {
             return false;
+        }
         char[][] chars = new char[board.length + 2][];
         chars[0] = new char[board[0].length + 2];
         chars[board.length + 1] = new char[board[board.length - 1].length + 2];
         for (int i = 1; i < chars.length - 1; i++) {
             chars[i] = new char[board[i - 1].length + 2];
-            for (int j = 1; j < chars[i].length - 1; j++)
+            for (int j = 1; j < chars[i].length - 1; j++) {
                 chars[i][j] = board[i - 1][j -1];
+            }
         }
-        for(int i = 1; i < chars.length - 1; i++)
-            for(int j = 1; j < chars[i].length - 1; j++)
-                if((word.charAt(0) == chars[i][j]) && search(chars, word, i, j, 0))
+        for(int i = 1; i < chars.length - 1; i++) {
+            for(int j = 1; j < chars[i].length - 1; j++) {
+                if ((word.charAt(0) == chars[i][j]) && search(chars, word, i, j, 0)) {
                     return true;
+                }
+            }
+        }
         return false;
     }
 
     private boolean search(char[][]chars, String word, int i, int j, int index){
-        if(index == word.length())
+        if(index == word.length()) {
             return true;
-        if(chars[i][j] != word.charAt(index) || visited[i][j])
+        }
+        if(chars[i][j] != word.charAt(index) || visited[i][j]) {
             return false;
+        }
         visited[i][j] = true;
         if(search(chars, word, i-1, j, index+1) ||
                 search(chars, word, i+1, j, index+1) ||
                 search(chars, word, i, j-1, index+1) ||
-                search(chars, word, i, j+1, index+1))
+                search(chars, word, i, j+1, index+1)) {
             return true;
+        }
         visited[i][j] = false;
         return false;
     }

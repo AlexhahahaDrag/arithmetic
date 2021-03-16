@@ -13,8 +13,9 @@ public class PerfectShuffle {
         int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         PerfectShuffle perfectShuffle = new PerfectShuffle();
         int[] result = perfectShuffle.getPerfectShuffle(arr);
-        for(int i : result)
+        for(int i : result) {
             System.out.print(i + " ");
+        }
     }
 
     private int[] getPerfectShuffle(int[] arr) {
@@ -23,13 +24,16 @@ public class PerfectShuffle {
         int start = 0;
         while(n > 1) {
             n2 = 2 * n + 1;
-            for(k = 0, m = 1; n2 / m >= 3;k++, m *= 3);
+            for(k = 0, m = 1; n2 / m >= 3;k++, m *= 3) {
+                ;
+            }
             m >>= 1;
             reverse(arr, start + m + 1, start + n);
             reverse(arr, start + n + 1, start + m + n);
             reverse(arr, start + m + 1, start + m + n);
-            for (int i = 0, t = 1; k > i ; i++, t *= 3)
+            for (int i = 0, t = 1; k > i ; i++, t *= 3) {
                 cycle(arr, t, 2 * m + 1, start);
+            }
             start = start + 2 * m;
             n = n - m;
         }

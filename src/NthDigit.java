@@ -35,8 +35,9 @@ public class NthDigit {
         StringBuilder stringBuilder=new StringBuilder();
         for (int i = 1; i <= n; i++) {
             stringBuilder.append(i);
-            if (stringBuilder.length()+index>n)
+            if (stringBuilder.length()+index>n) {
                 break;
+            }
             if (stringBuilder.length()>10000){
                 index+=stringBuilder.length();
                 stringBuilder=new StringBuilder();

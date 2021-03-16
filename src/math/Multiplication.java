@@ -57,8 +57,9 @@ public class Multiplication {
             stringBuilder.insert(0, arr[i]);
         }
         int del = 0;
-        while (stringBuilder.charAt(del++) == '0')
+        while (stringBuilder.charAt(del++) == '0') {
             stringBuilder.replace(0, 1, "");
+        }
         return stringBuilder.toString();
     }
 }

@@ -38,26 +38,28 @@ public class CheckValidString {
         int index = 0;
         while(index < len) {
             char ch = s.charAt(index++);
-            if (ch == '(' || ch == '*')
+            if (ch == '(' || ch == '*') {
                 left++;
-            else if (ch == ')') {
-                if (left > 0)
+            } else if (ch == ')') {
+                if (left > 0) {
                     left--;
-                else
+                } else {
                     return false;
+                }
             }
         }
         int right = 0;
         index = len - 1;
         while(index >= 0) {
             char ch = s.charAt(index--);
-            if (ch == '*' || ch == ')')
+            if (ch == '*' || ch == ')') {
                 right++;
-            else if (ch == '(') {
-                if (right > 0)
+            } else if (ch == '(') {
+                if (right > 0) {
                     right--;
-                else
+                } else {
                     return false;
+                }
             }
 
         }

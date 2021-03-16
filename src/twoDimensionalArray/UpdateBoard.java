@@ -76,8 +76,9 @@ public class UpdateBoard {
     }
 
     private void click(char[][] board, int i, int j) {
-        if (i < 0 || i >= board.length || j < 0 || j > board[0].length)
+        if (i < 0 || i >= board.length || j < 0 || j > board[0].length) {
             return;
+        }
         if ('M' == board[i][j]){
             board[i][j] = 'X';
             return;
@@ -90,16 +91,18 @@ public class UpdateBoard {
                     click(board, i + dic[0], j + dic[1]);
                 }
             }
-        } else
+        } else {
             board[i][j] = (char)(count + '0');
+        }
     }
 
     private int find(char[][] board, int i, int j) {
         int count = 0;
         for(int[] dic : diction) {
             if (i + dic[0] >= 0 && i + dic[0] < board.length && j + dic[1] >= 0 && j + dic[1] < board[0].length) {
-                if (board[i + dic[0]][j + dic[1]] == 'M')
+                if (board[i + dic[0]][j + dic[1]] == 'M') {
                     count++;
+                }
             }
         }
         return count;
@@ -111,8 +114,9 @@ public class UpdateBoard {
         UpdateBoard updateBoard = new UpdateBoard();
         char[][] res = updateBoard.updateBoard(board, click);
         for (char[] ch : res) {
-            for (char c : ch)
+            for (char c : ch) {
                 System.out.print(c + " ");
+            }
             System.out.println();
         }
     }

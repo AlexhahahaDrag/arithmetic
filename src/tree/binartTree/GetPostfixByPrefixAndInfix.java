@@ -28,8 +28,9 @@ public class GetPostfixByPrefixAndInfix {
     }
 
     private void getPostfixByPrefixAndInfix(char[] prefix, char[] infix) {
-        if (prefix.length == 0 || infix.length == 0)
+        if (prefix.length == 0 || infix.length == 0) {
             return;
+        }
         int index = findIndex(prefix[0], infix);
         if (index != -1) {
             getPostfixByPrefixAndInfix(Arrays.copyOfRange(prefix,1, index + 1), Arrays.copyOfRange(infix, 0 , index ));
@@ -39,16 +40,19 @@ public class GetPostfixByPrefixAndInfix {
     }
 
     private int findIndex(char ch, char[] infix) {
-        for (int i = 0; i < infix.length; i++)
-            if (ch == infix[i])
+        for (int i = 0; i < infix.length; i++) {
+            if (ch == infix[i]) {
                 return i;
+            }
+        }
         return -1;
     }
 
     private TreeNode getTreeNodeByPrefixAndInfix(int[] prefix, int[] infix) {
         TreeNode treeNode;
-        if (prefix.length == 0 || infix.length == 0)
+        if (prefix.length == 0 || infix.length == 0) {
             return null;
+        }
         treeNode = new TreeNode(prefix[0]);
         int index = findIndex(prefix[0], infix);
         if (index != -1) {
@@ -59,9 +63,11 @@ public class GetPostfixByPrefixAndInfix {
     }
 
     private int findIndex(int ch, int[] infix) {
-        for (int i = 0; i < infix.length; i++)
-            if (ch == infix[i])
+        for (int i = 0; i < infix.length; i++) {
+            if (ch == infix[i]) {
                 return i;
+            }
+        }
         return -1;
     }
 }

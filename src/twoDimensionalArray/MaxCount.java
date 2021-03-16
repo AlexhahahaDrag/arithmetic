@@ -47,28 +47,36 @@ public class MaxCount {
         int[] row = new int[m];
         int[] column = new int[n];
         for (int i = 0; i < ops.length; i++) {
-            for (int j = 0; j < m && j < ops[i][0]; j++)
+            for (int j = 0; j < m && j < ops[i][0]; j++) {
                 row[j]++;
-            for (int k = 0; k < n && k < ops[i][1]; k++)
+            }
+            for (int k = 0; k < n && k < ops[i][1]; k++) {
                 column[k]++;
+            }
         }
         int ro = 0;
-        for (int i = 0; i < row.length; i++)
-            if (row[0] == row[i])
+        for (int i = 0; i < row.length; i++) {
+            if (row[0] == row[i]) {
                 ro++;
+            }
+        }
             int col = 0;
-        for (int i = 0; i < column.length; i++)
-            if (column[0] == column[i])
+        for (int i = 0; i < column.length; i++) {
+            if (column[0] == column[i]) {
                 col++;
+            }
+        }
             return col * ro;
     }
 
     public int maxCount(int m, int n, int[][] ops) {
         for (int i = 0; i < ops.length; i++) {
-            if (ops[i][0] < m)
+            if (ops[i][0] < m) {
                 m = ops[i][0];
-            if (ops[i][i] < n)
+            }
+            if (ops[i][i] < n) {
                 n = ops[i][1];
+            }
         }
         return m * n;
     }

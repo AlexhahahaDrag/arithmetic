@@ -30,8 +30,9 @@ public class Respace {
 
     public int respace(String[] dictionary, String sentence) {
         Trie diction = new Trie();
-        for (String dic : dictionary)
+        for (String dic : dictionary) {
             diction.insert(dic);
+        }
         int len = sentence.length();
         int[] dp = new int[len + 1];
         dp[0] = 0;
@@ -40,12 +41,15 @@ public class Respace {
             dp[i] = dp[i - 1] + 1;
             for (int j = i; j >= 1; j--) {
                 int in = sentence.charAt(j - 1) - 'a';
-                if (trie.next[in] == null)
+                if (trie.next[in] == null) {
                     break;
-                if (trie.next[in].isEnd)
+                }
+                if (trie.next[in].isEnd) {
                     dp[i] = Math.min(dp[i], dp[j - 1]);
-                if (dp[i] == 0)
+                }
+                if (dp[i] == 0) {
                     break;
+                }
                 trie = trie.next[in];
             }
         }
@@ -68,8 +72,9 @@ public class Respace {
             int index = s.length() - 1;
             while(index >= 0) {
                 int in = s.charAt(index--) - 'a';
-                if (cur.next[in] == null)
+                if (cur.next[in] == null) {
                     cur.next[in] = new Trie();
+                }
                 cur = cur.next[in];
             }
             cur.isEnd = true;

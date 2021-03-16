@@ -58,14 +58,15 @@ public class CompareVersionNumbers {
         int i=0;
        while(i < s1.length&&i< s2.length){
            boolean fl=Integer.valueOf(s1[i])==Integer.valueOf(s2[i]);
-            if (s1[i].length()!=s2[i].length()&&Integer.valueOf(s1[i])==Integer.valueOf(s2[i]))
+            if (s1[i].length()!=s2[i].length()&&Integer.valueOf(s1[i])==Integer.valueOf(s2[i])) {
                 return 0;
-            else if (Integer.valueOf(s1[i])>Integer.valueOf(s2[i])){
+            } else if (Integer.valueOf(s1[i])>Integer.valueOf(s2[i])){
                 return 1;
-            }else if (Integer.valueOf(s1[i])<Integer.valueOf(s2[i]))
+            }else if (Integer.valueOf(s1[i])<Integer.valueOf(s2[i])) {
                 return -1;
-            else
+            } else {
                 i++;
+            }
         }
         while(i<s1.length){
             if (Integer.valueOf(s1[i])!=0){

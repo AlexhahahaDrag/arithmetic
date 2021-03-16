@@ -32,12 +32,13 @@ public class BinarySearch {
         int end=nums.length-1;
         while(start<=end){
             int middle=(start+end)>>>1;
-            if(target>nums[middle])
+            if(target>nums[middle]) {
                 start=middle+1;
-            else if((target<nums[middle]))
+            } else if((target<nums[middle])) {
                 end=middle-1;
-            else
+            } else {
                 return middle;
+            }
         }
         return -1;
     }

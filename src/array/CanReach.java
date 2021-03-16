@@ -49,13 +49,15 @@ public class CanReach {
     }
 
     private boolean reach(int[] arr, int start, boolean[] map) {
-        if (start < 0 || start >= arr.length || map[start])
+        if (start < 0 || start >= arr.length || map[start]) {
             return false;
+        }
         map[start] = true;
-        if (arr[start] == 0)
+        if (arr[start] == 0) {
             return true;
-        else
+        } else {
             return reach(arr, start + arr[start], map) || reach(arr, start - arr[start], map);
+        }
     }
 
     public static void main(String[] args) {

@@ -22,8 +22,9 @@ public class CountOfRangeSum {
             long sum=0;
             for (int j = i; j < nums.length; j++) {
                 sum+=nums[j];
-                if (sum>=lower&&sum<=upper)
+                if (sum>=lower&&sum<=upper) {
                     result++;
+                }
             }
         }
         return result;

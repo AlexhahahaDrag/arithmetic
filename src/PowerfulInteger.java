@@ -15,18 +15,22 @@ public class PowerfulInteger {
             int j=0;
             sumX=0;
             sumX+=(int)Math.pow(y,i++);
-            if (sumX>bound)
+            if (sumX>bound) {
                 break;
+            }
             while(true){
                 long sumY=sumX+(int)Math.pow(x,j++);
-                if (sumY>bound)
+                if (sumY>bound) {
                     break;
+                }
                 list.add(sumY>Integer.MAX_VALUE?Integer.MAX_VALUE:(int)sumY);
-                if (x==1)
+                if (x==1) {
                     break;
+                }
             }
-            if (y==1)
+            if (y==1) {
                 break;
+            }
         }
         return new ArrayList<>(list);
     }

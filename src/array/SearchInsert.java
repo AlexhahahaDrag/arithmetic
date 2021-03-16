@@ -40,25 +40,29 @@ import java.util.Arrays;
 public class SearchInsert {
 
     public int searchInsert(int[] nums, int target) {
-        if (target < nums[0])
+        if (target < nums[0]) {
             return 0;
+        }
         int len = nums.length;
-        if (target > nums[len - 1])
+        if (target > nums[len - 1]) {
             return len;
+        }
         int left = 0;
         int right = len - 1;
         int mid = 0;
         while(left < right) {
             mid = left + (right - left >> 1);
-            if (nums[mid] == target)
+            if (nums[mid] == target) {
                 return mid;
-            else if (nums[mid] < target) {
-                if (nums[mid + 1] >= target)
+            } else if (nums[mid] < target) {
+                if (nums[mid + 1] >= target) {
                     return mid + 1;
+                }
                 left = mid + 1;
             } else {
-                if (nums[mid - 1] < target)
+                if (nums[mid - 1] < target) {
                     return mid;
+                }
                 right = mid;
             }
         }

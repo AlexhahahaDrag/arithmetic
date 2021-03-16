@@ -40,16 +40,18 @@ public class IsNStraightHand {
     int index = 0;
     public boolean isNStraightHand(int[] hand, int W) {
         int len = hand.length;
-        if (len % W != 0)
+        if (len % W != 0) {
             return false;
+        }
         Arrays.sort(hand);
         clear(hand, W);
         return index == len;
     }
 
     private void clear(int[] hand, int W) {
-        if (hand == null || hand.length == 0)
+        if (hand == null || hand.length == 0) {
             return;
+        }
         int num = 1;
         int pre = hand[0];
         hand[0] = -2;
@@ -64,9 +66,11 @@ public class IsNStraightHand {
             if (num == W) {
                 int[] newHand = new int[hand.length - W];
                 int in = 0;
-                for (int j = 0; j < hand.length; j++)
-                    if (hand[j] != -2)
+                for (int j = 0; j < hand.length; j++) {
+                    if (hand[j] != -2) {
                         newHand[in++] = hand[j];
+                    }
+                }
                 clear(newHand, W);
                 break;
             }

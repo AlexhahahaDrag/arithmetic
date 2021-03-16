@@ -50,14 +50,17 @@ public class PruneTree {
     }
 
     private boolean prune(TreeNode node) {
-        if (node == null)
+        if (node == null) {
             return false;
+        }
         boolean le = prune(node.left);
         boolean ri = prune(node.right);
-        if (!le)
+        if (!le) {
             node.left = null;
-        if (!ri)
+        }
+        if (!ri) {
             node.right = null;
+        }
         return le || ri || node.val == 1;
     }
 

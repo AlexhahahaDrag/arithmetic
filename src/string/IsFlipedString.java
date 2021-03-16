@@ -26,24 +26,28 @@ package string;
 public class IsFlipedString {
 
     public boolean isFlipedString1(String s1, String s2) {
-        if(s1.length() != s2.length())
+        if(s1.length() != s2.length()) {
             return false;
-        if (s1.length() == 0 && s2.length() == 0)
+        }
+        if (s1.length() == 0 && s2.length() == 0) {
             return true;
+        }
         int index = 0;
         int len = s1.length();
         while(index < len) {
             if((s1.substring(index).equals(s2.substring(0, len -index))) &&
-                    (s1.substring(0, index).equals(s2.substring(len - index))))
+                    (s1.substring(0, index).equals(s2.substring(len - index)))) {
                 return true;
+            }
             index++;
         }
         return false;
     }
 
     public boolean isFlipedString(String s1, String s2) {
-        if(s1.length() != s2.length())
+        if(s1.length() != s2.length()) {
             return false;
+        }
         String s = s1 + s1;
         return s.indexOf(s2) >= 0;
     }

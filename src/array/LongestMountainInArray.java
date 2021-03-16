@@ -48,17 +48,22 @@ public class LongestMountainInArray {
         for (int i = 1; i < A.length; ) {
             if (A[i] > A[i - 1]) {
                 int j = i;
-                while (j < A.length && A[j] > A[j - 1])
+                while (j < A.length && A[j] > A[j - 1]) {
                     j++;
-                if (j == A.length)
+                }
+                if (j == A.length) {
                     break;
-                while (j < A.length && A[j] < A[j - 1])
+                }
+                while (j < A.length && A[j] < A[j - 1]) {
                     j++;
-                if (j - i > 1)
+                }
+                if (j - i > 1) {
                     res = res >= j - i + 1 ? res : j - i + 1;
+                }
                 i = j;
-            } else
+            } else {
                 i++;
+            }
         }
         return res;
     }

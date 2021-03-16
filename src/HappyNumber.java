@@ -31,11 +31,11 @@ public class HappyNumber {
             result += Math.pow(n%10, 2);
             n /= 10;
         }
-        if (result == 1)
+        if (result == 1) {
             return true;
-        else if (list.contains(result))
+        } else if (list.contains(result)) {
             return false;
-        else {
+        } else {
             list.add(result);
             return isHappyList(result, list);
         }
@@ -51,10 +51,12 @@ public class HappyNumber {
                 result += Math.pow(n%10, 2);
                 n /= 10;
             }
-            if (result == 1)
+            if (result == 1) {
                 return true;
-            if (result == 4)
+            }
+            if (result == 4) {
                 return false;
+            }
             n = result;
         }
     }

@@ -31,8 +31,9 @@ public class Permutations {
             p--;
             if (nums[p] < nums[q]) {
                 pFind = nums.length - 1;
-                while(nums[pFind] < nums[p])
+                while(nums[pFind] < nums[p]) {
                     pFind--;
+                }
                 swap(nums, pFind, p);
                 sort(nums, q, nums.length - 1);
                 list.add(getList(nums));
@@ -43,8 +44,9 @@ public class Permutations {
     }
 
     private void sort(int[] arr, int i, int j) {
-        while(i < j)
+        while(i < j) {
             swap(arr, i++, j--);
+        }
     }
 
     private void swap(int[] arr, int i, int j) {
@@ -55,8 +57,9 @@ public class Permutations {
 
     private List<Integer> getList(int[] arr) {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < arr.length; i++) {
             list.add(arr[i]);
+        }
         return list;
     }
 }

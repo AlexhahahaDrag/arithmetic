@@ -53,21 +53,25 @@ import java.util.Queue;
 public class SortByBits {
 
     public int[] sortByBits(int[] arr) {
-        if (arr == null || arr.length == 0)
+        if (arr == null || arr.length == 0) {
             return arr;
+        }
         Queue<Integer>[] map = new PriorityQueue[32];
         for(int i : arr) {
             int nu = one(i);
-            if (map[nu] == null)
+            if (map[nu] == null) {
                 map[nu] = new PriorityQueue<>();
+            }
             map[nu].add(i);
         }
         int index = 0;
         for (Queue<Integer> queue : map) {
-            if (queue == null)
+            if (queue == null) {
                 continue;
-            while (!queue.isEmpty())
+            }
+            while (!queue.isEmpty()) {
                 arr[index++] = queue.poll();
+            }
         }
         return arr;
     }
@@ -85,7 +89,8 @@ public class SortByBits {
         SortByBits sortByBits = new SortByBits();
         int[] arr = {15,2,3,5,7,11,13,17,19};
         int[] res = sortByBits.sortByBits(arr);
-        for (int i : res)
+        for (int i : res) {
             System.out.print(i + "   ");
+        }
     }
 }

@@ -31,12 +31,15 @@ public class IsPalindromeString {
         int end = s.length() - 1;
         s = s.toLowerCase();
         while(start < end) {
-            while(start < end && !Character.isLetter(s.charAt(start)) && !Character.isDigit(s.charAt(start)))
+            while(start < end && !Character.isLetter(s.charAt(start)) && !Character.isDigit(s.charAt(start))) {
                 start++;
-            while(start < end && !Character.isLetter(s.charAt(end)) && !Character.isDigit(s.charAt(end)))
+            }
+            while(start < end && !Character.isLetter(s.charAt(end)) && !Character.isDigit(s.charAt(end))) {
                 end--;
-            if (s.charAt(start) != s.charAt(end))
+            }
+            if (s.charAt(start) != s.charAt(end)) {
                 return false;
+            }
             start++;
             end--;
         }
@@ -53,13 +56,14 @@ public class IsPalindromeString {
             if (cs == ce) {
                 start++;
                 end--;
-            } else if (!((cs >= 'a' && cs <= 'z') || (cs >= 'A' && cs <= 'Z') || (cs >= '0' && cs <= '9')))
+            } else if (!((cs >= 'a' && cs <= 'z') || (cs >= 'A' && cs <= 'Z') || (cs >= '0' && cs <= '9'))) {
                 start++;
-            else if (!((ce >= 'a' && ce <= 'z') || (ce >= 'A' && ce <= 'Z') || (ce >= '0' && ce <= '9')))
+            } else if (!((ce >= 'a' && ce <= 'z') || (ce >= 'A' && ce <= 'Z') || (ce >= '0' && ce <= '9'))) {
                 end--;
-            else {
-                if ((cs & 0xDF) != (ce & 0xDF))
+            } else {
+                if ((cs & 0xDF) != (ce & 0xDF)) {
                     return false;
+                }
                 start++;
                 end--;
             }

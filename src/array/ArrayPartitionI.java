@@ -26,22 +26,25 @@ public class ArrayPartitionI {
     public int arrayPairSum1(int[] nums) {
         Arrays.sort(nums);
         int sum=0;
-        for(int i=0;i<nums.length;i+=2)
+        for(int i=0;i<nums.length;i+=2) {
             sum+=nums[i];
+        }
         return sum;
     }
     public int arrayPairSum(int[] nums) {
         int[] buckets=new int[10000*2+1];
-        for (int num:nums)
+        for (int num:nums) {
             buckets[num+10000]++;
+        }
         int is_odd=0;
         int sum=0;
         for (int i = 0; i < 20000; i++) {
             if (buckets[i]!=0){
                 sum+=(i-10000)*((buckets[i]-is_odd)>>1);
                 is_odd=(buckets[i]-is_odd)&1;
-                if (is_odd==1)
+                if (is_odd==1) {
                     sum+=i-10000;
+                }
             }
         }
         return sum;

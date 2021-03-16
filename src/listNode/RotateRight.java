@@ -28,8 +28,9 @@ package listNode;
 public class RotateRight {
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (k == 0 || head == null)
+        if (k == 0 || head == null) {
             return head;
+        }
         ListNode te = head;
         int len = 0;
         while(te != null) {
@@ -37,8 +38,9 @@ public class RotateRight {
             len++;
         }
         k %= len;
-        if (len < 2 || k == 0)
+        if (len < 2 || k == 0) {
             return head;
+        }
         ListNode cur = head;
         ListNode pre = null;
         while(len - k++ > 0) {
@@ -47,8 +49,9 @@ public class RotateRight {
         }
         ListNode res = cur;
         pre.next = null;
-        while(cur.next != null)
+        while(cur.next != null) {
             cur = cur.next;
+        }
         cur.next = head;
         return res;
     }

@@ -34,17 +34,20 @@ public class RemoveAllAdjacentDuplicatesInString {
         char[] strs=S.toCharArray();
         for(int i=1;i<strs.length;i++){
             int add=1;
-            while(i-add>-1&&strs[i-add]==' ')
+            while(i-add>-1&&strs[i-add]==' ') {
                 add++;
+            }
             if (i-add>=0&&strs[i]==strs[i-add]){
                 strs[i]=' ';
                 strs[i-add]=' ';
             }
         }
         StringBuilder sb=new StringBuilder();
-        for (int j=0; j<strs.length;j++)
-            if (strs[j]!=' ')
+        for (int j=0; j<strs.length;j++) {
+            if (strs[j]!=' ') {
                 sb.append(strs[j]);
+            }
+        }
         return sb.toString();
     }
     public String removeDuplicates1(String S) {
@@ -52,17 +55,20 @@ public class RemoveAllAdjacentDuplicatesInString {
         boolean[] flags=new boolean[strs.length];
         for(int i=1;i<strs.length;i++){
             int add=1;
-            while(i-add>-1&&flags[i-add])
+            while(i-add>-1&&flags[i-add]) {
                 add++;
+            }
             if (i-add>=0&&strs[i]==strs[i-add]){
                 flags[i]=true;
                 flags[i-add]=true;
             }
         }
         StringBuilder sb=new StringBuilder();
-        for (int j=0; j<flags.length;j++)
-            if (!flags[j])
+        for (int j=0; j<flags.length;j++) {
+            if (!flags[j]) {
                 sb.append(strs[j]);
+            }
+        }
         return sb.toString();
     }
 }

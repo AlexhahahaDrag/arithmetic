@@ -9,8 +9,9 @@ public class FindLatestStep {
         for(int i : arr) {
             step++;
             find(map, i - 1, m);
-            if (count != 0)
+            if (count != 0) {
                 res =  step;
+            }
         }
         return res == 0 ? - 1 : res;
     }
@@ -18,21 +19,26 @@ public class FindLatestStep {
     private void find(int[] map, int i, int m) {
         int sum = 1;
         if(i - 1 >= 0 && map[i - 1] != 0) {
-            if (map[i - 1] == m)
+            if (map[i - 1] == m) {
                 count--;
+            }
             sum += map[i - 1];
         }
         if (i + 1 < map.length && map[i + 1] != 0){
-            if (map[i + 1] == m)
+            if (map[i + 1] == m) {
                 count--;
+            }
             sum += map[i + 1];
         }
-        if (sum == m)
+        if (sum == m) {
             count++;
-        if(i - 1 >= 0)
+        }
+        if(i - 1 >= 0) {
             map[i - map[i - 1]] = sum;
-        if (i + 1 < map.length)
+        }
+        if (i + 1 < map.length) {
             map[i + map[i + 1]] = sum;
+        }
     }
 
     public static void main(String[] args) {

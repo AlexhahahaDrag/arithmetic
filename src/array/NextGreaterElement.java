@@ -38,22 +38,27 @@ package array;
 public class NextGreaterElement {
 
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        for(int i = 0; i < nums1.length; i++)
+        for(int i = 0; i < nums1.length; i++) {
             nums1[i] = findMore(nums2, findNum(nums2, nums1[i]), nums1[i]);
+        }
         return nums1;
     }
 
     private int findNum(int[] num, int nu) {
-        for(int i = 0; i < num.length; i++)
-            if(num[i] == nu)
+        for(int i = 0; i < num.length; i++) {
+            if(num[i] == nu) {
                 return i;
+            }
+        }
         return -1;
     }
 
     private int findMore(int[] num, int start, int nu) {
-        for(int i = start + 1; i < num.length; i++)
-            if(num[i] > nu)
+        for(int i = start + 1; i < num.length; i++) {
+            if(num[i] > nu) {
                 return num[i];
+            }
+        }
         return -1;
     }
 
@@ -62,7 +67,8 @@ public class NextGreaterElement {
         int[] nums2 = {1,3,4,2};
         NextGreaterElement nextGreaterElement = new NextGreaterElement();
         int[] res = nextGreaterElement.nextGreaterElement(nums1, nums2);
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + " ");
+        }
     }
 }

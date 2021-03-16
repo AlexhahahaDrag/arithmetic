@@ -13,11 +13,13 @@ public class KClosestPointsToOrigin {
     }
     public static int[][] kClosest1(int[][] points,int K){
         int[][] results=new int[K][2];
-        if(K>=points.length)
+        if(K>=points.length) {
             return points;
+        }
         int[] x=new int[points.length];
-        for(int i=0;i<x.length;i++)
+        for(int i=0;i<x.length;i++) {
             x[i]=distance(points[i]);
+        }
         Arrays.sort(x);
         int index=0;
         for(int i=0;i<points.length;i++){
@@ -25,15 +27,20 @@ public class KClosestPointsToOrigin {
                 results[index][0]=points[i][0];
                 results[index][1]=points[i][1];
                 index++;
-                if(index==K)
+                if(index==K) {
                     break;
+                }
             }
         }
         return results;
     }
     public static int[][] kClosest(int[][] points, int K) {
-        if(points == null || points.length == 0) return points;
-        if(K < 1) return new int[][]{{0,0}};
+        if(points == null || points.length == 0) {
+            return points;
+        }
+        if(K < 1) {
+            return new int[][]{{0,0}};
+        }
         int left = 0;
         int right = points.length - 1;
         while(left < right) {

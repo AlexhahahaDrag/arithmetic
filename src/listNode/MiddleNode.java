@@ -38,8 +38,9 @@ public class MiddleNode {
         ListNode fast = head;
         ListNode slow = head;
         while(slow != null && fast != null) {
-            if(fast.next == null)
+            if(fast.next == null) {
                 break;
+            }
             slow = slow.next;
             fast = fast.next.next;
         }

@@ -35,15 +35,18 @@ public class CheckRecord {
             char ch = s.charAt(index);
             if ('A' == ch) {
                 a++;
-                if(a > 1)
+                if(a > 1) {
                     return false;
+                }
                 l = 0;
             } else if ('L' == ch) {
                 l++;
-                if (l > 2)
+                if (l > 2) {
                     return false;
-            } else
+                }
+            } else {
                 l = 0;
+            }
         }
         return true;
     }

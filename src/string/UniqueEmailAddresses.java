@@ -48,11 +48,13 @@ public class UniqueEmailAddresses {
     public int numUniqueEmails1(String[] emails) {
         Set<String> set=new HashSet<>();
         for(String email:emails){
-            if (email.startsWith("+"))
+            if (email.startsWith("+")) {
                 continue;
+            }
             String[] str=email.split("@");
-            if (str.length!=2)
+            if (str.length!=2) {
                 continue;
+            }
             int st=str[0].indexOf("+");
             String str1=str[0];
             if (st!=-1) {

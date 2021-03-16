@@ -30,12 +30,14 @@ public class ShortestDistanceToACharacter {
         int len=S.length();
         int[] nums=new int[len];
         int charIndex=S.indexOf(C);
-        if (charIndex==-1)
+        if (charIndex==-1) {
             return nums;
+        }
         while(index<len) {
             int charIndex1 = S.indexOf(C, charIndex + 1);
-            if (charIndex1!=-1&&Math.abs(charIndex-index)>Math.abs(charIndex1-index))
+            if (charIndex1!=-1&&Math.abs(charIndex-index)>Math.abs(charIndex1-index)) {
                 charIndex=charIndex1;
+            }
             nums[index]=Math.abs(charIndex-index++);
         }
         return nums;

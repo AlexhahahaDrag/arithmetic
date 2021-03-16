@@ -92,17 +92,19 @@ public class FindElements {
     }
 
     public boolean find(int target) {
-        if (tNode == null || tNode.val > target)
+        if (tNode == null || tNode.val > target) {
             return false;
-        else if (tNode.val == target)
+        } else if (tNode.val == target) {
             return true;
+        }
         return finds(tNode.left, target) || finds(tNode.right, target);
     }
     private boolean finds(TreeNode node, int target) {
-        if (node == null || node.val > target)
+        if (node == null || node.val > target) {
             return false;
-        else if (node.val == target)
+        } else if (node.val == target) {
             return true;
+        }
         return finds(node.left, target) || finds(node.right, target);
     }
 }

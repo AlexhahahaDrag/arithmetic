@@ -22,8 +22,9 @@ package array;
 public class MaxProfitIIII {
 
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0)
+        if (prices == null || prices.length == 0) {
             return 0;
+        }
         //表示第i天手上有股票的收益
         int f1 = -prices[0];
         //表示第i天手上无股票，且处于冻结状态的收益

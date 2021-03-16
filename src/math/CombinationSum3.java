@@ -37,8 +37,9 @@ public class CombinationSum3 {
         if (map.length == size){
             if (n == 0) {
                 List<Integer> li = new ArrayList<>();
-                for(int i : map)
+                for(int i : map) {
                     li.add(i);
+                }
                 res.add(li);
             }
             return;

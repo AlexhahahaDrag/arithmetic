@@ -41,8 +41,9 @@ public class FindRestaurant {
 
     public String[] findRestaurant1(String[] list1, String[] list2) {
         Map<String, Integer> map = new HashMap<>();
-        for(int i = 0; i < list1.length; i++)
+        for(int i = 0; i < list1.length; i++) {
             map.put(list1[i], i);
+        }
         int min = Integer.MAX_VALUE;
         int size = 0;
         for(int j = 0; j < list2.length; j++) {
@@ -51,8 +52,9 @@ public class FindRestaurant {
                 if(min > index) {
                     min = index;
                     size = 1;
-                } else if (min == index)
+                } else if (min == index) {
                     size++;
+                }
             }
         }
         String[] result = new String[size];
@@ -60,8 +62,9 @@ public class FindRestaurant {
         for(int k = 0; k < list2.length; k++) {
             if(map.containsKey(list2[k])) {
                 int index = map.get(list2[k]) + k;
-                if (min == index)
+                if (min == index) {
                     result[start++] = list2[k];
+                }
             }
         }
         return result;
@@ -69,8 +72,9 @@ public class FindRestaurant {
 
     public String[] findRestaurant(String[] list1, String[] list2) {
         Map<String, Integer> map = new HashMap<>();
-        for(int i = 0; i < list1.length; i++)
+        for(int i = 0; i < list1.length; i++) {
             map.put(list1[i], i);
+        }
         int min = Integer.MAX_VALUE;
         List<String> list = null;
         for(int j = 0; j < list2.length; j++) {
@@ -80,8 +84,9 @@ public class FindRestaurant {
                     min = index;
                     list = new ArrayList<>();
                     list.add(list2[j]);
-                } else if (min == index)
+                } else if (min == index) {
                     list.add(list2[j]);
+                }
             }
         }
         return (String[]) list.toArray(new String[list.size()]);
@@ -92,7 +97,8 @@ public class FindRestaurant {
         String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
         String[] list2 = {"KFC","Burger King","Tapioca Express","Shogun"};
         String[] result = findRestaurant.findRestaurant(list1, list2);
-        for (String s : result)
+        for (String s : result) {
             System.out.println(s);
+        }
     }
 }

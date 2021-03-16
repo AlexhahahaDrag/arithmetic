@@ -16,14 +16,18 @@ public class MinimumEffortPath {
             return;
         }
         visited[i][j] = true;
-        if (i - 1 >= 0 && !visited[i - 1][j] && Math.abs(heights[i - 1][j] - heights[i][j]) < min)
+        if (i - 1 >= 0 && !visited[i - 1][j] && Math.abs(heights[i - 1][j] - heights[i][j]) < min) {
             dfs(heights, i - 1, j, Math.max(Math.abs(heights[i - 1][j] - heights[i][j]), cur));
-        if (i + 1 < heights.length && !visited[i + 1][j] && Math.abs(heights[i + 1][j] - heights[i][j]) < min)
+        }
+        if (i + 1 < heights.length && !visited[i + 1][j] && Math.abs(heights[i + 1][j] - heights[i][j]) < min) {
             dfs(heights, i + 1, j, Math.max(Math.abs(heights[i + 1][j] - heights[i][j]), cur));
-        if (j - 1 >= 0 && !visited[i][j - 1] && Math.abs(heights[i][j - 1] - heights[i][j]) < min)
+        }
+        if (j - 1 >= 0 && !visited[i][j - 1] && Math.abs(heights[i][j - 1] - heights[i][j]) < min) {
             dfs(heights, i, j - 1, Math.max(Math.abs(heights[i][j - 1] - heights[i][j]), cur));
-        if (j + 1 < heights[0].length && !visited[i][j + 1] && Math.abs(heights[i][j + 1] - heights[i][j]) < min)
+        }
+        if (j + 1 < heights[0].length && !visited[i][j + 1] && Math.abs(heights[i][j + 1] - heights[i][j]) < min) {
             dfs(heights, i ,j + 1, Math.max(Math.abs(heights[i][j + 1] - heights[i][j]), cur));
+        }
         visited[i][j] = false;
     }
 

@@ -42,8 +42,9 @@ public class BinaryTreeTilt {
         return tilt;
     }
     public static int getSum(TreeNode root) {
-        if(root==null)
+        if(root==null) {
             return 0;
+        }
         int left=getSum(root.left);
         int right=getSum(root.right);
         tilt+=Math.abs(left-right);

@@ -21,10 +21,11 @@ public class TwoNumberSum {
                 arr1[0]=start;
                 arr1[1]=end;
                 break;
-            }else if (num>(arr[start]+arr[end]))
+            }else if (num>(arr[start]+arr[end])) {
                 start++;
-            else
+            } else {
                 end--;
+            }
         }
         return arr1;
     }

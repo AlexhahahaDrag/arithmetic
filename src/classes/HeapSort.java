@@ -20,8 +20,9 @@ public class HeapSort <AnyType extends Comparable<? super AnyType>>{
     }
 
     private void buildHeap(AnyType[] arr) {
-        for (int i = size >> 1; i >= 0; i--)
+        for (int i = size >> 1; i >= 0; i--) {
             down(arr, i);
+        }
     }
 
     private void down(AnyType[] arr, int i) {
@@ -30,12 +31,14 @@ public class HeapSort <AnyType extends Comparable<? super AnyType>>{
         int j;
         for (j = i; (j + 1) * 2 - 1 < size; j = child) {
             child = (j + 1) * 2 - 1;
-            if (child < size - 1 && arr[child + 1].compareTo(arr[child]) > 0)
+            if (child < size - 1 && arr[child + 1].compareTo(arr[child]) > 0) {
                 child++;
-            if (temp.compareTo(arr[child]) < 0)
+            }
+            if (temp.compareTo(arr[child]) < 0) {
                 arr[j] = arr[child];
-            else
+            } else {
                 break;
+            }
         }
         arr[j] = temp;
     }
@@ -44,7 +47,8 @@ public class HeapSort <AnyType extends Comparable<? super AnyType>>{
         Integer[] arr = {-1, 2, -56, 6, 28, 35, -42, 5, 6, 9};
         HeapSort heapSort = new HeapSort();
         heapSort.heapSort(arr);
-        for (int i : arr)
+        for (int i : arr) {
             System.out.print(i + "  ");
+        }
     }
 }

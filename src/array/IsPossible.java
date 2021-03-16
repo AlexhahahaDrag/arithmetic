@@ -56,14 +56,16 @@ public class IsPossible {
 
     private boolean find(int[] target)  {
         long dif = target[target.length - 1] - sum(target);
-        if (dif < 1)
+        if (dif < 1) {
             return false;
+        }
         target[target.length - 1] = (int)dif;
         sort(target);
-        if (target[target.length - 1] == 1)
+        if (target[target.length - 1] == 1) {
             return true;
-        else
+        } else {
             return find(target);
+        }
     }
 
     private void sort(int[] target) {
@@ -78,8 +80,9 @@ public class IsPossible {
 
     private long sum(int[] target) {
         long sum = 0;
-        for (int i = 0; i < target.length - 1; i++)
+        for (int i = 0; i < target.length - 1; i++) {
             sum += target[i];
+        }
         return sum;
     }
 

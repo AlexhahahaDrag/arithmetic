@@ -29,15 +29,17 @@ public class NumberOf2sInRange {
     }
 
     private int find(int n) {
-        if (n < 2)
+        if (n < 2) {
             return 0;
+        }
         int digit = getDigit(n);
         int ten = (int) Math.pow(10, digit - 1);
         int count = 0;
-        if (n / ten == 2)
+        if (n / ten == 2) {
             count =  n % ten + 1;
-         else if (n / ten > 2)
+        } else if (n / ten > 2) {
             count = (int)Math.pow(10, digit - 1) ;
+        }
         return count + find(n % ten) + n / ten * (digit - 1) * (int)Math.pow(10, digit - 2);
     }
 

@@ -58,8 +58,9 @@ public class MinInteger {
     }
 
     private void findMin(char[] num, int start, int k) {
-        if (start > num.length || k <= 0)
+        if (start > num.length || k <= 0) {
             return;
+        }
         int len = Math.min(num.length - start - 1, k);
         int index = find(num, start, len + start);
         if (index != start) {
@@ -71,16 +72,19 @@ public class MinInteger {
 
     private void swap(char[] num, int i, int j) {
         char temp = num[j];
-        while(i <= --j)
+        while(i <= --j) {
             num[j + 1] = num[j] ;
+        }
         num[i] = temp;
     }
 
     private int find(char[] ches, int start, int end) {
         Integer min = start;
-        for (int i = start; i <= end; i++)
-            if (ches[min] > ches[i])
+        for (int i = start; i <= end; i++) {
+            if (ches[min] > ches[i]) {
                 min = i;
+            }
+        }
         return min;
     }
 

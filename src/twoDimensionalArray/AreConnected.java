@@ -14,10 +14,11 @@ public class AreConnected {
     public List<Boolean> areConnected(int n, int threshold, int[][] queries) {
         res = new ArrayList<>();
         for (int i = 0; i < queries.length; i++) {
-            if (gcb(queries[i][0], queries[i][1]) > threshold)
+            if (gcb(queries[i][0], queries[i][1]) > threshold) {
                 res.add(true);
-            else
+            } else {
                 res.add(false);
+            }
         }
         return res;
     }

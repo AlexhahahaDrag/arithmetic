@@ -40,10 +40,11 @@ public class Calculate {
         int res = 0;
         while(index < len) {
             char ch = s.charAt(index++);
-            if (ch >= '0' && ch <= '9')
+            if (ch >= '0' && ch <= '9') {
                 res = res * 10 + ch - (int)'0';
-            else
+            } else {
                 break;
+            }
         }
         stack.add(res);
         return index - 1;

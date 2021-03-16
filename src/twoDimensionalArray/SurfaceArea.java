@@ -44,49 +44,60 @@ package twoDimensionalArray;
 public class SurfaceArea {
 
     public int surfaceArea1(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0)
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
+        }
         int[][] map = new int[grid.length][grid[0].length];
-        if (grid[0][0] != 0)
+        if (grid[0][0] != 0) {
             map[0][0] = 4 * grid[0][0] + 2;
+        }
         for (int i = 1; i < grid.length; i++) {
             map[i][0] = map[i - 1][0];
-            if(grid[i][0] != 0)
+            if(grid[i][0] != 0) {
                 map[i][0] += 4 * grid[i][0] + 2 - 2 * Math.min(grid[i][0], grid[i - 1][0]);
+            }
         }
         for (int j = 1; j < grid[0].length; j++)  {
             map[0][j] = map[0][j - 1];
-            if (grid[0][j] != 0)
+            if (grid[0][j] != 0) {
                 map[0][j] += 4 * grid[0][j] + 2 - 2 * Math.min(grid[0][j], grid[0][j - 1]);
+            }
         }
         for(int i = 1; i < grid.length; i++) {
             for (int j = 1; j < grid[0].length; j++) {
                 map[i][j] = map[i - 1][j] + map[i][j - 1] - map[i - 1][ j -1];
-                if (grid[i][j] != 0)
+                if (grid[i][j] != 0) {
                     map[i][j] += 4 * grid[i][j] + 2 - 2 * (Math.min(grid[i][j], grid[i - 1][j]) + Math.min(grid[i][j], grid[i][j - 1]));
+                }
             }
         }
         return map[grid.length - 1][grid[0].length - 1];
     }
 
     public int surfaceArea(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0)
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
+        }
         int sum = 0;
-        for(int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[0].length; j++)
-               sum += findSurface(grid, i, j);
+        for(int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                sum += findSurface(grid, i, j);
+            }
+        }
         return sum;
     }
 
     private int findSurface(int[][] grid, int i, int j) {
-        if (grid[i][j] == 0)
+        if (grid[i][j] == 0) {
             return 0;
+        }
         int cur = 4 * grid[i][j] + 2;
-        if (i - 1 >= 0)
+        if (i - 1 >= 0) {
             cur -= 2 * Math.min(grid[i - 1][j], grid[i][j]);
-        if (j - 1 >= 0)
+        }
+        if (j - 1 >= 0) {
             cur -= 2 * Math.min(grid[i][j - 1], grid[i][j]);
+        }
         return cur;
     }
 

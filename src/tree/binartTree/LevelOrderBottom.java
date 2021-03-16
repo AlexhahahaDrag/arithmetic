@@ -10,14 +10,16 @@ public class LevelOrderBottom {
         res = new ArrayList<>();
         level(root, 0);
         List<List<Integer>> result = new ArrayList<>();
-        for (List<Integer> li : res)
+        for (List<Integer> li : res) {
             result.add(0, li);
+        }
         return result;
     }
 
     private void level(TreeNode root, int level) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         List<Integer> li;
         if(level == res.size()) {
             li = new ArrayList<>();

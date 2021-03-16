@@ -53,16 +53,21 @@ package array;
 public class CanBeEqual {
 
     public boolean canBeEqual(int[] target, int[] arr) {
-        if(target.length != arr.length)
+        if(target.length != arr.length) {
             return false;
+        }
         int[] map = new int[1001];
-        for(int i : arr)
+        for(int i : arr) {
             map[i]++;
-        for(int j : target)
+        }
+        for(int j : target) {
             map[j]--;
-        for(int k : target)
-            if (map[k] != 0)
+        }
+        for(int k : target) {
+            if (map[k] != 0) {
                 return false;
+            }
+        }
         return true;
     }
 
