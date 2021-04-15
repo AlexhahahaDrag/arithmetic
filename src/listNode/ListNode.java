@@ -10,7 +10,8 @@ package listNode;
 public class ListNode {
     public int val;
     public ListNode next;
-    ListNode(int x) { val = x; }
+    public ListNode(int x) { val = x; }
+    public ListNode(int x, ListNode li) { val = x; next = li;}
     public static ListNode getListNodeByArr(int[] arr) {
         ListNode first = new ListNode(0);
         if (arr.length > 0){
