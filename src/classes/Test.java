@@ -4,6 +4,9 @@ package classes;
 public class Test {
 
     public static void main(String[] args) {
+
+
+
         LFUCache cache = new LFUCache(2);
         cache.put(1,1);
         cache.put(2,2);

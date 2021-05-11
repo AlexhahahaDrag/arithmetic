@@ -56,6 +56,7 @@ package string;
 public class NumDecodings {
 
     private int res = 0;
+
     public int numDecodings(String s) {
         if (s == null || s.length() == 0 || s.charAt(0) == '0') {
              return 0;
