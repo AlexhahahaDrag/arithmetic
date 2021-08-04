@@ -32,18 +32,22 @@ public class CheckSubarraySum {
         if (nums == null || nums.length < 2) {
             return false;
         }
-        int[] sums = new int[nums.length + 1];
-        int sum = 0;
-        int index = 0;
-        for (int i : nums) {
-            sum += i;
-            sums[++index] = sum;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 0 && nums[i + 1] == 0) {
+                return true;
+            }
         }
-        for (int i = 0; i < sums.length - 2; i++) {
-            for (int j = i + 2; j < sums.length; j++) {
-                if (sums[j] - sums[i] == k || (k != 0 && (sums[j] - sums[i]) % k == 0)) {
-                    return true;
+        int sum;
+        for (int j = 0; j < nums.length - 1; j++) {
+            sum = nums[j];
+            for (int l = j + 1; l < nums.length; l++) {
+                sum += nums[l];
+                if(sum % k == 0) {
+                     return true;
                 }
+            }
+            if(sum < k) {
+                break;
             }
         }
         return false;
