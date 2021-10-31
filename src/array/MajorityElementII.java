@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class MajorityElementII {
     public static void main(String[] args) {
-        int[] arr = {0,3,4,0};
+        int[] arr = {1, 2,1,3,1,4,5,6};
         MajorityElementII majorityElementII = new MajorityElementII();
         System.out.println(majorityElementII.majorityElement(arr));
     }
