@@ -33,30 +33,70 @@ import java.util.Queue;
  * 0 <= heightMap[i][j] <= 2 * 104
  */
 public class TrapRainWater {
-
+    private int res = 0;
+    private boolean[][] visited;
+    PriorityQueue<Info> queue = new PriorityQueue<>();
+    int[][] dictionary = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public int trapRainWater(int[][] heightMap) {
-        int res = 0;
-        Queue<int[], Integer> queue = new PriorityQueue<>((o1, o2) -> o2 );
+        visited = new boolean[heightMap.length][heightMap[0].length];
         for (int i = 0; i < heightMap.length; i++) {
-            queue.add(new int[]{i, 0}, heightMap[i][0]);
-            queue.add(heightMap[i][heightMap[i].length - 1]);
+            queue.add(new Info(i, 0, heightMap[i][0]));
+            queue.add(new Info(i, heightMap[i].length - 1, heightMap[i][heightMap[i].length - 1]));
+            visited[i][0] = true;
+            visited[i][heightMap[i].length - 1] = true;
         }
         for (int j = 0; j < heightMap[0].length; j++) {
-            queue.add(heightMap[0][j]);
-            queue.add(heightMap[heightMap[0].length - 1][j]);
+            queue.add(new Info(0, j, heightMap[0][j]));
+            queue.add(new Info(heightMap.length - 1, j, heightMap[heightMap.length - 1][j]));
+            visited[0][j] = true;
+            visited[heightMap.length - 1][j] = true;
         }
-        boolean[][] visited = new boolean[heightMap.length][heightMap[0].length];
         while (!queue.isEmpty()) {
-            Integer cur = queue.poll();
-
+            Info cur = queue.poll();
+            dfs(heightMap, cur.row, cur.column, cur.val);
         }
         return res;
     }
 
-    private
+    private void dfs (int[][] heightMap, int x, int y, int val) {
+        for(int[] i : dictionary) {
+            visit(heightMap, x + i[0], y + i[1], val);
+        }
+    }
+
+    private void visit(int[][] heightMap, int x, int y, int val) {
+        if(x < 0 || y < 0 || x >= heightMap.length || y >= heightMap[x].length || visited[x][y]) {
+            return;
+        }
+        visited[x][y] = true;
+        if (val > heightMap[x][y]) {
+            res += val - heightMap[x][y];
+            heightMap[x][y] = val;
+            dfs(heightMap, x, y, val);
+        } else {
+            queue.add(new Info(x, y, heightMap[x][y]));
+        }
+    }
+
+    private static class Info implements Comparable<Info>{
+        int row;
+        int column;
+        int val;
+        public Info(int row, int column, int val){
+            this.row = row;
+            this.column = column;
+            this.val = val;
+        }
+
+        @Override
+        public int compareTo(Info o) {
+            return val - o.val;
+        }
+    }
 
     public static void main(String[] args) {
-        int[][] heightMap = {{1,4,3,1,3,2},{3,2,1,3,2,4},{2,3,3,2,3,1}};
+//        int[][] heightMap = {{1,4,3,1,3,2},{3,2,1,3,2,4},{2,3,3,2,3,1}};
+        int[][] heightMap = {{12,13,1,12},{13,4,13,12},{13,8,10,12},{12,13,12,12},{13,13,13,13}};
         TrapRainWater trapRainWater = new TrapRainWater();
         System.out.println(trapRainWater.trapRainWater(heightMap));
     }
