@@ -34,10 +34,10 @@ package array;
  * CreateDate:  2020/6/11 12:58
  * Version:     1.0
  *
-*/
+ */
 public class NextGreaterElement {
 
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+    public int[] nextGreaterElement1(int[] nums1, int[] nums2) {
         for(int i = 0; i < nums1.length; i++) {
             nums1[i] = findMore(nums2, findNum(nums2, nums1[i]), nums1[i]);
         }
@@ -62,9 +62,45 @@ public class NextGreaterElement {
         return -1;
     }
 
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int n = nums2.length;
+        int tt = 0;
+        int[] hash = new int[1001];
+        int[] map = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            while(tt != 0 && nums2[i] >= map[tt]) {
+                tt--;
+            }
+            hash[nums2[i]] = tt == 0 ? -1 : map[tt];
+            map[++tt] = nums2[i];
+        }
+        for (int i = 0; i < nums1.length; i++) {
+            nums1[i] = hash[nums1[i]];
+        }
+        return nums1;
+    }
+
+    public int[] nextGreaterElement4(int[] nums1, int[] nums2) {
+        int index;
+        for(int i = 0 ; i< nums1.length; i++) {
+            index = -1;
+            for(int j = nums2.length - 1; j >= 0; j--) {
+                if(nums2[j] == nums1[i]) {
+                    nums1[i] = index;
+                    break;
+                } else if (nums1[i] < nums2[j]) {
+                    index = nums2[j];
+                }
+            }
+        }
+        return nums1;
+    }
+
     public static void main(String[] args) {
-        int[] nums1 = {4,1,2};
-        int[] nums2 = {1,3,4,2};
+//        int[] nums1 = {4,1,2};
+//        int[] nums2 = {1,3,4,2};
+        int[] nums1 = {2,4};
+        int[] nums2 = {1,2,3,4};
         NextGreaterElement nextGreaterElement = new NextGreaterElement();
         int[] res = nextGreaterElement.nextGreaterElement(nums1, nums2);
         for(int i : res) {
