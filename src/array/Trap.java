@@ -63,7 +63,7 @@ public class Trap {
         return res;
     }
 
-    public int trap(int[] height) {
+    public int trap2(int[] height) {
         if (height == null || height.length == 0) {
             return 0;
         }
@@ -85,6 +85,30 @@ public class Trap {
                 } else {
                     res += rightMax - height[j--];
                 }
+            }
+        }
+        return res;
+    }
+
+    public int trap(int[] height) {
+        int res = 0;
+        int l = 0;
+        int r = height.length - 1;
+        int lv = height[0];
+        int rv = height[height.length - 1];
+        while(l < r) {
+            if (lv <= rv) {
+                while(l < r && lv >= height[l]) {
+                    res += lv - height[l];
+                    l++;
+                }
+                lv = height[l];
+            } else {
+                while(l < r && rv >= height[r]) {
+                    res += rv - height[r];
+                    r--;
+                }
+                rv = height[r];
             }
         }
         return res;
