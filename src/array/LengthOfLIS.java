@@ -23,24 +23,6 @@ import java.util.Arrays;
 */
 public class LengthOfLIS {
 
-    private int max = 0;
-    public int lengthOfLIS(int[] nums) {
-        find(nums, 0, Integer.MIN_VALUE, 0);
-        return max;
-    }
-
-    private void find(int[] nums, int start, int cur, int len) {
-        max = Math.max(max, len);
-        if (max > nums.length - start + len) {
-            return;
-        }
-        for (int i = start; i < nums.length; i++) {
-            if (cur < nums[i]) {
-                find(nums, i + 1, nums[i], len + 1);
-            }
-        }
-    }
-
     public int lengthOfLIS1(int[] nums) {
         int len = 0;
         int[] dp= new int[nums.length];
@@ -57,9 +39,56 @@ public class LengthOfLIS {
         return len;
     }
 
+
+    public int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int len = 0;
+        for(int num : nums) {
+            int i = Arrays.binarySearch(dp, 0, len, num);
+            if (i < 0) {
+                i = - (i + 1);
+            }
+            dp[i] = num;
+            if (i == len) {
+                len++;
+            }
+        }
+        return len;
+    }
+
+    private int m = 1;
+    private int[] dp;
+    public int lengthOfLIS2(int[] nums) {
+        dp = new int[nums.length];
+        dp[0] = 1;
+        for(int i = 1; i < nums.length; i++) {
+            find(nums, i);
+        }
+        return m;
+    }
+
+    private void find(int[] nums, int i) {
+        int max = 0;
+        for (int j = i; j >= 0; j--) {
+            if (max > j) {
+                break;
+            }
+            if (nums[i] > nums[j]) {
+                max = Math.max(max, dp[j]);
+            }
+        }
+        dp[i] = max + 1;
+        m = Math.max(max + 1, m);
+    }
+
     public static void main(String[] args) {
-        int[] arr = {10,9,2,5,3,7,2, 3, 5, 6, 7,101,18};
+//        int[] arr = {10,9,2,5,3,7,2, 3, 5, 6, 7,101,18};
+        int[] arr = {10,9,2,5,3,7,101,18};
+//        int[] arr = {0,1,0,3,2,3};
+//        int[] arr = {1};
         LengthOfLIS lengthOfLIS = new LengthOfLIS();
+        System.out.println(lengthOfLIS.lengthOfLIS(arr));
         System.out.println(lengthOfLIS.lengthOfLIS1(arr));
     }
 }
