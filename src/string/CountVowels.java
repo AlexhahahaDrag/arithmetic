@@ -57,32 +57,12 @@ public class CountVowels {
 
     public long countVowels(String word) {
         char[] chars = word.toCharArray();
-        long v;
-        long c = 1;
         long res = 0;
         int len = word.length();
-        int[] map = new int[len + 1];
-        for (int i = 1; i < len + 1; i++) {
-            map[i] = map[i - 1] + (vowel(chars[i - 1]) ? 1 : 0);
-        }
         for (int i = 0; i < len; i++) {
-            if (!vowel(chars[i])) {
-                c++;
-                continue;
+            if (vowel(chars[i])) {
+                res += (len - i) * (i + 1);
             }
-            System.out.println(sum(map[len] - map[i]));
-            res += c * (sum(map[len] - map[i]));
-            c = 1;
-        }
-        return res;
-    }
-
-    private long sum(long n) {
-        long res = 0;
-        long cur = 0;
-        while(n-- > 0) {
-            cur += n;
-            res += cur;
         }
         return res;
     }
@@ -97,34 +77,6 @@ public class CountVowels {
             default:return false;
         }
     }
-
-
-    public long countVowels1(String word) {
-        char[] chars = word.toCharArray();
-        long v;
-        long c = 1;
-        long res = 0;
-        int len = word.length();
-        int[] map = new int[len + 1];
-        for (int i = 1; i < len + 1; i++) {
-            map[i] = map[i - 1] + (vowel(chars[i - 1]) ? 1 : 0);
-        }
-        for (int i = 0; i < len; i++) {
-            if (!vowel(chars[i])) {
-                c++;
-                continue;
-            }
-            v = 0;
-            for (int j = i + 1; j <= len; j++) {
-                v += map[j] - map[i];
-            }
-            res += c * v;
-            c = 1;
-        }
-        return res;
-    }
-
-
 
     public static void main(String[] args) {
         String word = "noosabasboosa";

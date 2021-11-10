@@ -45,7 +45,7 @@ public class Rotate {
         }
     }
 
-    public void rotate(int[] nums, int k) {
+    public void rotate4(int[] nums, int k) {
         k %= nums.length;
         if (k == 0) {
             return;
@@ -74,10 +74,42 @@ public class Rotate {
         }
     }
 
+    public void rotate(int[] nums, int k) {
+        if(nums == null || nums.length < 2){
+            return;
+        }
+        k %= nums.length;
+        if (k == 0) {
+            return;
+        }
+        ro(nums, nums.length - k, k, 0, nums.length - 1);
+    }
+
+    private void ro(int[] nums, int l, int r, int s, int e) {
+        if(l == r) {
+            swap(nums, s, e, r);
+        } else if (l > r) {
+            swap(nums, s, e, r);
+            ro(nums, l - r, r, s + r, e);
+        } else {
+            swap(nums, s, e, l);
+            ro(nums, l, r - l, s, e - l);
+        }
+    }
+
+    private void swap(int[] nums, int s, int e, int k) {
+        while(--k >= 0) {
+            nums[s] = nums[s] ^ nums[e - k];
+            nums[e - k] = nums[s] ^ nums[e - k];
+            nums[s] = nums[s] ^ nums[e - k];
+            s++;
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 2};
-            Rotate rotate = new Rotate();
-        rotate.rotate(nums, 3);
+        Rotate rotate = new Rotate();
+        rotate.rotate(nums, 0);
         for (int i : nums) {
             System.out.print(i + "  ");
         }
