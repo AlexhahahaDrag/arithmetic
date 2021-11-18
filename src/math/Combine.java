@@ -1,8 +1,6 @@
 package math;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Description:
@@ -50,7 +48,7 @@ public class Combine {
         }
     }
 
-    public List<List<Integer>> combine(int n, int k) {
+    public List<List<Integer>> combine2(int n, int k) {
         if (n < k) {
             return res;
         }
@@ -70,10 +68,33 @@ public class Combine {
         }
     }
 
+    List<List<Integer>> res1 = new ArrayList<>();
+    public List<List<Integer>> combine(int n, int k) {
+        int[] cur = new int[k];
+        dfs(n, 1, cur, 0);
+        return res1;
+    }
+
+    private void dfs(int n, int start, int[] cur, int size) {
+        if(size == cur.length) {
+            List<Integer> list = new ArrayList(size);
+            for(int i : cur) {
+                list.add(i);
+            }
+            res1.add(list);
+            return;
+        }
+        for(int i = start; i <= n; i++) {
+            cur[size++] = i;
+            dfs(n, i + 1, cur, size);
+            size--;
+        }
+    }
+
     public static void main(String[] args) {
         int n = 4;
         int k = 2;
         Combine combine = new Combine();
-        System.out.println(combine.combine1(n, k));
+        System.out.println(combine.combine(n, k));
     }
 }
