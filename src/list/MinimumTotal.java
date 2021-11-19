@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class MinimumTotal {
 
-    public int minimumTotal(List<List<Integer>> triangle) {
+    public int minimumTotal1(List<List<Integer>> triangle) {
         if (triangle == null || triangle.size() == 0) {
             return 0;
         }
@@ -51,6 +51,31 @@ public class MinimumTotal {
         int min = cur[0];
         for (int i : cur) {
             min = Math.min(min, i);
+        }
+        return min;
+    }
+
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int[] map = new int[triangle.size()];
+        map[0] = triangle.get(0).get(0);
+        int len;
+        int cur;
+        for(List<Integer> t : triangle) {
+            len = t.size();
+            for (int j = t.size() - 1; j >= 0; j--) {
+                if(j == len - 1) {
+                    cur = map[j - 1];
+                } else if(j == 0) {
+                    cur = map[j];
+                } else {
+                    cur = Math.min(map[j], map[j - 1]);
+                }
+                map[j] = cur + t.get(j);
+            }
+        }
+        int min = map[0];
+        for(int j : map) {
+            min = min > j ? j : min;
         }
         return min;
     }
