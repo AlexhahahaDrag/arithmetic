@@ -50,4 +50,19 @@ public class ClimbingStairs {
         }
         return second;
     }
+
+    public int climbStairs3(int n) {
+        if(n == 1) {
+            return 1;
+        }
+        long a = 1;
+        long b = 2;
+        long c;
+        while(--n > 0) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return (int)a;
+    }
 }
