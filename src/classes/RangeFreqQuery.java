@@ -69,32 +69,22 @@ public class RangeFreqQuery {
         if(left > cur.get(cur.size() - 1) || right < cur.get(0)) {
             return 0;
         }
-        int l = findLeft(left, cur);
-        int r = findRight(right, cur);
+        int l = find(left, cur);
+        int r = find(right, cur);
+        if (cur.get(r) > right) {
+            r--;
+        }
         return r - l + 1;
     }
 
-    public int findLeft(int v, List<Integer> list) {
+    public int find(int v, List<Integer> list) {
         int l = 0, r = list.size() - 1;
         while(l < r) {
             int mid = l + r >> 1;
             if(list.get(mid) >= v) { // 满足条件
                 r = mid;
-            }else {
-                l = mid - 1;
-            }
-        }
-        return l;
-    }
-
-    public int findRight(int v, List<Integer> list) {
-        int l = 0, r = list.size() - 1;
-        while(l < r) {
-            int mid = l + r >> 1;
-            if(list.get(mid) <= v) { // 满足条件
-                l = mid;
-            }else {
-                r = mid - 1;
+            } else {
+                l = mid + 1;
             }
         }
         return l;
@@ -110,6 +100,6 @@ public class RangeFreqQuery {
 //        int[] arr = {12, 33, 4, 56, 22, 2, 34, 33, 22, 12, 34, 56};
 //        RangeFreqQuery rangeFreqQuery = new RangeFreqQuery(arr);
 //        System.out.println(rangeFreqQuery.query(1, 2, 4));
-//        System.out.println(rangeFreqQuery.query(0, 11, 33));
+//        System.out.println(rangeFreqQuery.query(0, 7, 33));
     }
 }
