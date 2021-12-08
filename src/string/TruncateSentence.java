@@ -59,6 +59,7 @@ public class TruncateSentence {
 
     public static void main(String[] args) {
         String s = "What is the solution to this problem";
+        System.out.println(Long.parseLong(null));
         int k = 7;
         TruncateSentence truncateSentence = new TruncateSentence();
         System.out.println(truncateSentence.truncateSentence(s, k));
