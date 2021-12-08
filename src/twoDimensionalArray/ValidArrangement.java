@@ -82,6 +82,7 @@ public class ValidArrangement {
                 break;
             }
         }
+        //如果是闭环，任意选择一个点
         dfs(start == 100000001 ? pairs[0][0] : start);
         return res;
     }
