@@ -44,16 +44,43 @@ package tree.binartTree;
  */
 public class GetDirections {
 
+    StringBuilder res = new StringBuilder();
     public String getDirections(TreeNode root, int startValue, int destValue) {
         TreeNode common = getCommon(root, startValue, destValue);
-        return "";
+        int uNum = dfsStart(common, startValue);
+        while(uNum-- > 0) {
+            res.append("U");
+        }
+        dfs(common, destValue, new StringBuilder());
+        return res.toString();
+    }
+
+    private int dfsStart(TreeNode node, int s) {
+        if (node == null) {
+            return 10000;
+        }
+        if (node.val == s) {
+            return 0;
+        }
+        return Math.min(dfsStart(node.left, s), dfsStart(node.right, s)) + 1;
+    }
+
+    private void dfs(TreeNode node, int s, StringBuilder sb) {
+        if (node == null) {
+            return;
+        }
+        if (node.val == s) {
+            res.append(sb);
+            return;
+        }
+        dfs(node.left, s, sb.append("L"));
+        sb.deleteCharAt(sb.length() - 1);
+        dfs(node.right, s, sb.append("R"));
+        sb.deleteCharAt(sb.length() - 1);
     }
 
     private TreeNode getCommon(TreeNode node, int s, int d) {
-        if (node == null) {
-            return null;
-        }
-        if (node.val == s || node.val == d) {
+        if (node == null || node.val == s || node.val == d) {
             return node;
         }
         TreeNode left = getCommon(node.left, s, d);
@@ -68,6 +95,9 @@ public class GetDirections {
         Integer[] arr = {5,1,2,3,null,6,4};
         int startValue = 3;
         int destValue = 6;
+//        Integer[] arr = {2, 1};
+//        int startValue = 2;
+//        int destValue = 1;
         TreeNode root = TreeNode.getTreeNodeByArr(arr);
         GetDirections getDirections = new GetDirections();
         System.out.println(getDirections.getDirections(root, startValue, destValue));

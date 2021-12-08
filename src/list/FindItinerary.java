@@ -38,7 +38,7 @@ public class FindItinerary {
             }
             map.get(from).add(to);
         }
-        dfs("JFK");
+         dfs("JFK");
         Collections.reverse(res);
         return res;
     }
@@ -55,7 +55,7 @@ public class FindItinerary {
         List<List<String>> tickets = new ArrayList<>();
         String[] arr1 = {"JFK","KUL"};
         String[] arr2 = {"JFK","NRT"};
-        String[] arr3 = {"NRT","JFK"};
+        String[] arr3 = {"KUL","JFK"};
         tickets.add(Arrays.asList(arr1));
         tickets.add(Arrays.asList(arr2));
         tickets.add(Arrays.asList(arr3));

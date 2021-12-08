@@ -15,7 +15,7 @@ public class TreeNode {
     @Override
     public String toString() {
         if (val == null) {
-            return "[]";
+            return null;
         }
         StringBuilder stringBuilder=new StringBuilder();
         LinkedList<TreeNode> list=new LinkedList<>();
@@ -96,41 +96,17 @@ public class TreeNode {
     }
 
     public static TreeNode getTreeNodeByArr(Integer[] arr) {
-        TreeNode treeNode = null;
-        Queue<TreeNode> queue = new LinkedBlockingQueue<>();
-        treeNode = get(treeNode, arr, 0, queue);
-        return treeNode;
+        return get(arr, 0);
     }
 
-    private static TreeNode get(TreeNode treeNode, Integer[] arr, Integer index, Queue<TreeNode> queue) {
-        if(index < arr.length) {
-            if(treeNode == null) {
-                treeNode = new TreeNode(arr[index++]);
-                get(treeNode, arr, index, queue);
-            }else if (treeNode.left == null) {
-                Integer cur = arr[index++];
-                if (cur == null) {
-                    treeNode.left = null;
-                } else {
-                    treeNode.left = new TreeNode(arr[index++]);
-                }
-                queue.add(treeNode.left);
-                get(treeNode, arr, index, queue);
-            } else if (treeNode.right == null) {
-                Integer cur = arr[index++];
-                if (cur == null) {
-                    treeNode.right = null;
-                } else {
-                    treeNode.right = new TreeNode(arr[index++]);
-
-                }
-                queue.add(treeNode.right);
-                get(treeNode, arr, index, queue);
-            } else {
-                get(queue.poll(), arr, index, queue);
-            }
+    private static TreeNode get(Integer[] arr, int i) {
+        if (i >= arr.length || arr[i] == null) {
+            return null;
         }
-        return treeNode;
+        TreeNode tree = new TreeNode(arr[i]);
+        tree.left = get(arr, i * 2 + 1);
+        tree.right = get(arr, i * 2 + 2);
+        return tree;
     }
 }
 
