@@ -108,11 +108,22 @@ public class TreeNode {
                 treeNode = new TreeNode(arr[index++]);
                 get(treeNode, arr, index, queue);
             }else if (treeNode.left == null) {
-                treeNode.left = new TreeNode(arr[index++]);
+                Integer cur = arr[index++];
+                if (cur == null) {
+                    treeNode.left = null;
+                } else {
+                    treeNode.left = new TreeNode(arr[index++]);
+                }
                 queue.add(treeNode.left);
                 get(treeNode, arr, index, queue);
             } else if (treeNode.right == null) {
-                treeNode.right = new TreeNode(arr[index++]);
+                Integer cur = arr[index++];
+                if (cur == null) {
+                    treeNode.right = null;
+                } else {
+                    treeNode.right = new TreeNode(arr[index++]);
+
+                }
                 queue.add(treeNode.right);
                 get(treeNode, arr, index, queue);
             } else {
