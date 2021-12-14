@@ -101,7 +101,7 @@ public class MaxTotalFruits {
             map[i + 1] = map[i] + fruits[i][1];
         }
         for (int i = 0; i < n; i++) {
-            int l = i;
+            int l = i - 1;
             int r = n - 1;
             while(l != r) {
                 int mid = l + (r - l + 1 >> 1);
