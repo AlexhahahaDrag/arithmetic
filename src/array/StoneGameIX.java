@@ -51,6 +51,9 @@ package array;
 public class StoneGameIX {
 
     public boolean stoneGameIX(int[] stones) {
+        if(stones.length < 2) {
+            return false;
+        }
         int[] map = new int[3];
         for(int i : stones) {
             map[i % 3]++;
