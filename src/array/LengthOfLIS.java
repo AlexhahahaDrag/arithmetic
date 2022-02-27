@@ -40,7 +40,7 @@ public class LengthOfLIS {
     }
 
 
-    public int lengthOfLIS(int[] nums) {
+    public int lengthOfLIS2(int[] nums) {
         int[] dp = new int[nums.length];
         dp[0] = 1;
         int len = 0;
@@ -59,7 +59,7 @@ public class LengthOfLIS {
 
     private int m = 1;
     private int[] dp;
-    public int lengthOfLIS2(int[] nums) {
+    public int lengthOfLIS3(int[] nums) {
         dp = new int[nums.length];
         dp[0] = 1;
         for(int i = 1; i < nums.length; i++) {
@@ -82,11 +82,31 @@ public class LengthOfLIS {
         m = Math.max(max + 1, m);
     }
 
+    public int lengthOfLIS(int[] nums) {
+        //上升子序列长度
+        int len = 1;
+        // d[i]表示长度为i的子序列结尾的值
+        int[] d = new int[nums.length + 1];
+        d[1] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > d[len]) {
+                len++;
+                d[len] = nums[i];
+            } else {
+                int j = len;
+                while (d[j] >= nums[i] && j > 0) j--;
+                d[j + 1] = nums[i];
+            }
+        }
+        return len;
+    }
+
+
     public static void main(String[] args) {
 //        int[] arr = {10,9,2,5,3,7,2, 3, 5, 6, 7,101,18};
-        int[] arr = {10,9,2,5,3,7,101,18};
+//        int[] arr = {10,9,2,5,3,7,101,18};
 //        int[] arr = {0,1,0,3,2,3};
-//        int[] arr = {1};
+        int[] arr = {1};
         LengthOfLIS lengthOfLIS = new LengthOfLIS();
         System.out.println(lengthOfLIS.lengthOfLIS(arr));
         System.out.println(lengthOfLIS.lengthOfLIS1(arr));

@@ -31,8 +31,8 @@ public class CoutPairs {
 
 
     public static void main(String[] args) {
-        int nums = {};
-        int k = ;
+        int nums[] = {0};
+        int k = 0;
         CoutPairs coutPairs = new CoutPairs();
         System.out.println(coutPairs.coutPairs(nums, k));
     }
