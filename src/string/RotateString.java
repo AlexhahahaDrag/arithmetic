@@ -52,6 +52,22 @@ public class RotateString {
         }
         return false;
     }
+
+    public boolean rotateString2(String s, String goal) {
+        if (s.length() != goal.length()) {
+            return false;
+        }
+        int i = 0;
+        int len = s.length();
+        while(i < len) {
+            if (s.charAt(i) == goal.charAt(0) && s.substring(0, i).equals(goal.substring(len - i)) && s.substring(i).equals(goal.substring(0, len - i))) {
+                return true;
+            }
+            i++;
+        }
+        return s.equals(goal);
+    }
+
     public static boolean rotateString(String A, String B) {
         return A.length() == B.length() && (A + A).indexOf(B) > -1;
     }
