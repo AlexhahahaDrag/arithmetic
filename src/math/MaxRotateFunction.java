@@ -58,7 +58,7 @@ public class MaxRotateFunction {
     }
 
     public static void main(String[] args) {
-        int[] nums = {};
+        int[] nums = {4, 3, 2, 6};
         MaxRotateFunction maxRotateFunction = new MaxRotateFunction();
         System.out.println(maxRotateFunction.maxRotateFunction(nums));
     }
