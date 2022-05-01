@@ -1,7 +1,9 @@
 package tree.binartTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *description:  
@@ -47,7 +49,7 @@ public class GetAllElements {
         res.add(val);
     }
 
-    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+    public List<Integer> getAllElements2(TreeNode root1, TreeNode root2) {
         List<Integer> res = new ArrayList<>();
         List<Integer> list1  = new ArrayList<>();
         getL(root1, list1);
@@ -80,6 +82,37 @@ public class GetAllElements {
         getL(treeNode.left, list);
         list.add(treeNode.val);
         getL(treeNode.right, list);
+    }
+
+
+    Queue<Integer> queue = new LinkedList<>();
+    List<Integer> result = new ArrayList<>();
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        pre(root1, 0);
+        pre(root2, 1);
+        result.addAll(queue);
+        return result;
+    }
+
+    private void pre(TreeNode root, int n) {
+        if (n == 0) {
+            if (root == null) {
+                return;
+            }
+            pre(root.left, n);
+            queue.add(root.val);
+            pre(root.right, n);
+        } else if (n == 1) {
+            if (root == null) {
+                return;
+            }
+            pre(root.left, n);
+            while (!queue.isEmpty() && root.val > queue.peek()) {
+                result.add(queue.poll());
+            }
+            result.add(root.val);
+            pre(root.right, n);
+        }
     }
 
     public static void main(String[] args) {
