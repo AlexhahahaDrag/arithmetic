@@ -1,7 +1,5 @@
 package tree.binartTree;
 
-import tree.binartTree.TreeNode;
-
 import java.util.ArrayDeque;
 
 /**
@@ -21,7 +19,7 @@ import java.util.ArrayDeque;
 public class Codec {
 
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
+    public String serialize1(TreeNode root) {
         if (root == null) {
             return "";
         }
@@ -41,7 +39,7 @@ public class Codec {
     }
 
     // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
+    public TreeNode deserialize1(String data) {
         if(data == null || data.length() == 0) {
             return null;
         }
@@ -66,6 +64,56 @@ public class Codec {
         root.right = deseial(num, uppper, nums);
         root.left = deseial(lower, num, nums);
         return root;
+    }
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        if (root != null) {
+            dfs(root, sb);
+            sb.replace(sb.length() - 1, sb.length(), "");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    private void dfs(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            return;
+        }
+        sb.append(node.val).append(",");
+        dfs(node.left, sb);
+        dfs(node.right, sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if("[]".equals(data)) {
+            return null;
+        }
+        String[] dataStr = data.replace("[", "").replace("]", "").split(",");
+        int[] res = new int[dataStr.length];
+        for(int i = 0; i < dataStr.length; i++) {
+            res[i] = Integer.parseInt(dataStr[i]);
+        }
+        return get(res, 0, res.length - 1);
+    }
+
+    private TreeNode get(int[] res, int s, int e) {
+        if (s > e) {
+            return null;
+        }
+        int j = s;
+        for(; j <= e; j++) {
+            if (res[j] > res[s]) {
+                break;
+            }
+        }
+        TreeNode node = new TreeNode(res[s]);
+        node.left = get(res, s + 1, j - 1);
+        node.right = get(res, j, e);
+        return node;
     }
 
     public static void main(String[] args) {
