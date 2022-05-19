@@ -1,9 +1,5 @@
 package classes;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 /**
  *description:  6066. 统计区间中的整数数目
  * 给你区间的 空 集，请你设计并实现满足要求的数据结构：
@@ -53,31 +49,42 @@ import java.util.Set;
  */
 public class CountIntervals {
 
-    Set<int[]> stack;
+    private boolean[] map;
     public CountIntervals() {
-        stack = new HashSet<>();
+        map = new boolean[(int)Math.pow(10, 5) * 4];
     }
 
     public void add(int left, int right) {
-        Iterator<int[]> iterator = stack.iterator();
-//        while(iterator.hasNext()) {
-//            iterator.next();
-//            if (!(cur[0] > right || cur[1] < left)) {
-//                left = Math.min(left, cur[0]);
-//                right = Math.max(right, cur[1]);
-//                stack.remove(cur);
-//            }
-//        }
-        stack.add(new int[]{left, right});
+        build(1, left, right);
     }
 
     public int count() {
-        int res = 0;
-        for (int[] cur: stack) {
-            res += cur[1] - cur[0];
-        }
-        return res;
+        return dfs(1, 1, (int)Math.pow(10, 5));
     }
+
+    private int dfs(int k, int left, int right) {
+        if(map[k]) {
+            return right - left + 1;
+        }
+        int mid = left + (right - left >> 1);
+        return dfs(k * 2, left, mid) +dfs(k * 2 + 1, mid + 1, right);
+    }
+
+    private boolean build(int k, int left, int right) {
+        if (map[k]) {
+            return true;
+        }
+        if (left == right) {
+            map[k] = true;
+            return true;
+        }
+        int mid = left + (right - left >> 1);
+        boolean l = build(k * 2, left, mid);
+        boolean r = build(k * 2 + 1, mid + 1, right);
+        map[k] = l && r;
+        return l && r;
+    }
+
 
     public static void main(String[] args) {
         CountIntervals countIntervals = new CountIntervals();
