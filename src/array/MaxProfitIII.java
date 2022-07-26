@@ -1,8 +1,5 @@
 package array;
 
-import com.sun.media.jfxmediaimpl.HostUtils;
-
-import java.util.Arrays;
 
 /**
  * @description:
