@@ -51,14 +51,15 @@ public class MyCalendarThree {
     }
 
     public int book(int start, int end) {
-        build(root, start, end, 0, n);
-        return query(root, start, end, 0, n);
+        build(root, start, end - 1, 0, n);
+        return query(root, start, end - 1, 0, n);
     }
 
     private int query(SegmentTree segmentTree, int start, int end, int ll, int rr) {
         if (start <= ll && end >= rr) {
             return segmentTree.sum;
         }
+        pushDown(segmentTree);
         int mid = ll + (rr - ll >> 1);
         int max = 0;
         if (start <= mid) {
@@ -108,9 +109,9 @@ public class MyCalendarThree {
         if (segmentTree.add == 0) {
             return;
         }
-        segmentTree.lTree.add = segmentTree.add;
+        segmentTree.lTree.add += segmentTree.add;
         segmentTree.lTree.sum += segmentTree.add;
-        segmentTree.rTree.add = segmentTree.add;
+        segmentTree.rTree.add += segmentTree.add;
         segmentTree.rTree.sum += segmentTree.add;
         segmentTree.add = 0;
     }
@@ -132,7 +133,6 @@ public class MyCalendarThree {
         System.out.println(myCalendarThree.book(5, 15));//3
         System.out.println(myCalendarThree.book(5, 10));//2
         System.out.println(myCalendarThree.book(25, 55));//3
-
 
 //        MyCalendarThree myCalendarThree = new MyCalendarThree();
 //        System.out.println(myCalendarThree.book(26,35));//1
