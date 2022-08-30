@@ -52,7 +52,7 @@ package tree.binartTree;
 */
 public class InsertIntoMaxTree {
 
-    public TreeNode insertIntoMaxTree(TreeNode root, int val) {
+    public TreeNode insertIntoMaxTree1(TreeNode root, int val) {
         return maxValue(root, val);
     }
 
@@ -68,5 +68,17 @@ public class InsertIntoMaxTree {
             root.right = maxValue(root.right, val);
         }
         return root;
+    }
+
+    public TreeNode insertIntoMaxTree(TreeNode root, int val) {
+        TreeNode res = root;
+        if(root == null || root.val < val) {
+            TreeNode cur = new TreeNode(val);
+            cur.left = root;
+            res = cur;
+        } else {
+            root.right = insertIntoMaxTree(root.right, val);
+        }
+        return res;
     }
 }
