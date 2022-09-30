@@ -44,7 +44,7 @@ public class IsFlipedString {
         return false;
     }
 
-    public boolean isFlipedString(String s1, String s2) {
+    public boolean isFlipedString2(String s1, String s2) {
         if(s1.length() != s2.length()) {
             return false;
         }
@@ -52,8 +52,26 @@ public class IsFlipedString {
         return s.indexOf(s2) >= 0;
     }
 
+    public boolean isFlipedString(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        if (s1.length() == 0) {
+            return true;
+        }
+        int len = s1.length();
+        int i = -1;
+        while(++i < len) {
+            if (s1.charAt(i) == s2.charAt(0) &&
+                    s2.equals(s1.substring(i) + s1.substring(0, i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         IsFlipedString isFlipedString = new IsFlipedString();
-        System.out.println(isFlipedString.isFlipedString("1111", "111"));
+        System.out.println(isFlipedString.isFlipedString("", ""));
     }
 }
