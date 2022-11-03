@@ -47,7 +47,7 @@ import java.util.Arrays;
 */
 public class FrequencySort {
 
-    public String frequencySort(String s) {
+    public String frequencySort1(String s) {
         if(s == null || s.length() == 0) {
             return s;
         }
@@ -73,6 +73,24 @@ public class FrequencySort {
         return sb.toString();
     }
 
+    public String frequencySort(String s) {
+        int[][] map = new int[256][2];
+        int len = s.length();
+        int i = -1;
+        char[] res = s.toCharArray();
+        while(++i < len) {
+            map[(int)res[i]][0]++;
+            map[(int)res[i]][1] = (int)res[i];
+        }
+        Arrays.sort(map, (o1, o2) -> o2[0] - o1[0]);
+        StringBuilder sb = new StringBuilder();
+        for(i = 0; i < map.length; i++) {
+            while(map[i][0]-- > 0) {
+                sb.append((char)map[i][1]);
+            }
+        }
+        return sb.toString();
+    }
     public static void main(String[] args) {
         FrequencySort frequencySort = new FrequencySort();
         System.out.println(frequencySort.frequencySort("#2a554442f544asfasssffffasss"));
