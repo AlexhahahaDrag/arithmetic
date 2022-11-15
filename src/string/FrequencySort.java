@@ -79,8 +79,8 @@ public class FrequencySort {
         int i = -1;
         char[] res = s.toCharArray();
         while(++i < len) {
-            map[(int)res[i]][0]++;
-            map[(int)res[i]][1] = (int)res[i];
+            map[res[i]][0]++;
+            map[res[i]][1] = res[i];
         }
         Arrays.sort(map, (o1, o2) -> o2[0] - o1[0]);
         StringBuilder sb = new StringBuilder();
