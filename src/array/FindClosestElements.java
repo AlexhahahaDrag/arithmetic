@@ -51,7 +51,7 @@ public class FindClosestElements {
             num++;
         }
         int finalStart = start;
-        return new AbstractList<>() {
+        return new AbstractList<Integer>() {
             @Override
             public Integer get(int index) {
                 return arr[finalStart + index + 1];
