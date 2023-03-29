@@ -1,5 +1,8 @@
 package array;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  *description:
  *5556. 可以到达的最远建筑
@@ -48,7 +51,7 @@ package array;
 public class FurthestBuilding {
     private int maxl = 0;
     private boolean flag = false;
-    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+    public int furthestBuilding1(int[] heights, int bricks, int ladders) {
         dfs(heights, bricks, ladders, 0);
         return maxl;
     }
@@ -63,8 +66,8 @@ public class FurthestBuilding {
             dfs(h, b, l, i + 1);
             return;
         }
+        maxl = Math.max(maxl, i);
         if (b == 0 && l == 0) {
-            maxl = Math.max(maxl, i);
             return;
         }
         if (!flag && b >= h[i + 1] - h[i]) {
@@ -75,17 +78,45 @@ public class FurthestBuilding {
         }
     }
 
+    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+        PriorityQueue<Integer> query = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        int i = 0;
+        for(; i < heights.length - 1; i++) {
+            if (heights[i] >= heights[i + 1]) {
+                continue;
+            }
+            int dif = heights[i + 1] - heights[i];
+            if (bricks >= dif) {
+                bricks -= dif;
+                query.add(dif);
+            } else if (ladders > 0) {
+                if (!query.isEmpty() && dif < query.peek()) {
+                    query.add(dif);
+                    bricks += query.poll() - dif;
+                }
+                ladders--;
+            } else {
+                break;
+            }
+        }
+        return i;
+    }
+
     public static void main(String[] args) {
-//        int[] heights = {4,2,7,6,9,14,12};
-//        int bricks = 5;
-//        int ladders = 1;
+        int[] heights = {4,2,7,6,9,14,12};
+        int bricks = 5;
+        int ladders = 1;
 //        int[] heights = {4,12,2,7,3,18,20,3,19};
 //        int bricks = 10;
 //        int ladders = 2;
-        int[] heights = {14,3,19,3};
-        int bricks = 17;
-        int ladders = 0;
+//        int[] heights = {14,3,19,3};
+//        int bricks = 17;
+//        int ladders = 0;
+//        int[] heights = {1,5,1,2,3,4,10000};
+//        int bricks = 4;
+//        int ladders = 1;
         FurthestBuilding furthestBuilding = new FurthestBuilding();
+        System.out.println(furthestBuilding.furthestBuilding1(heights, bricks, ladders));
         System.out.println(furthestBuilding.furthestBuilding(heights, bricks, ladders));
     }
 }
