@@ -46,8 +46,24 @@ public class CalculateII {
         return x + y;
     }
 
+
+    public int max(int[] arr) {
+        int[][] map = new int[arr.length][2];
+        map[0][0] = arr[0];
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            map[i][0] = Math.max(arr[i], arr[i] + map[i - 1][0]);
+            map[i][1] = Math.max(map[i - 1][1] + arr[i], Math.max(map[i - 1][0], map[i - 1][0] + arr[i]));
+            max = Math.max(max, Math.max(map[i][0], map[i][1]));
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
+//        int[] arr = {1, 0, -2, 3};
+        int[] arr = {2,1,-2,-5,-2};
         CalculateII calculateII = new CalculateII();
         System.out.println(calculateII.calculate("AB"));
+        System.out.println(calculateII.max(arr));
     }
 }
