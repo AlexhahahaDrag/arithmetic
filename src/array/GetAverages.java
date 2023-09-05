@@ -55,7 +55,7 @@ import java.util.Arrays;
  */
 public class GetAverages {
 
-    public int[] getAverages(int[] nums, int k) {
+    public int[] getAverages1(int[] nums, int k) {
         if(k == 0) {
             return nums;
         }
@@ -76,10 +76,37 @@ public class GetAverages {
         return nums;
     }
 
+    public int[] getAverages(int[] nums, int k) {
+        if (k == 0) {
+            return nums;
+        }
+        if (k << 1 > nums.length) {
+            Arrays.fill(nums, -1);
+            return nums;
+        }
+        long[] sum = new long[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            sum[i + 1] = sum[i] + nums[i];
+        }
+        for (int i = 0; i < k; i++) {
+            nums[i] = -1;
+        }
+        for (int i = nums.length - k; i < nums.length; i++) {
+            nums[i] = -1;
+        }
+        for (int i = k; i < nums.length - k; i++) {
+            nums[i] = (int)((sum[i + k + 1] - sum[i - k]) / (2 * k + 1));
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
         int[] nums = {7,4,3,9,1,8,5,2,6};
         int k = 3;
         GetAverages getAverages = new GetAverages();
         int[] res = getAverages.getAverages(nums, k);
+        for(int i : res) {
+            System.out.print(i + ",");
+        }
     }
 }
