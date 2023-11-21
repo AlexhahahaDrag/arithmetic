@@ -37,7 +37,7 @@ package array;
  */
 public class MinDeletion {
 
-    public int minDeletion(int[] nums) {
+    public int minDeletion1(int[] nums) {
         int i = 0;
         int j = 1;
         int len = nums.length;
@@ -58,8 +58,25 @@ public class MinDeletion {
         return res;
     }
 
+    public int minDeletion(int[] nums) {
+        int cur = 0;
+        int com = 1;
+        int del = 0;
+        while(com < nums.length) {
+            if (nums[cur] == nums[com]) {
+                del++;
+                com++;
+            } else {
+                cur = com + 1;
+                com += 2;
+            }
+        }
+        return (nums.length - del) % 2 == 1 ? del + 1: del;
+    }
+
     public static void main(String[] args) {
-        int[] nums = {1,1,2,3,5};
+//        int[] nums = {1,1,2,3,5};
+        int[] nums = {0,6,6,1,8,7};
         MinDeletion minDeletion = new MinDeletion();
         System.out.println(minDeletion.minDeletion(nums));
     }
