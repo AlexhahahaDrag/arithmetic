@@ -57,6 +57,16 @@ import java.util.Arrays;
 */
 public class EntityParser {
 
+    public String entityParser1(String text) {
+        return text.replace("&apos;", "'")
+                .replace("&quot;", "\"")
+                .replace("&apos;", "'")
+                .replace("&gt;", ">")
+                .replace("&lt;", "<")
+                .replace("&frasl;", "/")
+                .replace("&amp;", "&");
+    }
+
     StringBuilder stringBuilder = new StringBuilder();
     public String entityParser(String text) {
         char[] ches = text.toCharArray();
@@ -71,7 +81,6 @@ public class EntityParser {
     }
 
     private int judge(int i, char[] ches) {
-        int index = i;
         String str =  new String(Arrays.copyOfRange(ches, i, i + 6));
         if ("&quot;".equals(str)) {
             stringBuilder.append("\"");
