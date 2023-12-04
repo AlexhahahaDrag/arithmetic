@@ -60,13 +60,23 @@ public class CloseStrings {
         if (word1.length() != word2.length()) {
             return false;
         }
-        return true;
+        int[] map = new int[26];
+        int len = word1.length();
+        for (int i = 0; i < len; i++) {
+            map[word1.charAt(i) - 'a']++;
+            map[word2.charAt(i) - 'a']++;
+        }
+        int sum = 0;
+        for (int i = 0; i < 26; i++) {
+            sum += map[i];
+        }
+        return sum == 0;
     }
 
     public static void main(String[] args) {
         String word1 = "cabbba";
         String word2 = "aabbss";
         CloseStrings closeStrings = new CloseStrings();
-        System.out.println(closeStrings.closeStrings());
+        System.out.println(closeStrings.closeStrings(word1, word2));
     }
 }
