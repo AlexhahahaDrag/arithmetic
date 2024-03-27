@@ -1,7 +1,5 @@
 package tree.binartTree;
 
-import javafx.util.Pair;
-import sun.reflect.generics.tree.Tree;
 
 /**
  * @description:
@@ -49,24 +47,6 @@ import sun.reflect.generics.tree.Tree;
  * @version:      1.0.0
  */
 public class LcaDeepestLeaves {
-
-    public TreeNode lcaDeepestLeaves1(TreeNode root) {
-        return getDepth1(root).getKey();
-    }
-
-    private Pair<TreeNode, Integer> getDepth1(TreeNode node) {
-        if (node == null) {
-            return new Pair<>(null, 0);
-        }
-        Pair<TreeNode, Integer> left = getDepth1(node.left);
-        Pair<TreeNode, Integer> right = getDepth1(node.right);
-        if (left.getValue() > right.getValue()) {
-            return new Pair<>(left.getKey(), left.getValue() + 1);
-        } else if (left.getValue() < right.getValue()) {
-            return new Pair<>(right.getKey(), right.getValue() + 1);
-        }
-        return new Pair<>(node, left.getValue() + 1);
-    }
 
     TreeNode res = null;
     private int max = -1;
