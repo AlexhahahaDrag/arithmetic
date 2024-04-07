@@ -71,11 +71,11 @@ import java.util.*;
  */
 public class ThroneInheritance {
 
-    private Map<String, List<String>> kingMap;
+    private final Map<String, List<String>> kingMap;
 
-    private Set<String> dead;
+    private final Set<String> dead;
 
-    private String king;
+    private final String king;
 
     public ThroneInheritance(String kingName) {
         kingMap = new HashMap<>();
